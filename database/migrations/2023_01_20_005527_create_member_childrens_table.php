@@ -16,10 +16,8 @@ return new class extends Migration
         Schema::create('member_childrens', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('member_id')->nullable();
-            $table->string('name')->nullable();
-            $table->string('gender')->nullable();
-            $table->string('birth_date')->nullable();
-            $table->string('occupation')->nullable();
+            $table->string('oarishan_name')->nullable();
+            $table->string('relation')->nullable();
             $table->timestamps();
         });
     }
