@@ -15,11 +15,12 @@ return new class extends Migration
     {
         Schema::create('our_members', function (Blueprint $table) {
             $table->id();
+            $table->string('form_serial');
             $table->string('name_bn');
             $table->string('name_en');
             $table->unsignedBigInteger('role_id')->index();
             $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
-            $table->string('email')->unique();
+            $table->string('personal_phone')->unique();
             $table->string('password');
             $table->string('father_name')->nullable();
             $table->string('mother_name')->nullable();
@@ -31,10 +32,9 @@ return new class extends Migration
             $table->string('village')->nullable();
             $table->string('post_office')->nullable();
             $table->string('upazila')->nullable();
-            $table->string('zila')->nullable();
+            $table->string('district')->nullable();
             $table->text('nameAddress_of_present_institute')->nullable();
             $table->string('office_teliphone')->nullable();
-            $table->string('personal_phone')->nullable();
             $table->string('license')->nullable();
             $table->date('issue_date')->nullable();
             $table->string('designation_of_present_job')->nullable();
@@ -44,6 +44,8 @@ return new class extends Migration
             $table->string('job_expiration')->nullable();
             $table->date('form_date')->nullable();
             $table->string('image')->nullable();
+            $table->string('member_serial_no')->nullable();
+            $table->date('approval_date')->nullable();
             $table->string('applicant_signature')->nullable();
             $table->integer('status')->default(0);
             $table->softDeletes();

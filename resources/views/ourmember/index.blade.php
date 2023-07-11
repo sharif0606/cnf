@@ -20,14 +20,12 @@
                     <table class="table table-bordered mb-0">
                         <thead>
                             <tr>
-                                <th scope="col">{{__('#SL')}}</th>
-                                <th scope="col">{{__('Name')}}</th>
-                                <th scope="col">{{__('Member ID')}}</th>
-                                <th scope="col">{{__('Email')}}</th>
-                                <th scope="col">{{__('Mother\'s Name')}}</th>
-                                <th scope="col">{{__('Nominee')}}</th>
-                                <th scope="col">{{__('Contact No')}}</th>
-                                <th scope="col">{{__('Status')}}</th>
+                                <th scope="col">{{__('ক্রমিক নং')}}</th>
+                                <th scope="col">{{__('নাম(বাংলায়)')}}</th>
+                                <th scope="col">{{__('নাম(ইংরেজীতে)')}}</th>
+                                <th scope="col">{{__('পিতার নাম')}}</th>
+                                <th scope="col">{{__('মাতার নাম')}}</th>
+                                <th scope="col">{{__('মোবাইল (নিজস্ব)')}}</th>
                                 <th class="white-space-nowrap">{{__('Action') }}</th>
                             </tr>
                         </thead>
@@ -35,27 +33,22 @@
                             @forelse($ourmember as $p)
                             <tr>
                                 <th scope="row">{{ ++$loop->index }}</th>
-                                <td>{{$p->full_name}}</td>
-                                <td>{{$p->membership_no}}</td>
-                                <td>{{$p->email}}</td>
+                                <td>{{$p->name_bn}}</td>
+                                <td>{{$p->name_en}}</td>
+                                <td>{{$p->father_name}}</td>
                                 <td>{{$p->mother_name}}</td>
-                                <td>{{$p->nominee}}</td>
-                                <td>{{$p->cell_number}}</td>
-                                <td>@if($p->status == 1) {{'Applied for approval'}} 
-                                    @elseif ($p->status == 3) {{'Suspended'}}
-                                    @else {{'Pending'}} 
-                                    @endif</td>
+                                <td>{{$p->personal_phone}}</td>
                                 <td class="white-space-nowrap">
-                                    <a href="{{route(currentUser().'.ourMember.show',encryptor('encrypt',$p->id))}}">
+                                    {{-- <a href="{{route(currentUser().'.ourMember.show',encryptor('encrypt',$p->id))}}">
                                         <i class="bi bi-eye-fill"></i>
-                                    </a>&nbsp;
+                                    </a>&nbsp; --}}
                                     <a href="{{route(currentUser().'.ourMember.edit',encryptor('encrypt',$p->id))}}">
                                         <i class="bi bi-pencil-square"></i>
                                     </a> &nbsp;
-                                    <a href="javascript:void()" onclick="$('#form{{$p->id}}').submit()">
+                                    <a class="text-danger" href="javascript:void()" onclick="$('#form{{$p->id}}').submit()">
                                         <i class="bi bi-trash"></i>
                                     </a>
-                                    <form id="form{{$p->id}}" action="{{route(currentUser().'.ourMember.destroy',encryptor('encrypt',$p->id))}}" method="post">
+                                    <form id="form{{$p->id}}" onsubmit="return confirm('Are you sure?')" action="{{route(currentUser().'.ourMember.destroy',encryptor('encrypt',$p->id))}}" method="post">
                                         @csrf
                                         @method('delete')
                                     </form>
@@ -63,7 +56,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <th colspan="8" class="text-center">No Pruduct Found</th>
+                                <th colspan="7" class="text-center">No Data Found</th>
                             </tr>
                             @endforelse
                         </tbody>

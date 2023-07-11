@@ -19,25 +19,10 @@ class OurMember extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'given_name',
-        'surname',
-        'email',
+        'personal_phone',
         'password',
     ];
 
-    protected $appends = [
-        'full_name',
-    ];
-
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    public function getFullNameAttribute()
-    {
-        return "{$this->given_name} {$this->surname}";
-    }
     /**
      * The attributes that should be hidden for serialization.
      *

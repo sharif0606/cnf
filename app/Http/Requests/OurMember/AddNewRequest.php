@@ -24,9 +24,7 @@ class AddNewRequest extends FormRequest
     public function rules()
     {
         return [
-            'emailAddress'=>'required|unique:our_members,email',
-            'CellNo'=>'required',
-            'membershipno'=>'unique:our_members,membership_no',
+            'personalPhone'=>'required|unique:our_members,personal_phone',
             'password'=>'required'
         ];
     }

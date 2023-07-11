@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('details_childrens', function (Blueprint $table) {
+        Schema::create('heirships', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->string('sex')->nullable();
-            $table->date('birth_date')->nullable();
-            $table->string('occupation_address')->nullable();
+            $table->bigInteger('member_id')->nullable();
+            $table->string('name_of_heirs')->nullable();
+            $table->string('relation')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('details_childrens');
+        Schema::dropIfExists('heirships');
     }
 };

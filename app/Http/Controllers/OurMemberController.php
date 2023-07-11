@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\OurMember;
-use App\Models\MemberChildren;
+use App\Models\heirship;
 use Illuminate\Http\Request;
 use App\Http\Requests\OurMember\AddNewRequest;
 use App\Http\Requests\OurMember\UpdateRequest;
@@ -59,87 +59,56 @@ class OurMemberController extends Controller
         try{
             $member=new OurMember;
 
-            $member->given_name=$request->given_name;
-            $member->surname=$request->surname;
-            $member->father_name=$request->Fathers;
-            $member->husban_name=$request->husbanName;
-            $member->mother_name=$request->mothersName;
-            $member->nominee=$request->nominee;
-            $member->birth_date=$request->dateOfBirth;
-            $member->nationality=$request->nationality;
-            $member->profession=$request->profession;
-            $member->designation=$request->designation;
-            $member->club_designation=$request->club_designation;
-            $member->company=$request->company;
-            $member->cell_number=$request->CellNo;
-            $member->tel_number=$request->tel;
-            $member->fax_number=$request->fax;
-            $member->email=$request->emailAddress;
-            $member->role_id=5;
-            $member->password=Hash::make($request->password);
+            $member->form_serial=$request->form_serial_no;
+            $member->name_bn=$request->nameBn;
+            $member->name_en=$request->nameEn;
+            $member->father_name=$request->fatherName;
+            $member->mother_name=$request->motherName;
+            $member->birth_date=$request->birthDate;
             $member->blood_group=$request->bloodGroup;
-            $member->national_id=$request->nationalid;
-            $member->qualification=$request->qualification;
-            $member->village=$request->vill;
-            $member->postoffice=$request->postoffice;
+            $member->nid=$request->nid;
+            $member->word_no=$request->wordNo;
+            $member->present_address=$request->presentAddress;
+            $member->village=$request->village;
+            $member->post_office=$request->postOffice;
             $member->upazila=$request->upazila;
             $member->district=$request->district;
-            $member->present_address=$request->presentAddress;
-            $member->office_address=$request->officeAddress;
-            $member->others_date=$request->othersdate;
-            // $member->signature_applicant=$request->signatureApplicant;
-            if($request->hasFile('signatureApplicant')){
-                $signatureApplicantName = rand(111,999).time().'.'.$request->signatureApplicant->extension();
-                $request->signatureApplicant->move(public_path('uploads/our_member'), $signatureApplicantName);
-                $member->signature_applicant=$signatureApplicantName;
+            $member->nameAddress_of_present_institute=$request->nameAddress_of_present_institute;
+            $member->office_teliphone=$request->officeTeliphone;
+            $member->personal_phone=$request->personalPhone;
+            $member->license=$request->license;
+            $member->issue_date=$request->issueDate;
+            $member->designation_of_present_job=$request->designation_of_present_job;
+            $member->joining_date=$request->joiningDate;
+            $member->nameOf_instituteOf_previousJob=$request->nameOf_instituteOf_previousJob;
+            $member->designation_of_previous_job=$request->designation_of_previous_job;
+            $member->job_expiration=$request->jobExpiration;
+            $member->form_date=$request->formDate;
+            $member->member_serial_no=$request->member_serial_no;
+            $member->approval_date=$request->approval_date;
+            $member->role_id=5;
+            $member->password=Hash::make($request->password);
+            if($request->hasFile('applicant_signature')){
+                $applicant_signature = rand(111,999).time().'.'.$request->applicant_signature->extension();
+                $request->applicant_signature->move(public_path('uploads/our_member'), $applicant_signature);
+                $member->signature_applicant=$applicant_signature;
             }
-            $member->identify_president=$request->identifyPresident;
-            $member->member_no=$request->memberNo;
-            $member->mr_mis=$request->mrormis;
-            $member->other_address=$request->otheraddress;
-            if($request->hasFile('signaturefounderpresident')){
-                $signaturefounderpresident = rand(1111,9999).time().'.'.$request->signaturefounderpresident->extension();
-                $request->signaturefounderpresident->move(public_path('uploads/signature'), $signaturefounderpresident);
-                $member->signature_founder_president=$signaturefounderpresident;
+            
+            if($request->hasFile('image')){
+                $image = rand(1111,9999).time().'.'.$request->image->extension();
+                $request->image->move(public_path('uploads/memberImage'), $image);
+                $member->image=$image;
             }
-            if($request->hasFile('foundervicepresident')){
-                $foundervicepresident = rand(11,99).time().'.'.$request->foundervicepresident->extension();
-                $request->foundervicepresident->move(public_path('uploads/signature'), $foundervicepresident);
-                $member->signature_founder_vicepresident=$foundervicepresident;
-            }
-            $member->remarks=$request->remarks;
-            $member->update_incometax=$request->updateincometax;
-            $member->emergency_contact=$request->emergencycontact;
-            $member->passport_notype=$request->passportnotype;
-            $member->pdate_issue=$request->pdateissue;
-            $member->issuing_authority=$request->issuingAuthority;
-            $member->validity=$request->validity;
-            $member->name_spouse=$request->namespouse;
-            $member->occupation_spouse=$request->occupationSpouse;
-            $member->membership_applied=$request->categorymembership;
-            $member->proposed_name=$request->proposedname;
-            $member->membership_no=$request->membershipno;
-
-            if($request->has('image'))
-                $member->image=$this->resizeImage($request->image,'uploads/member_image',true,140,175,false);
-
-            $member->fb_link=$request->fb_link;
-            $member->show_font=0;
-            $member->order_b=0;
-            $member->twter_link=$request->twter_link;
-            $member->linkdin_link=$request->linkdin_link;
-            $member->youtube_link=$request->youtube_link;
+            
             $member->status=1;
             if($member->save()){
-                if($request->cname){
-                    foreach($request->cname as $i=>$cname){
-                        if($cname){
-                            $mc=new MemberChildren;
-                            $mc->member_id=$member->id;
-                            $mc->name=$cname;
-                            $mc->gender=$request->cgender[$i];
-                            $mc->birth_date=$request->cbirth_date[$i];
-                            $mc->occupation=$request->coccupation[$i];
+                if($request->name_of_heirs){
+                    foreach($request->name_of_heirs as $i=>$heirs){
+                        if($heirs){
+                            $mc=new heirship;
+                            $mc->member_id = $member->id;
+                            $mc->name_of_heirs = $heirs;
+                            $mc->relation = $request->relation[$i];
                             $mc->save();
                         }
                     }
@@ -154,7 +123,7 @@ class OurMemberController extends Controller
         }
         catch (Exception $e){
             Toastr::warning('Please try Again!');
-            // dd($e);
+            dd($e);
             return back()->withInput();
 
         }
