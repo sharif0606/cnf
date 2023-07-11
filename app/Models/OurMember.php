@@ -49,7 +49,7 @@ class OurMember extends Model
         return $this->belongsTo(Role::class);
     }
 
-    public function children(){
-        return $this->hasMany(MemberChildren::class,'member_id','id');
+    public function heirs(){
+        return $this->hasMany(heirship::class,'member_id','id');
     }
 }
