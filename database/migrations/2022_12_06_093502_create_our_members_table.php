@@ -47,6 +47,7 @@ return new class extends Migration
             $table->string('member_serial_no')->nullable();
             $table->date('approval_date')->nullable();
             $table->string('applicant_signature')->nullable();
+            $table->integer('membership_applied')->default(0);
             $table->integer('status')->default(0);
             $table->softDeletes();
             $table->timestamps();
