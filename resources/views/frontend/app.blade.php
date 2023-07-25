@@ -38,212 +38,211 @@
     <link rel="stylesheet" href="{{ asset('css/main.css')}}" />
   </head>
   <body>
-        <!-- header section -->
-        <header class="bg-white ">
-          <div class="container">
+    <!-- header section -->
+    <header class="bg-white ">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4 col-7 logo-sec">
+            <a href="{{route('front')}}"><img src="{{asset('uploads/settings/header_logo/'.$setting?->header_logo)}}" alt="" class="mw-100" /></a>
+          </div>
+
+          <div class="col-sm-8 col-5 header-right">
+              
+            <div style="font-size: 10.1pt; " class="d-flex justify-content-end d-none d-md-flex scicon">
+              <a class="pt-2" href="#"><i class="bi bi-facebook"></i></a>
+              <a class="pt-2" href="#"><i class="bi bi-twitter"></i></a>
+              <a class="pt-2" href="#"><i class="bi bi-linkedin"></i></a>
+              <a class="pt-2" href="#"><i class="bi bi-youtube"></i></a>
+
+              <a  id="text-right-dec" href="{{route('memLogin')}}">Member Login</a>
+              <a href="{{route('member_registration')}}" class="become-member">Become a Member</a>
+            </div>
+            
             <div class="row">
-              <div class="col-sm-4 col-7 logo-sec">
-                <a href="{{route('front')}}"><img src="{{asset('uploads/settings/header_logo/'.$setting?->header_logo)}}" alt="" class="mw-100" /></a>
-              </div>
-    
-              <div class="col-sm-8 col-5 header-right">
-                  
-                <div style="font-size: 10.1pt; " class="d-flex justify-content-end d-none d-md-flex scicon">
-                  <a class="pt-2" href="#"><i class="bi bi-facebook"></i></a>
-                  <a class="pt-2" href="#"><i class="bi bi-twitter"></i></a>
-                  <a class="pt-2" href="#"><i class="bi bi-linkedin"></i></a>
-                  <a class="pt-2" href="#"><i class="bi bi-youtube"></i></a>
-    
-                  <a  id="text-right-dec" href="{{route('memLogin')}}">Member Login</a>
-                  <a href="{{route('member_registration')}}" class="become-member">Become a Member</a>
-                </div>
+              <div class="col-sm-12 col-12 d-flex justify-content-end " >
                 
-                <div class="row">
-                  <div class="col-sm-12 col-12 d-flex justify-content-end " >
-                    
-                    <nav class="navbar navbar-expand-md navbar-light pb-0">
-                      <button class="navbar-toggler my-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                      </button>
-                    
-                      <div style="margin-top: 10px;" class="collapse navbar-collapse navbar-collapse-top " id="navbarNav">
-                        @php $rows = DB::table('front_menus')->where('parent_id',0)->where('status',1)->orderBy("rang");
-                            $flcount=$rows->count();
-                        @endphp
-                        <ul class="navbar-nav mr-auto pb-2 ">
-                          @forelse($rows->get() as $i=>$mf)
-                            @php $rows_second = DB::select("SELECT * FROM front_menus WHERE parent_id='{$mf->id}' and status='1' ORDER BY rang"); @endphp
-                              @if($rows_second) 
-                              <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle nav_a_padding" href="{{url($mf->href)}}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  {{$mf->name}}
-                                  @if($i==0)
-                                    <button class="float-end  d-block d-sm-none home-menu-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
-                                      ×
-                                    </button>
-                                  @endif
-                                </a>
-
-                                <div style="width:{{180*count($rows_second)}}px" class="dropDown rowsecond{{$i}} dropdown-menu mega-menu shadow megamenu-lg @if($flcount>5 && $i<=1) left-position @else right-position @endif" aria-labelledby="navbarDropdown">
-                                  <div class="row m-0">
-                                    @foreach($rows_second as $ms)
-                                      @php $rows_third = DB::select("SELECT * FROM front_menus WHERE parent_id='{$ms->id}' and status='1' ORDER BY rang"); @endphp
-                                      @if($rows_third)
-                                        <div class="col-sm pe-0 ">
-                                          <ul class="ps-2">
-                                              <h4 class="menu-head">
-                                                <a href="{{url($ms->href)}}">{{$ms->name}}</a>
-                                              </h4>
-                                              @foreach($rows_third as $mt)
-                                                <li class="subMenu"><a href="{{url($mt->href)}}"><span><i class="bi bi-chevron-double-right"></i></span> {{$mt->name}}</a></li>
-                                              @endforeach
-                                          </ul>
-                                        </div>
-                                      @else
-                                        <script>
-                                          document.getElementsByClassName('rowsecond{{$i}}')[0].style.width='170px';
-                                        </script>
-                                        <ul class="ps-2">
-                                          <li class="subMenu"><a href="{{url($ms->href)}}"><span><i class="bi bi-chevron-double-right"></i></span> {{$ms->name}}</a></li>
-                                        </ul>
-                                      @endif
-                                    @endforeach
-                                  </div>
-                                </div>
-                              </li>
-                              @else
-
-                                <li class="nav-item ">
-                                  <a class="nav-link nav_a_padding" href="{{url($mf->href)}}">{{$mf->name}}
-                                    @if($i==0)
-                                    <button class="float-end  d-block d-sm-none home-menu-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
-                                      ×
-                                    </button>
-                                    @endif
-                                  </a>
-                                </li>
+                <nav class="navbar navbar-expand-md navbar-light pb-0">
+                  <button class="navbar-toggler my-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                
+                  <div style="margin-top: 10px;" class="collapse navbar-collapse navbar-collapse-top " id="navbarNav">
+                    @php $rows = DB::table('front_menus')->where('parent_id',0)->where('status',1)->orderBy("rang");
+                        $flcount=$rows->count();
+                    @endphp
+                    <ul class="navbar-nav mr-auto pb-2 ">
+                      @forelse($rows->get() as $i=>$mf)
+                        @php $rows_second = DB::select("SELECT * FROM front_menus WHERE parent_id='{$mf->id}' and status='1' ORDER BY rang"); @endphp
+                          @if($rows_second) 
+                          <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle nav_a_padding" href="{{url($mf->href)}}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              {{$mf->name}}
+                              @if($i==0)
+                                <button class="float-end  d-block d-sm-none home-menu-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
+                                  ×
+                                </button>
                               @endif
-                            @empty
-                          
-                              <li class="nav-item ">
-                                <a class="nav-link nav_a_padding" href="{{route('front')}}">Home
-                                  <button class="float-end  d-block d-sm-none home-menu-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
-                                    ×
-                                  </button>
-                                </a>
-                              </li>
-                              <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle nav_a_padding" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  About Us
-                                </a>
-                                <div class="dropDown dropdown-menu mega-menu shadow megamenu-lg" aria-labelledby="navbarDropdown">
-                                  <div class="row m-0 ">
-                                    <div class="col-lg-4 pe-0">
+                            </a>
+
+                            <div style="width:{{180*count($rows_second)}}px" class="dropDown rowsecond{{$i}} dropdown-menu mega-menu shadow megamenu-lg @if($flcount>5 && $i<=1) left-position @else right-position @endif" aria-labelledby="navbarDropdown">
+                              <div class="row m-0">
+                                @foreach($rows_second as $ms)
+                                  @php $rows_third = DB::select("SELECT * FROM front_menus WHERE parent_id='{$ms->id}' and status='1' ORDER BY rang"); @endphp
+                                  @if($rows_third)
+                                    <div class="col-sm pe-0 ">
                                       <ul class="ps-2">
-                                        <h4 class="menu-head">
-                                          <a href="">About</a>
-                                        </h4>
-                                        <li class="subMenu"><a href=""><span><i class="bi bi-chevron-double-right"></i></span> Core values</a></li>
-                                        <li class="subMenu"><a href=""><span><i class="bi bi-chevron-double-right"></i></span> Mission</a></li>
-                                        <li class="subMenu"><a href=""><span><i class="bi bi-chevron-double-right"></i></span> Vission</a></li>
+                                          <h4 class="menu-head">
+                                            <a href="{{url($ms->href)}}">{{$ms->name}}</a>
+                                          </h4>
+                                          @foreach($rows_third as $mt)
+                                            <li class="subMenu"><a href="{{url($mt->href)}}"><span><i class="bi bi-chevron-double-right"></i></span> {{$mt->name}}</a></li>
+                                          @endforeach
                                       </ul>
                                     </div>
-                                    <div class="col-lg-4 pe-0">
-                                      <ul class="ps-2">
-                                        <h4 class="menu-head">
-                                          <a href="">Our Team</a>
-                                        </h4>
-                                        <li class="subMenu"><a href=""><span><i class="bi bi-chevron-double-right"></i></span> Core values</a></li>
-                                        <li class="subMenu"><a href=""><span><i class="bi bi-chevron-double-right"></i></span> Mission</a></li>
-                                        <li class="subMenu"><a href=""><span><i class="bi bi-chevron-double-right"></i></span> Vission</a></li>
-                                      </ul>
-                                    </div>
-                                    <div class="col-lg-4 pe-0">
-                                      <ul class="ps-2">
-                                        <h4 class="menu-head">
-                                          <a href="">Committees & Forums</a>
-                                        </h4>
-                                        <li class="subMenu"><a href=""><span><i class="bi bi-chevron-double-right"></i></span> Core values</a></li>
-                                        <li class="subMenu"><a href=""><span><i class="bi bi-chevron-double-right"></i></span> Mission</a></li>
-                                        <li class="subMenu"><a href=""><span><i class="bi bi-chevron-double-right"></i></span> Vission</a></li>
-                                      </ul>
-                                    </div>
-                                  </div>
-                                </div>
-                              </li>
-                              <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle nav_a_padding" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  Club Facilities
-                                </a>
-                                  <ul class="ps-4 dropdown-menu shadow small-menu">
+                                  @else
+                                    <script>
+                                      document.getElementsByClassName('rowsecond{{$i}}')[0].style.width='170px';
+                                    </script>
+                                    <ul class="ps-2">
+                                      <li class="subMenu"><a href="{{url($ms->href)}}"><span><i class="bi bi-chevron-double-right"></i></span> {{$ms->name}}</a></li>
+                                    </ul>
+                                  @endif
+                                @endforeach
+                              </div>
+                            </div>
+                          </li>
+                          @else
+
+                            <li class="nav-item ">
+                              <a class="nav-link nav_a_padding" href="{{url($mf->href)}}">{{$mf->name}}
+                                @if($i==0)
+                                <button class="float-end  d-block d-sm-none home-menu-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
+                                  ×
+                                </button>
+                                @endif
+                              </a>
+                            </li>
+                          @endif
+                        @empty
+                      
+                          <li class="nav-item ">
+                            <a class="nav-link nav_a_padding" href="{{route('front')}}">Home
+                              <button class="float-end  d-block d-sm-none home-menu-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
+                                ×
+                              </button>
+                            </a>
+                          </li>
+                          <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle nav_a_padding" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              About Us
+                            </a>
+                            <div class="dropDown dropdown-menu mega-menu shadow megamenu-lg" aria-labelledby="navbarDropdown">
+                              <div class="row m-0 ">
+                                <div class="col-lg-4 pe-0">
+                                  <ul class="ps-2">
+                                    <h4 class="menu-head">
+                                      <a href="">About</a>
+                                    </h4>
                                     <li class="subMenu"><a href=""><span><i class="bi bi-chevron-double-right"></i></span> Core values</a></li>
                                     <li class="subMenu"><a href=""><span><i class="bi bi-chevron-double-right"></i></span> Mission</a></li>
                                     <li class="subMenu"><a href=""><span><i class="bi bi-chevron-double-right"></i></span> Vission</a></li>
                                   </ul>
-                              </li>
-                              <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle nav_a_padding" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  Members
-                                </a>
-                                  <ul class="ps-4 dropdown-menu shadow small-menu">
-                                    <li class="subMenu"><a href="{{route('member.list')}}"><span><i class="bi bi-chevron-double-right"></i></span> Member List</a></li>
+                                </div>
+                                <div class="col-lg-4 pe-0">
+                                  <ul class="ps-2">
+                                    <h4 class="menu-head">
+                                      <a href="">Our Team</a>
+                                    </h4>
+                                    <li class="subMenu"><a href=""><span><i class="bi bi-chevron-double-right"></i></span> Core values</a></li>
                                     <li class="subMenu"><a href=""><span><i class="bi bi-chevron-double-right"></i></span> Mission</a></li>
                                     <li class="subMenu"><a href=""><span><i class="bi bi-chevron-double-right"></i></span> Vission</a></li>
                                   </ul>
-                              </li>
-                              <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle nav_a_padding" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  Publications
-                                </a>
-                                  <ul class="ps-4 dropdown-menu shadow small-menu">
-                                    <li class="subMenu"><a href=""> <span><i class="bi bi-chevron-double-right"></i></span> Core values</a></li>
+                                </div>
+                                <div class="col-lg-4 pe-0">
+                                  <ul class="ps-2">
+                                    <h4 class="menu-head">
+                                      <a href="">Committees & Forums</a>
+                                    </h4>
+                                    <li class="subMenu"><a href=""><span><i class="bi bi-chevron-double-right"></i></span> Core values</a></li>
                                     <li class="subMenu"><a href=""><span><i class="bi bi-chevron-double-right"></i></span> Mission</a></li>
                                     <li class="subMenu"><a href=""><span><i class="bi bi-chevron-double-right"></i></span> Vission</a></li>
                                   </ul>
-                              </li>
-                              <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle nav_a_padding" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  Media
-                                </a>
-                                  <ul class="ps-4 dropdown-menu shadow small-menu">
-                                    <li class="subMenu"><a href="{{route('all-notice')}}"><span><i class="bi bi-chevron-double-right"></i></span> Notice</a></li>
-                                    <li class="subMenu"><a href="{{route('event-notice')}}"><span><i class="bi bi-chevron-double-right"></i></span> News & Events</a></li>
-                                    <li class="subMenu"><a href="{{route('pGallery')}}"><span><i class="bi bi-chevron-double-right"></i></span> Photo Gallery</a></li>
-                                    <li class="subMenu"><a href="{{route('vGallery')}}"><span><i class="bi bi-chevron-double-right"></i></span> Video Gallery</a></li>
-                                  </ul>
-                              </li>
-                              <li class="nav-item">
-                                <a class="nav-link nav_contact_padding" href="{{route('contact-Us')}}">Contact Us</a>
-                              </li>
-                              <li class="nav-item d-flex d-sm-none">
-                                <a class="nav-link nav_a_padding" href="">Member Login</a>
-                              </li>
-                              <li class="nav-item d-flex d-sm-none">
-                                <a class="nav-link nav_a_padding" href="">Become a Member</a>
-                              </li>
-                            @endforelse
-                          </ul>
-                      </div>
-                    </nav>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                          <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle nav_a_padding" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Club Facilities
+                            </a>
+                              <ul class="ps-4 dropdown-menu shadow small-menu">
+                                <li class="subMenu"><a href=""><span><i class="bi bi-chevron-double-right"></i></span> Core values</a></li>
+                                <li class="subMenu"><a href=""><span><i class="bi bi-chevron-double-right"></i></span> Mission</a></li>
+                                <li class="subMenu"><a href=""><span><i class="bi bi-chevron-double-right"></i></span> Vission</a></li>
+                              </ul>
+                          </li>
+                          <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle nav_a_padding" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Members
+                            </a>
+                              <ul class="ps-4 dropdown-menu shadow small-menu">
+                                <li class="subMenu"><a href="{{route('member.list')}}"><span><i class="bi bi-chevron-double-right"></i></span> Member List</a></li>
+                                <li class="subMenu"><a href=""><span><i class="bi bi-chevron-double-right"></i></span> Mission</a></li>
+                                <li class="subMenu"><a href=""><span><i class="bi bi-chevron-double-right"></i></span> Vission</a></li>
+                              </ul>
+                          </li>
+                          <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle nav_a_padding" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Publications
+                            </a>
+                              <ul class="ps-4 dropdown-menu shadow small-menu">
+                                <li class="subMenu"><a href=""> <span><i class="bi bi-chevron-double-right"></i></span> Core values</a></li>
+                                <li class="subMenu"><a href=""><span><i class="bi bi-chevron-double-right"></i></span> Mission</a></li>
+                                <li class="subMenu"><a href=""><span><i class="bi bi-chevron-double-right"></i></span> Vission</a></li>
+                              </ul>
+                          </li>
+                          <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle nav_a_padding" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Media
+                            </a>
+                              <ul class="ps-4 dropdown-menu shadow small-menu">
+                                <li class="subMenu"><a href="{{route('all-notice')}}"><span><i class="bi bi-chevron-double-right"></i></span> Notice</a></li>
+                                <li class="subMenu"><a href="{{route('event-notice')}}"><span><i class="bi bi-chevron-double-right"></i></span> News & Events</a></li>
+                                <li class="subMenu"><a href="{{route('pGallery')}}"><span><i class="bi bi-chevron-double-right"></i></span> Photo Gallery</a></li>
+                                <li class="subMenu"><a href="{{route('vGallery')}}"><span><i class="bi bi-chevron-double-right"></i></span> Video Gallery</a></li>
+                              </ul>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link nav_contact_padding" href="{{route('contact-Us')}}">Contact Us</a>
+                          </li>
+                          <li class="nav-item d-flex d-sm-none">
+                            <a class="nav-link nav_a_padding" href="">Member Login</a>
+                          </li>
+                          <li class="nav-item d-flex d-sm-none">
+                            <a class="nav-link nav_a_padding" href="">Become a Member</a>
+                          </li>
+                        @endforelse
+                      </ul>
                   </div>
-                  <!-- <div class="col-sm-4 d-none d-sm-flex d-flex justify-content-end mt-4">
-                    <div class="social-icon">
-                      <i class="bi bi-facebook"></i>
-                      <i class="bi bi-twitter"></i>
-                      <i class="bi bi-linkedin"></i>
-                      <i class="bi bi-youtube"></i>
-                    </div>
-                  </div> -->
-                </div>
+                </nav>
               </div>
+              <!-- <div class="col-sm-4 d-none d-sm-flex d-flex justify-content-end mt-4">
+                <div class="social-icon">
+                  <i class="bi bi-facebook"></i>
+                  <i class="bi bi-twitter"></i>
+                  <i class="bi bi-linkedin"></i>
+                  <i class="bi bi-youtube"></i>
+                </div>
+              </div> -->
             </div>
           </div>
-        </header>
-<div class="main">
-  @yield('content')
-</div>
+        </div>
+      </div>
+    </header>
+    <div class="main">
+      @yield('content')
+    </div>
     
-
     <!--  support -->
     <section class="support justify-content-center">
       <div class="container">
@@ -352,9 +351,7 @@
         ScrollReveal().reveal('.support .text-2', { delay: 200, origin: 'top' });
         ScrollReveal().reveal('.support .text-3', { delay: 200, origin: 'right' });
     </script>
-
-
-    
+ 
     <!-- owl js -->
     <script src="{{ asset('assets/js/jquery-1.9.1.min.js')}}"></script>
     <script src="{{ asset('owl-carousel/owl.carousel.js')}}"></script>

@@ -23,7 +23,7 @@ class OurMemberController extends Controller
      */
     public function index()
     {
-        $ourmember=OurMember::whereNot('status',2)->paginate(10);
+        $ourmember=OurMember::paginate(10);
         return view('ourmember.index',compact('ourmember'));
     }
 
@@ -34,7 +34,7 @@ class OurMemberController extends Controller
      */
     public function approvedMember()
     {
-        $ourmember=OurMember::where('status',2)->paginate(10);
+        $ourmember=OurMember::paginate(10);
         return view('ourmember.approveMember',compact('ourmember'));
     }
     
