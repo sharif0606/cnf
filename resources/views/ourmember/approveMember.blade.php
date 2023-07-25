@@ -23,6 +23,7 @@
                                 <th scope="col">{{__('#SL')}}</th>
                                 <th scope="col">{{__('Name')}}</th>
                                 <th scope="col">{{__('Member ID')}}</th>
+                                <th scope="col">{{__('Father\'s Name')}}</th>
                                 <th scope="col">{{__('Mother\'s Name')}}</th>
                                 <th scope="col">{{__('Nominee')}}</th>
                                 <th scope="col">{{__('Profession')}}</th>
@@ -34,8 +35,9 @@
                             @forelse($ourmember as $p)
                             <tr>
                                 <th scope="row">{{ ++$loop->index }}</th>
-                                <td>{{$p->full_name}}</td>
-                                <td>{{$p->membership_no}}</td>
+                                <td>{{$p->name_bn}}</td>
+                                <td>{{$p->member_serial_no}}</td>
+                                <td>{{$p->father_name}}</td>
                                 <td>{{$p->mother_name}}</td>
                                 <td>{{$p->nominee}}</td>
                                 <td>{{$p->profession}}</td>
