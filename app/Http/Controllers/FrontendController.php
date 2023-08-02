@@ -76,7 +76,7 @@ class FrontendController extends Controller
     public function contactUs()
     {
         $contactReason = contact_reason::all();
-        return view('frontend.membership.contact',compact('contactReason'));
+        return view('frontend.contact',compact('contactReason'));
     }
     /**
      * Show the form for creating a new resource.
