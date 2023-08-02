@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('pageTitle',trans('Create Payment Purpose'))
+@section('pageTitle',trans('Create Fees'))
 @section('pageSubTitle',trans('Create'))
 
 @section('content')
@@ -13,15 +13,21 @@
                           <form class="form" method="post" enctype="multipart/form-data" action="{{route(currentUser().'.ppurpose.store')}}">
                               @csrf
                                   <div class="row mb-3">
-                                      <label for="payment" class="col-sm-2 offset-1 col-form-label text-end"><b>{{__('Purpose')}}<span class="text-danger">*</span></b></label>
+                                      <label for="payment" class="col-sm-2 offset-1 col-form-label text-end"><b>{{__('Code')}}<span class="text-danger">*</span></b></label>
                                       <div class="col-sm-6 offset-1 m-0">
-                                          <input type="text" value="{{ old('purpose')}}" class="form-control" name="purpose" required>
+                                          <input type="text" value="{{ old('code')}}" class="form-control" name="code" required>
+                                      </div>
+                                  </div>
+                                  <div class="row mb-3">
+                                      <label for="payment" class="col-sm-2 offset-1 col-form-label text-end"><b>{{__('Name')}}<span class="text-danger">*</span></b></label>
+                                      <div class="col-sm-6 offset-1 m-0">
+                                          <input type="text" value="{{ old('name')}}" class="form-control" name="name" required>
                                       </div>
                                   </div>
                                   <div class="row mb-3">
                                       <label for="amount" class="col-sm-2 offset-1 col-form-label text-end"><b>{{__('Amount')}}<span class="text-danger">*</span></b></label>
                                       <div class="col-sm-6 offset-1 m-0">
-                                          <input type="number" value="{{ old('amount')}}" class="form-control" name="amount" required>
+                                          <input type="number" value="{{ old('amount')}}" class="form-control" name="amount">
                                       </div>
                                   </div>
                                   <div class="col-6 offset-3 d-flex justify-content-end">

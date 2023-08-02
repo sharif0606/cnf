@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('payment_purposes', function (Blueprint $table) {
             $table->id();
-            $table->string('purpose')->nullable();
-            $table->bigInteger('amount')->nullable();
+            $table->string('code')->nullable();
+            $table->string('name')->nullable();
+            $table->decimal('amount',10,2)->nullable()->default(0);
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

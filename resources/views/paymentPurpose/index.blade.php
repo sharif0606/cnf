@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('pageTitle',trans('Payment Purpose List'))
+@section('pageTitle',trans('Fees List'))
 @section('pageSubTitle',trans('List'))
 
 @section('content')
@@ -17,7 +17,8 @@
                             <thead>
                                 <tr class="text-center">
                                     <th scope="col">{{__('#SL')}}</th>
-                                    <th scope="col">{{__('Purpose')}}</th>
+                                    <th scope="col">{{__('Code')}}</th>
+                                    <th scope="col">{{__('Name')}}</th>
                                     <th scope="col">{{__('Amount')}}</th>
                                     <th class="white-space-nowrap">{{__('ACTION')}}</th>
                                 </tr>
@@ -26,7 +27,8 @@
                                 @forelse($data as $b)
                                 <tr class="text-center">
                                 <th scope="row">{{ ++$loop->index }}</th>
-                                    <td>{{$b->purpose}}</td>
+                                    <td>{{$b->code}}</td>
+                                    <td>{{$b->name}}</td>
                                     <td>{{$b->amount}}</td>
                                     <td class="white-space-nowrap">
                                         <a href="{{route(currentUser().'.ppurpose.edit',encryptor('encrypt',$b->id))}}">
@@ -43,7 +45,7 @@
                                 </tr>
                                 @empty
                                 <tr>
-                                    <th colspan="4" class="text-center">No Data Found</th>
+                                    <th colspan="5" class="text-center">No Data Found</th>
                                 </tr>
                                 @endforelse
                             </tbody>

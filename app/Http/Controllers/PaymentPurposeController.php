@@ -40,7 +40,8 @@ class PaymentPurposeController extends Controller
     {
         try{
             $b= new Payment_purpose;
-            $b->purpose=$request->purpose;
+            $b->code=$request->code;
+            $b->name=$request->name;
             $b->amount=$request->amount;
             if($b->save()){
                 Toastr::success('Created Successfully!');
@@ -91,7 +92,8 @@ class PaymentPurposeController extends Controller
     {
         try{
             $b= Payment_purpose::findOrFail(encryptor('decrypt',$id));
-            $b->purpose=$request->purpose;
+            $b->code=$request->code;
+            $b->name=$request->name;
             $b->amount=$request->amount;
             if($b->save()){
                 Toastr::success('Update Successfully!');
