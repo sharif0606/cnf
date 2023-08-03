@@ -9,6 +9,7 @@ use App\Models\Payment_purpose;
 use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
 use Exception;
+use Carbon\Carbon;
 
 class FeeCollectionController extends Controller
 {
@@ -52,7 +53,7 @@ class FeeCollectionController extends Controller
         try{
             $fee=new fee_collection;
             $fee->member_id=$request->member_id;
-            $fee->vhoucher_no=$request->voucher_no;
+            $fee->vhoucher_no='VR-'.Carbon::now()->format('m-y').'-'. str_pad((fee_collection::whereYear('created_at', Carbon::now()->year)->count() + 1),4,"0",STR_PAD_LEFT);
             $fee->date=$request->voucher_date;
             $fee->national_id=$request->nid;
             $fee->name=$request->member_name;
@@ -65,6 +66,7 @@ class FeeCollectionController extends Controller
                         if($amount > 0){
                             $mc=new fee_collection_detail;
                             $mc->fee_collections_id=$fee->id;
+                            $mc->fee_id=$request->fee_id[$i];
                             $mc->code=$request->code[$i];
                             $mc->name=$request->fee_name[$i];
                             $mc->amount=$request->amount[$i];
@@ -118,7 +120,40 @@ class FeeCollectionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try{
+            $fee= fee_collection::findOrFail(encryptor('decrypt',$id));
+            $fee->member_id=$request->member_id;
+            $fee->date=$request->voucher_date;
+            $fee->national_id=$request->nid;
+            $fee->name=$request->member_name;
+            $fee->receipt_no=$request->receipt_no;
+            $fee->year=$request->year;
+            $fee->total_amount=$request->total_fees;
+            if($fee->save()){
+                if($request->amount){
+                    fee_collection_detail::where('fee_collections_id',$fee->id)->delete();
+                    foreach($request->amount as $i=>$amount){
+                        if($amount > 0){
+                            $mc=new fee_collection_detail;
+                            $mc->fee_collections_id=$fee->id;
+                            $mc->fee_id=$request->fee_id[$i];
+                            $mc->code=$request->code[$i];
+                            $mc->name=$request->fee_name[$i];
+                            $mc->amount=$request->amount[$i];
+                            $mc->save();
+                        }
+                    }
+                }
+            }
+            Toastr::success('Update Successfully!');
+            return redirect()->route(currentUser().'.feeCollection.index');
+        }
+        catch (Exception $e){
+            Toastr::warning('Please try Again!');
+            // dd($e);
+            return back()->withInput();
+
+        }
     }
 
     /**

@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('fee_collection_details', function (Blueprint $table) {
             $table->id();
             $table->integer('fee_collections_id');
+            $table->integer('fee_id');
             $table->string('code')->nullable();
             $table->string('name')->nullable();
             $table->decimal('amount',10,2)->default(0)->nullable();

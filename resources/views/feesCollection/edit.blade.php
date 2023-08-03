@@ -21,7 +21,7 @@
                                         <table class="table table-bordered mb-0">
                                             <tr>
                                                 <th>Voucher No</th>
-                                                <td><input type="text" class="form-control" name="voucher_no" value="{{old('voucher_no',$feeDetails->vhoucher_no)}}"></td>
+                                                <td><input type="text" class="form-control" name="voucher_no" value="{{old('voucher_no',$feeDetails->vhoucher_no)}}" disabled></td>
                                             </tr>
                                             <tr>
                                                 <th>Date</th>
@@ -55,7 +55,6 @@
                                         <h6>Fees Table</h6>
                                     </div>
                                     <div class="table-responsive">
-                                        <?php print_r($feeCollectionDetails); ?>
                                         <table class="table table-bordered mb-0">
                                             <thead>
                                                 <tr class="bg-light">
@@ -68,7 +67,7 @@
                                             <tbody>
                                                 @forelse ($fees as $f)
                                                     <tr>
-                                                        <td><input type="text" class="form-control" name="code[]" value="{{$f->code}}" readonly></td>
+                                                        <td><input type="text" class="form-control" name="code[]" value="{{$f->code}}" readonly><input type="hidden" name="fee_id[]" value="{{$f->id}}"></td>
                                                         <td><input type="text" class="form-control" name="fee_name[]" value="{{$f->name}}" readonly></td>
                                                         <td><input type="text" class="form-control fee_amount" name="amount[]" value="@if(isset($feeCollectionDetails[$f->id])){{$feeCollectionDetails[$f->id]}} @endif"></td>
                                                         <td><button class="btn btn-sm btn-danger remove-row">Remove</button></td>

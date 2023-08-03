@@ -19,10 +19,6 @@
                                     <div class="table-responsive">
                                         <table class="table table-bordered mb-0">
                                             <tr>
-                                                <th>Voucher No</th>
-                                                <td><input type="text" class="form-control" name="voucher_no" value="{{old('voucher_no')}}"></td>
-                                            </tr>
-                                            <tr>
                                                 <th>Date</th>
                                                 <td><input type="date" class="form-control" name="voucher_date" value="{{old('voucher_date')}}"></td>
                                             </tr>
@@ -66,7 +62,7 @@
                                             <tbody>
                                                 @forelse ($fees as $f)
                                                     <tr>
-                                                        <td><input type="text" class="form-control" name="code[]" value="{{$f->code}}" readonly></td>
+                                                        <td><input type="text" class="form-control" name="code[]" value="{{$f->code}}" readonly><input type="hidden" name="fee_id[]" value="{{$f->id}}"></td>
                                                         <td><input type="text" class="form-control" name="fee_name[]" value="{{$f->name}}" readonly></td>
                                                         <td><input type="text" class="form-control fee_amount" name="amount[]"></td>
                                                         <td><button class="btn btn-sm btn-danger remove-row">Remove</button></td>
