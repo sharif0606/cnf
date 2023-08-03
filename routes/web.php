@@ -163,6 +163,8 @@ Route::group(['middleware'=>isAdmin::class],function(){
         Route::get('/member-search', [foundCommittee::class,'search'])->name('admin.member_search');
         Route::get('/member_search_data', [foundCommittee::class,'member_search_data'])->name('admin.member_search_data');
 
+        Route::get('/get-member', [feeCollection::class, 'getMember'])->name('admin.getMember');
+
     });
 });
 

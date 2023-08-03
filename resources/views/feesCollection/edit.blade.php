@@ -1,5 +1,5 @@
 @extends('layout.app')
-@section('pageTitle',trans('Create Fees Collection'))
+@section('pageTitle',trans('Update Fees Collection'))
 @section('pageSubTitle',trans('Create'))
 
 @section('content')
@@ -9,8 +9,9 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-body">
-                        <form class="form" method="post" enctype="multipart/form-data" action="{{route(currentUser().'.feeCollection.store')}}">
+                        <form class="form" method="post" enctype="multipart/form-data" action="{{route(currentUser().'.feeCollection.update',encryptor('encrypt',$feeDetails->id))}}">
                             @csrf
+                            @method('PATCH')
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="text-center">
@@ -20,31 +21,31 @@
                                         <table class="table table-bordered mb-0">
                                             <tr>
                                                 <th>Voucher No</th>
-                                                <td><input type="text" class="form-control" name="voucher_no" value="{{old('voucher_no')}}"></td>
+                                                <td><input type="text" class="form-control" name="voucher_no" value="{{old('voucher_no',$feeDetails->vhoucher_no)}}"></td>
                                             </tr>
                                             <tr>
                                                 <th>Date</th>
-                                                <td><input type="date" class="form-control" name="voucher_date" value="{{old('voucher_date')}}"></td>
+                                                <td><input type="date" class="form-control" name="voucher_date" value="{{old('voucher_date',$feeDetails->date)}}"></td>
                                             </tr>
                                             <tr>
                                                 <th>Member ID</th>
-                                                <td><input type="text" id="memberId" class="form-control" name="member_id"></td>
+                                                <td><input type="text" id="memberId" class="form-control" name="member_id" value="{{$feeDetails->member_id}}"></td>
                                             </tr>
                                             <tr>
                                                 <th>National ID</th>
-                                                <td><input type="text" class="form-control" name="nid" value=""></td>
+                                                <td><input type="text" class="form-control" name="nid" value="{{$feeDetails->national_id}}"></td>
                                             </tr>
                                             <tr>
                                                 <th>Name</th>
-                                                <td><input type="text" class="form-control" name="member_name" value=""></td>
+                                                <td><input type="text" class="form-control" name="member_name" value="{{$feeDetails->name}}"></td>
                                             </tr>
                                             <tr>
                                                 <th>Receipt No</th>
-                                                <td><input type="text" class="form-control" name="receipt_no" value="{{old('receipt_no')}}"></td>
+                                                <td><input type="text" class="form-control" name="receipt_no" value="{{old('receipt_no',$feeDetails->receipt_no)}}"></td>
                                             </tr>
                                             <tr>
                                                 <th>Year</th>
-                                                <td><input type="text" class="form-control" name="year" value="{{old('year')}}"></td>
+                                                <td><input type="text" class="form-control" name="year" value="{{old('year',$feeDetails->year)}}"></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -54,6 +55,7 @@
                                         <h6>Fees Table</h6>
                                     </div>
                                     <div class="table-responsive">
+                                        <?php print_r($feeCollectionDetails); ?>
                                         <table class="table table-bordered mb-0">
                                             <thead>
                                                 <tr class="bg-light">
@@ -68,7 +70,7 @@
                                                     <tr>
                                                         <td><input type="text" class="form-control" name="code[]" value="{{$f->code}}" readonly></td>
                                                         <td><input type="text" class="form-control" name="fee_name[]" value="{{$f->name}}" readonly></td>
-                                                        <td><input type="text" class="form-control fee_amount" name="amount[]"></td>
+                                                        <td><input type="text" class="form-control fee_amount" name="amount[]" value="@if(isset($feeCollectionDetails[$f->id])){{$feeCollectionDetails[$f->id]}} @endif"></td>
                                                         <td><button class="btn btn-sm btn-danger remove-row">Remove</button></td>
                                                     </tr>
                                                 @empty
@@ -80,7 +82,7 @@
                                             <tfoot>
                                                 <tr class="text-center">
                                                     <th colspan="2">Total Fees</th>
-                                                    <td colspan="2"><input type="text" class="form-control" name="total_fees"></td>
+                                                    <td colspan="2"><input type="text" class="form-control" name="total_fees" value="{{$feeDetails->total_amount}}"></td>
                                                 </tr>
                                             </tfoot>
                                         </table>
@@ -89,7 +91,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-12 d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-primary me-1 mb-1">Save</button>
+                                    <button type="submit" class="btn btn-info me-1 mb-1">Update</button>
                                 </div>
                             </div>
                         </form>
