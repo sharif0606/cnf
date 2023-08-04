@@ -24,7 +24,8 @@
                                             </tr>
                                             <tr>
                                                 <th>Member ID</th>
-                                                <td><input type="text" id="memberId" class="form-control" name="member_id"></td>
+                                                <td><input type="text" id="member_serial_no" class="form-control" name="">
+                                                    <input type="text" id="memberId" class="form-control" name="member_id"></td>
                                             </tr>
                                             <tr>
                                                 <th>National ID</th>
@@ -99,19 +100,20 @@
 @push('scripts')
 <script>
 $(document).ready(function() {
-    $('#memberId').change(function() {
-        var memberId = $(this).val();
+    $('#member_serial_no').change(function() {
+        var member_serial_no = $(this).val();
         if (memberId !== '') {
             $.ajax({
                 url: '{{route(currentUser().'.getMember')}}',
                 type: 'GET',
                 data: {
-                    id: memberId
+                    member_serial_no: member_serial_no
                 },
                 dataType: 'json',
                 success: function(response) {
                     var member = response.member;
                     // Fill the input fields with the received data
+                    $('input[name="member_id"]').val(member.id);
                     $('input[name="nid"]').val(member.nid);
                     $('input[name="member_name"]').val(member.name_bn);
                 },

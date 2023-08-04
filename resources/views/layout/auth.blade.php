@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CKCL | @yield('siteTitle', 'Chittagong')</title>
+    <title>CNF | @yield('siteTitle', 'Chittagong')</title>
 
 <link rel="stylesheet" href="{{ asset('assets/css/main/app.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/pages/auth.css') }}">
@@ -26,7 +26,7 @@
         <div class="col-lg-6 offset-3 col-12">
             <div id="auth-left">
                 <div class="auth-logo">
-                    <img src="{{asset('uploads/settings/header_logo/'.$setting?->header_logo)}}" width="100%" height="70px" alt="">
+                    <img src="{{asset('uploads/settings/header_logo/'.$setting?->header_logo)}}" width="50%" height="70px" alt="">
                 </div>
 
                 @yield('content')
