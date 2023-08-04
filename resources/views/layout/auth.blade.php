@@ -1,3 +1,4 @@
+@php $setting=\App\Models\setting::first(); @endphp
 <!DOCTYPE html>
 <html lang="bn">
 
@@ -25,7 +26,7 @@
         <div class="col-lg-6 offset-3 col-12">
             <div id="auth-left">
                 <div class="auth-logo">
-                    <img src="{{ asset('./images/khulsi_club_logo.png')}}" width="100%" height="70px" alt="">
+                    <img src="{{asset('uploads/settings/header_logo/'.$setting?->header_logo)}}" width="100%" height="70px" alt="">
                 </div>
 
                 @yield('content')
