@@ -39,12 +39,13 @@
                                 <td>{{$p->mother_name}}</td>
                                 <td>{{$p->personal_phone}}</td>
                                 <td class="white-space-nowrap">
-                                    {{-- <a href="{{route(currentUser().'.ourMember.show',encryptor('encrypt',$p->id))}}">
-                                        <i class="bi bi-eye-fill"></i>
-                                    </a>&nbsp; --}}
+                                   
                                     <a href="{{route(currentUser().'.ourMember.edit',encryptor('encrypt',$p->id))}}">
                                         <i class="bi bi-pencil-square"></i>
                                     </a> &nbsp;
+                                    <a class="text-danger" href="{{route(currentUser().'.ourMember.show',encryptor('encrypt',$p->id))}}">
+                                        <i class="bi bi-file-earmark-pdf-fill"></i>
+                                    </a>&nbsp;
                                     <a class="text-danger" href="javascript:void()" onclick="$('#form{{$p->id}}').submit()">
                                         <i class="bi bi-trash"></i>
                                     </a>
