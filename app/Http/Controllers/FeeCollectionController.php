@@ -37,8 +37,8 @@ class FeeCollectionController extends Controller
 
     public function getMember(Request $request)
     {
-        $memberId = $request->input('id');
-        $member = OurMember::where('id', $memberId)->first();
+        $member_serial_no = $request->input('member_serial_no');
+        $member = OurMember::where('member_serial_no', $member_serial_no)->first();
         return response()->json(['member' => $member]);
     }
 
