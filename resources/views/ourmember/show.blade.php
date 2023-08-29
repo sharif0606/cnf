@@ -145,7 +145,7 @@
                         </th>
                     </tr>
                     <tr>
-                        <th style="text-align: left;">তারিখ</th>
+                        <th style="text-align: left; width:10%;">তারিখ</th>
                         <td style="text-align: left;"><input type="text" class="tinput"></td>
                         <td></td>
                     </tr>
