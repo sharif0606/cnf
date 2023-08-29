@@ -328,148 +328,155 @@
                 </thead>
                 <tbody>
                     <tr class="tbl_1">
-                        <td class="tbl_1">1</td>
-                        <td class="tbl_1">2</td>
-                        <td class="tbl_1">3</td>
-                        <td class="tbl_1">4</td>
-                        <td class="tbl_1">5</td>
-                        <td class="tbl_1">6</td>
-                        <td class="tbl_1">7</td>
-                        <td class="tbl_1">8</td>
-                        <td class="tbl_1">9</td>
-                        <td class="tbl_1">10</td>
-                        <td class="tbl_1">11</td>
+                        <td class="tbl_1">১</td>
+                        <td class="tbl_1">{{ $show_data->name_bn }}<br>{{ $show_data->nid }}</td>
+                        <td class="tbl_1">{{ $show_data->member_serial_no }}<br>{{ $show_data->personal_phone  }}</td>
+                        <td class="tbl_1"></td>
+                        <td class="tbl_1">{{ $show_data->father_name }}</td>
+                        <td class="tbl_1">{{ $show_data->birth_date }}<br>বয়স:
+                            @php
+                            $birthDate = $show_data->birth_date;
+                            $age = \Carbon\Carbon::parse($birthDate)->age;
+                            @endphp
+                            {{ $age }}
+                        </td>
+                        <td class="tbl_1">{{ $show_data->present_address }}</td>
+                        <td class="tbl_1">{{ $show_data->nameAddress_of_present_institute }}</td>
+                        <td class="tbl_1">{{ $show_data->district }}</td>
+                        <td class="tbl_1">{{ $show_data->designation_of_present_job }}</td>
+                        <td class="tbl_1"></td>
                     </tr>
                     <tr class="tbl_1">
-                        <td class="tbl_1">1</td>
-                        <td class="tbl_1">2</td>
-                        <td class="tbl_1">3</td>
-                        <td class="tbl_1">4</td>
-                        <td class="tbl_1">5</td>
-                        <td class="tbl_1">6</td>
-                        <td class="tbl_1">7</td>
-                        <td class="tbl_1">8</td>
-                        <td class="tbl_1">9</td>
-                        <td class="tbl_1">10</td>
-                        <td class="tbl_1">11</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
                     </tr>
                     <tr class="tbl_1">
-                        <td class="tbl_1">1</td>
-                        <td class="tbl_1">2</td>
-                        <td class="tbl_1">3</td>
-                        <td class="tbl_1">4</td>
-                        <td class="tbl_1">5</td>
-                        <td class="tbl_1">6</td>
-                        <td class="tbl_1">7</td>
-                        <td class="tbl_1">8</td>
-                        <td class="tbl_1">9</td>
-                        <td class="tbl_1">10</td>
-                        <td class="tbl_1">11</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
                     </tr>
                     <tr class="tbl_1">
-                        <td class="tbl_1">1</td>
-                        <td class="tbl_1">2</td>
-                        <td class="tbl_1">3</td>
-                        <td class="tbl_1">4</td>
-                        <td class="tbl_1">5</td>
-                        <td class="tbl_1">6</td>
-                        <td class="tbl_1">7</td>
-                        <td class="tbl_1">8</td>
-                        <td class="tbl_1">9</td>
-                        <td class="tbl_1">10</td>
-                        <td class="tbl_1">11</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
                     </tr>
                     <tr class="tbl_1">
-                        <td class="tbl_1">1</td>
-                        <td class="tbl_1">2</td>
-                        <td class="tbl_1">3</td>
-                        <td class="tbl_1">4</td>
-                        <td class="tbl_1">5</td>
-                        <td class="tbl_1">6</td>
-                        <td class="tbl_1">7</td>
-                        <td class="tbl_1">8</td>
-                        <td class="tbl_1">9</td>
-                        <td class="tbl_1">10</td>
-                        <td class="tbl_1">11</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
                     </tr>
                     <tr class="tbl_1">
-                        <td class="tbl_1">1</td>
-                        <td class="tbl_1">2</td>
-                        <td class="tbl_1">3</td>
-                        <td class="tbl_1">4</td>
-                        <td class="tbl_1">5</td>
-                        <td class="tbl_1">6</td>
-                        <td class="tbl_1">7</td>
-                        <td class="tbl_1">8</td>
-                        <td class="tbl_1">9</td>
-                        <td class="tbl_1">10</td>
-                        <td class="tbl_1">11</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
                     </tr>
                     <tr class="tbl_1">
-                        <td class="tbl_1">1</td>
-                        <td class="tbl_1">2</td>
-                        <td class="tbl_1">3</td>
-                        <td class="tbl_1">4</td>
-                        <td class="tbl_1">5</td>
-                        <td class="tbl_1">6</td>
-                        <td class="tbl_1">7</td>
-                        <td class="tbl_1">8</td>
-                        <td class="tbl_1">9</td>
-                        <td class="tbl_1">10</td>
-                        <td class="tbl_1">11</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
                     </tr>
                     <tr class="tbl_1">
-                        <td class="tbl_1">1</td>
-                        <td class="tbl_1">2</td>
-                        <td class="tbl_1">3</td>
-                        <td class="tbl_1">4</td>
-                        <td class="tbl_1">5</td>
-                        <td class="tbl_1">6</td>
-                        <td class="tbl_1">7</td>
-                        <td class="tbl_1">8</td>
-                        <td class="tbl_1">9</td>
-                        <td class="tbl_1">10</td>
-                        <td class="tbl_1">11</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
                     </tr>
                     <tr class="tbl_1">
-                        <td class="tbl_1">1</td>
-                        <td class="tbl_1">2</td>
-                        <td class="tbl_1">3</td>
-                        <td class="tbl_1">4</td>
-                        <td class="tbl_1">5</td>
-                        <td class="tbl_1">6</td>
-                        <td class="tbl_1">7</td>
-                        <td class="tbl_1">8</td>
-                        <td class="tbl_1">9</td>
-                        <td class="tbl_1">10</td>
-                        <td class="tbl_1">11</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
                     </tr>
                     <tr class="tbl_1">
-                        <td class="tbl_1">1</td>
-                        <td class="tbl_1">2</td>
-                        <td class="tbl_1">3</td>
-                        <td class="tbl_1">4</td>
-                        <td class="tbl_1">5</td>
-                        <td class="tbl_1">6</td>
-                        <td class="tbl_1">7</td>
-                        <td class="tbl_1">8</td>
-                        <td class="tbl_1">9</td>
-                        <td class="tbl_1">10</td>
-                        <td class="tbl_1">11</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
                     </tr>
                     <tr class="tbl_1">
-                        <td class="tbl_1">1</td>
-                        <td class="tbl_1">2</td>
-                        <td class="tbl_1">3</td>
-                        <td class="tbl_1">4</td>
-                        <td class="tbl_1">5</td>
-                        <td class="tbl_1">6</td>
-                        <td class="tbl_1">7</td>
-                        <td class="tbl_1">8</td>
-                        <td class="tbl_1">9</td>
-                        <td class="tbl_1">10</td>
-                        <td class="tbl_1">11</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
+                        <td class="tbl_1">&nbsp;</td>
                     </tr>
+                    
                 </tbody>
             </table>
             <table style="width: 100%; margin-top: 5rem; margin-bottom:5rem;">
@@ -502,9 +509,9 @@
                 </tr>
                 <tr>
                     <th style="text-align: left;">নাম:</th>
-                    <td><input type="text" class="binput"></td>
+                    <td><input type="text" class="binput" value="{{ $show_data->name_bn }}"></td>
                     <th style="text-align: left;">সদস্য নং:</th>
-                    <td><input type="text" class="binput"></td>
+                    <td><input type="text" class="binput" value="{{ $show_data->member_serial_no }}"></td>
                 </tr>
                 <tr>
                     <th style="text-align: left;">পদবি:</th>
@@ -542,9 +549,9 @@
                 </tr>
                 <tr>
                     <th style="text-align: left;">নাম:</th>
-                    <td><input type="text" class="binput"></td>
+                    <td><input type="text" class="binput" value="{{ $show_data->name_bn }}"></td>
                     <th style="text-align: left;">সদস্য নং:</th>
-                    <td><input type="text" class="binput"></td>
+                    <td><input type="text" class="binput" value="{{ $show_data->member_serial_no }}"></td>
                 </tr>
                 <tr>
                     <th style="text-align: left;">পদবি:</th>

@@ -25,7 +25,7 @@
                                             <tr>
                                                 <th>Member ID</th>
                                                 <td><input type="text" id="member_serial_no" class="form-control" name="">
-                                                    <input type="text" id="memberId" class="form-control" name="member_id"></td>
+                                                    <input type="hidden" id="memberId" class="form-control" name="member_id"></td>
                                             </tr>
                                             <tr>
                                                 <th>National ID</th>
