@@ -39,44 +39,13 @@
         }
         .gfg2 {
             border-collapse:separate;
-            border-spacing:0 10px;
+            border-spacing:0 5px;
             }
 
-        .gfg3 {
-            border-collapse:separate;
-            border-spacing:0 25px;
-        }
-
-        .gfg4 {
-            border-collapse:separate;
-            border-spacing:0 15px;
-        }
-
-        .photo{
-
-            margin: auto;
-            padding-top: 3rem;
-
-
-        }
         .pdiv{
             position: relative;
             background-color: rgba(53, 123, 189, 0.6);
             padding: 20px 12px 20px 12px;
-
-
-        }
-        .pbox{
-            width: 120px;
-            height: 134px;
-            border-style: solid;
-            border-radius: 1rem;
-            border-width: 2px;
-            border-color: #3939b3;
-            text-align: center;
-            position: absolute;
-            bottom: -12px;
-            right: 80px;
 
 
         }
@@ -155,7 +124,7 @@
 </head>
 <body>
     <div>
-        <a href="#" class="btn no-print"> Go To Dashboard</a>
+        <a href="{{route(currentUser().'.dashboard')}}" class="btn no-print"> Go To Dashboard</a>
         <button class="no-print btn" type="button" onclick="window.print()" style="float:right"> 
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
                 <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
@@ -184,7 +153,7 @@
                         <th colspan="3" style="text-align: left;">বরাবর,</th>
                     </tr>
                     <tr>
-                        <th colspan="3" style="text-align: left;">সভাপতি/সাধারণ সম্পাদক,</th>
+                        <th colspan="3" style="text-align: left;">সভাপতি/সাধারণ সম্পাদক</th>
                     </tr>
                     <tr>
                         <td colspan="2"><input type="text" class="tinput"></td>
@@ -195,12 +164,12 @@
                         <td></td>
                     </tr>
                     <tr>
-                        <th colspan="3" style="text-align: left;">জনাব,</th>
+                        <td colspan="3" style="text-align: left;">জনাব,</td>
                     </tr>
                     <tr>
                         <td colspan="3" style="text-align: left;">
                             <p>
-                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; আমি <input type="text" class="tinput"> ট্রেড ইউনিয়নের সদস্য পদ লাভের জন্য এতদ্বারা আবেদন করিতে। আমি সতর্কতারর সহিত ট্রেড ইউনিয়নের গঠনতন্ত্রের বিধানসমূহ পরিয়াছি / পড়িয়া  শুনানো হইলে বুঝিয়াছি এবং উহা মানিয়া চলিতে প্রস্তুত রহিয়াছি।
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; আমি <input type="text" class="tinput"> ট্রেড ইউনিয়নের সদস্য পদ লাভের জন্য এতদ্বারা আবেদন করিতেছি। আমি সতর্কতার সহিত ট্রেড ইউনিয়নের গঠনতন্ত্রের বিধানসমূহ পড়িয়াছি / পড়িয়া  শুনানো হইলে বুঝিয়াছি এবং উহা মানিয়া চলিতে প্রস্তুত রহিয়াছি।
                             </p>
                         </td>
                     </tr>
@@ -220,98 +189,104 @@
                         <th class="tbl_1" style="text-align: left; width:62%;">নাম</th>
                         <th class="tbl_1" style="text-align: left; width:2%;">..</th>
                         <th class="tbl_1" style="text-align: left; width:2%;">..</th>
-                        <td class="tbl_1" style="width:32%;">ইউনিয়নের সদস্য পদ</td>
+                        <td class="tbl_1" style="width:32%;">{{ $show_data->name_bn }}</td>
                     </tr>
                     <tr class="tbl_1">
                         <th class="tbl_1" style="text-align: left;">২</th>
                         <th class="tbl_1" style="text-align: left;">পিতা</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
-                        <td class="tbl_1" >ইউনিয়নের সদস্য পদ</td>
+                        <td class="tbl_1" >{{ $show_data->father_name }}</td>
                     </tr>
                     <tr class="tbl_1">
                         <th class="tbl_1" style="text-align: left;">৩</th>
                         <th class="tbl_1" style="text-align: left;">মাতা</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
-                        <td class="tbl_1">ইউনিয়নের সদস্য পদ</td>
+                        <td class="tbl_1">{{ $show_data->mother_name }}</td>
                     </tr>
                     <tr class="tbl_1">
                         <th class="tbl_1" style="text-align: left;">৪</th>
                         <th style="text-align: left;">স্বামী/স্ত্রী</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
-                        <td class="tbl_1">ইউনিয়নের সদস্য পদ</td>
+                        <td class="tbl_1"></td>
                     </tr>
                     <tr class="tbl_1">
                         <th class="tbl_1" style="text-align: left;">৫</th>
-                        <th class="tbl_1" style="text-align: left;">জাতীয় পরিচয় পত্র (যদি থাকে)</th>
+                        <th class="tbl_1" style="text-align: left;">জাতীয় পরিচয়পত্র নং (যদি থাকে)</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
-                        <td class="tbl_1">ইউনিয়নের সদস্য পদ</td>
+                        <td class="tbl_1">{{ $show_data->nid }}</td>
                     </tr>
                     <tr class="tbl_1">
                         <th class="tbl_1" style="text-align: left;">৬</th>
                         <th class="tbl_1" style="text-align: left;">বয়স</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
-                        <td class="tbl_1">ইউনিয়নের সদস্য পদ</td>
+                        <td class="tbl_1">
+                            @php
+                                $birthDate = $show_data->birth_date;
+                                $age = \Carbon\Carbon::parse($birthDate)->age;
+                            @endphp
+                            {{ $age }}
+                        </td>
                     </tr>
                     <tr class="tbl_1">
                         <th class="tbl_1" style="text-align: left;">৭</th>
                         <th class="tbl_1" style="text-align: left;">প্রতিষ্ঠানের নাম ও কর্মক্ষেত্র</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
-                        <td class="tbl_1">ইউনিয়নের সদস্য পদ</td>
+                        <td class="tbl_1">{{ $show_data->nameOf_instituteOf_previousJob }}</td>
                     </tr>
                     <tr class="tbl_1">
                         <th class="tbl_1" style="text-align: left;">৮</th>
-                        <th class="tbl_1" style="text-align: left;">প্রতিষ্ঠানের নাম ও ঠিকানা ও নিবন্ধন নং (মালিকদের সংগঠনের জন্য প্রযোজ্য)</th>
+                        <th class="tbl_1" style="text-align: left;">প্রতিষ্ঠানের নাম, ঠিকানা ও নিবন্ধন নং (মালিকদের সংগঠনের জন্য প্রযোজ্য)</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
-                        <td class="tbl_1">ইউনিয়নের সদস্য পদ</td>
+                        <td class="tbl_1"></td>
                     </tr>
                     <tr class="tbl_1">
                         <th class="tbl_1" style="text-align: left;">৯</th>
                         <th class="tbl_1" style="text-align: left;">প্রতিষ্ঠানপুঞ্জের ক্ষেত্রে পেশা / প্রতিষ্ঠানের নাম ও ঠিকানা</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
-                        <td class="tbl_1">ইউনিয়নের সদস্য পদ</td>
+                        <td class="tbl_1">{{ $show_data->nameAddress_of_present_institute }}</td>
                     </tr>
                     <tr class="tbl_1">
                         <th class="tbl_1" style="text-align: left;">১০</th>
                         <th class="tbl_1" style="text-align: left;">বিভাগ/শাখা/কর্মক্ষেত্র ও পদবী এবং পরিচয়পত্র নং, টোকেন নং (যদি থাকে)</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
-                        <td class="tbl_1">ইউনিয়নের সদস্য পদ</td>
+                        <td class="tbl_1"></td>
                     </tr>
                     <tr class="tbl_1">
                         <th class="tbl_1" style="text-align: left;">১১</th>
                         <th class="tbl_1" style="text-align: left;">চাকরির ধরন-- স্থায়ী /বদলি/সাময়িক/অস্থায়ী  শিক্ষানবীশ/শিক্ষাধীন</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
-                        <td class="tbl_1">ইউনিয়নের সদস্য পদ</td>
+                        <td class="tbl_1"></td>
                     </tr>
                     <tr class="tbl_1">
                         <th class="tbl_1" style="text-align: left;">১২</th>
                         <th class="tbl_1" style="text-align: left;">বর্তমান চাকরিতে যোগদানের তারিখ</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
-                        <td class="tbl_1">ইউনিয়নের সদস্য পদ</td>
+                        <td class="tbl_1">{{ $show_data->joining_date }}</td>
                     </tr>
                     <tr class="tbl_1">
                         <th class="tbl_1" style="text-align: left;">১৩</th>
-                        <th class="tbl_1" style="text-align: left;">বঠিকানা (ক) বর্তমান</th>
+                        <th class="tbl_1" style="text-align: left;">ঠিকানা (ক) বর্তমান</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
-                        <td class="tbl_1">ইউনিয়নের সদস্য পদ</td>
+                        <td class="tbl_1">{{ $show_data->present_address }}</td>
                     </tr>
                     <tr class="tbl_1">
                         <th class="tbl_1" style="text-align: left;"></th>
                         <th class="tbl_1" style="text-align: left;">(খ) স্বায়ী</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
-                        <td class="tbl_1">ইউনিয়নের সদস্য পদ</td>
+                        <td class="tbl_1">{{ $show_data->present_address }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -328,7 +303,7 @@
             <div style="text-align: center; margin-bottom: 5rem;">
                 <h4>ফরম-৫৭(ক)</h4>
                 <h4>[ ধারা ১৭৮ বিধি এবং ১৬৮(৬) ]</h4>
-                <h4>ইউনিয়নের সদস্যপদের বিবরন</h4>
+                <h4>ইউনিয়নের সদস্যদের বিবরন</h4>
             </div>
             <div style="padding-top: 10px; padding-bottom:10px;">ট্রেড ইউনিয়ন সংগঠনের নাম ও ঠিকানা: <input type="text" class="tinput" style="width:65%;"></div>
             <div style="padding-top: 10px; padding-bottom:10px; margin-bottom:4rem;">শিল্প/প্রতিষ্ঠানের নাম ও ও ঠিকানা: <input type="text" class="tinput" style="width:70%;"></div>
@@ -497,18 +472,20 @@
                     </tr>
                 </tbody>
             </table>
-            <div style="margin-top: 5rem; margin-bottom:5rem;">
-                <div style="display: inline-block; vertical-align: top;">
-                    <p><input type="text" class="tinput" style="width:95%;"></p>
-                    <p>সভাপতির স্বাক্ষর ও সীল</p>
-                    <p>তারিখ:</p>
-                </div>
-                <div style="display: inline-block; vertical-align: top;">
-                    <p><input type="text" class="tinput" style="width:95%;"></p>
-                    <p>সাধারণ সম্পাদকের স্বাক্ষর ও সীল</p>
-                    <p>তারিখ:</p>
-                </div>
-            </div>
+            <table style="width: 100%; margin-top: 5rem; margin-bottom:5rem;">
+                <tr>
+                    <td style="text-align: left;">
+                        <p><input type="text" class="tinput" style="width:50%;"></p>
+                        <p>সভাপতির স্বাক্ষর ও সীল</p>
+                        <p>তারিখ:</p>
+                    </td>
+                    <td style="text-align: end;">
+                        <p><input type="text" class="tinput" style="width:50%;"></p>
+                        <p style="padding-right: 10px;">সাধারণ সম্পাদকের স্বাক্ষর ও সীল</p>
+                        <p style="padding-right: 185px;">তারিখ:</p>
+                    </td>
+                </tr>
+            </table>
             <div style="text-align: center; margin-top:20rem;">
                 <h4>ফরম-৫৫(ঘ)</h4>
                 <h4>[ বিধি ১৬৭(৩) দ্রষ্টব্য ]</h4>
@@ -536,7 +513,7 @@
                 <tr>
                     <td colspan="4" style="text-align: left;">
                         <p>
-                            আপনার <input type="text" class="tinput"> তারিখের আবেদনের প্রেক্ষিতে আপনাকে অত্র ইউনিয়ের সদস্য হিসাবে অন্তর্ভুক্ত করা হইল।
+                            জনাব, <br><br> আপনার <input type="text" class="tinput"> তারিখের আবেদনের প্রেক্ষিতে আপনাকে অত্র ইউনিয়ের সদস্য হিসাবে অন্তর্ভুক্ত করা হইল।
                         </p>
                     </td>
                 </tr>
@@ -576,7 +553,7 @@
                 <tr>
                     <td colspan="4" style="text-align: left;">
                         <p>
-                            আপনার <input type="text" class="tinput"> তারিখের আবেদনের প্রেক্ষিতে আপনাকে অত্র ইউনিয়ের সদস্য হিসাবে অন্তর্ভুক্ত করা হইল।
+                            জনাব, <br><br> আপনার <input type="text" class="tinput"> তারিখের আবেদনের প্রেক্ষিতে আপনাকে অত্র ইউনিয়ের সদস্য হিসাবে অন্তর্ভুক্ত করা হইল।
                         </p>
                     </td>
                 </tr>
