@@ -15,11 +15,18 @@
             }
         }
         .tinput {
+            width: 30%;
+            outline: 0;
+            border-style: dotted;
+            border-width: 0 0 1px;
+            border-color: blue;
+        }
+        .binput {
             width: 100%;
             outline: 0;
-            border-style: solid;
+            border-style: dotted;
             border-width: 0 0 1px;
-            border-color: blue
+            border-color: blue;
         }
         input:focus {
             border-color: green
@@ -28,11 +35,11 @@
 
         .gfg {
             border-collapse:separate;
-            border-spacing:0 40px;
+            border-spacing:0 15px;
         }
         .gfg2 {
             border-collapse:separate;
-            border-spacing:0 40px;
+            border-spacing:0 10px;
             }
 
         .gfg3 {
@@ -43,10 +50,6 @@
         .gfg4 {
             border-collapse:separate;
             border-spacing:0 15px;
-        }
-        .dtable,td, th{
-
-            border-collapse: collapse;
         }
 
         .photo{
@@ -80,26 +83,10 @@
         .font{
             font-family: AdmiralScriptW01-Regular;
         }
-        .binput {
-            width: 100%;
-            outline: 0;
-            border-style: solid;
-            border-width: 0 0 1px;
-            border-color: blue
-        }
-        .sinput {
-            width: 100%;
-            outline: 0;
-            border-style: solid;
-            border-width: 0 0 1px;
-            border-color: blue
-        }
-        .finput {
-            width: 20%;
-            outline: 0;
-            border-style: solid;
-            border-width: 0 0 1px;
-            border-color: blue
+        .table_one .tbl_1{
+            border: 1px solid;
+            border-collapse: collapse;
+            padding: 5px;
         }
         .bottominput {
             width: 80%;
@@ -114,26 +101,6 @@
             border-style: solid;
             border-width: 0 0 1px;
             border-color: blue
-        }
-        .bg1{
-            background-image: url("{{ asset('./images/bg1.png')}}");
-            background-repeat: no-repeat;
-            background-size: 100%;
-        }
-        .bg2{
-            background-image: url("{{ asset('./images/bg2.png')}}");
-            background-repeat: no-repeat;
-            background-size: 100%;
-        }
-        .bg3{
-            background-image: url("{{ asset('./images/bg3.png')}}");
-            background-repeat: no-repeat;
-            background-size: 100%;
-        }
-        .bg4{
-            background-image: url("{{ asset('./images/bg4.png')}}");
-            background-repeat: no-repeat;
-            background-size: 100%;
         }
 
         .btn {
@@ -199,18 +166,429 @@
     </div>
     <div class="bg1"  style="width:800px; margin:0 auto;">
         <form action="">
-            <table class = "gfg" style="margin-bottom: 5rem; width:100%">
+            <table class = "gfg" style=" width:100%">
                 <tbody >
                     <tr>
-                        <th style="text-align: center;">
+                        <th colspan="3" style="text-align: center;">
                             <h4 style="margin: 0;">ফরম-৫৫ (ক)</h4>
                             <h4 style="margin: 4px;">[ধারা ১৭৯ (১) (গ) এবং বিধি ১৬৭ (১) দ্রষ্টব্য]</h4>
                             <h4 style="margin: 4px;">প্রতিষ্ঠান/ প্রতিষ্ঠানপুঞ্জের শ্রমিক বা কর্মচারী বা মালিকের ট্রেড ইউনিয়নের সদস্য হইবার আবেদন ফরম</h4>
                         </th>
                     </tr>
-
+                    <tr>
+                        <th style="text-align: left;">তারিখ</th>
+                        <td style="text-align: left;"><input type="text" class="tinput"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th colspan="3" style="text-align: left;">বরাবর,</th>
+                    </tr>
+                    <tr>
+                        <th colspan="3" style="text-align: left;">সভাপতি/সাধারণ সম্পাদক,</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="text" class="tinput"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="text" class="tinput"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th colspan="3" style="text-align: left;">জনাব,</th>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="text-align: left;">
+                            <p>
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; আমি <input type="text" class="tinput"> ট্রেড ইউনিয়নের সদস্য পদ লাভের জন্য এতদ্বারা আবেদন করিতে। আমি সতর্কতারর সহিত ট্রেড ইউনিয়নের গঠনতন্ত্রের বিধানসমূহ পরিয়াছি / পড়িয়া  শুনানো হইলে বুঝিয়াছি এবং উহা মানিয়া চলিতে প্রস্তুত রহিয়াছি।
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="3" style="text-align: left;">আমার বিবরণ নীচে প্রদত্ত হইলঃ</th>
+                    </tr>
                 </tbody>
             </table>
+        </form>
+    </div>
+    <div  style="width:800px; margin:0 auto;">
+        <form class="table_one" action="">
+            <table  class="tbl_1" style=" width:100%; border: 1px solid; border-collapse: collapse;">
+                <tbody>
+                    <tr class="tbl_1" >
+                        <th class="tbl_1" style="text-align: left; width:2%;">১</th>
+                        <th class="tbl_1" style="text-align: left; width:62%;">নাম</th>
+                        <th class="tbl_1" style="text-align: left; width:2%;">..</th>
+                        <th class="tbl_1" style="text-align: left; width:2%;">..</th>
+                        <td class="tbl_1" style="width:32%;">ইউনিয়নের সদস্য পদ</td>
+                    </tr>
+                    <tr class="tbl_1">
+                        <th class="tbl_1" style="text-align: left;">২</th>
+                        <th class="tbl_1" style="text-align: left;">পিতা</th>
+                        <th class="tbl_1" style="text-align: left;">..</th>
+                        <th class="tbl_1" style="text-align: left;">..</th>
+                        <td class="tbl_1" >ইউনিয়নের সদস্য পদ</td>
+                    </tr>
+                    <tr class="tbl_1">
+                        <th class="tbl_1" style="text-align: left;">৩</th>
+                        <th class="tbl_1" style="text-align: left;">মাতা</th>
+                        <th class="tbl_1" style="text-align: left;">..</th>
+                        <th class="tbl_1" style="text-align: left;">..</th>
+                        <td class="tbl_1">ইউনিয়নের সদস্য পদ</td>
+                    </tr>
+                    <tr class="tbl_1">
+                        <th class="tbl_1" style="text-align: left;">৪</th>
+                        <th style="text-align: left;">স্বামী/স্ত্রী</th>
+                        <th class="tbl_1" style="text-align: left;">..</th>
+                        <th class="tbl_1" style="text-align: left;">..</th>
+                        <td class="tbl_1">ইউনিয়নের সদস্য পদ</td>
+                    </tr>
+                    <tr class="tbl_1">
+                        <th class="tbl_1" style="text-align: left;">৫</th>
+                        <th class="tbl_1" style="text-align: left;">জাতীয় পরিচয় পত্র (যদি থাকে)</th>
+                        <th class="tbl_1" style="text-align: left;">..</th>
+                        <th class="tbl_1" style="text-align: left;">..</th>
+                        <td class="tbl_1">ইউনিয়নের সদস্য পদ</td>
+                    </tr>
+                    <tr class="tbl_1">
+                        <th class="tbl_1" style="text-align: left;">৬</th>
+                        <th class="tbl_1" style="text-align: left;">বয়স</th>
+                        <th class="tbl_1" style="text-align: left;">..</th>
+                        <th class="tbl_1" style="text-align: left;">..</th>
+                        <td class="tbl_1">ইউনিয়নের সদস্য পদ</td>
+                    </tr>
+                    <tr class="tbl_1">
+                        <th class="tbl_1" style="text-align: left;">৭</th>
+                        <th class="tbl_1" style="text-align: left;">প্রতিষ্ঠানের নাম ও কর্মক্ষেত্র</th>
+                        <th class="tbl_1" style="text-align: left;">..</th>
+                        <th class="tbl_1" style="text-align: left;">..</th>
+                        <td class="tbl_1">ইউনিয়নের সদস্য পদ</td>
+                    </tr>
+                    <tr class="tbl_1">
+                        <th class="tbl_1" style="text-align: left;">৮</th>
+                        <th class="tbl_1" style="text-align: left;">প্রতিষ্ঠানের নাম ও ঠিকানা ও নিবন্ধন নং (মালিকদের সংগঠনের জন্য প্রযোজ্য)</th>
+                        <th class="tbl_1" style="text-align: left;">..</th>
+                        <th class="tbl_1" style="text-align: left;">..</th>
+                        <td class="tbl_1">ইউনিয়নের সদস্য পদ</td>
+                    </tr>
+                    <tr class="tbl_1">
+                        <th class="tbl_1" style="text-align: left;">৯</th>
+                        <th class="tbl_1" style="text-align: left;">প্রতিষ্ঠানপুঞ্জের ক্ষেত্রে পেশা / প্রতিষ্ঠানের নাম ও ঠিকানা</th>
+                        <th class="tbl_1" style="text-align: left;">..</th>
+                        <th class="tbl_1" style="text-align: left;">..</th>
+                        <td class="tbl_1">ইউনিয়নের সদস্য পদ</td>
+                    </tr>
+                    <tr class="tbl_1">
+                        <th class="tbl_1" style="text-align: left;">১০</th>
+                        <th class="tbl_1" style="text-align: left;">বিভাগ/শাখা/কর্মক্ষেত্র ও পদবী এবং পরিচয়পত্র নং, টোকেন নং (যদি থাকে)</th>
+                        <th class="tbl_1" style="text-align: left;">..</th>
+                        <th class="tbl_1" style="text-align: left;">..</th>
+                        <td class="tbl_1">ইউনিয়নের সদস্য পদ</td>
+                    </tr>
+                    <tr class="tbl_1">
+                        <th class="tbl_1" style="text-align: left;">১১</th>
+                        <th class="tbl_1" style="text-align: left;">চাকরির ধরন-- স্থায়ী /বদলি/সাময়িক/অস্থায়ী  শিক্ষানবীশ/শিক্ষাধীন</th>
+                        <th class="tbl_1" style="text-align: left;">..</th>
+                        <th class="tbl_1" style="text-align: left;">..</th>
+                        <td class="tbl_1">ইউনিয়নের সদস্য পদ</td>
+                    </tr>
+                    <tr class="tbl_1">
+                        <th class="tbl_1" style="text-align: left;">১২</th>
+                        <th class="tbl_1" style="text-align: left;">বর্তমান চাকরিতে যোগদানের তারিখ</th>
+                        <th class="tbl_1" style="text-align: left;">..</th>
+                        <th class="tbl_1" style="text-align: left;">..</th>
+                        <td class="tbl_1">ইউনিয়নের সদস্য পদ</td>
+                    </tr>
+                    <tr class="tbl_1">
+                        <th class="tbl_1" style="text-align: left;">১৩</th>
+                        <th class="tbl_1" style="text-align: left;">বঠিকানা (ক) বর্তমান</th>
+                        <th class="tbl_1" style="text-align: left;">..</th>
+                        <th class="tbl_1" style="text-align: left;">..</th>
+                        <td class="tbl_1">ইউনিয়নের সদস্য পদ</td>
+                    </tr>
+                    <tr class="tbl_1">
+                        <th class="tbl_1" style="text-align: left;"></th>
+                        <th class="tbl_1" style="text-align: left;">(খ) স্বায়ী</th>
+                        <th class="tbl_1" style="text-align: left;">..</th>
+                        <th class="tbl_1" style="text-align: left;">..</th>
+                        <td class="tbl_1">ইউনিয়নের সদস্য পদ</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+                <p>আমি ঘোষণা করিতেছি যে, ধারা ১৯৩ অনুযায়ী আমি প্রতিষ্ঠান/প্রতিষ্ঠানপুঞ্জের অন্য কোন শ্রমিক/মালিকদের ট্রেড ইউনিয়নের সদস্য নই। </p>
+            </div>
+            <div style="text-align: end; margin-bottom: 2rem;">
+                <div>
+                    <div>(<input type="text" class="tinput">)</div>
+                    <div style="padding-right:107px;">স্বাক্ষর </div>
+                    <div style="padding-right:23px;">তারিখ:<input type="text" class="tinput" style="width:20%;"></div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-bottom: 5rem;">
+                <h4>ফরম-৫৭(ক)</h4>
+                <h4>[ ধারা ১৭৮ বিধি এবং ১৬৮(৬) ]</h4>
+                <h4>ইউনিয়নের সদস্যপদের বিবরন</h4>
+            </div>
+            <div style="padding-top: 10px; padding-bottom:10px;">ট্রেড ইউনিয়ন সংগঠনের নাম ও ঠিকানা: <input type="text" class="tinput" style="width:65%;"></div>
+            <div style="padding-top: 10px; padding-bottom:10px; margin-bottom:4rem;">শিল্প/প্রতিষ্ঠানের নাম ও ও ঠিকানা: <input type="text" class="tinput" style="width:70%;"></div>
+            <table class="tbl_1" style=" width:100%; ">
+                <thead>
+                    <tr class="tbl_1">
+                        <th class="tbl_1" rowspan="2">ক্রমিক নং</th>
+                        <th class="tbl_1" rowspan="2">নাম ও জাতীয় পরিচয় পত্র (যদি থাকে)</th>
+                        <th class="tbl_1" rowspan="2">সদস্য নং (ফোন নং- যদি থাকে)</th>
+                        <th class="tbl_1" rowspan="2">ইউনিয়নের পদ</th>
+                        <th class="tbl_1" rowspan="2">পিতা/স্বামীর নাম</th>
+                        <th class="tbl_1" rowspan="2">জন্ম তারিখ ও বয়স</th>
+                        <th class="tbl_1" colspan="2" >ঠিকানা</th>
+                        <th class="tbl_1" rowspan="2">বিভাগ/শাখা</th>
+                        <th class="tbl_1" rowspan="2">পদবী পেশা/বৃত্তি</th>
+                        <th class="tbl_1" rowspan="2">মন্তব্য</th>
+                    </tr>
+                    <tr class="tbl_1">
+                        <th class="tbl_1">স্বায়ী</th>
+                        <th class="tbl_1">বর্তমান কর্মস্থল</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="tbl_1">
+                        <td class="tbl_1">1</td>
+                        <td class="tbl_1">2</td>
+                        <td class="tbl_1">3</td>
+                        <td class="tbl_1">4</td>
+                        <td class="tbl_1">5</td>
+                        <td class="tbl_1">6</td>
+                        <td class="tbl_1">7</td>
+                        <td class="tbl_1">8</td>
+                        <td class="tbl_1">9</td>
+                        <td class="tbl_1">10</td>
+                        <td class="tbl_1">11</td>
+                    </tr>
+                    <tr class="tbl_1">
+                        <td class="tbl_1">1</td>
+                        <td class="tbl_1">2</td>
+                        <td class="tbl_1">3</td>
+                        <td class="tbl_1">4</td>
+                        <td class="tbl_1">5</td>
+                        <td class="tbl_1">6</td>
+                        <td class="tbl_1">7</td>
+                        <td class="tbl_1">8</td>
+                        <td class="tbl_1">9</td>
+                        <td class="tbl_1">10</td>
+                        <td class="tbl_1">11</td>
+                    </tr>
+                    <tr class="tbl_1">
+                        <td class="tbl_1">1</td>
+                        <td class="tbl_1">2</td>
+                        <td class="tbl_1">3</td>
+                        <td class="tbl_1">4</td>
+                        <td class="tbl_1">5</td>
+                        <td class="tbl_1">6</td>
+                        <td class="tbl_1">7</td>
+                        <td class="tbl_1">8</td>
+                        <td class="tbl_1">9</td>
+                        <td class="tbl_1">10</td>
+                        <td class="tbl_1">11</td>
+                    </tr>
+                    <tr class="tbl_1">
+                        <td class="tbl_1">1</td>
+                        <td class="tbl_1">2</td>
+                        <td class="tbl_1">3</td>
+                        <td class="tbl_1">4</td>
+                        <td class="tbl_1">5</td>
+                        <td class="tbl_1">6</td>
+                        <td class="tbl_1">7</td>
+                        <td class="tbl_1">8</td>
+                        <td class="tbl_1">9</td>
+                        <td class="tbl_1">10</td>
+                        <td class="tbl_1">11</td>
+                    </tr>
+                    <tr class="tbl_1">
+                        <td class="tbl_1">1</td>
+                        <td class="tbl_1">2</td>
+                        <td class="tbl_1">3</td>
+                        <td class="tbl_1">4</td>
+                        <td class="tbl_1">5</td>
+                        <td class="tbl_1">6</td>
+                        <td class="tbl_1">7</td>
+                        <td class="tbl_1">8</td>
+                        <td class="tbl_1">9</td>
+                        <td class="tbl_1">10</td>
+                        <td class="tbl_1">11</td>
+                    </tr>
+                    <tr class="tbl_1">
+                        <td class="tbl_1">1</td>
+                        <td class="tbl_1">2</td>
+                        <td class="tbl_1">3</td>
+                        <td class="tbl_1">4</td>
+                        <td class="tbl_1">5</td>
+                        <td class="tbl_1">6</td>
+                        <td class="tbl_1">7</td>
+                        <td class="tbl_1">8</td>
+                        <td class="tbl_1">9</td>
+                        <td class="tbl_1">10</td>
+                        <td class="tbl_1">11</td>
+                    </tr>
+                    <tr class="tbl_1">
+                        <td class="tbl_1">1</td>
+                        <td class="tbl_1">2</td>
+                        <td class="tbl_1">3</td>
+                        <td class="tbl_1">4</td>
+                        <td class="tbl_1">5</td>
+                        <td class="tbl_1">6</td>
+                        <td class="tbl_1">7</td>
+                        <td class="tbl_1">8</td>
+                        <td class="tbl_1">9</td>
+                        <td class="tbl_1">10</td>
+                        <td class="tbl_1">11</td>
+                    </tr>
+                    <tr class="tbl_1">
+                        <td class="tbl_1">1</td>
+                        <td class="tbl_1">2</td>
+                        <td class="tbl_1">3</td>
+                        <td class="tbl_1">4</td>
+                        <td class="tbl_1">5</td>
+                        <td class="tbl_1">6</td>
+                        <td class="tbl_1">7</td>
+                        <td class="tbl_1">8</td>
+                        <td class="tbl_1">9</td>
+                        <td class="tbl_1">10</td>
+                        <td class="tbl_1">11</td>
+                    </tr>
+                    <tr class="tbl_1">
+                        <td class="tbl_1">1</td>
+                        <td class="tbl_1">2</td>
+                        <td class="tbl_1">3</td>
+                        <td class="tbl_1">4</td>
+                        <td class="tbl_1">5</td>
+                        <td class="tbl_1">6</td>
+                        <td class="tbl_1">7</td>
+                        <td class="tbl_1">8</td>
+                        <td class="tbl_1">9</td>
+                        <td class="tbl_1">10</td>
+                        <td class="tbl_1">11</td>
+                    </tr>
+                    <tr class="tbl_1">
+                        <td class="tbl_1">1</td>
+                        <td class="tbl_1">2</td>
+                        <td class="tbl_1">3</td>
+                        <td class="tbl_1">4</td>
+                        <td class="tbl_1">5</td>
+                        <td class="tbl_1">6</td>
+                        <td class="tbl_1">7</td>
+                        <td class="tbl_1">8</td>
+                        <td class="tbl_1">9</td>
+                        <td class="tbl_1">10</td>
+                        <td class="tbl_1">11</td>
+                    </tr>
+                    <tr class="tbl_1">
+                        <td class="tbl_1">1</td>
+                        <td class="tbl_1">2</td>
+                        <td class="tbl_1">3</td>
+                        <td class="tbl_1">4</td>
+                        <td class="tbl_1">5</td>
+                        <td class="tbl_1">6</td>
+                        <td class="tbl_1">7</td>
+                        <td class="tbl_1">8</td>
+                        <td class="tbl_1">9</td>
+                        <td class="tbl_1">10</td>
+                        <td class="tbl_1">11</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="margin-top: 5rem; margin-bottom:5rem;">
+                <div style="display: inline-block; vertical-align: top;">
+                    <p><input type="text" class="tinput" style="width:95%;"></p>
+                    <p>সভাপতির স্বাক্ষর ও সীল</p>
+                    <p>তারিখ:</p>
+                </div>
+                <div style="display: inline-block; vertical-align: top;">
+                    <p><input type="text" class="tinput" style="width:95%;"></p>
+                    <p>সাধারণ সম্পাদকের স্বাক্ষর ও সীল</p>
+                    <p>তারিখ:</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top:20rem;">
+                <h4>ফরম-৫৫(ঘ)</h4>
+                <h4>[ বিধি ১৬৭(৩) দ্রষ্টব্য ]</h4>
+                <h4>ইউনিয়ের সদস্য হিসেবে প্রত্যয়নপত্র</h4>
+            </div>
+            <table class="gfg2" style=" width:100%;">
+                <tr>
+                    <th style="text-align: left;">ইউনিয়নের নাম ও ঠিকানা:</th>
+                    <td colspan="3"><input type="text" class="binput"></td>
+                </tr>
+                <tr>
+                    <th style="text-align: left;">রেজি নং:</th>
+                    <td colspan="3"><input type="text" class="binput"></td>
+                </tr>
+                <tr>
+                    <th style="text-align: left;">নাম:</th>
+                    <td><input type="text" class="binput"></td>
+                    <th style="text-align: left;">সদস্য নং:</th>
+                    <td><input type="text" class="binput"></td>
+                </tr>
+                <tr>
+                    <th style="text-align: left;">পদবি:</th>
+                    <td colspan="2"><input type="text" class="binput"></td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="text-align: left;">
+                        <p>
+                            আপনার <input type="text" class="tinput"> তারিখের আবেদনের প্রেক্ষিতে আপনাকে অত্র ইউনিয়ের সদস্য হিসাবে অন্তর্ভুক্ত করা হইল।
+                        </p>
+                    </td>
+                </tr>
+            </table>
+            <div style="margin-top: 2rem; ">
+                <div style="display: inline-block; vertical-align: top;">
+                    <p>স্বাক্ষর</p>
+                    <p>সাধারণ সম্পাদক</p>
+                    <p>নামসহ সীল</p>
+                    <p>তারিখ:<input type="text" class="tinput" style="width:50%;"></p>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <h4>ফরম-৫৫(ঘ)</h4>
+                <h4>[ বিধি ১৬৭(৩) দ্রষ্টব্য ]</h4>
+                <h4>ইউনিয়ের সদস্য হিসেবে প্রত্যয়নপত্র</h4>
+            </div>
+            <table class="gfg2" style=" width:100%;">
+                <tr>
+                    <th style="text-align: left;">ইউনিয়নের নাম ও ঠিকানা:</th>
+                    <td colspan="3"><input type="text" class="binput"></td>
+                </tr>
+                <tr>
+                    <th style="text-align: left;">রেজি নং:</th>
+                    <td colspan="3"><input type="text" class="binput"></td>
+                </tr>
+                <tr>
+                    <th style="text-align: left;">নাম:</th>
+                    <td><input type="text" class="binput"></td>
+                    <th style="text-align: left;">সদস্য নং:</th>
+                    <td><input type="text" class="binput"></td>
+                </tr>
+                <tr>
+                    <th style="text-align: left;">পদবি:</th>
+                    <td colspan="2"><input type="text" class="binput"></td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="text-align: left;">
+                        <p>
+                            আপনার <input type="text" class="tinput"> তারিখের আবেদনের প্রেক্ষিতে আপনাকে অত্র ইউনিয়ের সদস্য হিসাবে অন্তর্ভুক্ত করা হইল।
+                        </p>
+                    </td>
+                </tr>
+            </table>
+            <div style="margin-top: 2rem; ">
+                <div style="display: inline-block; vertical-align: top;">
+                    <p>স্বাক্ষর</p>
+                    <p>সাধারণ সম্পাদক</p>
+                    <p>নামসহ সীল</p>
+                    <p>তারিখ:<input type="text" class="tinput" style="width:50%;"></p>
+                </div>
+            </div>
         </form>
     </div>
 </body>
