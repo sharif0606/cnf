@@ -515,7 +515,7 @@
                 </tr>
                 <tr>
                     <th style="text-align: left;">পদবি:</th>
-                    <td colspan="2"><input type="text" class="binput"></td>
+                    <td colspan="2"><input type="text" class="binput" value="{{ $show_data->designation_of_present_job }}"></td>
                 </tr>
                 <tr>
                     <td colspan="4" style="text-align: left;">
@@ -555,7 +555,7 @@
                 </tr>
                 <tr>
                     <th style="text-align: left;">পদবি:</th>
-                    <td colspan="2"><input type="text" class="binput"></td>
+                    <td colspan="2"><input type="text" class="binput" value="{{ $show_data->designation_of_present_job }}"></td>
                 </tr>
                 <tr>
                     <td colspan="4" style="text-align: left;">
