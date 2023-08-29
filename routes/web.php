@@ -79,12 +79,11 @@ Route::post('/mlogin', [auth::class,'memSignInCheck'])->name('memlogin.check');
 Route::get('/contact-us', [contact::class,'store'])->name('contact.us');
 
 
-// Route::get('/', [front::class,'index'])->name('front');
+Route::get('/', [front::class,'index'])->name('front');
 Route::get('/register', [auth::class,'signUpForm'])->name('register');
 Route::post('/register', [auth::class,'signUpStore'])->name('register.store');
 Route::get('/admin', [auth::class,'signInForm'])->name('signIn');
-Route::get('/', [auth::class,'signInForm'])->name('login');
-// Route::get('/login', [auth::class,'signInForm'])->name('login');
+Route::get('/login', [auth::class,'signInForm'])->name('login');
 Route::post('/login', [auth::class,'signInCheck'])->name('login.check');
 Route::get('/logout', [auth::class,'singOut'])->name('logOut');
 Route::get('/benfit_of_membrer', [front::class,'benefit'])->name('member.benefit');
