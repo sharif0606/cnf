@@ -154,6 +154,12 @@
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-6">
                                     <div class="form-group">
+                                        <label for="date">কাষ্টম সরকার লাইসেন্স মেয়াদ (সর্বশেষ নবায়ন)</label>
+                                        <input type="date" class="form-control" name="expDate" value="{{old('expDate')}}">
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-6">
+                                    <div class="form-group">
                                         <label for="designation">বর্তমান চাকুরী স্থলের পদবী</label>
                                         <input type="text" class="form-control" name="designation_of_present_job" value="{{old('designation_of_present_job')}}">
                                     </div>

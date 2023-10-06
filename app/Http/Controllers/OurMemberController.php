@@ -78,6 +78,7 @@ class OurMemberController extends Controller
             $member->personal_phone=$request->personalPhone;
             $member->license=$request->license;
             $member->issue_date=$request->issueDate;
+            $member->exp_date=$request->expDate;
             $member->designation_of_present_job=$request->designation_of_present_job;
             $member->joining_date=$request->joiningDate;
             $member->nameOf_instituteOf_previousJob=$request->nameOf_instituteOf_previousJob;
@@ -185,6 +186,7 @@ class OurMemberController extends Controller
             $member->personal_phone=$request->personalPhone;
             $member->license=$request->license;
             $member->issue_date=$request->issueDate;
+            $member->exp_date=$request->expDate;
             $member->designation_of_present_job=$request->designation_of_present_job;
             $member->joining_date=$request->joiningDate;
             $member->nameOf_instituteOf_previousJob=$request->nameOf_instituteOf_previousJob;

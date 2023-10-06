@@ -207,21 +207,21 @@
                     </tr>
                     <tr class="tbl_1">
                         <th class="tbl_1" style="text-align: left;">৪</th>
-                        <th style="text-align: left;">স্বামী/স্ত্রী</th>
+                        <th style="text-align: left;">স্ত্রী  (বিবাহিতের বেলায়) </th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <td class="tbl_1"></td>
                     </tr>
                     <tr class="tbl_1">
                         <th class="tbl_1" style="text-align: left;">৫</th>
-                        <th class="tbl_1" style="text-align: left;">জাতীয় পরিচয়পত্র নং (যদি থাকে)</th>
+                        <th class="tbl_1" style="text-align: left;">জাতীয় পরিচয়পত্র নং</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <td class="tbl_1">{{ $show_data->nid }}</td>
                     </tr>
                     <tr class="tbl_1">
                         <th class="tbl_1" style="text-align: left;">৬</th>
-                        <th class="tbl_1" style="text-align: left;">বয়স</th>
+                        <th class="tbl_1" style="text-align: left;">বয়স (জাতীয় পরিচয়পত্র অনুসারে)</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <td class="tbl_1">
@@ -241,41 +241,34 @@
                     </tr>
                     <tr class="tbl_1">
                         <th class="tbl_1" style="text-align: left;">৮</th>
-                        <th class="tbl_1" style="text-align: left;">প্রতিষ্ঠানের নাম, ঠিকানা ও নিবন্ধন নং (মালিকদের সংগঠনের জন্য প্রযোজ্য)</th>
+                        <th class="tbl_1" style="text-align: left;">প্রতিষ্ঠানের নাম, ঠিকানা ও নিবন্ধন নং </th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <td class="tbl_1"></td>
                     </tr>
                     <tr class="tbl_1">
                         <th class="tbl_1" style="text-align: left;">৯</th>
-                        <th class="tbl_1" style="text-align: left;">প্রতিষ্ঠানপুঞ্জের ক্ষেত্রে পেশা / প্রতিষ্ঠানের নাম ও ঠিকানা</th>
-                        <th class="tbl_1" style="text-align: left;">..</th>
-                        <th class="tbl_1" style="text-align: left;">..</th>
-                        <td class="tbl_1">{{ $show_data->nameAddress_of_present_institute }}</td>
-                    </tr>
-                    <tr class="tbl_1">
-                        <th class="tbl_1" style="text-align: left;">১০</th>
                         <th class="tbl_1" style="text-align: left;">বিভাগ/শাখা/কর্মক্ষেত্র ও পদবী এবং পরিচয়পত্র নং, টোকেন নং (যদি থাকে)</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <td class="tbl_1"></td>
                     </tr>
                     <tr class="tbl_1">
-                        <th class="tbl_1" style="text-align: left;">১১</th>
+                        <th class="tbl_1" style="text-align: left;">১০</th>
                         <th class="tbl_1" style="text-align: left;">চাকরির ধরন-- স্থায়ী /বদলি/সাময়িক/অস্থায়ী  শিক্ষানবীশ/শিক্ষাধীন</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <td class="tbl_1"></td>
                     </tr>
                     <tr class="tbl_1">
-                        <th class="tbl_1" style="text-align: left;">১২</th>
+                        <th class="tbl_1" style="text-align: left;">১১</th>
                         <th class="tbl_1" style="text-align: left;">বর্তমান চাকরিতে যোগদানের তারিখ</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <td class="tbl_1">{{ $show_data->joining_date }}</td>
                     </tr>
                     <tr class="tbl_1">
-                        <th class="tbl_1" style="text-align: left;">১৩</th>
+                        <th class="tbl_1" style="text-align: left;">১২</th>
                         <th class="tbl_1" style="text-align: left;">ঠিকানা (ক) বর্তমান</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
@@ -287,6 +280,30 @@
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <td class="tbl_1">{{ $show_data->present_address }}</td>
+                    </tr>
+                    <tr class="tbl_1">
+                        <th class="tbl_1" style="text-align: left;">১৩</th>
+                        <th class="tbl_1" style="text-align: left;">রক্তের গ্রুপ</th>
+                        <th class="tbl_1" style="text-align: left;">..</th>
+                        <th class="tbl_1" style="text-align: left;">..</th>
+                        <td class="tbl_1">{{ $show_data->bloodGroup }}</td>
+                    </tr>
+                    <tr class="tbl_1">
+                        <th class="tbl_1" style="text-align: left;">১৪</th>
+                        <th class="tbl_1" style="text-align: left;">কাষ্টম সরকার লাইসেন্স মেয়াদ (সর্বশেষ নবায়ন)</th>
+                        <th class="tbl_1" style="text-align: left;">..</th>
+                        <th class="tbl_1" style="text-align: left;">..</th>
+                        <td class="tbl_1">{{ $show_data->exp_date }}</td>
+                    </tr>
+                    <tr class="tbl_1">
+                        <th class="tbl_1" style="text-align: left;">১৪</th>
+                        <th class="tbl_1" style="text-align: left;">
+                            কর্মরত প্রতিষ্ঠান কর্তৃক প্রত্যয়ন পত্র<br>
+                            লাইসেন্স বিহীন সদস্যের ক্ষেত্রে
+                        </th>
+                        <th class="tbl_1" style="text-align: left;">..</th>
+                        <th class="tbl_1" style="text-align: left;">..</th>
+                        <td class="tbl_1">&nbsp;</td>
                     </tr>
                 </tbody>
             </table>
