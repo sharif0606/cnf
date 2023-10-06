@@ -35,7 +35,7 @@
 
         .gfg {
             border-collapse:separate;
-            border-spacing:0 15px;
+            border-spacing:0 6px;
         }
         .gfg2 {
             border-collapse:separate;
@@ -139,29 +139,30 @@
                 <tbody >
                     <tr>
                         <th colspan="3" style="text-align: center;">
-                            <h4 style="margin: 0;">ফরম-৫৫ (ক)</h4>
+                            <h4 style="margin: 0;"><u>ফরম-৫৫ (ক)</u></h4>
                             <h4 style="margin: 4px;">[ধারা ১৭৯ (১) (গ) এবং বিধি ১৬৭ (১) দ্রষ্টব্য]</h4>
-                            <h4 style="margin: 4px;">প্রতিষ্ঠান/ প্রতিষ্ঠানপুঞ্জের শ্রমিক বা কর্মচারী বা মালিকের ট্রেড ইউনিয়নের সদস্য হইবার আবেদন ফরম</h4>
+                             <h4 style="margin: 4px;">প্রতিষ্ঠান/ প্রতিষ্ঠানপুঞ্জের শ্রমিক বা কর্মচারী বা মালিকের ট্রেড ইউনিয়নের সদস্য/নবায়নের আবেদন ফরম</h4>
                         </th>
                     </tr>
                     <tr>
                         <th style="text-align: left; width:10%;">তারিখ</th>
                         <td style="text-align: left;"><input type="text" class="tinput"></td>
-                        <td></td>
+                        <td rowspan="5"><img src='https://cnfemployeesunion.com/public/uploads/member_image/816.jpg' width="200px"></td>
                     </tr>
                     <tr>
-                        <th colspan="3" style="text-align: left;">বরাবর,</th>
+                        <th colspan="2" style="text-align: left;">বরাবর,</th>
                     </tr>
                     <tr>
-                        <th colspan="3" style="text-align: left;">সভাপতি/সাধারণ সম্পাদক</th>
+                        <th colspan="2" style="text-align: left;">সভাপতি / সাধারণ সম্পাদক</th>
                     </tr>
                     <tr>
-                        <td colspan="2"><input type="text" class="tinput"></td>
-                        <td></td>
+                        <td colspan="2"> চট্টগ্রাম ক্লিয়ারিং এন্ড ফরওয়ার্ডিং এজেন্টস কর্মচারী ইউনিয়ন (সি বি এ) </td>
                     </tr>
                     <tr>
-                        <td colspan="2"><input type="text" class="tinput"></td>
-                        <td></td>
+                        <td colspan="2" style="text-align:center">( রেজি : নং - চট্ট - ২৩৪) </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">১নং জেটি গেইট, জামে মসজিদ সংলগ্ন, বারিক বিল্ডিং, চট্টগ্রাম </td>
                     </tr>
                     <tr>
                         <td colspan="3" style="text-align: left;">জনাব,</td>
@@ -169,7 +170,7 @@
                     <tr>
                         <td colspan="3" style="text-align: left;">
                             <p>
-                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; আমি <input type="text" class="tinput"> ট্রেড ইউনিয়নের সদস্য পদ লাভের জন্য এতদ্বারা আবেদন করিতেছি। আমি সতর্কতার সহিত ট্রেড ইউনিয়নের গঠনতন্ত্রের বিধানসমূহ পড়িয়াছি / পড়িয়া  শুনানো হইলে বুঝিয়াছি এবং উহা মানিয়া চলিতে প্রস্তুত রহিয়াছি।
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; আমি - <u> {{ $show_data->name_bn }}</u> ট্রেড ইউনিয়নের সদস্য পদ লাভ/নবায়নের জন্য এতদ্বারা আবেদন করিতেছি। আমি সতর্কতার সহিত ট্রেড ইউনিয়নের গঠনতন্ত্রের বিধানসমূহ পড়িয়াছি / পড়িয়া  শুনানো হইলে বুঝিয়াছি এবং উহা মানিয়া চলিতে প্রস্তুত রহিয়াছি।
                             </p>
                         </td>
                     </tr>
@@ -213,23 +214,30 @@
                         <td class="tbl_1">{{ $show_data->spouse_name }}</td>
                     </tr>
                     <tr class="tbl_1">
+                        <th class="tbl_1" style="text-align: left;"></th>
+                        <th style="text-align: left;">নমিনি  </th>
+                        <th class="tbl_1" style="text-align: left;">..</th>
+                        <th class="tbl_1" style="text-align: left;">..</th>
+                        <td class="tbl_1"></td>
+                    </tr>
+                    <tr class="tbl_1">
                         <th class="tbl_1" style="text-align: left;">৫</th>
-                        <th class="tbl_1" style="text-align: left;">জাতীয় পরিচয়পত্র নং</th>
+                        <th class="tbl_1" style="text-align: left;">জাতীয় পরিচয়পত্র নং<br>রক্তের গ্রুপ</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
-                        <td class="tbl_1">{{ $show_data->nid }}</td>
+                        <td class="tbl_1">{{ $show_data->nid }} <br> {{ $show_data->blood_group }}</td>
                     </tr>
                     <tr class="tbl_1">
                         <th class="tbl_1" style="text-align: left;">৬</th>
                         <th class="tbl_1" style="text-align: left;">বয়স (জাতীয় পরিচয়পত্র অনুসারে)</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
-                        <td class="tbl_1">
+                        <td class="tbl_1">  
                             @php
                                 $birthDate = $show_data->birth_date;
-                                $age = \Carbon\Carbon::parse($birthDate)->age;
+                                //$age = \Carbon\Carbon::parse($birthDate)->age;
                             @endphp
-                            {{ $age }}
+                            দিন: {{ date('d',strtotime($birthDate)) }}, মাস: {{ date('F',strtotime($birthDate)) }}, সাল:{{ date('Y',strtotime($birthDate)) }}
                         </td>
                     </tr>
                     <tr class="tbl_1">
@@ -237,7 +245,9 @@
                         <th class="tbl_1" style="text-align: left;">প্রতিষ্ঠানের নাম ও কর্মক্ষেত্র</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
-                        <td class="tbl_1">{{ $show_data->nameAddress_of_present_institute }}</td>
+                        <td class="tbl_1">আশরাফ এন্টারপ্রাইজ<br> কাস্টম / জেটি সরকার  
+                        <br>{{ $show_data->license }}
+                        </td>
                     </tr>
                     <tr class="tbl_1">
                         <th class="tbl_1" style="text-align: left;">৮</th>
@@ -248,14 +258,17 @@
                     </tr>
                     <tr class="tbl_1">
                         <th class="tbl_1" style="text-align: left;">৯</th>
-                        <th class="tbl_1" style="text-align: left;">বিভাগ/শাখা/কর্মক্ষেত্র ও পদবী এবং পরিচয়পত্র নং, টোকেন নং (যদি থাকে)</th>
+                        <th class="tbl_1" style="text-align: left;">কাষ্টম সরকার লাইসেন্স মেয়াদ (সর্বশেষ  নবায়নকৃত)</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
-                        <td class="tbl_1"></td>
+                        <td class="tbl_1">{{ $show_data->exp_date }}</td>
                     </tr>
                     <tr class="tbl_1">
                         <th class="tbl_1" style="text-align: left;">১০</th>
-                        <th class="tbl_1" style="text-align: left;">চাকরির ধরন-- স্থায়ী /বদলি/সাময়িক/অস্থায়ী  শিক্ষানবীশ/শিক্ষাধীন</th>
+                        <th class="tbl_1" style="text-align: left;">
+                            কর্মরত প্রতিষ্ঠান কর্তৃক প্রত্যয়ন পত্র<br>
+                            (লাইসেন্স বিহীন সদস্যদের ক্ষেত্রে প্রযোজ্য )
+                        </th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <td class="tbl_1"></td>
@@ -284,25 +297,9 @@
                         </td>
                     </tr>
                     <tr class="tbl_1">
-                        <th class="tbl_1" style="text-align: left;">১৩</th>
-                        <th class="tbl_1" style="text-align: left;">রক্তের গ্রুপ</th>
-                        <th class="tbl_1" style="text-align: left;">..</th>
-                        <th class="tbl_1" style="text-align: left;">..</th>
-                        <td class="tbl_1">{{ $show_data->blood_group }}</td>
-                    </tr>
-                    <tr class="tbl_1">
-                        <th class="tbl_1" style="text-align: left;">১৪</th>
-                        <th class="tbl_1" style="text-align: left;">কাষ্টম সরকার লাইসেন্স মেয়াদ (সর্বশেষ নবায়ন)</th>
-                        <th class="tbl_1" style="text-align: left;">..</th>
-                        <th class="tbl_1" style="text-align: left;">..</th>
-                        <td class="tbl_1">{{ $show_data->exp_date }}</td>
-                    </tr>
-                    <tr class="tbl_1">
-                        <th class="tbl_1" style="text-align: left;">১৪</th>
-                        <th class="tbl_1" style="text-align: left;">
-                            কর্মরত প্রতিষ্ঠান কর্তৃক প্রত্যয়ন পত্র<br>
-                            লাইসেন্স বিহীন সদস্যের ক্ষেত্রে
-                        </th>
+                        <th class="tbl_1" style="text-align: left;">১৩ </th>
+                        <th class="tbl_1" style="text-align: left;">চাকরির ধরন-- স্থায়ী /বদলি/সাময়িক/অস্থায়ী  শিক্ষানবীশ/শিক্ষাধীন</th>
+                        
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <td class="tbl_1">&nbsp;</td>
@@ -545,12 +542,23 @@
                 </tr>
             </table>
             <div style="margin-top: 2rem; ">
-                <div style="display: inline-block; vertical-align: top;">
-                    <p>স্বাক্ষর</p>
-                    <p>সাধারণ সম্পাদক</p>
-                    <p>নামসহ সীল</p>
-                    <p>তারিখ:<input type="text" class="tinput" style="width:50%;"></p>
-                </div>
+                <table style="width: 100%;">
+                    <tr>
+                        <td style="text-align: left;">
+                            <p><input type="text" class="tinput" style="width:50%;"></p>
+                            <p style="padding-right: 10px;">সভাপতির স্বাক্ষর ও সীল</p>
+                            <p style="padding-right: 185px;">তারিখ:</p>
+                        </td>
+                        <td style="text-align: end;">
+                            <div style="display: inline-block; vertical-align: top;">
+                                <p>স্বাক্ষর</p>
+                                <p>সাধারণ সম্পাদক</p>
+                                <p>নামসহ সীল</p>
+                                <p>তারিখ:<input type="text" class="tinput" style="width:50%;"></p>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
             </div>
             <div style="text-align: center;">
                 <h4>ফরম-৫৫(ঘ)</h4>
@@ -585,12 +593,23 @@
                 </tr>
             </table>
             <div style="margin-top: 2rem; ">
-                <div style="display: inline-block; vertical-align: top;">
-                    <p>স্বাক্ষর</p>
-                    <p>সাধারণ সম্পাদক</p>
-                    <p>নামসহ সীল</p>
-                    <p>তারিখ:<input type="text" class="tinput" style="width:50%;"></p>
-                </div>
+                <table style="width: 100%;">
+                    <tr>
+                        <td style="text-align: left;">
+                            <p><input type="text" class="tinput" style="width:50%;"></p>
+                            <p style="padding-right: 10px;">সভাপতির স্বাক্ষর ও সীল</p>
+                            <p style="padding-right: 185px;">তারিখ:</p>
+                        </td>
+                        <td style="text-align: end;">
+                            <div style="display: inline-block; vertical-align: top;">
+                                <p>স্বাক্ষর</p>
+                                <p>সাধারণ সম্পাদক</p>
+                                <p>নামসহ সীল</p>
+                                <p>তারিখ:<input type="text" class="tinput" style="width:50%;"></p>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </form>
     </div>
