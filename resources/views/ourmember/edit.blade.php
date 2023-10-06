@@ -68,6 +68,12 @@
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-6">
                                     <div class="form-group">
+                                        <label for="mother">স্ত্রী </label>
+                                        <input type="text" class="form-control" name="spouseName" value="{{old('spouseName',$member->spouse_name)}}">
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-6">
+                                    <div class="form-group">
                                         <label for="birth">জন্ম তারিখ</label>
                                         <input type="date" class="form-control" name="birthDate" value="{{old('birthDate',$member->birth_date)}}">
                                     </div>

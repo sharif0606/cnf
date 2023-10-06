@@ -64,6 +64,7 @@ class OurMemberController extends Controller
             $member->name_en=$request->nameEn;
             $member->father_name=$request->fatherName;
             $member->mother_name=$request->motherName;
+            $member->spouse_name=$request->spouseName;
             $member->birth_date=$request->birthDate;
             $member->blood_group=$request->bloodGroup;
             $member->nid=$request->nid;
@@ -172,6 +173,7 @@ class OurMemberController extends Controller
             $member->name_en=$request->nameEn;
             $member->father_name=$request->fatherName;
             $member->mother_name=$request->motherName;
+            $member->spouse_name=$request->spouseName;
             $member->birth_date=$request->birthDate;
             $member->blood_group=$request->bloodGroup;
             $member->nid=$request->nid;

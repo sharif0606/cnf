@@ -210,7 +210,7 @@
                         <th style="text-align: left;">স্ত্রী  (বিবাহিতের বেলায়) </th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
-                        <td class="tbl_1"></td>
+                        <td class="tbl_1">{{ $show_data->spouse_name }}</td>
                     </tr>
                     <tr class="tbl_1">
                         <th class="tbl_1" style="text-align: left;">৫</th>
@@ -237,14 +237,14 @@
                         <th class="tbl_1" style="text-align: left;">প্রতিষ্ঠানের নাম ও কর্মক্ষেত্র</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
-                        <td class="tbl_1">{{ $show_data->nameOf_instituteOf_previousJob }}</td>
+                        <td class="tbl_1">{{ $show_data->nameAddress_of_present_institute }}</td>
                     </tr>
                     <tr class="tbl_1">
                         <th class="tbl_1" style="text-align: left;">৮</th>
                         <th class="tbl_1" style="text-align: left;">প্রতিষ্ঠানের নাম, ঠিকানা ও নিবন্ধন নং </th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
-                        <td class="tbl_1"></td>
+                        <td class="tbl_1">{{ $show_data->nameAddress_of_present_institute }} </td>
                     </tr>
                     <tr class="tbl_1">
                         <th class="tbl_1" style="text-align: left;">৯</th>
@@ -279,7 +279,9 @@
                         <th class="tbl_1" style="text-align: left;">(খ) স্বায়ী</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
-                        <td class="tbl_1">{{ $show_data->present_address }}</td>
+                        <td class="tbl_1">
+                                {{ $show_data->village }}, {{ $show_data->upazila }}, {{ $show_data->district }}
+                        </td>
                     </tr>
                     <tr class="tbl_1">
                         <th class="tbl_1" style="text-align: left;">১৩</th>
