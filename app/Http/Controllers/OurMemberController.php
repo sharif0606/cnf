@@ -34,7 +34,7 @@ class OurMemberController extends Controller
      */
     public function approvedMember()
     {
-        $ourmember=OurMember::paginate(10);
+        $ourmember=OurMember::orderBy('member_serial_no')->paginate(10);
         return view('ourmember.approveMember',compact('ourmember'));
     }
     
