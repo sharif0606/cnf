@@ -286,7 +286,7 @@
                         <th class="tbl_1" style="text-align: left;">রক্তের গ্রুপ</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
                         <th class="tbl_1" style="text-align: left;">..</th>
-                        <td class="tbl_1">{{ $show_data->bloodGroup }}</td>
+                        <td class="tbl_1">{{ $show_data->blood_group }}</td>
                     </tr>
                     <tr class="tbl_1">
                         <th class="tbl_1" style="text-align: left;">১৪</th>
