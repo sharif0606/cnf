@@ -75,6 +75,8 @@ class OurMemberController extends Controller
             $member->upazila=$request->upazila;
             $member->district=$request->district;
             $member->nameAddress_of_present_institute=$request->nameAddress_of_present_institute;
+            $member->type_of_job=$request->type_of_job;
+            $member->prottoyon=$request->prottoyon;
             $member->office_teliphone=$request->officeTeliphone;
             $member->personal_phone=$request->personalPhone;
             $member->license=$request->license;
@@ -141,7 +143,8 @@ class OurMemberController extends Controller
     public function show($id)
     {
         $show_data=OurMember::findOrFail(encryptor('decrypt',$id));
-        return view('ourmember.show',compact('show_data'));
+        $nomini = heirship::where('member_id',$show_data->id)->get();
+        return view('ourmember.show',compact('show_data','nomini'));
     }
 
     /**
@@ -184,6 +187,8 @@ class OurMemberController extends Controller
             $member->upazila=$request->upazila;
             $member->district=$request->district;
             $member->nameAddress_of_present_institute=$request->nameAddress_of_present_institute;
+            $member->type_of_job=$request->type_of_job;
+            $member->prottoyon=$request->prottoyon;
             $member->office_teliphone=$request->officeTeliphone;
             $member->personal_phone=$request->personalPhone;
             $member->license=$request->license;

@@ -138,8 +138,31 @@
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-6">
                                     <div class="form-group">
-                                        <label for="address">বর্তমানে কর্মরত প্রতিষ্ঠানের নাম ও ঠিকানা</label>
+                                        <label for="address">প্রতিষ্ঠানের নাম ও কর্মক্ষেত্র</label>
                                         <input type="text" class="form-control" name="nameAddress_of_present_institute" value="{{old('nameAddress_of_present_institute',$member->nameAddress_of_present_institute)}}">
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="type_of_job">চাকরির ধরন</label>
+                                        <select name="type_of_job" class="form-control form-select">
+                                            <option value="">Select</option>
+                                            <option value="0" {{ old('type_of_job',$member->type_of_job)== '0' ? 'selected':''}}>স্থায়ী</option>
+                                            <option value="1" {{ old('type_of_job',$member->type_of_job)== '1' ? 'selected':''}}>বদলি</option>
+                                            <option value="2" {{ old('type_of_job',$member->type_of_job)== '2' ? 'selected':''}}>সাময়িক</option>
+                                            <option value="3" {{ old('type_of_job',$member->type_of_job)== '3' ? 'selected':''}}>অস্থায়ী শিক্ষানবীশ</option>
+                                            <option value="4" {{ old('type_of_job',$member->type_of_job)== '4' ? 'selected':''}}>শিক্ষাধীন</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="prottoyon">কর্মরত প্রতিষ্ঠান কর্তৃক প্রত্যয়ন পত্র</label>
+                                        <select name="prottoyon" class="form-control form-select">
+                                            <option value="">Select</option>
+                                            <option value="0" {{ old('prottoyon',$member->prottoyon)== '0' ? 'selected':''}}>Yes</option>
+                                            <option value="1" {{ old('prottoyon',$member->prottoyon)== '1' ? 'selected':''}}>No</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-6">
