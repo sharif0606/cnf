@@ -5,69 +5,6 @@
     <link href="//db.onlinewebfonts.com/c/1d48b2cf83cd3bb825583f7eefd80149?family=AdmiralScriptW01-Regular" rel="stylesheet" type="text/css"/>
 @endpush
 @section('content')
-    <style>
-        .tinput {
-            width: 30%;
-            outline: 0;
-            border-style: dotted;
-            border-width: 0 0 1px;
-            border-color: blue;
-            background-color: transparent;
-        }
-        .binput {
-            width: 100%;
-            outline: 0;
-            border-style: dotted;
-            border-width: 0 0 1px;
-            border-color: blue;
-            background-color: transparent;
-        }
-        input:focus {
-            border-color: green
-        }
-
-
-        .gfg {
-            border-collapse:separate;
-            border-spacing:0 6px;
-        }
-        .gfg2 {
-            border-collapse:separate;
-            border-spacing:0 5px;
-            }
-
-        .pdiv{
-            position: relative;
-            background-color: rgba(53, 123, 189, 0.6);
-            padding: 20px 12px 20px 12px;
-
-
-        }
-        /* .font{
-            font-family: AdmiralScriptW01-Regular !important;
-        } */
-        .table_one .tbl_1{
-            border: 1px solid;
-            border-collapse: collapse;
-            padding: 5px;
-        }
-        .bottominput {
-            width: 80%;
-            outline: 0;
-            border-style: solid;
-            border-width: 0 0 1px;
-            border-color: blue;
-            background-color: transparent;
-        }
-        .bottom2input {
-            width: 32%;
-            outline: 0;
-            border-style: solid;
-            border-width: 0 0 1px;
-            border-color: blue;
-            background-color: transparent;
-        }
-    </style>
 <div class="container">
     <ul class="nav nav-pills mt-3 mb-5" id="pills-tab" role="tablist">
         <li class="nav-item">
@@ -182,20 +119,21 @@
                                 </tr>
                                 <tr>
                                     <td colspan="3" style="text-align: left;">
-                                        <p class="p-0">
+                                        <p style="margin: 0px;">
                                             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; আমি - <u> {{ $show_data->name_bn }}</u> ট্রেড ইউনিয়নের সদস্য পদ লাভ/নবায়নের জন্য এতদ্বারা আবেদন করিতেছি। আমি সতর্কতার সহিত ট্রেড ইউনিয়নের গঠনতন্ত্রের বিধানসমূহ পড়িয়াছি / পড়িয়া  শুনানো হইলে বুঝিয়াছি এবং উহা মানিয়া চলিতে প্রস্তুত রহিয়াছি।
                                         </p>
                                     </td>
                                 </tr>
-                                <tr>
+                                {{-- <tr>
                                     <th colspan="3" style="text-align: left;">আমার বিবরণ নীচে প্রদত্ত হইলঃ</th>
-                                </tr>
+                                </tr> --}}
                             </tbody>
                         </table>
                     </form>
                 </div>
                 <div  class="font" style="width:800px; margin:0 auto;">
                     <form class="table_one" action="">
+                        <div><b>আমার বিবরণ নীচে প্রদত্ত হইলঃ</b></div>
                         <table  class="tbl_1" style=" width:100%; border: 1px solid; border-collapse: collapse;">
                             <tbody>
                                 <tr class="tbl_1" >
@@ -266,13 +204,13 @@
                                         {{ $show_data->nameAddress_of_present_institute }}
                                     </td>
                                 </tr>
-                                <tr class="tbl_1">
+                                {{-- <tr class="tbl_1">
                                     <th class="tbl_1" style="text-align: left;">৮</th>
                                     <th class="tbl_1" style="text-align: left;">প্রতিষ্ঠানের নাম, ঠিকানা ও নিবন্ধন নং </th>
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <td class="tbl_1">{{ $show_data->nameAddress_of_present_institute }} </td>
-                                </tr>
+                                </tr> --}}
                                 <tr class="tbl_1">
                                     <th class="tbl_1" style="text-align: left;">৯</th>
                                     <th class="tbl_1" style="text-align: left;">কাষ্টম সরকার লাইসেন্স মেয়াদ (সর্বশেষ  নবায়নকৃত)</th>
@@ -315,16 +253,21 @@
                                 </tr>
                                 <tr class="tbl_1">
                                     <th class="tbl_1" style="text-align: left;">১৩ </th>
-                                    <th class="tbl_1" style="text-align: left;">চাকরির ধরন-- স্থায়ী /বদলি/সাময়িক/অস্থায়ী  শিক্ষানবীশ/শিক্ষাধীন</th>
+                                    <th class="tbl_1" style="text-align: left;">চাকরির ধরন</th>
                                     
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <th class="tbl_1" style="text-align: left;">..</th>
-                                    <td class="tbl_1">&nbsp;</td>
+                                    <td class="tbl_1">
+                                        @php $mt=array("","স্থায়ী","বদলি","সাময়িক","অস্থায়ী শিক্ষানবীশ","Tশিক্ষাধীন");
+                                            $jobType = isset($mt[$show_data->type_of_job])?$mt[$show_data->type_of_job]:'';
+                                        @endphp
+                                        {{$jobType}}
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
                         <div>
-                            <p class="p-0">আমি ঘোষণা করিতেছি যে, ধারা ১৯৩ অনুযায়ী আমি প্রতিষ্ঠান/প্রতিষ্ঠানপুঞ্জের অন্য কোন শ্রমিক/মালিকদের ট্রেড ইউনিয়নের সদস্য নই। </p>
+                            <p style="margin: 0px;">আমি ঘোষণা করিতেছি যে,ধারা ১৯৩ অনুযায়ী আমি প্রতিষ্ঠান/প্রতিষ্ঠানপুঞ্জের অন্য কোন শ্রমিক/মালিকদের ট্রেড ইউনিয়নের সদস্য নই।</p>
                         </div>
                         <div style="text-align: end;">
                             <div>
