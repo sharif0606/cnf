@@ -75,6 +75,9 @@ class OurMemberController extends Controller
             $member->upazila=$request->upazila;
             $member->district=$request->district;
             $member->nameAddress_of_present_institute=$request->nameAddress_of_present_institute;
+            $member->place_of_work=$request->place_of_work;
+            $member->address_of_present_institute=$request->address_of_present_institute;
+            $member->registraion_no_of_present_institute=$request->registraion_no_of_present_institute;
             $member->type_of_job=$request->type_of_job;
             $member->prottoyon=$request->prottoyon;
             $member->office_teliphone=$request->officeTeliphone;
@@ -187,6 +190,9 @@ class OurMemberController extends Controller
             $member->upazila=$request->upazila;
             $member->district=$request->district;
             $member->nameAddress_of_present_institute=$request->nameAddress_of_present_institute;
+            $member->place_of_work=$request->place_of_work;
+            $member->address_of_present_institute=$request->address_of_present_institute;
+            $member->registraion_no_of_present_institute=$request->registraion_no_of_present_institute;
             $member->type_of_job=$request->type_of_job;
             $member->prottoyon=$request->prottoyon;
             $member->office_teliphone=$request->officeTeliphone;

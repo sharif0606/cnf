@@ -136,8 +136,26 @@
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-6">
                                     <div class="form-group">
-                                        <label for="address">প্রতিষ্ঠানের নাম ও কর্মক্ষেত্র</label>
+                                        <label for="address">প্রতিষ্ঠানের নাম</label>
                                         <input type="text" class="form-control" name="nameAddress_of_present_institute" value="{{old('nameAddress_of_present_institute')}}">
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="address">কর্মক্ষেত্র</label>
+                                        <input type="text" class="form-control" name="place_of_work" value="{{old('place_of_work')}}">
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="address">কর্মক্ষেত্র ঠিকানা</label>
+                                        <input type="text" class="form-control" name="address_of_present_institute" value="{{old('address_of_present_institute')}}">
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="address">নিবন্ধন নং</label>
+                                        <input type="text" class="form-control" name="registraion_no_of_present_institute" value="{{old('registraion_no_of_present_institute')}}">
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-6">

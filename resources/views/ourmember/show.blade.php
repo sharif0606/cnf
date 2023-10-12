@@ -1,6 +1,6 @@
 @extends('layout.app')
-@section('pageTitle',trans('Member Show'))
-@section('pageSubTitle',trans('Show'))
+@section('pageTitle',trans('Member Form Print'))
+@section('pageSubTitle',trans('Form'))
 @push("styles")
     <link href="//db.onlinewebfonts.com/c/1d48b2cf83cd3bb825583f7eefd80149?family=AdmiralScriptW01-Regular" rel="stylesheet" type="text/css"/>
 @endpush
@@ -201,16 +201,16 @@
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <td class="tbl_1">
-                                        {{ $show_data->nameAddress_of_present_institute }}
+                                        {{ $show_data->nameAddress_of_present_institute }},{{ $show_data->place_of_work }}
                                     </td>
                                 </tr>
-                                {{-- <tr class="tbl_1">
+                                <tr class="tbl_1">
                                     <th class="tbl_1" style="text-align: left;">৮</th>
                                     <th class="tbl_1" style="text-align: left;">প্রতিষ্ঠানের নাম, ঠিকানা ও নিবন্ধন নং </th>
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <th class="tbl_1" style="text-align: left;">..</th>
-                                    <td class="tbl_1">{{ $show_data->nameAddress_of_present_institute }} </td>
-                                </tr> --}}
+                                    <td class="tbl_1">{{ $show_data->nameAddress_of_present_institute }},{{ $show_data->address_of_present_institute }},{{ $show_data->registraion_no_of_present_institute }} </td>
+                                </tr>
                                 <tr class="tbl_1">
                                     <th class="tbl_1" style="text-align: left;">৯</th>
                                     <th class="tbl_1" style="text-align: left;">কাষ্টম সরকার লাইসেন্স মেয়াদ (সর্বশেষ  নবায়নকৃত)</th>
@@ -356,7 +356,7 @@
                         <div style="padding-top: 10px; padding-bottom:10px; margin-bottom:4rem;">শিল্প/প্রতিষ্ঠানের নাম ও ও ঠিকানা: <input type="text" class="tinput" style="width:70%;"></div>
                         <table class="tbl_1" style=" width:100%; ">
                             <thead>
-                                <tr class="tbl_1">
+                                <tr class="tbl_1 text-center">
                                     <th class="tbl_1" rowspan="2">ক্রমিক নং</th>
                                     <th class="tbl_1" rowspan="2">নাম ও জাতীয় পরিচয় পত্র (যদি থাকে)</th>
                                     <th class="tbl_1" rowspan="2">সদস্য নং (ফোন নং- যদি থাকে)</th>
@@ -368,7 +368,7 @@
                                     <th class="tbl_1" rowspan="2">পদবী পেশা/বৃত্তি</th>
                                     <th class="tbl_1" rowspan="2">মন্তব্য</th>
                                 </tr>
-                                <tr class="tbl_1">
+                                <tr class="tbl_1 text-center">
                                     <th class="tbl_1">স্বায়ী</th>
                                     <th class="tbl_1">বর্তমান কর্মস্থল</th>
                                 </tr>
