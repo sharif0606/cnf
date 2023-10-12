@@ -535,8 +535,8 @@
                                 </td>
                                 <td style="text-align: end;">
                                     <p><input type="text" class="tinput" style="width:50%;"></p>
-                                    <p style="padding-right: 10px;">সাধারণ সম্পাদকের স্বাক্ষর ও সীল</p>
-                                    <p style="padding-right: 185px;">তারিখ:</p>
+                                    <p >সাধারণ সম্পাদকের স্বাক্ষর ও সীল</p>
+                                    <p style="padding-right: 170px;">তারিখ:</p>
                                 </td>
                             </tr>
                         </table>
