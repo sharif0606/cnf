@@ -723,19 +723,6 @@
 @push('scripts')
 <script src="{{ asset('/js/app.js') }}"></script>
 <script>
-$(document).ready(function() {
-    $('#form-one').click(function() {
-        if ($(this).hasClass('btn-selected')) {
-            $('.section-one').addClass('d-none');
-            $(this).removeClass('btn-selected');
-        } else {
-            $('.section-one').removeClass('d-none');
-            $(this).addClass('btn-selected');
-        }
-    });
-});
-</script>
-<script>
     function printDiv(divName) {
         var prtContent = document.getElementById(divName);
         var WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
@@ -749,5 +736,4 @@ $(document).ready(function() {
         }
     }
 </script>
-
 @endpush
