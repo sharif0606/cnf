@@ -32,9 +32,20 @@ class OurMemberController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function approvedMember()
+    public function approvedMember(Request $request)
     {
-        $ourmember=OurMember::orderBy('member_serial_no')->paginate(10);
+
+        $ourmember=OurMember::orderBy('member_serial_no');
+        if($request->member_serial_no)
+            $ourmember=$ourmember->where('member_serial_no',$request->member_serial_no);
+        if($request->name_bn)
+            $ourmember=$ourmember->where('name_bn',$request->name_bn);
+        if($request->nid)
+            $ourmember=$ourmember->where('nid',$request->nid);
+        if($request->license)
+            $ourmember=$ourmember->where('license',$request->license);
+
+        $ourmember=$ourmember->paginate(10);
         return view('ourmember.approveMember',compact('ourmember'));
     }
     

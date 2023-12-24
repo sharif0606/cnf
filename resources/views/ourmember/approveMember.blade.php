@@ -24,10 +24,10 @@
                                 <th scope="col">{{__('Name')}}</th>
                                 <th scope="col">{{__('Member ID')}}</th>
                                 <th scope="col">{{__('Father\'s Name')}}</th>
-                                <th scope="col">{{__('Mother\'s Name')}}</th>
-                                <th scope="col">{{__('Nominee')}}</th>
+                                <th scope="col">{{__('Blood')}}</th>
+                                <th scope="col">{{__('NID')}}</th>
                                 <th scope="col">{{__('Profession')}}</th>
-                                <th scope="col">{{__('Emergency Contact No')}}</th>
+                                <th scope="col">{{__('Contact No')}}</th>
                                 <th class="white-space-nowrap">{{__('Action') }}</th>
                             </tr>
                         </thead>
@@ -38,10 +38,10 @@
                                 <td>{{$p->name_bn}}</td>
                                 <td>{{$p->member_serial_no}}</td>
                                 <td>{{$p->father_name}}</td>
-                                <td>{{$p->mother_name}}</td>
-                                <td>{{$p->nominee}}</td>
+                                <td>{{$p->blood_group}}</td>
+                                <td>{{$p->nid}}</td>
                                 <td>{{$p->profession}}</td>
-                                <td>{{$p->cell_number}}</td>
+                                <td>{{$p->personal_phone}}</td>
                                 <td class="white-space-nowrap">
                                     <a href="{{route(currentUser().'.ourMember.show',encryptor('encrypt',$p->id))}}">
                                         <i class="bi bi-eye-fill"></i>
