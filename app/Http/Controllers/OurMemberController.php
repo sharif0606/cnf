@@ -39,11 +39,11 @@ class OurMemberController extends Controller
         if($request->member_serial_no)
             $ourmember=$ourmember->where('member_serial_no',$request->member_serial_no);
         if($request->name_bn)
-            $ourmember=$ourmember->where('name_bn',$request->name_bn);
+            $ourmember=$ourmember->where('name_bn','like','%'.$request->name_bn.'%');
         if($request->nid)
-            $ourmember=$ourmember->where('nid',$request->nid);
+            $ourmember=$ourmember->where('nid','like','%'.$request->nid.'%');
         if($request->license)
-            $ourmember=$ourmember->where('license',$request->license);
+            $ourmember=$ourmember->where('license','like','%'.$request->license.'%');
 
         $ourmember=$ourmember->paginate(10);
         return view('ourmember.approveMember',compact('ourmember'));
