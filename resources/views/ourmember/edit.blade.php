@@ -82,7 +82,7 @@
                                     <div class="form-group">
                                         <label for="date">রক্তের গ্রুপ</label>
                                         <select name="bloodGroup" class="form-control form-select">
-                                            <option value="">Selec Group</option>
+                                            <option value="">Select Group</option>
                                             <option value="A+" {{ old('bloodGroup',$member->blood_group)=='A+' ? 'selected':''}}>A+</option>
                                             <option value="A-"{{ old('bloodGroup',$member->blood_group)=='A-' ? 'selected':''}}>A-</option>
                                             <option value="B+"{{ old('bloodGroup',$member->blood_group)=='B+' ? 'selected':''}}>B+</option>
@@ -267,6 +267,25 @@
                                         <input type="file" class="form-control" name="applicant_signature">
                                     </div>
                                 </div>
+                                
+                                <div class="col-lg-3 col-md-3 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="date">অনুমোদন</label>
+                                        <select name="approvedstatus" class="form-control form-select">
+                                            <option value="">অনুমোদন নির্বাচন করুন</option>
+                                            @if(currentUser()=='generalsecretary')
+                                            <option value="1" {{ old('approvedstatus',$member->approvedstatus)=='1' ? 'selected':''}}> অনুমোদিত</option>
+                                            <option value="0"{{ old('approvedstatus',$member->approvedstatus)=='0' ? 'selected':''}}>অননুমোদিত</option>
+                                            @elseif(currentUser()=='chairman')
+                                            <option value="2" {{ old('approvedstatus',$member->approvedstatus)=='2' ? 'selected':''}}> অনুমোদিত</option>
+                                            <option value="0"{{ old('approvedstatus',$member->approvedstatus)=='0' ? 'selected':''}}>অননুমোদিত</option>
+                                            @else
+                                            <option value="0"{{ old('approvedstatus',$member->approvedstatus)=='0' ? 'selected':''}}>অননুমোদিত</option>
+                                            @endif
+                                        </select>
+                                    </div>
+                                </div>
+                               
                                 <div class="col-12">
                                     <div class="form-group table-responsive">
                                         <label for="oarish">মনোনীত ওয়ারিশগণের নাম</label>

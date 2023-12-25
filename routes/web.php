@@ -175,6 +175,7 @@ Route::group(['middleware'=>isChairman::class],function(){
         Route::get('/dashboard', [dash::class,'chairmanDashboard'])->name('chairman.dashboard');
         Route::get('gs-approved-member', [member::class, 'gsecretaryApproved'])->name('chairman.gs_approve_member');
         Route::get('approved-member', [member::class, 'approvedMember'])->name('chairman.approve_member');
+        Route::resource('ourMember',member::class,['as'=>'chairman']);
         Route::resource('users',user::class,['as'=>'chairman']);
     });
 });
@@ -184,6 +185,8 @@ Route::group(['middleware'=>isGeneralSecretary::class],function(){
         Route::get('/dashboard', [dash::class,'generalsecretaryDashboard'])->name('generalsecretary.dashboard');
         Route::get('gs-approved-member', [member::class, 'gsecretaryApproved'])->name('generalsecretary.gs_approve_member');
         Route::get('approved-member', [member::class, 'approvedMember'])->name('generalsecretary.approve_member');
+        Route::resource('ourMember',member::class,['as'=>'generalsecretary']);
+        Route::resource('users',user::class,['as'=>'generalsecretary']);
 
     });
 });

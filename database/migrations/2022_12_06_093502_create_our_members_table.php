@@ -50,6 +50,7 @@ return new class extends Migration
             $table->integer('show_font')->nullable()->default(0);
             $table->integer('membership_applied')->nullable()->default(0);
             $table->integer('status')->default(0)->comment('0 Cancel, 1 Active, 2 Owner,3 Retirement, 4 Late');
+            $table->integer('approvedstatus')->default(0)->comment('0 pending, 1 gs approved, 2 chairman approved');
             $table->softDeletes();
             $table->timestamps();
         });

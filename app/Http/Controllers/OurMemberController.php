@@ -21,9 +21,9 @@ class OurMemberController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $ourmember=OurMember::where('status',0)->orderBy('member_serial_no');
+        $ourmember=OurMember::where('approvedstatus',0)->orderBy('member_serial_no');
         if($request->member_serial_no)
             $ourmember=$ourmember->where('member_serial_no',$request->member_serial_no);
         if($request->name_bn)
@@ -45,7 +45,7 @@ class OurMemberController extends Controller
      */
     public function gsecretaryApproved(Request $request)
     {
-        $ourmember=OurMember::where('status',1)->orderBy('member_serial_no');
+        $ourmember=OurMember::where('approvedstatus',1)->orderBy('member_serial_no');
         if($request->member_serial_no)
             $ourmember=$ourmember->where('member_serial_no',$request->member_serial_no);
         if($request->name_bn)
@@ -68,7 +68,7 @@ class OurMemberController extends Controller
     public function approvedMember(Request $request)
     {
 
-        $ourmember=OurMember::where('status',2)->orderBy('member_serial_no');
+        $ourmember=OurMember::where('approvedstatus',2)->orderBy('member_serial_no');
         if($request->member_serial_no)
             $ourmember=$ourmember->where('member_serial_no',$request->member_serial_no);
         if($request->name_bn)
@@ -253,6 +253,7 @@ class OurMemberController extends Controller
             $member->member_serial_no=$request->member_serial_no;
             $member->approval_date=$request->approval_date;
             $member->role_id=5;
+            $member->approvedstatus=$request->approvedstatus;
             if($request->has('password') && $request->password)
                 $member->password=Hash::make($request->password);
 
