@@ -48,9 +48,10 @@ use App\Http\Controllers\FrontMenuController as frontMenu;
 /* Middleware */
 use App\Http\Middleware\isMember;
 use App\Http\Middleware\isAdmin;
-use App\Http\Middleware\isOwner;
+use App\Http\Middleware\isChairman;
+use App\Http\Middleware\isGeneralSecretary;
+
 use App\Http\Middleware\isSalesmanager;
-use App\Http\Middleware\isSalesman;
 
 /*
 |--------------------------------------------------------------------------
@@ -153,6 +154,7 @@ Route::group(['middleware'=>isAdmin::class],function(){
         Route::resource('exeCommittee',exeCommittee::class,['as'=>'admin']);
         Route::resource('page',page::class,['as'=>'admin']);
         Route::post('image-upload', [page::class, 'storeImage'])->name('image.upload');
+        Route::get('gs-approved-member', [member::class, 'gsecretaryApproved'])->name('admin.gs_approve_member');
         Route::get('approved-member', [member::class, 'approvedMember'])->name('admin.approve_member');
         Route::get('front_menu', [frontMenu::class, 'index'])->name('admin.front_menu.index');
         Route::post('menu_save_update/{id?}', [frontMenu::class, 'save_update'])->name('admin.front_menu.save');
@@ -168,23 +170,27 @@ Route::group(['middleware'=>isAdmin::class],function(){
     });
 });
 
-Route::group(['middleware'=>isOwner::class],function(){
-    Route::prefix('owner')->group(function(){
-        Route::get('/dashboard', [dash::class,'ownerDashboard'])->name('owner.dashboard');
-        Route::resource('users',user::class,['as'=>'owner']);
+Route::group(['middleware'=>isChairman::class],function(){
+    Route::prefix('chairman')->group(function(){
+        Route::get('/dashboard', [dash::class,'chairmanDashboard'])->name('chairman.dashboard');
+        Route::get('gs-approved-member', [member::class, 'gsecretaryApproved'])->name('chairman.gs_approve_member');
+        Route::get('approved-member', [member::class, 'approvedMember'])->name('chairman.approve_member');
+        Route::resource('users',user::class,['as'=>'chairman']);
+    });
+});
+
+Route::group(['middleware'=>isGeneralSecretary::class],function(){
+    Route::prefix('generalsecretary')->group(function(){
+        Route::get('/dashboard', [dash::class,'generalsecretaryDashboard'])->name('generalsecretary.dashboard');
+        Route::get('gs-approved-member', [member::class, 'gsecretaryApproved'])->name('generalsecretary.gs_approve_member');
+        Route::get('approved-member', [member::class, 'approvedMember'])->name('generalsecretary.approve_member');
+
     });
 });
 
 Route::group(['middleware'=>isSalesmanager::class],function(){
     Route::prefix('salesmanager')->group(function(){
         Route::get('/dashboard', [dash::class,'salesmanagerDashboard'])->name('salesmanager.dashboard');
-
-    });
-});
-
-Route::group(['middleware'=>isSalesman::class],function(){
-    Route::prefix('salesman')->group(function(){
-        Route::get('/dashboard', [dash::class,'salesmanDashboard'])->name('salesman.dashboard');
 
     });
 });

@@ -8,7 +8,7 @@ use App\Models\User; // custome
 use Session; // custome
 use App\Http\Traits\ResponseTrait; // custome
 
-class isSalesman
+class isGeneralSecretary
 {
     use ResponseTrait;
     /**
@@ -27,7 +27,7 @@ class isSalesman
             app()->setLocale($user->language); // language
             if(!$user){
                 return redirect()->route('logOut');
-            }else if(currentUser() != 'salesman'){
+            }else if(currentUser() != 'generalsecretary'){
                 return redirect()->back()->with($this->resMessageHtml(false,'error','Access Denied'));
             }else{
                 return $next($request);

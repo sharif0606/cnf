@@ -15,10 +15,10 @@ class DashboardController extends Controller
     }
 
     /*
-    * owner dashboard
+    * chairman dashboard
     */
-    public function ownerDashboard(){
-        return view('dasbhoard.owner');
+    public function chairmanDashboard(){
+        return view('dasbhoard.chairman');
     }
     
     /*
@@ -31,8 +31,8 @@ class DashboardController extends Controller
     /*
     * sales man dashboard
     */
-    public function salesmanDashboard(){
-        return view('dasbhoard.salesman');
+    public function generalsecretaryDashboard(){
+        return view('dasbhoard.generalsecretary');
     }
     /*
     * member dashboard

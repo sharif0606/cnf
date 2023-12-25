@@ -23,8 +23,41 @@ class OurMemberController extends Controller
      */
     public function index()
     {
-        $ourmember=OurMember::paginate(10);
+        $ourmember=OurMember::where('status',0)->orderBy('member_serial_no');
+        if($request->member_serial_no)
+            $ourmember=$ourmember->where('member_serial_no',$request->member_serial_no);
+        if($request->name_bn)
+            $ourmember=$ourmember->where('name_bn','like','%'.$request->name_bn.'%');
+        if($request->nid)
+            $ourmember=$ourmember->where('nid','like','%'.$request->nid.'%');
+        if($request->license)
+            $ourmember=$ourmember->where('license','like','%'.$request->license.'%');
+
+        $ourmember=$ourmember->paginate(10);
+
         return view('ourmember.index',compact('ourmember'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function gsecretaryApproved(Request $request)
+    {
+        $ourmember=OurMember::where('status',1)->orderBy('member_serial_no');
+        if($request->member_serial_no)
+            $ourmember=$ourmember->where('member_serial_no',$request->member_serial_no);
+        if($request->name_bn)
+            $ourmember=$ourmember->where('name_bn','like','%'.$request->name_bn.'%');
+        if($request->nid)
+            $ourmember=$ourmember->where('nid','like','%'.$request->nid.'%');
+        if($request->license)
+            $ourmember=$ourmember->where('license','like','%'.$request->license.'%');
+
+        $ourmember=$ourmember->paginate(10);
+        
+        return view('ourmember.gsecretaryApproved',compact('ourmember'));
     }
 
     /**
@@ -35,7 +68,7 @@ class OurMemberController extends Controller
     public function approvedMember(Request $request)
     {
 
-        $ourmember=OurMember::orderBy('member_serial_no');
+        $ourmember=OurMember::where('status',2)->orderBy('member_serial_no');
         if($request->member_serial_no)
             $ourmember=$ourmember->where('member_serial_no',$request->member_serial_no);
         if($request->name_bn)

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Session; // custome
 use App\Http\Traits\ResponseTrait; // custome
 
-class isOwner
+class isChairman
 {
     use ResponseTrait;
     /**
@@ -27,7 +27,7 @@ class isOwner
             app()->setLocale($user->language); // language
             if(!$user){
                 return redirect()->route('logOut');
-            }else if(currentUser() != 'owner'){
+            }else if(currentUser() != 'chairman'){
                 return redirect()->back()->with($this->resMessageHtml(false,'error','Access Denied'));
             }else{
                 return $next($request);
