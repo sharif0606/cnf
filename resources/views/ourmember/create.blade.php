@@ -43,7 +43,7 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-6">
+                                {{--<div class="col-lg-3 col-md-3 col-sm-6">
                                     <div class="form-group">
                                         <label for="pass">পাসওয়ার্ড</label>
                                         <input type="password" class="form-control" name="password">
@@ -51,7 +51,7 @@
                                             <span class="text-danger"> {{ $errors->first('password') }}</span>
                                         @endif
                                     </div>
-                                </div>
+                                </div>--}}
                                 <div class="col-lg-3 col-md-3 col-sm-6">
                                     <div class="form-group">
                                         <label for="father">পিতার নাম</label>

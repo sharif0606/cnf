@@ -138,7 +138,7 @@ class OurMemberController extends Controller
             $member->member_serial_no=$request->member_serial_no;
             $member->approval_date=$request->approval_date;
             $member->role_id=5;
-            $member->password=Hash::make($request->password);
+            $member->password=Hash::make(123456);//$request->password
             if($request->hasFile('applicant_signature')){
                 $data = rand(111,999).time().'.'.$request->applicant_signature->extension();
                 $request->applicant_signature->move(public_path('uploads/our_member'), $data);

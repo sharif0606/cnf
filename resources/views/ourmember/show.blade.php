@@ -258,7 +258,7 @@
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <td class="tbl_1">
-                                        @php $mt=array("","স্থায়ী","বদলি","সাময়িক","অস্থায়ী শিক্ষানবীশ","Tশিক্ষাধীন");
+                                        @php $mt=array("স্থায়ী","বদলি","সাময়িক","অস্থায়ী শিক্ষানবীশ","শিক্ষাধীন");
                                             $jobType = isset($mt[$show_data->type_of_job])?$mt[$show_data->type_of_job]:'';
                                         @endphp
                                         {{$jobType}}
