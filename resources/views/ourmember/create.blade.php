@@ -243,12 +243,6 @@
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-6">
                                     <div class="form-group">
-                                        <label for="img">ছবি</label>
-                                        <input type="file" class="form-control" name="image">
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-3 col-sm-6">
-                                    <div class="form-group">
                                         <label for="msl">সদস্য ক্রমিক নং</label>
                                         <input type="text" class="form-control" name="member_serial_no" value="{{old('member_serial_no')}}">
                                     </div>
@@ -265,6 +259,18 @@
                                         <input type="file" class="form-control" name="applicant_signature">
                                     </div>
                                 </div>
+                                <div class="col-md-2 col-sm-4">
+                                    <div class="form-group">
+                                        <label for="img">ছবি</label>
+                                        <input type="file" class="form-control" name="image">
+                                        <input type="file" id="base_image" name="base_image">
+                                    </div>
+                                </div>
+                                <div class="col-md-1 col-sm-2">
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        Webcam
+                                    </button>
+                                </div>
                                 <div class="col-12">
                                     <div class="form-group table-responsive">
                                         <label for="oarish">মনোনীত ওয়ারিশগণের নাম</label>
@@ -277,7 +283,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody id="details_data">
-                                                @for($i=0;$i<3;$i++ )
+                                                @for($i=0; $i < 3 ;$i++ )
                                                     <tr>
                                                         <td>{{$j=$i + 1}}.</td>
                                                         <td><input type="text" id="name{{$i}}" class="form-control" name="name_of_heirs[]" placeholder="নাম"></td>
@@ -299,4 +305,74 @@
         </div>
     </div>
 </section>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-6 text-center">
+                        <div id="video-container" >
+                            <video width="500px" id="video" autoplay></video>
+                            <button class="btn btn-primary" id="capture-btn" type="button">Capture Image</button>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <img width="500px" src="" alt="" id="captured-image">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" onclick="saveimage()" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
+
+@push('scripts')
+<script>
+function saveimage(){
+    document.getElementById('base_image').value=document.getElementById('captured-image').src;
+}
+var myModalEl = document.getElementById('exampleModal')
+myModalEl.addEventListener('shown.bs.modal', function (event) {
+    const video = document.getElementById('video');
+    const captureBtn = document.getElementById('capture-btn');
+    const capturedImage = document.getElementById('captured-image');
+
+    // Access webcam
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(stream => {
+        video.srcObject = stream;
+      })
+      .catch(err => {
+        console.error('Error accessing the webcam:', err);
+      });
+
+    // Capture image
+    captureBtn.addEventListener('click', () => {
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+
+      // Draw the current frame of the video on the canvas
+      context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+      // Convert the canvas content to base64 data URL
+      const imageDataURL = canvas.toDataURL('image/png');
+
+      // Set the captured image source
+      capturedImage.src = imageDataURL;
+      //document.getElementById('base_image').value=imageDataURL
+    });
+})
+    
+  </script>
+@endpush
