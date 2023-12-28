@@ -12,7 +12,7 @@ use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Hash;
 use Exception;
 use Carbon\Carbon;
-
+use Storage;
 class OurMemberController extends Controller
 {
     use ImageHandleTraits;
@@ -138,6 +138,7 @@ class OurMemberController extends Controller
             $member->member_serial_no=$request->member_serial_no;
             $member->approval_date=$request->approval_date;
             $member->role_id=5;
+            $member->approvedstatus=0;
             $member->password=Hash::make(123456);//$request->password
             if($request->hasFile('applicant_signature')){
                 $data = rand(111,999).time().'.'.$request->applicant_signature->extension();
@@ -164,11 +165,37 @@ class OurMemberController extends Controller
                         }
                     }
                 }
-            Toastr::success('Create Successfully!');
-            return redirect()->route(currentUser().'.ourMember.index');
+                if($request->hasFile('applicant_signature')){
+                    $data = $member->id.$member->member_serial_no.'.'.$request->applicant_signature->extension();
+                    $request->applicant_signature->move(public_path('uploads/our_member'), $data);
+                    $member->applicant_signature=$data;
+                }
+                if($request->hasFile('image')){
+                    $data = $member->id.$member->member_serial_no.'.'.$request->image->extension();
+                    $request->image->move(public_path('uploads/memberImage'), $data);
+                    $member->image=$data;
+                }elseif(!empty($request->base_image)){
+                    $img = $request->base_image;
+                    $folderPath = public_path('uploads/memberImage/');
+                    
+                    $image_parts = explode(";base64,", $img);
+                    $image_type_aux = explode("image/", $image_parts[0]);
+                    $image_type = $image_type_aux[1];
+                    
+                    $image_base64 = base64_decode($image_parts[1]);
+                    $fileName = $member->id.$member->member_serial_no. '.png';
+                    
+                    $file = $folderPath . $fileName;
+                    //Storage::put($file, $image_base64);
+                    file_put_contents( $file, $image_base64 );
+                    $member->image=$fileName;
+                }
+                $member->save();
+                Toastr::success('Create Successfully!');
+                return redirect()->route(currentUser().'.ourMember.index');
             }else{
-            Toastr::warning('Please try Again!');
-            return redirect()->back();
+                Toastr::warning('Please try Again!');
+                return redirect()->back();
             }
 
         }
@@ -258,19 +285,35 @@ class OurMemberController extends Controller
                 $member->password=Hash::make($request->password);
 
             if($request->hasFile('applicant_signature')){
-                $data = rand(111,999).time().'.'.$request->applicant_signature->extension();
+                $data = $member->id.$member->member_serial_no.'.'.$request->applicant_signature->extension();
                 $request->applicant_signature->move(public_path('uploads/our_member'), $data);
                 $member->applicant_signature=$data;
             }
-            
             if($request->hasFile('image')){
-                $data = rand(1111,9999).time().'.'.$request->image->extension();
+                $data = $member->id.$member->member_serial_no.'.'.$request->image->extension();
                 $request->image->move(public_path('uploads/memberImage'), $data);
                 $member->image=$data;
+            }elseif(!empty($request->base_image)){
+                $img = $request->base_image;
+                $folderPath = public_path('uploads/memberImage/');
+                
+                $image_parts = explode(";base64,", $img);
+                $image_type_aux = explode("image/", $image_parts[0]);
+                $image_type = $image_type_aux[1];
+                
+                $image_base64 = base64_decode($image_parts[1]);
+                $fileName = $member->id.$member->member_serial_no. '.png';
+                
+                $file = $folderPath . $fileName;
+                //Storage::put($file, $image_base64);
+                file_put_contents( $file, $image_base64 );
+                $member->image=$fileName;
             }
+            
             $member->status= $request->status;
 
             if($member->save()){
+                
                 if($request->name_of_heirs){
                     foreach($request->name_of_heirs as $i=>$heirs){
                         if($heirs){
@@ -285,6 +328,7 @@ class OurMemberController extends Controller
                         }
                     }
                 }
+                
                 Toastr::success('Updated Successfully!');
                 return redirect()->route(currentUser().'.ourMember.index');
             }else{

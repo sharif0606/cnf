@@ -24,8 +24,8 @@ class AddNewRequest extends FormRequest
     public function rules()
     {
         return [
-            'personalPhone'=>'required|unique:our_members,personal_phone',
-            'password'=>'required'
+            'personalPhone'=>'required|unique:our_members,personal_phone'
+            //'password'=>'required'
         ];
     }
 

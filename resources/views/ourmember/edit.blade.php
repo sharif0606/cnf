@@ -39,13 +39,13 @@
                                 <div class="col-lg-3 col-md-3 col-sm-6">
                                     <div class="form-group">
                                         <label for="phone">মোবাইল (নিজস্ব)</label>
-                                        <input type="text" class="form-control" name="personalPhone" value="{{old('personalPhone',$member->personal_phone)}}">
+                                        <input type="text" required class="form-control" name="personalPhone" value="{{old('personalPhone',$member->personal_phone)}}">
                                         @if($errors->has('personalPhone'))
                                             <span class="text-danger"> {{ $errors->first('personalPhone') }}</span>
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-6">
+                                {{--<div class="col-lg-3 col-md-3 col-sm-6">
                                     <div class="form-group">
                                         <label for="pass">পাসওয়ার্ড</label>
                                         <input type="password" class="form-control" name="password">
@@ -53,7 +53,7 @@
                                             <span class="text-danger"> {{ $errors->first('password') }}</span>
                                         @endif
                                     </div>
-                                </div>
+                                </div>--}}
                                 <div class="col-lg-3 col-md-3 col-sm-6">
                                     <div class="form-group">
                                         <label for="father">পিতার নাম</label>
@@ -243,12 +243,7 @@
                                         <input type="date" class="form-control" name="formDate" value="{{old('formDate',$member->form_date)}}">
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-6">
-                                    <div class="form-group">
-                                        <label for="img">ছবি</label>
-                                        <input type="file" class="form-control" name="image">
-                                    </div>
-                                </div>
+                               
                                 <div class="col-lg-3 col-md-3 col-sm-6">
                                     <div class="form-group">
                                         <label for="msl">সদস্য ক্রমিক নং</label>
@@ -267,7 +262,20 @@
                                         <input type="file" class="form-control" name="applicant_signature">
                                     </div>
                                 </div>
-                                
+                                <div class="col-md-2 col-sm-4">
+                                    <div class="form-group">
+                                        <label for="img">ছবি</label>
+                                        <input type="file" class="form-control" name="image">
+                                        <input type="hidden" id="base_image" name="base_image">
+                                    </div>
+                                </div>
+                                <div class="col-md-1 col-sm-2">
+                                    <div class="form-group mt-4">
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#webcammodal">
+                                            Webcam
+                                        </button>
+                                    </div>
+                                </div>
                                 <div class="col-lg-3 col-md-3 col-sm-6">
                                     <div class="form-group">
                                         <label for="date">অনুমোদন</label>
@@ -334,4 +342,78 @@
         </div>
     </div>
 </section>
+<!-- Modal -->
+<div class="modal fade" id="webcammodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-6 text-center">
+                        <div id="video-container" >
+                            <video width="500px" id="video" autoplay></video>
+                            <button class="btn btn-primary" id="capture-btn" type="button">Capture Image</button>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <img width="500px" src="" alt="" id="captured-image">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" onclick="saveimage()" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
+
+
+@push('scripts')
+<script>
+    function saveimage(){
+        document.getElementById('base_image').value=document.getElementById('captured-image').src;
+        var myModalEl = document.getElementById('webcammodal')
+        var modal = bootstrap.Modal.getInstance(myModalEl) 
+        modal.hide();
+    }
+    var myModalEl = document.getElementById('webcammodal')
+    myModalEl.addEventListener('shown.bs.modal', function (event) {
+        const video = document.getElementById('video');
+        const captureBtn = document.getElementById('capture-btn');
+        const capturedImage = document.getElementById('captured-image');
+
+        // Access webcam
+        navigator.mediaDevices.getUserMedia({ video: true })
+        .then(stream => {
+            video.srcObject = stream;
+        })
+        .catch(err => {
+            console.error('Error accessing the webcam:', err);
+        });
+
+        // Capture image
+        captureBtn.addEventListener('click', () => {
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+
+        // Draw the current frame of the video on the canvas
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+        // Convert the canvas content to base64 data URL
+        const imageDataURL = canvas.toDataURL('image/png');
+
+        // Set the captured image source
+        capturedImage.src = imageDataURL;
+        //document.getElementById('base_image').value=imageDataURL
+        });
+    })
+        
+  </script>
+@endpush

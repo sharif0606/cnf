@@ -29,7 +29,8 @@
                                             </tr>
                                             <tr>
                                                 <th>Member ID</th>
-                                                <td><input type="text" id="memberId" class="form-control" name="member_id" value="{{$feeDetails->member_id}}"></td>
+                                                <td><input type="text" id="member_serial_no" class="form-control" name="" value="{{$feeDetails->member?->member_serial_no}}">
+                                                    <input type="hidden" id="memberId" class="form-control" name="member_id" value="{{$feeDetails->member_id}}"></td>
                                             </tr>
                                             <tr>
                                                 <th>National ID</th>

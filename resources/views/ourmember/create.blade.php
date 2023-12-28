@@ -263,13 +263,15 @@
                                     <div class="form-group">
                                         <label for="img">ছবি</label>
                                         <input type="file" class="form-control" name="image">
-                                        <input type="file" id="base_image" name="base_image">
+                                        <input type="hidden" id="base_image" name="base_image">
                                     </div>
                                 </div>
                                 <div class="col-md-1 col-sm-2">
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                        Webcam
-                                    </button>
+                                    <div class="form-group mt-4">
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#webcammodal">
+                                            Webcam
+                                        </button>
+                                    </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group table-responsive">
@@ -306,7 +308,7 @@
     </div>
 </section>
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="webcammodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
@@ -337,42 +339,45 @@
 
 @push('scripts')
 <script>
-function saveimage(){
-    document.getElementById('base_image').value=document.getElementById('captured-image').src;
-}
-var myModalEl = document.getElementById('exampleModal')
-myModalEl.addEventListener('shown.bs.modal', function (event) {
-    const video = document.getElementById('video');
-    const captureBtn = document.getElementById('capture-btn');
-    const capturedImage = document.getElementById('captured-image');
+    function saveimage(){
+        document.getElementById('base_image').value=document.getElementById('captured-image').src;
+        var myModalEl = document.getElementById('webcammodal')
+        var modal = bootstrap.Modal.getInstance(myModalEl) 
+        modal.hide();
+    }
+    var myModalEl = document.getElementById('webcammodal')
+    myModalEl.addEventListener('shown.bs.modal', function (event) {
+        const video = document.getElementById('video');
+        const captureBtn = document.getElementById('capture-btn');
+        const capturedImage = document.getElementById('captured-image');
 
-    // Access webcam
-    navigator.mediaDevices.getUserMedia({ video: true })
-      .then(stream => {
-        video.srcObject = stream;
-      })
-      .catch(err => {
-        console.error('Error accessing the webcam:', err);
-      });
+        // Access webcam
+        navigator.mediaDevices.getUserMedia({ video: true })
+        .then(stream => {
+            video.srcObject = stream;
+        })
+        .catch(err => {
+            console.error('Error accessing the webcam:', err);
+        });
 
-    // Capture image
-    captureBtn.addEventListener('click', () => {
-      const canvas = document.createElement('canvas');
-      const context = canvas.getContext('2d');
-      canvas.width = video.videoWidth;
-      canvas.height = video.videoHeight;
+        // Capture image
+        captureBtn.addEventListener('click', () => {
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
 
-      // Draw the current frame of the video on the canvas
-      context.drawImage(video, 0, 0, canvas.width, canvas.height);
+        // Draw the current frame of the video on the canvas
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-      // Convert the canvas content to base64 data URL
-      const imageDataURL = canvas.toDataURL('image/png');
+        // Convert the canvas content to base64 data URL
+        const imageDataURL = canvas.toDataURL('image/png');
 
-      // Set the captured image source
-      capturedImage.src = imageDataURL;
-      //document.getElementById('base_image').value=imageDataURL
-    });
-})
-    
+        // Set the captured image source
+        capturedImage.src = imageDataURL;
+        //document.getElementById('base_image').value=imageDataURL
+        });
+    })
+        
   </script>
 @endpush
