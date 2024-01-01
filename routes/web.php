@@ -186,6 +186,8 @@ Route::group(['middleware'=>isGeneralSecretary::class],function(){
         Route::get('gs-approved-member', [member::class, 'gsecretaryApproved'])->name('generalsecretary.gs_approve_member');
         Route::get('approved-member', [member::class, 'approvedMember'])->name('generalsecretary.approve_member');
         Route::resource('ourMember',member::class,['as'=>'generalsecretary']);
+        Route::get('to-approve/{id}', [member::class, 'approval'])->name('generalsecretary.to_approve_member');
+        Route::post('to-approve-update/{id}', [member::class, 'memberApprov'])->name('generalsecretary.to_approve_update');
         Route::resource('users',user::class,['as'=>'generalsecretary']);
 
     });

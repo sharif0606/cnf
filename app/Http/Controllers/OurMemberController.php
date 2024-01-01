@@ -221,6 +221,13 @@ class OurMemberController extends Controller
         return view('ourmember.show',compact('show_data','nomini'));
     }
 
+    public function approval($id)
+    {
+        $show_data=OurMember::findOrFail(encryptor('decrypt',$id));
+        $nomini = heirship::where('member_id',$show_data->id)->get();
+        return view('ourmember.approvalShow',compact('show_data','nomini'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -343,6 +350,33 @@ class OurMemberController extends Controller
 
         }
 
+    }
+
+    public function memberApprov(Request $request, $id){
+        try{
+            $member=OurMember::findOrFail(encryptor('decrypt',$id));
+            if(currentUser() == 'chairman'){
+                $member->approvedstatus=2;
+            }elseif(currentUser() == 'generalsecretary'){
+                $member->approvedstatus=1;
+            }else{
+                $member->approvedstatus=0;
+            }
+
+            if($member->save()){
+                Toastr::success('Approved Successfully!');
+                return redirect()->back();
+            }else{
+                Toastr::warning('Please try Again!');
+                return redirect()->back();
+            }
+        }
+        catch (Exception $e){
+            dd($e);
+            return back()->withInput();
+            Toastr::warning('Please try Again!');
+
+        }
     }
 
     /**
