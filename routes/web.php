@@ -176,6 +176,8 @@ Route::group(['middleware'=>isChairman::class],function(){
         Route::get('gs-approved-member', [member::class, 'gsecretaryApproved'])->name('chairman.gs_approve_member');
         Route::get('approved-member', [member::class, 'approvedMember'])->name('chairman.approve_member');
         Route::resource('ourMember',member::class,['as'=>'chairman']);
+        Route::get('to-approve/{id}', [member::class, 'approval'])->name('chairman.to_approve_member');
+        Route::post('to-approve-update/{id}', [member::class, 'memberApprov'])->name('chairman.to_approve_update');
         Route::resource('users',user::class,['as'=>'chairman']);
     });
 });
