@@ -44,7 +44,9 @@ return new class extends Migration
             $table->string('job_expiration')->nullable();
             $table->date('form_date')->nullable();
             $table->string('image')->nullable();
-            $table->string('member_serial_no')->nullable();
+            $table->bigInteger('member_serial_no')->nullable();
+            $table->bigInteger('member_serial_no_new')->nullable();
+            $table->bigInteger('renew_serial_no')->nullable();
             $table->date('approval_date')->nullable();
             $table->string('applicant_signature')->nullable();
             $table->integer('show_font')->nullable()->default(0);
