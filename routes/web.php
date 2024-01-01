@@ -178,6 +178,8 @@ Route::group(['middleware'=>isChairman::class],function(){
         Route::resource('ourMember',member::class,['as'=>'chairman']);
         Route::get('to-approve/{id}', [member::class, 'approval'])->name('chairman.to_approve_member');
         Route::post('to-approve-update/{id}', [member::class, 'memberApprov'])->name('chairman.to_approve_update');
+        Route::get('to-approve-cancel/{id}', [member::class, 'approvalCancel'])->name('chairman.to_approve_cancel_member');
+        Route::post('to-approve-cancel-update/{id}', [member::class, 'memberApprovCancel'])->name('chairman.to_approve_cancel');
         Route::resource('users',user::class,['as'=>'chairman']);
     });
 });
