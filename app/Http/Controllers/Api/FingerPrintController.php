@@ -15,6 +15,17 @@ class FingerPrintController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function msn()
+    {
+        $member=OurMember::pluck('member_serial_no');
+        $data=array('error'=>'','res'=>$member);
+        return response($member, 200);
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function checkPrint($msno)
     {
         $member=OurMember::where('member_serial_no',$msno)->first();
