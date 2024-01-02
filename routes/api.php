@@ -20,5 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/msn/{token}', [fingerPrint::class,'msn']);
-Route::post('/store_print/{token}', [fingerPrint::class,'storePrint']);
-Route::get('/check_print/{token}/{msno}', [fingerPrint::class,'checkPrint']);
+Route::post('/sprin/{token}', [fingerPrint::class,'storePrint']);
+Route::get('/cprin/{token}/{msno}', [fingerPrint::class,'checkPrint']);
