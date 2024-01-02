@@ -15,30 +15,35 @@ class FingerPrintController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function msn()
+    public function msn($token)
     {
-        $member=OurMember::pluck('member_serial_no');
-        $data=array('error'=>'','res'=>$member);
-        return response($member, 200);
+        if($token=="HE68Xku985Hk"){
+            $member=OurMember::orderBy('member_serial_no')->pluck('member_serial_no');
+            $data=array('error'=>'','res'=>$member,'count'=>count($member));
+            return response($data, 200);
+        }
+        
     }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function checkPrint($msno)
+    public function checkPrint($token,$msno)
     {
-        $member=OurMember::where('member_serial_no',$msno)->first();
-        if($member){
-            if($member->finger_print)
-                $data=array('error'=>'','res'=>$member->finger_print);
-            else
-                $data=array('error'=>'Finget Print not found.','res'=>'');
-        }else{
-            $data=array('error'=>'Member not found.','res'=>'');
+        if($token=="HE68Xku985Hk"){
+            $member=OurMember::where('member_serial_no',$msno)->first();
+            if($member){
+                if($member->finger_print)
+                    $data=array('error'=>'','res'=>$member->finger_print);
+                else
+                    $data=array('error'=>'Finget Print not found.','res'=>'');
+            }else{
+                $data=array('error'=>'Member not found.','res'=>'');
+            }
+            
+            return response($data, 200);
         }
-        
-        return response($data, 200);
     }
 
     /**
@@ -47,19 +52,21 @@ class FingerPrintController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function storePrint(Request $r)
+    public function storePrint($token,Request $r)
     {
-        $msno=$r->msno;
-        $finger=$r->finger;
-        $member=OurMember::where('member_serial_no',$msno)->first();
-        if($member){
-            $member->finger_print=$finger;
-            $member->save();
-            $data=array('res'=>'Saved');
-            return response($data, 200);
-        }else{
-            $data=array('error'=>'Member not found.','res'=>'');
-            return response($data, 200);
+        if($token=="HE68Xku985Hk"){
+            $msno=$r->msno;
+            $finger=$r->finger;
+            $member=OurMember::where('member_serial_no',$msno)->first();
+            if($member){
+                $member->finger_print=$finger;
+                $member->save();
+                $data=array('res'=>'Saved');
+                return response($data, 200);
+            }else{
+                $data=array('error'=>'Member not found.','res'=>'');
+                return response($data, 200);
+            }
         }
     }
 
