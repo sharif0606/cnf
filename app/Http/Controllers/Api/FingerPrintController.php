@@ -20,7 +20,7 @@ class FingerPrintController extends Controller
         if($token=="HE68Xku985Hk"){
             $member=OurMember::orderBy('member_serial_no')->pluck('member_serial_no');
             $data=array('error'=>'','res'=>$member,'count'=>count($member));
-            return response($data, 200);
+            return response($member, 200);
         }
         
     }
