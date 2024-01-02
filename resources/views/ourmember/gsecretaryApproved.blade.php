@@ -73,18 +73,23 @@
                                     <a href="{{route(currentUser().'.ourMember.edit',encryptor('encrypt',$p->id))}}">
                                         <i class="bi bi-pencil-square"></i>
                                     </a> &nbsp;
-                                    <a href="javascript:void()" onclick="$('#form{{$p->id}}').submit()">
+                                    @if(currentUser() == 'chairman')
+                                    <a class="btn btn-sm btn-success" href="{{route(currentUser().'.to_approve_member',encryptor('encrypt',$p->id))}}">
+                                        approval
+                                    </a>&nbsp;
+                                    @endif
+                                    <!-- <a href="javascript:void()" onclick="$('#form{{$p->id}}').submit()">
                                         <i class="bi bi-trash"></i>
                                     </a>
                                     <form id="form{{$p->id}}" action="{{route(currentUser().'.ourMember.destroy',encryptor('encrypt',$p->id))}}" method="post">
                                         @csrf
                                         @method('delete')
-                                    </form>
+                                    </form> -->
                                 </td>
                             </tr>
                             @empty
                             <tr>
-                                <th colspan="8" class="text-center">No Pruduct Found</th>
+                                <th colspan="8" class="text-center">No Data Found</th>
                             </tr>
                             @endforelse
                         </tbody>

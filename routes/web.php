@@ -176,6 +176,10 @@ Route::group(['middleware'=>isChairman::class],function(){
         Route::get('gs-approved-member', [member::class, 'gsecretaryApproved'])->name('chairman.gs_approve_member');
         Route::get('approved-member', [member::class, 'approvedMember'])->name('chairman.approve_member');
         Route::resource('ourMember',member::class,['as'=>'chairman']);
+        Route::get('to-approve/{id}', [member::class, 'approval'])->name('chairman.to_approve_member');
+        Route::post('to-approve-update/{id}', [member::class, 'memberApprov'])->name('chairman.to_approve_update');
+        Route::get('to-approve-cancel/{id}', [member::class, 'approvalCancel'])->name('chairman.to_approve_cancel_member');
+        Route::post('to-approve-cancel-update/{id}', [member::class, 'memberApprovCancel'])->name('chairman.to_approve_cancel');
         Route::resource('users',user::class,['as'=>'chairman']);
     });
 });
@@ -186,6 +190,8 @@ Route::group(['middleware'=>isGeneralSecretary::class],function(){
         Route::get('gs-approved-member', [member::class, 'gsecretaryApproved'])->name('generalsecretary.gs_approve_member');
         Route::get('approved-member', [member::class, 'approvedMember'])->name('generalsecretary.approve_member');
         Route::resource('ourMember',member::class,['as'=>'generalsecretary']);
+        Route::get('to-approve/{id}', [member::class, 'approval'])->name('generalsecretary.to_approve_member');
+        Route::post('to-approve-update/{id}', [member::class, 'memberApprov'])->name('generalsecretary.to_approve_update');
         Route::resource('users',user::class,['as'=>'generalsecretary']);
 
     });
