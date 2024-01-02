@@ -35,11 +35,11 @@ class FingerPrintController extends Controller
             $member=OurMember::where('member_serial_no',$msno)->first();
             if($member){
                 if($member->finger_print)
-                    $data=array('error'=>'','res'=>$member->finger_print);
+                    $data=array($member->finger_print);
                 else
-                    $data=array('error'=>'Finget Print not found.','res'=>'');
+                    $data=array();
             }else{
-                $data=array('error'=>'Member not found.','res'=>'');
+                $data=array();
             }
             
             return response($data, 200);
@@ -61,10 +61,10 @@ class FingerPrintController extends Controller
             if($member){
                 $member->finger_print=$finger;
                 $member->save();
-                $data=array('res'=>'Saved');
+                $data=array('Saved');
                 return response($data, 200);
             }else{
-                $data=array('error'=>'Member not found.','res'=>'');
+                $data=array('Member not found.');
                 return response($data, 200);
             }
         }
