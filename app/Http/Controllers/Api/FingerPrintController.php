@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\OurMember;
 use Illuminate\Http\Request;
 use Exception;
+use Log;
 
 class FingerPrintController extends Controller
 {
@@ -19,8 +20,10 @@ class FingerPrintController extends Controller
     {
         if($token=="HE68Xku985Hk"){
             $member=OurMember::orderBy('member_serial_no')->pluck('member_serial_no');
-            $data=array('error'=>'','res'=>$member,'count'=>count($member));
             return response($member, 200);
+        }else{
+            $data="";
+            return response($data, 200);
         }
         
     }
@@ -31,19 +34,14 @@ class FingerPrintController extends Controller
      */
     public function checkPrint($token,$msno)
     {
+        $data="";
         if($token=="HE68Xku985Hk"){
             $member=OurMember::where('member_serial_no',$msno)->first();
-            if($member){
+            if($member)
                 if($member->finger_print)
-                    $data=array($member->finger_print);
-                else
-                    $data=array();
-            }else{
-                $data=array();
-            }
-            
-            return response($data, 200);
+                    $data=$member->finger_print;
         }
+        return response($data, 200);
     }
 
     /**
@@ -52,21 +50,21 @@ class FingerPrintController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    
     public function storePrint($token,$msno,Request $r)
     {
+        $data='Member not found.';
+        $copy = json_decode(file_get_contents('php://input'), true);
         if($token=="HE68Xku985Hk"){
-            $finger=$r->finger;
             $member=OurMember::where('member_serial_no',$msno)->first();
             if($member){
-                $member->finger_print=$finger;
+                $member->finger_print=$copy;
                 $member->save();
-                $data=array('Saved');
-                return response($data, 200);
-            }else{
-                $data=array('Member not found.');
-                return response($data, 200);
+                $data='Saved';
             }
         }
+
+        return response($data, 200);
     }
 
 }
