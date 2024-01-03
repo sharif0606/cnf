@@ -52,10 +52,9 @@ class FingerPrintController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function storePrint($token,Request $r)
+    public function storePrint($token,$msno,Request $r)
     {
         if($token=="HE68Xku985Hk"){
-            $msno=$r->msno;
             $finger=$r->finger;
             $member=OurMember::where('member_serial_no',$msno)->first();
             if($member){
