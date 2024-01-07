@@ -74,9 +74,15 @@ class FeeCollectionController extends Controller
                         }
                     }
                 }
+                
+                $msln_renew=OurMember::find($request->member_id);
+                $msln_renew->renew_serial_no=OurMember::max('renew_serial_no')+1;
+                $msln_renew->save();
+
+                Toastr::success('Create Successfully!');
+                return redirect()->route(currentUser().'.feeCollection.index');
             }
-            Toastr::success('Create Successfully!');
-            return redirect()->route(currentUser().'.feeCollection.index');
+            
         }
         catch (Exception $e){
             Toastr::warning('Please try Again!');

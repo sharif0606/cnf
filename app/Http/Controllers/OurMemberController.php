@@ -131,11 +131,7 @@ class OurMemberController extends Controller
     public function store(AddNewRequest $request)
     {
         try{
-            $msln_new=OurMember::orderBy('member_serial_no_new','DESC')->take(1)->pluck('member_serial_no_new');
             
-            if($msln_new[0])
-                $msln_new=$msln_new[0]+1;
-
             $member=new OurMember;
 
             $member->form_serial=$request->form_serial_no;
@@ -171,7 +167,7 @@ class OurMemberController extends Controller
             $member->job_expiration=$request->jobExpiration;
             $member->form_date=$request->formDate;
             $member->member_serial_no=$request->member_serial_no;
-            $member->member_serial_no_new=$msln_new;
+            $member->member_serial_no_new=OurMember::max('member_serial_no_new')+1;
             $member->approval_date=$request->approval_date;
             $member->role_id=5;
             $member->approvedstatus=0;
