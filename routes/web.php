@@ -156,6 +156,7 @@ Route::group(['middleware'=>isAdmin::class],function(){
         Route::post('image-upload', [page::class, 'storeImage'])->name('image.upload');
         Route::get('gs-approved-member', [member::class, 'gsecretaryApproved'])->name('admin.gs_approve_member');
         Route::get('approved-member', [member::class, 'approvedMember'])->name('admin.approve_member');
+        Route::get('archive-member', [member::class, 'archiveMember'])->name('admin.archive_member');
         Route::get('front_menu', [frontMenu::class, 'index'])->name('admin.front_menu.index');
         Route::post('menu_save_update/{id?}', [frontMenu::class, 'save_update'])->name('admin.front_menu.save');
         Route::get('front_menu/mss', [frontMenu::class, 'mss'])->name('admin.front_menu.mss');
@@ -175,6 +176,7 @@ Route::group(['middleware'=>isChairman::class],function(){
         Route::get('/dashboard', [dash::class,'chairmanDashboard'])->name('chairman.dashboard');
         Route::get('gs-approved-member', [member::class, 'gsecretaryApproved'])->name('chairman.gs_approve_member');
         Route::get('approved-member', [member::class, 'approvedMember'])->name('chairman.approve_member');
+        Route::get('archive-member', [member::class, 'archiveMember'])->name('chairman.archive_member');
         Route::resource('ourMember',member::class,['as'=>'chairman']);
         Route::get('to-approve/{id}', [member::class, 'approval'])->name('chairman.to_approve_member');
         Route::post('to-approve-update/{id}', [member::class, 'memberApprov'])->name('chairman.to_approve_update');
@@ -189,6 +191,7 @@ Route::group(['middleware'=>isGeneralSecretary::class],function(){
         Route::get('/dashboard', [dash::class,'generalsecretaryDashboard'])->name('generalsecretary.dashboard');
         Route::get('gs-approved-member', [member::class, 'gsecretaryApproved'])->name('generalsecretary.gs_approve_member');
         Route::get('approved-member', [member::class, 'approvedMember'])->name('generalsecretary.approve_member');
+        Route::get('archive-member', [member::class, 'archiveMember'])->name('generalsecretary.archive_member');
         Route::resource('ourMember',member::class,['as'=>'generalsecretary']);
         Route::get('to-approve/{id}', [member::class, 'approval'])->name('generalsecretary.to_approve_member');
         Route::post('to-approve-update/{id}', [member::class, 'memberApprov'])->name('generalsecretary.to_approve_update');

@@ -20,12 +20,15 @@
                         <form action="" method="get">
                             <div class="row">
                                 <div class="col-sm-2">
-                                    <input type="text" name="member_serial_no" value="{{isset($_GET['member_serial_no'])?$_GET['member_serial_no']:''}}" placeholder="Member ID" class="form-control">
+                                    <input type="text" name="member_serial_no" value="{{isset($_GET['member_serial_no'])?$_GET['member_serial_no']:''}}" placeholder="Member ID Old" class="form-control">
                                 </div>
-                                <div class="col-sm-3">
+                                <div class="col-sm-2">
+                                    <input type="text" name="member_serial_no_new" value="{{isset($_GET['member_serial_no_new'])?$_GET['member_serial_no_new']:''}}" placeholder="Member ID New" class="form-control">
+                                </div>
+                                <div class="col-sm-2">
                                     <input type="text" name="name_bn" value="{{isset($_GET['name_bn'])?$_GET['name_bn']:''}}" placeholder="Member Name" class="form-control">
                                 </div>
-                                <div class="col-sm-3">
+                                <div class="col-sm-2">
                                     <input type="text" name="nid" value="{{isset($_GET['nid'])?$_GET['nid']:''}}" placeholder="NID" class="form-control">
                                 </div>
                                 <div class="col-sm-2">
@@ -45,8 +48,8 @@
                         <thead>
                             <tr>
                                 <th scope="col">{{__('ক্রমিক নং')}}</th>
-                                <th scope="col">{{__('নাম(বাংলায়)')}}</th>
-                                <th scope="col">{{__('নাম(ইংরেজীতে)')}}</th>
+                                <th scope="col">{{__('নাম')}}</th>
+                                <th scope="col">{{__('সিরিয়াল পুরাতন/নতুন')}}</th>
                                 <th scope="col">{{__('পিতার নাম')}}</th>
                                 <th scope="col">{{__('মাতার নাম')}}</th>
                                 <th scope="col">{{__('মোবাইল (নিজস্ব)')}}</th>
@@ -54,11 +57,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($ourmember as $p)
+                            @forelse($ourmember as $key=>$p)
                             <tr>
-                                <th scope="row">{{ ++$loop->index }}</th>
+                                <th scope="row">{{ $ourmember->firstItem() + $key }}</th>
                                 <td>{{$p->name_bn}}</td>
-                                <td>{{$p->name_en}}</td>
+                                <td>{{$p->member_serial_no}}/{{$p->member_serial_no_new}}</td>
                                 <td>{{$p->father_name}}</td>
                                 <td>{{$p->mother_name}}</td>
                                 <td>{{$p->personal_phone}}</td>
@@ -70,9 +73,11 @@
                                     <a class="text-danger" href="{{route(currentUser().'.ourMember.show',encryptor('encrypt',$p->id))}}">
                                         <i class="bi bi-file-earmark-pdf-fill"></i>
                                     </a>&nbsp;
+                                    @if(currentUser()=="generalsecretary")
                                     <a class="btn btn-sm btn-success" href="{{route(currentUser().'.to_approve_member',encryptor('encrypt',$p->id))}}">
                                         approval
                                     </a>&nbsp;
+                                    @endif
                                     <!-- <a class="text-danger" href="javascript:void()" onclick="$('#form{{$p->id}}').submit()">
                                         <i class="bi bi-trash"></i>
                                     </a>

@@ -17,12 +17,15 @@
                             <form action="" method="get">
                                 <div class="row">
                                     <div class="col-sm-2">
-                                        <input type="text" name="member_serial_no" value="{{isset($_GET['member_serial_no'])?$_GET['member_serial_no']:''}}" placeholder="Member ID" class="form-control">
+                                        <input type="text" name="member_serial_no" value="{{isset($_GET['member_serial_no'])?$_GET['member_serial_no']:''}}" placeholder="Member ID Old" class="form-control">
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-2">
+                                        <input type="text" name="member_serial_no_new" value="{{isset($_GET['member_serial_no_new'])?$_GET['member_serial_no_new']:''}}" placeholder="Member ID New" class="form-control">
+                                    </div>
+                                    <div class="col-sm-2">
                                         <input type="text" name="name_bn" value="{{isset($_GET['name_bn'])?$_GET['name_bn']:''}}" placeholder="Member Name" class="form-control">
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-2">
                                         <input type="text" name="nid" value="{{isset($_GET['nid'])?$_GET['nid']:''}}" placeholder="NID" class="form-control">
                                     </div>
                                     <div class="col-sm-2">
@@ -44,28 +47,28 @@
                     <table class="table table-bordered mb-0">
                         <thead>
                             <tr>
-                                <th scope="col">{{__('#SL')}}</th>
-                                <th scope="col">{{__('Name')}}</th>
-                                <th scope="col">{{__('Member ID')}}</th>
-                                <th scope="col">{{__('Father\'s Name')}}</th>
-                                <th scope="col">{{__('Blood')}}</th>
-                                <th scope="col">{{__('NID')}}</th>
-                                <th scope="col">{{__('Profession')}}</th>
-                                <th scope="col">{{__('Contact No')}}</th>
-                                <th class="white-space-nowrap">{{__('Action') }}</th>
+                                <th scope="col">{{__('ক্রমিক নং')}}</th>
+                                <th scope="col">{{__('নাম')}}</th>
+                                <th scope="col">{{__('সিরিয়াল পুরাতন/নতুন')}}</th>
+                                <th scope="col">{{__('পিতার নাম')}}</th>
+                                <th scope="col">{{__('মোবাইল (নিজস্ব)')}}</th>
+                                <th scope="col">{{__('রক্তের গ্রুপ')}}</th>
+                                <th scope="col">{{__('এনআইডি')}}</th>
+                                <th scope="col">{{__('চাকুরীর পদবি')}}</th>
+                                <th class="white-space-nowrap">{{__('') }}</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($ourmember as $p)
+                            @forelse($ourmember as $key=>$p)
                             <tr>
-                                <th scope="row">{{ ++$loop->index }}</th>
+                                <th scope="row">{{ $ourmember->firstItem() + $key }}</th>
                                 <td>{{$p->name_bn}}</td>
-                                <td>{{$p->member_serial_no}}</td>
+                                <td>{{$p->member_serial_no}}/{{$p->member_serial_no_new}}</td>
                                 <td>{{$p->father_name}}</td>
+                                <td>{{$p->personal_phone}}</td>
                                 <td>{{$p->blood_group}}</td>
                                 <td>{{$p->nid}}</td>
-                                <td>{{$p->profession}}</td>
-                                <td>{{$p->personal_phone}}</td>
+                                <td>{{$p->designation_of_present_job}}</td>
                                 <td class="white-space-nowrap">
                                     <a href="{{route(currentUser().'.ourMember.show',encryptor('encrypt',$p->id))}}">
                                         <i class="bi bi-eye-fill"></i>

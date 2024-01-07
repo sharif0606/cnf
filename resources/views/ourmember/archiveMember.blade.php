@@ -1,5 +1,5 @@
 @extends('layout.app')
-@section('pageTitle',trans('GS Approved Member List'))
+@section('pageTitle',trans('Archive Member List'))
 @section('pageSubTitle',trans('List'))
 
 @section('content')
@@ -29,11 +29,18 @@
                                         <input type="text" name="nid" value="{{isset($_GET['nid'])?$_GET['nid']:''}}" placeholder="NID" class="form-control">
                                     </div>
                                     <div class="col-sm-2">
-                                        <input type="text" name="license" value="{{isset($_GET['license'])?$_GET['license']:''}}" placeholder="license" class="form-control">
+                                        <select name="status" id="" class="form-control">
+                                            <option value="">All</option>
+                                            <option value="1" @if(isset($_GET['status']) && $_GET['status']==1) selected @endif>Active</option>
+                                            <option value="2" @if(isset($_GET['status']) && $_GET['status']==2) selected @endif>Owner</option>
+                                            <option value="3" @if(isset($_GET['status']) && $_GET['status']==3) selected @endif>Retired</option>
+                                            <option value="4" @if(isset($_GET['status']) && $_GET['status']==4) selected @endif>Late</option>
+                                            <option value="5" @if(isset($_GET['status']) && $_GET['status']==5) selected @endif>Cancelled</option>
+                                        </select>
                                     </div>
                                     <div class="col-sm-2">
                                         <button class="btn btn-sm btn-info" type="submit">Search</button>
-                                        <a class="btn btn-sm btn-warning" href="{{route(currentUser().'.approve_member')}}">Clear</a>
+                                        <a class="btn btn-sm btn-warning" href="{{route(currentUser().'.archive_member')}}">Clear</a>
                                     </div>
                                 </div>
                             </form>
@@ -77,17 +84,17 @@
                                         <i class="bi bi-pencil-square"></i>
                                     </a> &nbsp;
                                     @if(currentUser() == 'chairman')
-                                    <a class="btn btn-sm btn-success" href="{{route(currentUser().'.to_approve_member',encryptor('encrypt',$p->id))}}">
-                                        approval
+                                    <a class="btn btn-sm btn-danger" href="{{route(currentUser().'.to_approve_cancel_member',encryptor('encrypt',$p->id))}}">
+                                        Cancel
                                     </a>&nbsp;
                                     @endif
-                                    <!-- <a href="javascript:void()" onclick="$('#form{{$p->id}}').submit()">
+                                    {{--<a href="javascript:void()" onclick="$('#form{{$p->id}}').submit()">
                                         <i class="bi bi-trash"></i>
                                     </a>
                                     <form id="form{{$p->id}}" action="{{route(currentUser().'.ourMember.destroy',encryptor('encrypt',$p->id))}}" method="post">
                                         @csrf
                                         @method('delete')
-                                    </form> -->
+                                    </form>--}}
                                 </td>
                             </tr>
                             @empty

@@ -27,6 +27,7 @@
             <!-- <li class="py-1"><a href="{{route(currentUser().'.ourMember.index')}}">{{__('Applied Member')}}</a></li> -->
             <li class="py-1"><a href="{{route(currentUser().'.gs_approve_member')}}">{{__('GS Approved Member')}}</a></li>
             <li class="py-1"><a href="{{route(currentUser().'.approve_member')}}">{{__('Approved Member')}}</a></li>
+            <li class="py-1"><a href="{{route(currentUser().'.archive_member')}}">{{__('Archive Member')}}</a></li>
         </ul>
     </li>
 

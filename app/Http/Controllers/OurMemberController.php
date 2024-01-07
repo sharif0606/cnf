@@ -26,6 +26,8 @@ class OurMemberController extends Controller
         $ourmember=OurMember::where('approvedstatus',0)->orderBy('member_serial_no');
         if($request->member_serial_no)
             $ourmember=$ourmember->where('member_serial_no',$request->member_serial_no);
+        if($request->member_serial_no_new)
+            $ourmember=$ourmember->where('member_serial_no_new',$request->member_serial_no_new);
         if($request->name_bn)
             $ourmember=$ourmember->where('name_bn','like','%'.$request->name_bn.'%');
         if($request->nid)
@@ -33,7 +35,7 @@ class OurMemberController extends Controller
         if($request->license)
             $ourmember=$ourmember->where('license','like','%'.$request->license.'%');
 
-        $ourmember=$ourmember->paginate(10);
+        $ourmember=$ourmember->where('status',1)->paginate(10);
 
         return view('ourmember.index',compact('ourmember'));
     }
@@ -48,6 +50,8 @@ class OurMemberController extends Controller
         $ourmember=OurMember::where('approvedstatus',1)->orderBy('member_serial_no');
         if($request->member_serial_no)
             $ourmember=$ourmember->where('member_serial_no',$request->member_serial_no);
+        if($request->member_serial_no_new)
+            $ourmember=$ourmember->where('member_serial_no_new',$request->member_serial_no_new);
         if($request->name_bn)
             $ourmember=$ourmember->where('name_bn','like','%'.$request->name_bn.'%');
         if($request->nid)
@@ -55,7 +59,7 @@ class OurMemberController extends Controller
         if($request->license)
             $ourmember=$ourmember->where('license','like','%'.$request->license.'%');
 
-        $ourmember=$ourmember->paginate(10);
+        $ourmember=$ourmember->where('status',1)->paginate(10);
         
         return view('ourmember.gsecretaryApproved',compact('ourmember'));
     }
@@ -71,6 +75,8 @@ class OurMemberController extends Controller
         $ourmember=OurMember::where('approvedstatus',2)->orderBy('member_serial_no');
         if($request->member_serial_no)
             $ourmember=$ourmember->where('member_serial_no',$request->member_serial_no);
+        if($request->member_serial_no_new)
+            $ourmember=$ourmember->where('member_serial_no_new',$request->member_serial_no_new);
         if($request->name_bn)
             $ourmember=$ourmember->where('name_bn','like','%'.$request->name_bn.'%');
         if($request->nid)
@@ -78,8 +84,32 @@ class OurMemberController extends Controller
         if($request->license)
             $ourmember=$ourmember->where('license','like','%'.$request->license.'%');
 
-        $ourmember=$ourmember->paginate(10);
+        $ourmember=$ourmember->where('status',1)->paginate(10);
         return view('ourmember.approveMember',compact('ourmember'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function archiveMember(Request $request)
+    {
+
+        $ourmember=OurMember::where('approvedstatus',2)->orderBy('member_serial_no');
+        if($request->member_serial_no)
+            $ourmember=$ourmember->where('member_serial_no',$request->member_serial_no);
+        if($request->member_serial_no_new)
+            $ourmember=$ourmember->where('member_serial_no_new',$request->member_serial_no_new);
+        if($request->name_bn)
+            $ourmember=$ourmember->where('name_bn','like','%'.$request->name_bn.'%');
+        if($request->nid)
+            $ourmember=$ourmember->where('nid','like','%'.$request->nid.'%');
+        if($request->status)
+            $ourmember=$ourmember->where('status',$request->status);
+
+        $ourmember=$ourmember->paginate(10);
+        return view('ourmember.archiveMember',compact('ourmember'));
     }
     
     /**
@@ -101,6 +131,11 @@ class OurMemberController extends Controller
     public function store(AddNewRequest $request)
     {
         try{
+            $msln_new=OurMember::orderBy('member_serial_no_new','DESC')->take(1)->pluck('member_serial_no_new');
+            
+            if($msln_new[0])
+                $msln_new=$msln_new[0]+1;
+
             $member=new OurMember;
 
             $member->form_serial=$request->form_serial_no;
@@ -136,6 +171,7 @@ class OurMemberController extends Controller
             $member->job_expiration=$request->jobExpiration;
             $member->form_date=$request->formDate;
             $member->member_serial_no=$request->member_serial_no;
+            $member->member_serial_no_new=$msln_new;
             $member->approval_date=$request->approval_date;
             $member->role_id=5;
             $member->approvedstatus=0;
@@ -201,7 +237,7 @@ class OurMemberController extends Controller
         }
         catch (Exception $e){
             Toastr::warning('Please try Again!');
-            dd($e);
+            //dd($e);
             return back()->withInput();
 
         }
