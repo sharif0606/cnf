@@ -143,10 +143,10 @@
                             <tbody>
                                 <tr class="tbl_1" >
                                     <th class="tbl_1" style="text-align: left; width:2%;">১</th>
-                                    <th class="tbl_1" style="text-align: left; width:59%;">নাম</th>
+                                    <th class="tbl_1" style="text-align: left; width:54%;">নাম</th>
                                     <th class="tbl_1" style="text-align: left; width:2%;">..</th>
                                     <th class="tbl_1" style="text-align: left; width:2%;">..</th>
-                                    <td class="tbl_1" style="width:35%;">{{ $show_data->name_bn }}</td>
+                                    <td class="tbl_1" style="width:40%;">{{ $show_data->name_bn }}</td>
                                 </tr>
                                 <tr class="tbl_1">
                                     <th class="tbl_1" style="text-align: left;">২</th>
