@@ -100,7 +100,7 @@
                                     <td rowspan="7" style="text-align: right;">
                                         <figure style="margin-bottom:0">
                                             <img src='{{asset('uploads/memberImage/'.$show_data->image)}}' height="150px" width="auto">
-                                            <figcaption style="text-align: center">সদস্য নং: {{ str_pad($show_data->member_serial_no,5,"0",STR_PAD_LEFT)}}</figcaption>
+                                            <figcaption style="text-align: center;padding-left:34px;">সদস্য নং: {{ str_pad($show_data->member_serial_no,5,"0",STR_PAD_LEFT)}}</figcaption>
                                         </figure>
                                     </td>
                                 </tr>
