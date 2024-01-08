@@ -123,14 +123,14 @@
                 <div  class="font" style="width:800px; margin:0 auto;">
                     <form class="table_one" action="">
                         <div><b>আমার বিবরণ নীচে প্রদত্ত হইলঃ</b></div>
-                        <table  class="tbl_1" style=" width:100%; border: 1px solid; border-collapse: collapse;">
+                        <table  class="tbl_1" style=" width:100%; border: 1px solid; border-collapse: collapse; border-spacing: 0;">
                             <tbody>
                                 <tr class="tbl_1" >
                                     <th class="tbl_1" style="text-align: left; width:2%;">১</th>
-                                    <th class="tbl_1" style="text-align: left; width:59%;">নাম</th>
+                                    <th class="tbl_1" style="text-align: left; width:54%;">নাম</th>
                                     <th class="tbl_1" style="text-align: left; width:2%;">..</th>
                                     <th class="tbl_1" style="text-align: left; width:2%;">..</th>
-                                    <td class="tbl_1" style="width:35%;">{{ $show_data->name_bn }}</td>
+                                    <td class="tbl_1" style="width:40%;">{{ $show_data->name_bn }}</td>
                                 </tr>
                                 <tr class="tbl_1">
                                     <th class="tbl_1" style="text-align: left;">২</th>
@@ -160,7 +160,7 @@
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <td class="tbl_1">
                                         @foreach ($nomini as $n)
-                                            <span>{{$n->name_of_heirs}},</span>
+                                            <span>{{$n->name_of_heirs}} ({{$n->relation}}),</span>
                                         @endforeach
                                     </td>
                                 </tr>
@@ -178,10 +178,10 @@
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <td class="tbl_1">  
                                         @php
-                                            $birthDate = $show_data->birth_date;
-                                            //$age = \Carbon\Carbon::parse($birthDate)->age;
+                                            $Born = \Carbon\Carbon::create($show_data->birth_date);
+                                            $Age = $Born->diff(\Carbon\Carbon::now())->format('%d দিন, %m মাস, %y বছর');
                                         @endphp
-                                        দিন: {{ date('d',strtotime($birthDate)) }}, মাস: {{ date('F',strtotime($birthDate)) }}, সাল:{{ date('Y',strtotime($birthDate)) }}
+                                        {{$Age}}
                                     </td>
                                 </tr>
                                 <tr class="tbl_1">
@@ -205,7 +205,11 @@
                                     <th class="tbl_1" style="text-align: left;">কাষ্টম সরকার লাইসেন্স মেয়াদ (সর্বশেষ  নবায়নকৃত)</th>
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <th class="tbl_1" style="text-align: left;">..</th>
-                                    <td class="tbl_1">{{ $show_data->exp_date }}</td>
+                                    <td class="tbl_1">
+                                        @if($show_data->exp_date)
+                                            {{\Carbon\Carbon::parse($show_data->exp_date)->format('d/m/Y')}}
+                                        @endif
+                                    </td>
                                 </tr>
                                 <tr class="tbl_1">
                                     <th class="tbl_1" style="text-align: left;">১০</th>
@@ -215,7 +219,15 @@
                                     </th>
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <th class="tbl_1" style="text-align: left;">..</th>
-                                    <td class="tbl_1">{{ $show_data->prottoyon == 0?"আছে":"নাই" }}</td>
+                                    <td class="tbl_1">
+                                        {{-- @if($show_data->prottoyon==0)
+                                            প্রযোজ্য নয়
+                                        @elseif($show_data->prottoyon==1)
+                                            "আছে"
+                                        @else
+                                            "নাই"
+                                        @endif --}}
+                                    </td>
                                 </tr>
                                 <tr class="tbl_1">
                                     <th class="tbl_1" style="text-align: left;">১১</th>
@@ -229,7 +241,7 @@
                                     <th class="tbl_1" style="text-align: left;">ঠিকানা (ক) বর্তমান</th>
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <th class="tbl_1" style="text-align: left;">..</th>
-                                    <td class="tbl_1">{{ $show_data->present_address }}</td>
+                                    <td class="tbl_1">{{ $show_data->present_address }} ({{ $show_data->personal_phone }})</td>
                                 </tr>
                                 <tr class="tbl_1">
                                     <th class="tbl_1" style="text-align: left;"></th>
@@ -237,7 +249,7 @@
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <td class="tbl_1">
-                                            {{ $show_data->village }}, {{ $show_data->upazila }}, {{ $show_data->district }}
+                                            {{ $show_data->village }}, {{ $show_data->post_office }}, {{ $show_data->upazila }}, {{ $show_data->district }}
                                     </td>
                                 </tr>
                                 <tr class="tbl_1">

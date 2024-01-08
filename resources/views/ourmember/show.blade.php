@@ -263,7 +263,7 @@
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <td class="tbl_1">
-                                            {{ $show_data->village }}, {{ $show_data->upazila }}, {{ $show_data->district }}
+                                            {{ $show_data->village }}, {{ $show_data->post_office }}, {{ $show_data->upazila }}, {{ $show_data->district }}
                                     </td>
                                 </tr>
                                 <tr class="tbl_1">
