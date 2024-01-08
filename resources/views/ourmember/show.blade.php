@@ -194,10 +194,10 @@
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <td class="tbl_1">  
                                         @php
-                                            $birthDate = $show_data->birth_date;
-                                            //$age = \Carbon\Carbon::parse($birthDate)->age;
+                                            $Born = \Carbon\Carbon::create($show_data->birth_date);
+                                            $Age = $Born->diff(\Carbon\Carbon::now())->format('%d দিন, %m মাস, %y বছর');
                                         @endphp
-                                        দিন: {{ date('d',strtotime($birthDate)) }}, মাস: {{ date('F',strtotime($birthDate)) }}, সাল:{{ date('Y',strtotime($birthDate)) }}
+                                        {{$Age}}
                                     </td>
                                 </tr>
                                 <tr class="tbl_1">
