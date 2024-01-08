@@ -124,9 +124,7 @@
                                 </tr>
                                 <tr>
                                     <td colspan="3" style="text-align: left;">
-                                        <p style="margin: 0px;">
-                                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; আমি - <u> {{ $show_data->name_bn }}</u> ট্রেড ইউনিয়নের সদস্য পদ লাভ/নবায়নের জন্য (RSL: {{ str_pad($show_data->renew_serial_no,5,"0",STR_PAD_LEFT)}}) এতদ্বারা আবেদন করিতেছি। আমি সতর্কতার সহিত ট্রেড ইউনিয়নের গঠনতন্ত্রের বিধানসমূহ পড়িয়াছি / পড়িয়া  শুনানো হইলে বুঝিয়াছি এবং উহা মানিয়া চলিতে প্রস্তুত রহিয়াছি।
-                                        </p>
+                                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; আমি - <u> {{ $show_data->name_bn }}</u> ট্রেড ইউনিয়নের সদস্য পদ লাভ/নবায়নের জন্য (RSL: {{ str_pad($show_data->renew_serial_no,5,"0",STR_PAD_LEFT)}}) এতদ্বারা আবেদন করিতেছি। আমি সতর্কতার সহিত ট্রেড ইউনিয়নের গঠনতন্ত্রের বিধানসমূহ পড়িয়াছি / পড়িয়া  শুনানো হইলে বুঝিয়াছি এবং উহা মানিয়া চলিতে প্রস্তুত রহিয়াছি।
                                     </td>
                                 </tr>
                                 {{-- <tr>
@@ -139,7 +137,7 @@
                 <div  class="font" style="width:800px; margin:0 auto;">
                     <form class="table_one" action="">
                         <div><b>আমার বিবরণ নীচে প্রদত্ত হইলঃ</b></div>
-                        <table  class="tbl_1" style=" width:100%; border: 1px solid; border-collapse: collapse;">
+                        <table  class="tbl_1" style=" width:100%; border: 1px solid; border-collapse: collapse; border-spacing: 0;">
                             <tbody>
                                 <tr class="tbl_1" >
                                     <th class="tbl_1" style="text-align: left; width:2%;">১</th>
@@ -279,11 +277,52 @@
                             <p style="margin: 0px;">আমি ঘোষণা করিতেছি যে,ধারা ১৯৩ অনুযায়ী আমি প্রতিষ্ঠান/প্রতিষ্ঠানপুঞ্জের অন্য কোন শ্রমিক/মালিকদের ট্রেড ইউনিয়নের সদস্য নই।</p>
                         </div>
                         <div style="text-align: end;">
-                            <div>
-                                <div>(<input type="text" class="tinput">)</div>
-                                <div style="padding-right:107px;">স্বাক্ষর </div>
-                                <div style="padding-right:23px;">তারিখ:<input type="text" class="tinput" style="width:20%;"></div>
-                            </div>
+                            
+                        </div>
+                        <div>
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td style="width:33%">
+                                        <table style="width: 100%;">
+                                            <tr>
+                                                <td><input type="text" class="tinput" style="width:70%;"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span style="padding-right: 10px;">সভাপতির স্বাক্ষর ও সীল</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>তারিখ: <input type="text" class="tinput" style="width:70%;"></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td style="width:33%">
+                                        <table style="width: 100%;">
+                                            <tr>
+                                                <td><input type="text" class="tinput" style="width:70%;"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span style="padding-right: 10px;">সাধারণ সম্পাদকের স্বাক্ষর ও সীল</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>তারিখ: <input type="text" class="tinput" style="width:70%;"></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td style="width:33%">
+                                        <table style="width: 100%;">
+                                            <tr>
+                                                <td>(<input type="text" class="tinput" style="width:80%;">)</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span style="padding-right: 10px;"> স্বাক্ষর </span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>তারিখ: <input type="text" class="tinput" style="width:70%;"></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
                     </form>
                 </div>
