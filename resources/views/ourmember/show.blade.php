@@ -233,7 +233,15 @@
                                     </th>
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <th class="tbl_1" style="text-align: left;">..</th>
-                                    <td class="tbl_1">{{ $show_data->prottoyon == 0?"আছে":"নাই" }}</td>
+                                    <td class="tbl_1">
+                                        {{-- @if($show_data->prottoyon==0)
+                                            প্রযোজ্য নয়
+                                        @elseif($show_data->prottoyon==1)
+                                            "আছে"
+                                        @else
+                                            "নাই"
+                                        @endif --}}
+                                    </td>
                                 </tr>
                                 <tr class="tbl_1">
                                     <th class="tbl_1" style="text-align: left;">১১</th>
@@ -247,7 +255,7 @@
                                     <th class="tbl_1" style="text-align: left;">ঠিকানা (ক) বর্তমান</th>
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <th class="tbl_1" style="text-align: left;">..</th>
-                                    <td class="tbl_1">{{ $show_data->present_address }}</td>
+                                    <td class="tbl_1">{{ $show_data->present_address }} ({{ $show_data->personal_phone }})</td>
                                 </tr>
                                 <tr class="tbl_1">
                                     <th class="tbl_1" style="text-align: left;"></th>

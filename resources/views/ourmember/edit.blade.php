@@ -178,8 +178,9 @@
                                         <label for="prottoyon">কর্মরত প্রতিষ্ঠান কর্তৃক প্রত্যয়ন পত্র</label>
                                         <select name="prottoyon" class="form-control form-select">
                                             <option value="">Select</option>
-                                            <option value="0" {{ old('prottoyon',$member->prottoyon)== '0' ? 'selected':''}}>Yes</option>
-                                            <option value="1" {{ old('prottoyon',$member->prottoyon)== '1' ? 'selected':''}}>No</option>
+                                            <option value="0" {{ old('prottoyon',$member->prottoyon)== '0' ? 'selected':''}}>প্রযোজ্য নয়</option>
+                                            <option value="1" {{ old('prottoyon',$member->prottoyon)== '1' ? 'selected':''}}>আছে</option>
+                                            <option value="2" {{ old('prottoyon',$member->prottoyon)== '2' ? 'selected':''}}>নাই</option>
                                         </select>
                                     </div>
                                 </div>
