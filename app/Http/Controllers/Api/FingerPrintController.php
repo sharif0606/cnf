@@ -58,9 +58,13 @@ class FingerPrintController extends Controller
         if($token=="HE68Xku985Hk"){
             $member=OurMember::where('member_serial_no',$msno)->first();
             if($member){
-                $member->finger_print=$copy;
-                $member->save();
-                $data='Saved';
+                if($member->finger_print){
+                    $data='This member is already registered';
+                }else{
+                    $member->finger_print=$copy;
+                    $member->save();
+                    $data='Saved';
+                }
             }
         }
 
