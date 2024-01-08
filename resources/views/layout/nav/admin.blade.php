@@ -71,35 +71,42 @@
         </ul>
     </li>
     
-    <li class="submenu-item sidebar-item has-sub">
-        <a href="#" class='sidebar-link'><i class="bi bi-people-fill"></i> <span>{{__('Our Members')}}</span></a>
-        <ul class="submenu">
-            <li class="py-1"><a href="{{route(currentUser().'.ourMember.index')}}">{{__('Applied Member')}}</a></li>
-            <li class="py-1"><a href="{{route(currentUser().'.approve_member')}}">{{__('Approved Member')}}</a></li>
-            <li class="py-1"><a href="{{route(currentUser().'.archive_member')}}">{{__('Archive Member')}}</a></li>
-        </ul>
+    <li class="sidebar-item">
+        <a href="{{route(currentUser().'.ourMember.index')}}" class='sidebar-link'><i class="bi bi-people-fill"></i> <span>{{__('Applied Member')}}</span></a>
     </li>
-    <li class="submenu-item sidebar-item has-sub">
+    <li class="sidebar-item">
+        <a href="{{route(currentUser().'.approve_member')}}" class='sidebar-link'><i class="bi bi-people-fill"></i> <span>{{__('Approved Member')}}</span></a>
+    </li>
+    <li class="sidebar-item">
+        <a href="{{route(currentUser().'.archive_member')}}" class='sidebar-link'><i class="bi bi-people-fill"></i> <span>{{__('Archive Member')}}</span></a>
+    </li>
+    <li class="sidebar-item">
+        <a href="{{route(currentUser().'.feeCollection.index')}}" class='sidebar-link'><i class="bi bi-people-fill"></i> <span>{{__('Fees Collection List')}}</span></a>
+    </li>
+    <li class="sidebar-item">
+        <a href="{{route(currentUser().'.feeCollection.create')}}" class='sidebar-link'><i class="bi bi-people-fill"></i> <span>{{__('Pay Now')}}</span></a>
+    </li>
+    
+    {{-- <li class="submenu-item sidebar-item has-sub">
         <a href="#" class='sidebar-link'><i class="bi bi-people-fill"></i> <span>{{__('Committees & Forums')}}</span></a>
         <ul class="submenu">
             <li class="py-1"><a href="{{route(currentUser().'.committeeSession.index')}}">{{__('Committee Session')}}</a></li>
             <li class="py-1"><a href="{{route(currentUser().'.foundCommittee.index')}}">{{__('Foundind Committees')}}</a></li>
             <li class="py-1"><a href="{{route(currentUser().'.exeCommittee.index')}}">{{__('Executive Committee')}}</a></li>
         </ul>
-    </li>
-    <li class="submenu-item sidebar-item has-sub">
+    </li> --}}
+    {{-- <li class="submenu-item sidebar-item has-sub">
         <a href="#" class='sidebar-link'><i class="bi bi-telephone-fill"></i> <span>{{__('Contact Us')}}</span></a>
         <ul class="submenu">
             <li class="py-1"><a href="{{route(currentUser().'.creason.index')}}">{{__('Website')}}</a></li>
             <li class="py-1"><a href="{{route(currentUser().'.contact.index')}}">{{__('Website Contact List')}}</a></li>
             <li class="py-1"><a href="{{route(currentUser().'.mcreason.index')}}">{{__('Member Portal')}}</a></li>
         </ul>
-    </li>
+    </li> --}}
     <li class="submenu-item sidebar-item has-sub">
         <a href="#" class='sidebar-link'><i class="bi bi-telephone-fill"></i> <span>{{__('Payment')}}</span></a>
         <ul class="submenu">
             <li class="py-1"><a href="{{route(currentUser().'.ppurpose.index')}}">{{__('Fees')}}</a></li>
-            <li class="py-1"><a href="{{route(currentUser().'.feeCollection.index')}}">{{__('Fees Collection')}}</a></li>
         </ul>
     </li>
 </ul>
