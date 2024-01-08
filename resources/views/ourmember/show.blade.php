@@ -176,7 +176,7 @@
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <td class="tbl_1">
                                         @foreach ($nomini as $n)
-                                            <span>{{$n->name_of_heirs}},</span>
+                                            <span>{{$n->name_of_heirs}} ({{$n->relation}}),</span>
                                         @endforeach
                                     </td>
                                 </tr>
