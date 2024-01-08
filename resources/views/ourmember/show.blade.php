@@ -97,7 +97,13 @@
                                 <tr>
                                     <th style="text-align: left; width:10%;">তারিখ</th>
                                     <td style="text-align: left;"><input type="text" class="tinput"></td>
-                                    <td rowspan="5" style="text-align: right;"><img src='{{asset('uploads/memberImage/'.$show_data->image)}}' height="150px" width="auto"></td>
+                                    <td rowspan="5" style="text-align: right;">
+                                        <figure>
+                                            <img src='{{asset('uploads/memberImage/'.$show_data->image)}}' height="150px" width="auto">
+                                            <figcaption>সদস্য নং: {{$show_data->member_serial_no}}</figcaption>
+                                          </figure>
+                                        
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th colspan="2" style="text-align: left;">বরাবর,</th>

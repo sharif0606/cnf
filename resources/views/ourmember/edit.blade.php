@@ -286,10 +286,23 @@
                                             <option value="0"{{ old('approvedstatus',$member->approvedstatus)=='0' ? 'selected':''}}>অননুমোদিত</option>
                                             @elseif(currentUser()=='chairman')
                                             <option value="2" {{ old('approvedstatus',$member->approvedstatus)=='2' ? 'selected':''}}> অনুমোদিত</option>
-                                            <option value="0"{{ old('approvedstatus',$member->approvedstatus)=='0' ? 'selected':''}}>অননুমোদিত</option>
+                                            <option value="0" {{ old('approvedstatus',$member->approvedstatus)=='0' ? 'selected':''}}>অননুমোদিত</option>
                                             @else
                                             <option value="0"{{ old('approvedstatus',$member->approvedstatus)=='0' ? 'selected':''}}>অননুমোদিত</option>
                                             @endif
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="date">অনুমোদন</label>
+                                        <select name="status" id="" class="form-control">
+                                            <option value="">All</option>
+                                            <option value="1" {{ old('status',$member->status)=='1' ? 'selected':''}}>Active</option>
+                                            <option value="2" {{ old('status',$member->status)=='2' ? 'selected':''}}>Owner</option>
+                                            <option value="3" {{ old('status',$member->status)=='3' ? 'selected':''}}>Retired</option>
+                                            <option value="4" {{ old('status',$member->status)=='4' ? 'selected':''}}>Late</option>
+                                            <option value="5" {{ old('status',$member->status)=='5' ? 'selected':''}}>Cancelled</option>
                                         </select>
                                     </div>
                                 </div>
