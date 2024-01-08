@@ -85,7 +85,7 @@
                 </style>
                 <div class="font"  style="width:800px; margin:0 auto;">
                     <form action="">
-                        <table class = "gfg" style=" width:100%">
+                        <table class = "gfg" style=" width:100%; border-spacing: 0;">
                             <tbody >
                                 <tr>
                                     <th colspan="3" style="text-align: center;">
@@ -97,12 +97,11 @@
                                 <tr>
                                     <th style="text-align: left; width:10%;">তারিখ</th>
                                     <td style="text-align: left;"><input type="text" class="tinput"></td>
-                                    <td rowspan="5" style="text-align: right;">
-                                        <figure>
+                                    <td rowspan="7" style="text-align: right;">
+                                        <figure style="margin-bottom:0">
                                             <img src='{{asset('uploads/memberImage/'.$show_data->image)}}' height="150px" width="auto">
-                                            <figcaption style="text-align: left">সদস্য নং: {{ str_pad($show_data->member_serial_no,5,"0",STR_PAD_LEFT)}}</figcaption>
-                                          </figure>
-                                        
+                                            <figcaption style="text-align: center">সদস্য নং: {{ str_pad($show_data->member_serial_no,5,"0",STR_PAD_LEFT)}}</figcaption>
+                                        </figure>
                                     </td>
                                 </tr>
                                 <tr>
@@ -121,7 +120,7 @@
                                     <td colspan="2">১নং জেটি গেইট, জামে মসজিদ সংলগ্ন, বারিক বিল্ডিং, চট্টগ্রাম </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="3" style="text-align: left;">জনাব,</td>
+                                    <td colspan="2" style="text-align: left;">জনাব,</td>
                                 </tr>
                                 <tr>
                                     <td colspan="3" style="text-align: left;">

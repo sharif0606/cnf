@@ -295,7 +295,7 @@
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-6">
                                     <div class="form-group">
-                                        <label for="date">অনুমোদন</label>
+                                        <label for="date">বর্তমান অবস্থা </label>
                                         <select name="status" id="" class="form-control">
                                             <option value="">All</option>
                                             <option value="1" {{ old('status',$member->status)=='1' ? 'selected':''}}>Active</option>
