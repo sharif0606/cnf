@@ -100,7 +100,7 @@
                                     <td rowspan="5" style="text-align: right;">
                                         <figure>
                                             <img src='{{asset('uploads/memberImage/'.$show_data->image)}}' height="150px" width="auto">
-                                            <figcaption>সদস্য নং: {{$show_data->member_serial_no}}</figcaption>
+                                            <figcaption style="text-align: left">সদস্য নং: {{ str_pad($show_data->member_serial_no,5,"0",STR_PAD_LEFT)}}</figcaption>
                                           </figure>
                                         
                                     </td>
@@ -126,7 +126,7 @@
                                 <tr>
                                     <td colspan="3" style="text-align: left;">
                                         <p style="margin: 0px;">
-                                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; আমি - <u> {{ $show_data->name_bn }}</u> ট্রেড ইউনিয়নের সদস্য পদ লাভ/নবায়নের জন্য এতদ্বারা আবেদন করিতেছি। আমি সতর্কতার সহিত ট্রেড ইউনিয়নের গঠনতন্ত্রের বিধানসমূহ পড়িয়াছি / পড়িয়া  শুনানো হইলে বুঝিয়াছি এবং উহা মানিয়া চলিতে প্রস্তুত রহিয়াছি।
+                                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; আমি - <u> {{ $show_data->name_bn }}</u> ট্রেড ইউনিয়নের সদস্য পদ লাভ/নবায়নের জন্য (RSL: {{ str_pad($show_data->renew_serial_no,5,"0",STR_PAD_LEFT)}}) এতদ্বারা আবেদন করিতেছি। আমি সতর্কতার সহিত ট্রেড ইউনিয়নের গঠনতন্ত্রের বিধানসমূহ পড়িয়াছি / পড়িয়া  শুনানো হইলে বুঝিয়াছি এবং উহা মানিয়া চলিতে প্রস্তুত রহিয়াছি।
                                         </p>
                                     </td>
                                 </tr>
@@ -222,7 +222,11 @@
                                     <th class="tbl_1" style="text-align: left;">কাষ্টম সরকার লাইসেন্স মেয়াদ (সর্বশেষ  নবায়নকৃত)</th>
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <th class="tbl_1" style="text-align: left;">..</th>
-                                    <td class="tbl_1">{{ $show_data->exp_date }}</td>
+                                    <td class="tbl_1">
+                                        @if($show_data->exp_date)
+                                            {{\Carbon\Carbon::parse($show_data->exp_date)->format('d/m/Y')}}
+                                        @endif
+                                    </td>
                                 </tr>
                                 <tr class="tbl_1">
                                     <th class="tbl_1" style="text-align: left;">১০</th>
