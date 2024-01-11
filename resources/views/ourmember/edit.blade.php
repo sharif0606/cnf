@@ -263,20 +263,38 @@
                                         <input type="file" class="form-control" name="applicant_signature">
                                     </div>
                                 </div>
-                                <div class="col-md-2 col-sm-4">
-                                    <div class="form-group">
-                                        <label for="img">ছবি</label>
-                                        <input type="file" class="form-control" name="image">
-                                        <input type="hidden" id="base_image" name="base_image">
+                                @if ($member->image != '')
+                                    <div class="col-md-2 col-sm-4">
+                                        <div class="form-group">
+                                            <label for="img">ছবি</label>
+                                            <input type="file" class="form-control" name="image" disabled>
+                                            <input type="hidden" id="base_image" name="base_image">
+                                            <span class="text-danger">Image already uploaded</span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-1 col-sm-2">
-                                    <div class="form-group mt-4">
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#webcammodal">
-                                            Webcam
-                                        </button>
+                                    <div class="col-md-1 col-sm-2">
+                                        <div class="form-group mt-4">
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#webcammodal" disabled>
+                                                Webcam
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
+                                @else
+                                    <div class="col-md-2 col-sm-4">
+                                        <div class="form-group">
+                                            <label for="img">ছবি</label>
+                                            <input type="file" class="form-control" name="image">
+                                            <input type="hidden" id="base_image" name="base_image">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 col-sm-2">
+                                        <div class="form-group mt-4">
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#webcammodal">
+                                                Webcam
+                                            </button>
+                                        </div>
+                                    </div>
+                                @endif
                                 <div class="col-lg-3 col-md-3 col-sm-6">
                                     <div class="form-group">
                                         <label for="date">অনুমোদন</label>

@@ -70,9 +70,9 @@
                                     <a href="{{route(currentUser().'.ourMember.edit',encryptor('encrypt',$p->id))}}">
                                         <i class="bi bi-pencil-square"></i>
                                     </a> &nbsp;
-                                    <a class="text-danger" href="{{route(currentUser().'.ourMember.show',encryptor('encrypt',$p->id))}}">
+                                    {{-- <a class="text-danger" href="{{route(currentUser().'.ourMember.show',encryptor('encrypt',$p->id))}}">
                                         <i class="bi bi-file-earmark-pdf-fill"></i>
-                                    </a>&nbsp;
+                                    </a>&nbsp; --}}
                                     @if(currentUser()=="generalsecretary")
                                     <a class="btn btn-sm btn-success" href="{{route(currentUser().'.to_approve_member',encryptor('encrypt',$p->id))}}">
                                         approval
