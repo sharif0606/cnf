@@ -263,7 +263,7 @@
                                         <input type="file" class="form-control" name="applicant_signature">
                                     </div>
                                 </div>
-                                @if ($member->image != '')
+                                @if ($member->image_change_approve = '0')
                                     <div class="col-md-2 col-sm-4">
                                         <div class="form-group">
                                             <label for="img">ছবি</label>
