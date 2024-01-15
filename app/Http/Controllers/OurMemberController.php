@@ -262,6 +262,12 @@ class OurMemberController extends Controller
         $nomini = heirship::where('member_id',$show_data->id)->get();
         return view('ourmember.approvalShow',compact('show_data','nomini'));
     }
+    public function general_show($id)
+    {
+        $show_data=OurMember::findOrFail(encryptor('decrypt',$id));
+        $nomini = heirship::where('member_id',$show_data->id)->get();
+        return view('ourmember.approvalShow',compact('show_data','nomini'));
+    }
 
     public function approvalCancel($id)
     {
