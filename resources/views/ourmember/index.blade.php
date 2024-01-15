@@ -36,7 +36,7 @@
                                 </div>
                                 <div class="col-sm-2">
                                     <button class="btn btn-sm btn-info" type="submit">Search</button>
-                                    <a class="btn btn-sm btn-warning" href="{{route(currentUser().'.approve_member')}}">Clear</a>
+                                    <a class="btn btn-sm btn-warning" href="{{route(currentUser().'.ourMember.index')}}">Clear</a>
                                 </div>
                             </div>
                         </form>
