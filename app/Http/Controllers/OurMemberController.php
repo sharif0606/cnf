@@ -326,7 +326,10 @@ class OurMemberController extends Controller
             $member->member_serial_no=$request->member_serial_no;
             $member->approval_date=$request->approval_date;
             $member->role_id=5;
-            $member->approvedstatus=$request->approvedstatus;
+            
+            if($request->approvedstatus)
+                $member->approvedstatus=$request->approvedstatus;
+
             if($request->has('password') && $request->password)
                 $member->password=Hash::make($request->password);
 
