@@ -20,7 +20,7 @@
                                         <table class="table table-bordered mb-0">
                                             <tr>
                                                 <th>Date</th>
-                                                <td><input type="date" class="form-control" name="voucher_date" value="{{old('voucher_date')}}"></td>
+                                                <td><input required type="date" class="form-control" name="voucher_date" value="{{old('voucher_date')}}"></td>
                                             </tr>
                                             <tr>
                                                 <th>Member ID</th>
@@ -37,11 +37,11 @@
                                             </tr>
                                             <tr>
                                                 <th>Receipt No</th>
-                                                <td><input type="text" class="form-control" name="receipt_no" value="{{old('receipt_no')}}"></td>
+                                                <td><input type="text" required class="form-control" name="receipt_no" value="{{old('receipt_no')}}"></td>
                                             </tr>
                                             <tr>
                                                 <th>Year</th>
-                                                <td><input type="text" class="form-control" name="year" value="{{old('year')}}"></td>
+                                                <td><input type="text" required class="form-control" name="year" value="{{old('year')}}"></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -63,10 +63,12 @@
                                             <tbody>
                                                 @forelse ($fees as $f)
                                                     <tr>
-                                                        <td><input type="text" class="form-control" name="code[]" value="{{$f->code}}" readonly><input type="hidden" name="fee_id[]" value="{{$f->id}}"></td>
+                                                        <td><input type="text" class="form-control" name="code[]" value="{{$f->code}}" readonly>
+                                                            <input type="hidden" name="fee_id[]" value="{{$f->id}}">
+                                                        </td>
                                                         <td><input type="text" class="form-control" name="fee_name[]" value="{{$f->name}}" readonly></td>
                                                         <td><input type="text" class="form-control fee_amount" name="amount[]"></td>
-                                                        <td><button class="btn btn-sm btn-danger remove-row">Remove</button></td>
+                                                        <td><button type="button" class="btn btn-sm btn-danger remove-row">Remove</button></td>
                                                     </tr>
                                                 @empty
                                                     <tr>
@@ -100,7 +102,7 @@
 @push('scripts')
 <script>
 $(document).ready(function() {
-    $('#member_serial_no').change(function() {
+    $('#member_serial_no').keyup(function() {
         var member_serial_no = $(this).val();
         if (memberId !== '') {
             $.ajax({

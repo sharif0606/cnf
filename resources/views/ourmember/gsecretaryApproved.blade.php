@@ -77,9 +77,13 @@
                                         <i class="bi bi-pencil-square"></i>
                                     </a> &nbsp;
                                     @if(currentUser() == 'chairman')
-                                    <a class="btn btn-sm btn-success" href="{{route(currentUser().'.to_approve_member',encryptor('encrypt',$p->id))}}">
-                                        approval
-                                    </a>&nbsp;
+                                        @if($p->fee_collection_last?->year < date('Y'))
+                                            <button type="button" class="btn btn-danger"> {{date('Y')}} not paid </button>
+                                        @else
+                                            <a class="btn btn-sm btn-success" href="{{route(currentUser().'.to_approve_member',encryptor('encrypt',$p->id))}}">
+                                                approval
+                                            </a>&nbsp;
+                                        @endif
                                     @endif
                                     <!-- <a href="javascript:void()" onclick="$('#form{{$p->id}}').submit()">
                                         <i class="bi bi-trash"></i>

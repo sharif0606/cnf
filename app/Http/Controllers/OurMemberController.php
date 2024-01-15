@@ -182,6 +182,9 @@ class OurMemberController extends Controller
                 $data = rand(1111,9999).time().'.'.$request->image->extension();
                 $request->image->move(public_path('uploads/memberImage'), $data);
                 $member->image=$data;
+                $member->image_change_approve= 0;
+            }else{
+                $member->image_change_approve= 1;
             }
             
             $member->status=1;
@@ -254,6 +257,12 @@ class OurMemberController extends Controller
     }
 
     public function approval($id)
+    {
+        $show_data=OurMember::findOrFail(encryptor('decrypt',$id));
+        $nomini = heirship::where('member_id',$show_data->id)->get();
+        return view('ourmember.approvalShow',compact('show_data','nomini'));
+    }
+    public function general_show($id)
     {
         $show_data=OurMember::findOrFail(encryptor('decrypt',$id));
         $nomini = heirship::where('member_id',$show_data->id)->get();
@@ -342,6 +351,7 @@ class OurMemberController extends Controller
                 $data = $member->id.$member->member_serial_no.'.'.$request->image->extension();
                 $request->image->move(public_path('uploads/memberImage'), $data);
                 $member->image=$data;
+                $member->image_change_approve= 0;
             }elseif(!empty($request->base_image)){
                 $img = $request->base_image;
                 $folderPath = public_path('uploads/memberImage/');
@@ -357,6 +367,7 @@ class OurMemberController extends Controller
                 //Storage::put($file, $image_base64);
                 file_put_contents( $file, $image_base64 );
                 $member->image=$fileName;
+                $member->image_change_approve= 0;
             }
             
             $member->status= $request->status;
