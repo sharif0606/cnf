@@ -52,4 +52,7 @@ class OurMember extends Model
     public function heirs(){
         return $this->hasMany(heirship::class,'member_id','id');
     }
+    public function fee_collection_last(){
+        return $this->hasOne(fee_collection::class,'member_id','id')->latest();
+    }
 }
