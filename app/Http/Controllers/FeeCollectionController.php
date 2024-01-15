@@ -51,38 +51,43 @@ class FeeCollectionController extends Controller
     public function store(Request $request)
     {
         try{
-            $fee=new fee_collection;
-            $fee->member_id=$request->member_id;
-            $fee->vhoucher_no='VR-'.Carbon::now()->format('m-y').'-'. str_pad((fee_collection::whereYear('created_at', Carbon::now()->year)->count() + 1),4,"0",STR_PAD_LEFT);
-            $fee->date=$request->voucher_date;
-            $fee->national_id=$request->nid;
-            $fee->name=$request->member_name;
-            $fee->receipt_no=$request->receipt_no;
-            $fee->year=$request->year;
-            $fee->total_amount=$request->total_fees;
-            if($fee->save()){
-                if($request->amount){
-                    foreach($request->amount as $i=>$amount){
-                        if($amount > 0){
-                            $mc=new fee_collection_detail;
-                            $mc->fee_collections_id=$fee->id;
-                            $mc->fee_id=$request->fee_id[$i];
-                            $mc->code=$request->code[$i];
-                            $mc->name=$request->fee_name[$i];
-                            $mc->amount=$request->amount[$i];
-                            $mc->save();
+            $oldfee=fee_collection::where('receipt_no',$request->receipt_no)->where('year',$request->year)->where('member_id',$request->member_id)->exists();
+            if($oldfee){
+                Toastr::error('This member has already paid this year under this invoice!');
+                return redirect()->route(currentUser().'.feeCollection.index');
+            }else{
+                $fee=new fee_collection;
+                $fee->member_id=$request->member_id;
+                $fee->vhoucher_no='VR-'.Carbon::now()->format('m-y').'-'. str_pad((fee_collection::whereYear('created_at', Carbon::now()->year)->count() + 1),4,"0",STR_PAD_LEFT);
+                $fee->date=$request->voucher_date;
+                $fee->national_id=$request->nid;
+                $fee->name=$request->member_name;
+                $fee->receipt_no=$request->receipt_no;
+                $fee->year=$request->year;
+                $fee->total_amount=$request->total_fees;
+                if($fee->save()){
+                    if($request->amount){
+                        foreach($request->amount as $i=>$amount){
+                            if($amount > 0){
+                                $mc=new fee_collection_detail;
+                                $mc->fee_collections_id=$fee->id;
+                                $mc->fee_id=$request->fee_id[$i];
+                                $mc->code=$request->code[$i];
+                                $mc->name=$request->fee_name[$i];
+                                $mc->amount=$request->amount[$i];
+                                $mc->save();
+                            }
                         }
                     }
-                }
-                
-                $msln_renew=OurMember::find($request->member_id);
-                $msln_renew->renew_serial_no=OurMember::max('renew_serial_no')+1;
-                $msln_renew->save();
+                    
+                    $msln_renew=OurMember::find($request->member_id);
+                    $msln_renew->renew_serial_no=OurMember::max('renew_serial_no')+1;
+                    $msln_renew->save();
 
-                Toastr::success('Create Successfully!');
-                return redirect()->route(currentUser().'.feeCollection.index');
+                    Toastr::success('Create Successfully!');
+                    return redirect()->route(currentUser().'.feeCollection.index');
+                }
             }
-            
         }
         catch (Exception $e){
             Toastr::warning('Please try Again!');
