@@ -25,7 +25,7 @@
                                             </tr>
                                             <tr>
                                                 <th>Date</th>
-                                                <td><input type="date" class="form-control" name="voucher_date" value="{{old('voucher_date',$feeDetails->date)}}"></td>
+                                                <td><input type="date" class="form-control" required name="voucher_date" value="{{old('voucher_date',$feeDetails->date)}}"></td>
                                             </tr>
                                             <tr>
                                                 <th>Member ID</th>
@@ -42,11 +42,11 @@
                                             </tr>
                                             <tr>
                                                 <th>Receipt No</th>
-                                                <td><input type="text" class="form-control" name="receipt_no" value="{{old('receipt_no',$feeDetails->receipt_no)}}"></td>
+                                                <td><input type="text" class="form-control" required name="receipt_no" value="{{old('receipt_no',$feeDetails->receipt_no)}}"></td>
                                             </tr>
                                             <tr>
                                                 <th>Year</th>
-                                                <td><input type="text" class="form-control" name="year" value="{{old('year',$feeDetails->year)}}"></td>
+                                                <td><input type="text" class="form-control" required name="year" value="{{old('year',$feeDetails->year)}}"></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -71,7 +71,7 @@
                                                         <td><input type="text" class="form-control" name="code[]" value="{{$f->code}}" readonly><input type="hidden" name="fee_id[]" value="{{$f->id}}"></td>
                                                         <td><input type="text" class="form-control" name="fee_name[]" value="{{$f->name}}" readonly></td>
                                                         <td><input type="text" class="form-control fee_amount" name="amount[]" value="@if(isset($feeCollectionDetails[$f->id])){{$feeCollectionDetails[$f->id]}} @endif"></td>
-                                                        <td><button class="btn btn-sm btn-danger remove-row">Remove</button></td>
+                                                        <td><button type="button" class="btn btn-sm btn-danger remove-row">Remove</button></td>
                                                     </tr>
                                                 @empty
                                                     <tr>
