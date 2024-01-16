@@ -372,8 +372,7 @@ class OurMemberController extends Controller
             
             $member->status= $request->status;
 
-            if($member->save()){
-                
+            if($member->save()){   
                 if($request->name_of_heirs){
                     foreach($request->name_of_heirs as $i=>$heirs){
                         if($heirs){
@@ -388,7 +387,6 @@ class OurMemberController extends Controller
                         }
                     }
                 }
-                
                 Toastr::success('Updated Successfully!');
                 return redirect()->route(currentUser().'.ourMember.index');
             }else{
@@ -433,7 +431,7 @@ class OurMemberController extends Controller
             }
         }
         catch (Exception $e){
-            dd($e);
+            //dd($e);
             return back()->withInput();
             Toastr::warning('Please try Again!');
 
@@ -453,7 +451,7 @@ class OurMemberController extends Controller
             }
         }
         catch (Exception $e){
-            dd($e);
+            //dd($e);
             return back()->withInput();
             Toastr::warning('Please try Again!');
 
