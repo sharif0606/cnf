@@ -96,15 +96,15 @@ class OurMemberController extends Controller
     public function archiveMember(Request $request)
     {
 
-        $ourmember=OurMember::where('approvedstatus',2)->orderBy('member_serial_no');
+        $ourmember=OurMember::orderBy('member_serial_no');
         if($request->member_serial_no)
             $ourmember=$ourmember->where('member_serial_no',$request->member_serial_no);
         if($request->member_serial_no_new)
             $ourmember=$ourmember->where('member_serial_no_new',$request->member_serial_no_new);
         if($request->name_bn)
             $ourmember=$ourmember->where('name_bn','like','%'.$request->name_bn.'%');
-        if($request->nid)
-            $ourmember=$ourmember->where('nid','like','%'.$request->nid.'%');
+        if($request->renew_serial_no)
+            $ourmember=$ourmember->where('renew_serial_no',$request->renew_serial_no);
         if($request->status)
             $ourmember=$ourmember->where('status',$request->status);
 

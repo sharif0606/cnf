@@ -26,7 +26,7 @@
                                         <input type="text" name="name_bn" value="{{isset($_GET['name_bn'])?$_GET['name_bn']:''}}" placeholder="Member Name" class="form-control">
                                     </div>
                                     <div class="col-sm-2">
-                                        <input type="text" name="nid" value="{{isset($_GET['nid'])?$_GET['nid']:''}}" placeholder="NID" class="form-control">
+                                        <input type="text" name="renew_serial_no" value="{{isset($_GET['renew_serial_no'])?$_GET['renew_serial_no']:''}}" placeholder="RS NO" class="form-control">
                                     </div>
                                     <div class="col-sm-2">
                                         <select name="status" id="" class="form-control">
