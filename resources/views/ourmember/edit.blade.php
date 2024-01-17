@@ -75,7 +75,7 @@
                                 <div class="col-lg-3 col-md-3 col-sm-6">
                                     <div class="form-group">
                                         <label for="birth">জন্ম তারিখ</label>
-                                        <input type="text" class="form-control datepicker" name="birthDate" value="{{ old('birthDate', \Carbon\Carbon::parse($member->birth_date)->format('d-m-Y') ) }}" placeholder="dd-mm-yyyy">
+                                        <input type="date" class="form-control" name="birthDate" value="{{old('birthDate',$member->birth_date)}}">
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-6">
