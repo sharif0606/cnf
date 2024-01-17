@@ -20,7 +20,7 @@
                                         <table class="table table-bordered mb-0">
                                             <tr>
                                                 <th>Date</th>
-                                                <td><input required type="date" class="form-control" name="voucher_date" value="{{old('voucher_date')}}"></td>
+                                                <td><input required type="text" id="toDayDate" class="form-control" name="voucher_date" value="{{old('voucher_date')}}" placeholder="dd-mm-yyyy"></td>
                                             </tr>
                                             <tr>
                                                 <th>Member ID</th>
@@ -100,6 +100,17 @@
 </section>
 @endsection
 @push('scripts')
+<script>
+    $(function() {
+      $("#toDayDate").datepicker({
+        dateFormat: "dd-mm-yy",
+        onSelect: function(dateText, inst) {
+        }
+      });
+
+      $("#toDayDate").datepicker("setDate", new Date());
+    });
+</script>
 <script>
 $(document).ready(function() {
     $('#member_serial_no').keyup(function() {

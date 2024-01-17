@@ -71,9 +71,13 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-6">
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label for="birth">জন্ম তারিখ</label>
                                         <input type="date" class="form-control" name="birthDate" value="{{old('birthDate')}}">
+                                    </div> --}}
+                                    <div class="form-group">
+                                        <label for="birth">জন্ম তারিখ</label>
+                                        <input type="text" class="form-control datepicker" name="birthDate" value="{{ old('birthDate' ) }}" placeholder="dd-mm-yyyy">
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-6">

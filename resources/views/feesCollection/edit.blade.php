@@ -25,7 +25,7 @@
                                             </tr>
                                             <tr>
                                                 <th>Date</th>
-                                                <td><input type="date" class="form-control" required name="voucher_date" value="{{old('voucher_date',$feeDetails->date)}}"></td>
+                                                <td><input type="text" class="form-control datepicker" required name="voucher_date" value="{{ old('voucher_date', \Carbon\Carbon::parse($feeDetails->date)->format('d-m-Y') ) }}" placeholder="dd-mm-yyyy"></td>
                                             </tr>
                                             <tr>
                                                 <th>Member ID</th>
@@ -103,6 +103,7 @@
 </section>
 @endsection
 @push('scripts')
+
 <script>
 $(document).ready(function() {
     $('#memberId').change(function() {

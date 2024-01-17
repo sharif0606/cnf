@@ -59,7 +59,7 @@ class FeeCollectionController extends Controller
                 $fee=new fee_collection;
                 $fee->member_id=$request->member_id;
                 $fee->vhoucher_no='VR-'.Carbon::now()->format('m-y').'-'. str_pad((fee_collection::whereYear('created_at', Carbon::now()->year)->count() + 1),4,"0",STR_PAD_LEFT);
-                $fee->date=$request->voucher_date;
+                $fee->date=date('Y-m-d', strtotime($request->voucher_date));
                 $fee->national_id=$request->nid;
                 $fee->name=$request->member_name;
                 $fee->receipt_no=$request->receipt_no;
@@ -138,7 +138,7 @@ class FeeCollectionController extends Controller
         try{
             $fee= fee_collection::findOrFail(encryptor('decrypt',$id));
             $fee->member_id=$request->member_id;
-            $fee->date=$request->voucher_date;
+            $fee->date=date('Y-m-d', strtotime($request->voucher_date));
             $fee->national_id=$request->nid;
             $fee->name=$request->member_name;
             $fee->receipt_no=$request->receipt_no;
