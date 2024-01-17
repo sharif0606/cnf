@@ -73,6 +73,9 @@
                                     <a class="text-danger" href="{{route(currentUser().'.ourMember.show',encryptor('encrypt',$p->id))}}">
                                         <i class="bi bi-file-earmark-pdf-fill"></i>
                                     </a>&nbsp;
+                                    <a class="text-danger" href="{{route(currentUser().'.trans_history',$p->id)}}">
+                                        <i class="bi bi-currency-dollar"></i>
+                                    </a>&nbsp;
                                     @if(currentUser()=="generalsecretary")
                                     <a class="btn btn-sm btn-success" href="{{route(currentUser().'.to_approve_member',encryptor('encrypt',$p->id))}}">
                                         approval

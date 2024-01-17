@@ -161,6 +161,7 @@ Route::group(['middleware'=>isAdmin::class],function(){
         Route::post('menu_save_update/{id?}', [frontMenu::class, 'save_update'])->name('admin.front_menu.save');
         Route::get('front_menu/mss', [frontMenu::class, 'mss'])->name('admin.front_menu.mss');
         Route::get('front_menu/delete/{id}', [frontMenu::class, 'destroy'])->name('admin.front_menu.detroy');
+        Route::get('trans-history/{id}', [member::class, 'transHistory'])->name('admin.trans_history');
 
         //member search
         Route::get('/member-search', [foundCommittee::class,'search'])->name('admin.member_search');
@@ -183,6 +184,7 @@ Route::group(['middleware'=>isChairman::class],function(){
         Route::get('to-approve-cancel/{id}', [member::class, 'approvalCancel'])->name('chairman.to_approve_cancel_member');
         Route::post('to-approve-cancel-update/{id}', [member::class, 'memberApprovCancel'])->name('chairman.to_approve_cancel');
         Route::resource('users',user::class,['as'=>'chairman']);
+        Route::get('trans-history/{id}', [member::class, 'transHistory'])->name('chairman.trans_history');
     });
 });
 
@@ -196,6 +198,7 @@ Route::group(['middleware'=>isGeneralSecretary::class],function(){
         Route::get('to-approve/{id}', [member::class, 'approval'])->name('generalsecretary.to_approve_member');
         Route::post('to-approve-update/{id}', [member::class, 'memberApprov'])->name('generalsecretary.to_approve_update');
         Route::resource('users',user::class,['as'=>'generalsecretary']);
+        Route::get('trans-history/{id}', [member::class, 'transHistory'])->name('generalsecretary.trans_history');
 
     });
 });

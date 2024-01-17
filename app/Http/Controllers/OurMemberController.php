@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\OurMember\AddNewRequest;
 use App\Http\Requests\OurMember\UpdateRequest;
 use App\Http\Traits\ImageHandleTraits;
+use App\Models\fee_collection;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Hash;
 use Exception;
@@ -254,6 +255,11 @@ class OurMemberController extends Controller
         $show_data=OurMember::findOrFail(encryptor('decrypt',$id));
         $nomini = heirship::where('member_id',$show_data->id)->get();
         return view('ourmember.show',compact('show_data','nomini'));
+    }
+    public function transHistory($id)
+    {
+        $data=fee_collection::where('member_id',$id)->get();
+        return view('ourmember.transhistory',compact('data'));
     }
 
     public function approval($id)
