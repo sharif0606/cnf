@@ -108,7 +108,7 @@
                         </tbody>
                     </table>
                     <div class="my-3">
-                        {!! $ourmember->links()!!}
+                        {!! $ourmember->withQueryString()->links()!!}
                     </div>
                 </div>
             </div>
