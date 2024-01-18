@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthenticationController as auth;
 use App\Http\Controllers\DashboardController as dash;
 use App\Http\Controllers\Settings\UserController as user;
+use App\Http\Controllers\Settings\ProfileController as profile;
 use App\Http\Controllers\Settings\AdminUserController as admin;
 use App\Http\Controllers\Settings\Location\CountryController as country;
 use App\Http\Controllers\Settings\Location\DivisionController as division;
@@ -116,6 +117,12 @@ Route::get('/video/{slug}', [media::class,'video'])->name('video');
 Route::group(['middleware'=>isAdmin::class],function(){
     Route::prefix('admin')->group(function(){
         Route::get('/dashboard', [dash::class,'adminDashboard'])->name('admin.dashboard');
+
+        //Adnin profile
+        Route::get('/profile', [profile::class,'adminProfile'])->name('admin.profile');
+        Route::post('/profile', [profile::class,'adminProfile'])->name('admin.profile.update');
+        Route::post('/profile-update', [profile::class,'aProfileUpdate'])->name('admin.profile.up');
+
         /* settings */
         Route::resource('users',user::class,['as'=>'admin']);
         Route::resource('admin',admin::class,['as'=>'admin']);
@@ -185,6 +192,10 @@ Route::group(['middleware'=>isChairman::class],function(){
         Route::post('to-approve-cancel-update/{id}', [member::class, 'memberApprovCancel'])->name('chairman.to_approve_cancel');
         Route::resource('users',user::class,['as'=>'chairman']);
         Route::get('trans-history/{id}', [member::class, 'transHistory'])->name('chairman.trans_history');
+
+        //chairman profile
+        Route::get('/profile', [profile::class,'ownerProfile'])->name('chairman.profile');
+        Route::post('/profile', [profile::class,'ownerProfile'])->name('chairman.profile.update');
     });
 });
 
@@ -199,6 +210,10 @@ Route::group(['middleware'=>isGeneralSecretary::class],function(){
         Route::post('to-approve-update/{id}', [member::class, 'memberApprov'])->name('generalsecretary.to_approve_update');
         Route::resource('users',user::class,['as'=>'generalsecretary']);
         Route::get('trans-history/{id}', [member::class, 'transHistory'])->name('generalsecretary.trans_history');
+
+        //generalsecretary profile
+        Route::get('/profile', [profile::class,'ownerProfile'])->name('generalsecretary.profile');
+        Route::post('/profile', [profile::class,'ownerProfile'])->name('generalsecretary.profile.update');
 
     });
 });

@@ -8,8 +8,10 @@ use Illuminate\Http\Request;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Company;
+
 use App\Models\Settings\Branch;
 use App\Http\Traits\ResponseTrait;
+use App\Http\Traits\ImageHandleTraits;
 use App\Http\Requests\AdminUser\AddNewRequest;
 use App\Http\Requests\AdminUser\UpdateRequest;
 use Illuminate\Support\Facades\Hash;
@@ -17,7 +19,7 @@ use Exception;
 
 class AdminUserController extends Controller
 {
-    use ResponseTrait;
+    use ResponseTrait,ImageHandleTraits;
     /**
      * Display a listing of the resource.
      *
@@ -54,6 +56,7 @@ class AdminUserController extends Controller
             $user->email=$request->userEmail;
             $user->password=Hash::make($request->password);
             $user->role_id=1;
+            $user->created_by=currentUserId();
             if($user->save())
                 return redirect()->route(currentUser().'.admin.index')->with($this->resMessageHtml(true,null,'Successfully created'));
             else
@@ -83,6 +86,7 @@ class AdminUserController extends Controller
      */
     public function edit($id)
     {
+        
         $user=User::findOrFail(encryptor('decrypt',$id));
         return view('settings.adminusers.edit',compact('user'));
     }
@@ -96,21 +100,29 @@ class AdminUserController extends Controller
      */
     public function update(UpdateRequest $request, $id)
     {
+     
         try{
             $user=User::findOrFail(encryptor('decrypt',$id));
             $user->name=$request->userName;
             $user->contact_no=$request->contactNumber;
             $user->email=$request->userEmail;
             $user->language=$request->language;
+            $user->updated_by=currentUserId();
             if($request->has('password') && $request->password)
                 $user->password=Hash::make($request->password);
-         
+
+            $path='images/users/'.company()['company_id'];
+            if($request->has('image') && $request->image)
+                if($this->deleteImage($user->image,$path))
+                    $user->image=$this->resizeImage($request->image,$path,true,200,200,false);
+
             if($user->save())
-                return redirect()->route(currentUser().'.admin.index')->with($this->resMessageHtml(true,null,'Successfully updated'));
+            
+                    return redirect()->route(currentUser().'.admin.index')->with($this->resMessageHtml(true,null,'Successfully updated'));
             else
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
         }catch(Exception $e){
-            //dd($e);
+            // dd($e);
             return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
         }
     }

@@ -54,15 +54,32 @@
         </div>
         <div id="main">
             <header class="mb-3">
-                <div class="dropdown float-end">
+                {{-- <div class="dropdown float-end">
                     <a href="#" id="topbarUserDropdown" class="user-dropdown d-flex align-items-center dropend dropdown-toggle " data-bs-toggle="dropdown" aria-expanded="false">
                         <div class="text">
-                            <h6 class="user-dropdown-name">{{encryptor('decrypt', request()->session()->get('userName'))}} <span class="user-dropdown-status text-sm text-muted">{{currentUser()}}</span></h6>
+                            <h6 class="user-dropdown-name"> <span class="user-dropdown-status text-sm text-muted"></span></h6>
                         </div>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="topbarUserDropdown">
                         <li><a class="dropdown-item" href="#">{{__('My Account') }}</a></li>
-                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="{{route(currentUser().'.profile')}}">{{__('Profile')}}</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="{{route('logOut')}}">{{__('Logout') }}</a></li>
+                    </ul>
+                </div> --}}
+                <div class="dropdown float-end">
+                    <a href="#" id="topbarUserDropdown" class="user-dropdown d-flex align-items-center dropend dropdown-toggle " data-bs-toggle="dropdown" aria-expanded="false">
+                        <div class="avatar avatar-md2" >
+                            <img src="{{asset('images/users/'.company()['company_id'].'/'. request()->session()->get('image'))}}" alt="Avatar">
+                        </div>
+                        <div class="text">
+                            <h6 class="user-dropdown-name">{{encryptor('decrypt', request()->session()->get('userName'))}}</h6>
+                            <p class="user-dropdown-status text-sm text-muted">{{currentUser()}}</p>
+                        </div>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="topbarUserDropdown">
+                        <li><a class="dropdown-item" href="#">{{__('My Account') }}</a></li>
+                        <li><a class="dropdown-item" href="{{route(currentUser().'.profile')}}">{{__('Profile')}}</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="{{route('logOut')}}">{{__('Logout') }}</a></li>
                     </ul>

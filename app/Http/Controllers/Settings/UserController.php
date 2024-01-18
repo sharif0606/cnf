@@ -9,13 +9,14 @@ use App\Models\Role;
 use App\Models\User;
 use App\Models\Settings\Branch;
 use App\Http\Traits\ResponseTrait;
+use App\Http\Traits\ImageHandleTraits;
 use App\Http\Requests\User\AddNewRequest;
 use Illuminate\Support\Facades\Hash;
 use Exception;
 
 class UserController extends Controller
 {
-    use ResponseTrait;
+    use ResponseTrait,ImageHandleTraits;
     /**
      * Display a listing of the resource.
      *
@@ -27,6 +28,7 @@ class UserController extends Controller
         return view('settings.users.index',compact('users'));
     }
 
+
     /**
      * Show the form for creating a new resource.
      *
@@ -36,10 +38,10 @@ class UserController extends Controller
     {
         if(currentUser() == 'owner'){
             $branches=Branch::where(company())->get();
-            $roles=Role::whereIn('id',[3,4])->get();
+            $roles=Role::whereIn('id',[3,4,5])->get();
         }else{
             $branches=Branch::where(company())->get();
-            $roles=Role::where('id',4)->get();
+            $roles=Role::where('id',[4,5])->get();
         }
        
         return view('settings.users.create',compact('roles','branches'));
@@ -62,6 +64,9 @@ class UserController extends Controller
             $user->company_id=company()['company_id'];
             $user->branch_id=$request->branch_id;
             $user->role_id=$request->role_id;
+            // $user->created_by=currentUserId();
+            if($request->has('image'))
+                $user->image=$this->resizeImage($request->image,'images/users/'.company()['company_id'],true,200,200,false);
             if($user->save())
                 return redirect()->route(currentUser().'.users.index')->with($this->resMessageHtml(true,null,'Successfully Registred'));
             else
@@ -94,10 +99,10 @@ class UserController extends Controller
     {
         if(currentUser() == 'owner'){
             $branches=Branch::where(company())->get();
-            $roles=Role::whereIn('id',[3,4])->get();
+            $roles=Role::whereIn('id',[3,4,5])->get();
         }else{
             $branches=Branch::where(company())->get();
-            $roles=Role::whereIn('id',[4])->get();
+            $roles=Role::whereIn('id',[4,5])->get();
         }
         $user=User::findOrFail(encryptor('decrypt',$id));
        
@@ -123,9 +128,23 @@ class UserController extends Controller
 
             $user->branch_id=$request->branch_id;
             $user->role_id=$request->role_id;
+            // $user->updated_by=currentUserId();
+            $path='images/users/'.company()['company_id'];
+            if($request->has('image') && $request->image)
+                if($this->deleteImage($user->image,$path))
+                    $user->image=$this->resizeImage($request->image,$path,true,200,200,false);
 
             if($user->save())
-                return redirect()->route(currentUser().'.users.index')->with($this->resMessageHtml(true,null,'Successfully updated'));
+                if($user->id == currentUserId()){
+                    request()->session()->put(
+                        [
+                            'image'=>$user->image?$user->image:$user->image,
+                            'userName'=>encryptor('encrypt',$user->name),
+                        ]);
+                    return redirect()->route(currentUser().'.profile.update')->with($this->resMessageHtml(true,null,'Successfully updated'));
+                }else{
+                    return redirect()->route(currentUser().'.users.index')->with($this->resMessageHtml(true,null,'Successfully updated'));
+                }
             else
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
         }catch(Exception $e){
