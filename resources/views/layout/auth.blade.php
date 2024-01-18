@@ -25,8 +25,8 @@
     <div class="row h-100">
         <div class="col-lg-6 offset-3 col-12">
             <div id="auth-left">
-                <div class="auth-logo">
-                    <img src="{{asset('uploads/settings/header_logo/'.$setting?->header_logo)}}" width="50%" height="70px" alt="">
+                <div class="auth-logo text-center">
+                    <img src="{{asset('img/cnf.png')}}" width="25%" height="auto" alt="">
                 </div>
 
                 @yield('content')
