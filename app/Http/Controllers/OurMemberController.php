@@ -141,7 +141,7 @@ class OurMemberController extends Controller
             $member->father_name=$request->fatherName;
             $member->mother_name=$request->motherName;
             $member->spouse_name=$request->spouseName;
-            $member->birth_date=$request->birthDate;
+            $member->birth_date=date('Y-m-d', strtotime($request->birthDate));
             $member->blood_group=$request->bloodGroup;
             $member->nid=$request->nid;
             $member->word_no=$request->wordNo;
@@ -312,7 +312,7 @@ class OurMemberController extends Controller
             $member->father_name=$request->fatherName;
             $member->mother_name=$request->motherName;
             $member->spouse_name=$request->spouseName;
-            $member->birth_date=$request->birthDate;
+            $member->birth_date=date('Y-m-d', strtotime($request->birthDate));
             $member->blood_group=$request->bloodGroup;
             $member->nid=$request->nid;
             $member->word_no=$request->wordNo;
