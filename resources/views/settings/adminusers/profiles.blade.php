@@ -10,7 +10,7 @@
         <div class="row match-height">
             <div class="col-md-4">
                 <div class="text-center position-relative">
-                    <img class="rounded-circle border " src="{{ asset('images/users/' . company()['company_id'] . '/' . ($users->image ?? 'default-image.jpg')) }}" alt="" style="width: 200px; height: 220px;">
+                    <img class="rounded-circle border " src="{{asset('images/users/'.company()['company_id'].'/'.$users->image)}}" alt="" style="width: 200px; height: 220px;">
                     <h5 class="mt-2">{{$users->name}}</h5>
                     <p>{{$users->role?->type}}</p>
                 </div>
