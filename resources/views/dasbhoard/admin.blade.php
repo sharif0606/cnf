@@ -100,7 +100,7 @@
        <div class="col-md-3 col-sm-6 col-lg-3">
             <div class="small-box bg-dream-pink">
                <div class="inner text-uppercase">
-                    <h3>138</h3>
+                    <h3>{{$appliedMember}}</h3>
                     <p>Total Applied Member</p>
                </div> 
                <div class="icon">
@@ -114,8 +114,8 @@
        <div class="col-md-3 col-sm-6 col-lg-3">
             <div class="small-box bg-dream-purple">
                <div class="inner text-uppercase">
-                    <h3>18</h3>
-                    <p>Total Approved Member</p>
+                    <h3>{{$gsApporoveMember}}</h3>
+                    <p>GS Approved Member</p>
                </div> 
                <div class="icon">
                 <i class="bi bi-people-fill"></i>
@@ -128,8 +128,8 @@
        <div class="col-md-3 col-sm-6 col-lg-3">
             <div class="small-box bg-dream-maroon">
                <div class="inner text-uppercase">
-                    <h3>18</h3>
-                    <p>Total Archive Member</p>
+                    <h3>{{$approveMember}}</h3>
+                    <p>Total Approved Member</p>
                </div> 
                <div class="icon">
                 <i class="bi bi-people-fill"></i>
@@ -142,11 +142,11 @@
        <div class="col-md-3 col-sm-6 col-lg-3">
             <div class="small-box bg-dream-green">
                <div class="inner text-uppercase">
-                    <h3>198</h3>
-                    <p>Total Payment</p>
+                    <h3>{{$archiveMember}}</h3>
+                    <p>Total Archive Member</p>
                </div> 
                <div class="icon">
-                <i class="bi bi-receipt"></i>
+                <i class="bi bi-people-fill"></i>
                </div>
                <a href="#" class="small-box-footer text-uppercase">View
                 <i class="bi bi-arrow-right-circle"></i>

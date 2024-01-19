@@ -11,7 +11,11 @@ class DashboardController extends Controller
     * admin dashboard
     */
     public function adminDashboard(){
-        return view('dasbhoard.admin');
+        $appliedMember = OurMember::where('approvedstatus',0)->count();
+        $gsApporoveMember = OurMember::where('approvedstatus',1)->count();
+        $approveMember = OurMember::where('approvedstatus',2)->count();
+        $archiveMember = OurMember::count();
+        return view('dasbhoard.admin',compact('appliedMember','gsApporoveMember','approveMember','archiveMember'));
     }
 
     /*
