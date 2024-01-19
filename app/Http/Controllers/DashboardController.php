@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\fee_collection;
 use Illuminate\Http\Request;
 use App\Models\OurMember; // custome
+use DateTime;
 
 class DashboardController extends Controller
 {
@@ -11,18 +13,32 @@ class DashboardController extends Controller
     * admin dashboard
     */
     public function adminDashboard(){
-        $appliedMember = OurMember::where('approvedstatus',0)->count();
+        $ldate = new DateTime('today');
+        $todadyApplied = OurMember::whereDate('created_at', $ldate->format('Y-m-d'))->count();
+        $appliedMember = OurMember::where('approvedstatus',0)->where('status', 1)->count();
         $gsApporoveMember = OurMember::where('approvedstatus',1)->count();
         $approveMember = OurMember::where('approvedstatus',2)->count();
-        $archiveMember = OurMember::count();
-        return view('dasbhoard.admin',compact('appliedMember','gsApporoveMember','approveMember','archiveMember'));
+        $archiveMember = OurMember::whereIn('status',[0,1,2,3,4])->count();
+        $todayPay = fee_collection::whereDate('created_at', $ldate->format('Y-m-d'))->count();
+        $todayApproveMember = OurMember::whereDate('member_approval_date', $ldate->format('Y-m-d'))->count();
+        $lastRslNo = OurMember::max('renew_serial_no');
+        return view('dasbhoard.admin',compact('todadyApplied','appliedMember','gsApporoveMember','approveMember','archiveMember','todayPay','lastRslNo','todayApproveMember'));
     }
 
     /*
     * chairman dashboard
     */
     public function chairmanDashboard(){
-        return view('dasbhoard.chairman');
+        $ldate = new DateTime('today');
+        $todadyApplied = OurMember::whereDate('created_at', $ldate->format('Y-m-d'))->count();
+        $appliedMember = OurMember::where('approvedstatus',0)->where('status', 1)->count();
+        $gsApporoveMember = OurMember::where('approvedstatus',1)->count();
+        $approveMember = OurMember::where('approvedstatus',2)->count();
+        $archiveMember = OurMember::whereIn('status',[0,1,2,3,4])->count();
+        $todayPay = fee_collection::whereDate('created_at', $ldate->format('Y-m-d'))->count();
+        $todayApproveMember = OurMember::whereDate('member_approval_date', $ldate->format('Y-m-d'))->count();
+        $lastRslNo = OurMember::max('renew_serial_no');
+        return view('dasbhoard.chairman',compact('todadyApplied','appliedMember','gsApporoveMember','approveMember','archiveMember','todayPay','lastRslNo','todayApproveMember'));
     }
     
     /*
@@ -36,7 +52,16 @@ class DashboardController extends Controller
     * sales man dashboard
     */
     public function generalsecretaryDashboard(){
-        return view('dasbhoard.generalsecretary');
+        $ldate = new DateTime('today');
+        $todadyApplied = OurMember::whereDate('created_at', $ldate->format('Y-m-d'))->count();
+        $appliedMember = OurMember::where('approvedstatus',0)->where('status', 1)->count();
+        $gsApporoveMember = OurMember::where('approvedstatus',1)->count();
+        $approveMember = OurMember::where('approvedstatus',2)->count();
+        $archiveMember = OurMember::whereIn('status',[0,1,2,3,4])->count();
+        $todayPay = fee_collection::whereDate('created_at', $ldate->format('Y-m-d'))->count();
+        $todayApproveMember = OurMember::whereDate('member_approval_date', $ldate->format('Y-m-d'))->count();
+        $lastRslNo = OurMember::max('renew_serial_no');
+        return view('dasbhoard.generalsecretary',compact('todadyApplied','appliedMember','gsApporoveMember','approveMember','archiveMember','todayPay','lastRslNo','todayApproveMember'));
     }
     /*
     * member dashboard

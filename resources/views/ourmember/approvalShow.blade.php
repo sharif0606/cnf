@@ -282,6 +282,9 @@
             </div>
             <form method="post" action="{{route(currentUser().'.to_approve_update',encryptor('encrypt',$show_data->id))}}">
                 @csrf
+                <div class="d-none">
+                    <input type="date" name="member_approval_date" value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}">
+                </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary me-1">Approve</button>
                 </div>

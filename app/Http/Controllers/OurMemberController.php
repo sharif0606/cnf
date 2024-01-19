@@ -414,6 +414,7 @@ class OurMemberController extends Controller
             $member=OurMember::findOrFail(encryptor('decrypt',$id));
             if(currentUser() == 'chairman'){
                 $member->approvedstatus=2;
+                $member->member_approval_date = $request->member_approval_date;
             }elseif(currentUser() == 'generalsecretary'){
                 $member->approvedstatus=1;
             }else{

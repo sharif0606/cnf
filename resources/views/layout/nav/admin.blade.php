@@ -67,6 +67,9 @@
         <a href="{{route(currentUser().'.ourMember.index')}}" class='sidebar-link'><i class="bi bi-people-fill"></i> <span>{{__('Applied Member')}}</span></a>
     </li>
     <li class="sidebar-item">
+        <a href="{{route(currentUser().'.gs_approve_member')}}" class='sidebar-link'><i class="bi bi-people-fill"></i> <span>{{__('GS Approved Member')}}</span></a>
+    </li>
+    <li class="sidebar-item">
         <a href="{{route(currentUser().'.approve_member')}}" class='sidebar-link'><i class="bi bi-people-fill"></i> <span>{{__('Approved Member')}}</span></a>
     </li>
     <li class="sidebar-item">
