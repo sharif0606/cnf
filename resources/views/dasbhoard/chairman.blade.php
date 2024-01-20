@@ -33,8 +33,8 @@
                     <i class="bi bi-calendar icon"></i>
                 </span>
                 <div class="info-box-content">
-                    <span class="text-bold text-uppercase">Today Payment</span><br>
-                    <span class="info-box-number" style="font-size: 2rem;">{{$todayPay}}</span>
+                    <span class="text-bold text-uppercase">Today Pay Amount</span><br>
+                    <span class="info-box-number" style="font-size: 1.5rem;">৳  {{$todayPay}}</span>
                 </div>
             </div>
        </div>
