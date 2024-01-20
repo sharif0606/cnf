@@ -84,10 +84,12 @@
                                     <a class="text-danger" href="{{route(currentUser().'.trans_history',$p->id)}}">
                                         <i class="bi bi-currency-dollar"></i>
                                     </a>&nbsp;
-                                    @if(currentUser()=="generalsecretary" || currentUser()=="chairman")
-                                    <a class="btn btn-sm btn-success" href="{{route(currentUser().'.to_approve_member',encryptor('encrypt',$p->id))}}">
-                                        approval
-                                    </a>&nbsp;
+                                    @if($p->renew_serial_no != '')
+                                        @if(currentUser()=="generalsecretary" || currentUser()=="chairman")
+                                        <a class="btn btn-sm btn-success" href="{{route(currentUser().'.to_approve_member',encryptor('encrypt',$p->id))}}">
+                                            approval
+                                        </a>&nbsp;
+                                        @endif
                                     @endif
                                     <!-- <a class="text-danger" href="javascript:void()" onclick="$('#form{{$p->id}}').submit()">
                                         <i class="bi bi-trash"></i>
