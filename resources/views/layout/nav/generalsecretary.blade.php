@@ -6,7 +6,7 @@
         </a>
     </li>
 
-    <li class="sidebar-item has-sub">
+    {{-- <li class="sidebar-item has-sub">
         <a href="#" class='sidebar-link'>
             <i class="bi bi-gear-fill"></i>
             <span>{{__('Settings')}}</span>
@@ -20,7 +20,7 @@
                 </ul>
             </li>
 		</ul>
-    </li>
+    </li> --}}
     <li class="sidebar-item">
         <a href="{{route(currentUser().'.ourMember.index')}}" class='sidebar-link'><i class="bi bi-people-fill"></i> <span>{{__('Applied Member')}}</span></a>
     </li>
