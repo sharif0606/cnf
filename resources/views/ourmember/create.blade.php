@@ -37,7 +37,8 @@
                                 <div class="col-lg-3 col-md-3 col-sm-6">
                                     <div class="form-group">
                                         <label for="phone">মোবাইল (নিজস্ব)</label>
-                                        <input type="text" class="form-control" name="personalPhone" value="{{old('personalPhone')}}">
+                                        <input type="text" onkeyup="mobile_varify(this)" class="form-control" name="personalPhone" value="{{old('personalPhone')}}">
+                                        <span id="dueMessage" class="text-danger text-end"></span>
                                         @if($errors->has('personalPhone'))
                                             <span class="text-danger"> {{ $errors->first('personalPhone') }}</span>
                                         @endif
@@ -298,7 +299,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12 d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-primary me-1">Save</button>
+                                    <button type="submit" id="submitBtn" class="btn btn-primary me-1">Save</button>
                                 </div>
                             </div>
                         </form>
@@ -340,6 +341,37 @@
 
 @push('scripts')
 <script>
+    function mobile_varify(e) {
+        var mobileNumber = e.value;
+        mobileNumber = mobileNumber.replace(/\D/g, '');
+        e.value = mobileNumber;
+
+        var mobileNumberPattern = /^0\d{0,10}$/;
+
+        if (mobileNumber.length === 0) {
+            $('#dueMessage').text("Please enter a mobile number");
+            $('#submitBtn').prop('disabled', true);
+        } else if (mobileNumberPattern.test(mobileNumber)) {
+            if (mobileNumber.length === 11) {
+                $('#dueMessage').text("");
+                $('#submitBtn').prop('disabled', false);
+            } else {
+                $('#dueMessage').text("Invalid mobile number");
+                $('#submitBtn').prop('disabled', true);
+            }
+        } else if (!mobileNumber.startsWith('0')) {
+            $('#dueMessage').text("Please start with 0");
+            $('#submitBtn').prop('disabled', true);
+        } else if (mobileNumber.length > 11) {
+            $('#dueMessage').text("Cannot accept more than 11 characters");
+            $('#submitBtn').prop('disabled', true);
+        } else {
+            $('#dueMessage').text("Invalid mobile number");
+            $('#submitBtn').prop('disabled', true);
+        }
+    }
+
+
     function saveimage(){
         document.getElementById('base_image').value=document.getElementById('captured-image').src;
         var myModalEl = document.getElementById('webcammodal')
