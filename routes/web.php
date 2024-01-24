@@ -193,6 +193,7 @@ Route::group(['middleware'=>isChairman::class],function(){
         Route::post('to-approve-cancel-update/{id}', [member::class, 'memberApprovCancel'])->name('chairman.to_approve_cancel');
         Route::resource('users',user::class,['as'=>'chairman']);
         Route::get('trans-history/{id}', [member::class, 'transHistory'])->name('chairman.trans_history');
+        Route::get('trans-history-all', [member::class, 'transHistoryAll'])->name('admin.trans_history_all');
 
         //chairman profile
         Route::get('/profile', [profile::class,'ownerProfile'])->name('chairman.profile');
@@ -211,6 +212,7 @@ Route::group(['middleware'=>isGeneralSecretary::class],function(){
         Route::post('to-approve-update/{id}', [member::class, 'memberApprov'])->name('generalsecretary.to_approve_update');
         Route::resource('users',user::class,['as'=>'generalsecretary']);
         Route::get('trans-history/{id}', [member::class, 'transHistory'])->name('generalsecretary.trans_history');
+        Route::get('trans-history-all', [member::class, 'transHistoryAll'])->name('admin.trans_history_all');
 
         //generalsecretary profile
         Route::get('/profile', [profile::class,'ownerProfile'])->name('generalsecretary.profile');
