@@ -76,10 +76,10 @@
         <a href="{{route(currentUser().'.archive_member')}}" class='sidebar-link'><i class="bi bi-people-fill"></i> <span>{{__('Archive Member')}}</span></a>
     </li>
     <li class="sidebar-item">
-        <a href="{{route(currentUser().'.feeCollection.index')}}" class='sidebar-link'><i class="bi bi-people-fill"></i> <span>{{__('Fees Collection List')}}</span></a>
+        <a href="{{route(currentUser().'.feeCollection.index')}}" class='sidebar-link'><i class="bi bi-currency-dollar"></i><span>{{__('Fees Collection List')}}</span></a>
     </li>
     <li class="sidebar-item">
-        <a href="{{route(currentUser().'.feeCollection.create')}}" class='sidebar-link'><i class="bi bi-people-fill"></i> <span>{{__('Pay Now')}}</span></a>
+        <a href="{{route(currentUser().'.feeCollection.create')}}" class='sidebar-link'><i class="bi bi-currency-dollar"></i> <span>{{__('Pay Now')}}</span></a>
     </li>
     
     {{-- <li class="submenu-item sidebar-item has-sub">
@@ -99,9 +99,15 @@
         </ul>
     </li> --}}
     <li class="submenu-item sidebar-item has-sub">
-        <a href="#" class='sidebar-link'><i class="bi bi-telephone-fill"></i> <span>{{__('Payment')}}</span></a>
+        <a href="#" class='sidebar-link'><i class="bi bi-currency-dollar"></i><span>{{__('Payment')}}</span></a>
         <ul class="submenu">
             <li class="py-1"><a href="{{route(currentUser().'.ppurpose.index')}}">{{__('Fees')}}</a></li>
+        </ul>
+    </li>
+    <li class="submenu-item sidebar-item has-sub">
+        <a href="#" class='sidebar-link'><i class="bi bi-receipt"></i><span>{{__('Report')}}</span></a>
+        <ul class="submenu">
+            <li class="py-1"><a href="{{route(currentUser().'.trans_history_all')}}">{{__('Fee Report')}}</a></li>
         </ul>
     </li>
 </ul>

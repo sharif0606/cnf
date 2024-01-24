@@ -82,6 +82,7 @@ Route::get('/contact-us', [contact::class,'store'])->name('contact.us');
 
 
 Route::get('/', [front::class,'index'])->name('front');
+Route::get('12kzjzjkhf32/user/{id}', [front::class,'memberLink'])->name('member_link');
 //Route::get('/register', [auth::class,'signUpForm'])->name('register');
 //Route::post('/register', [auth::class,'signUpStore'])->name('register.store');
 Route::get('/admin', [auth::class,'signInForm'])->name('signIn');
@@ -170,6 +171,7 @@ Route::group(['middleware'=>isAdmin::class],function(){
         Route::get('front_menu/delete/{id}', [frontMenu::class, 'destroy'])->name('admin.front_menu.detroy');
         Route::get('trans-history/{id}', [member::class, 'transHistory'])->name('admin.trans_history');
         Route::get('trans-history-all', [member::class, 'transHistoryAll'])->name('admin.trans_history_all');
+        Route::get('member-contact', [member::class, 'downloadPhonebook'])->name('admin.member_contact');
 
         //member search
         Route::get('/member-search', [foundCommittee::class,'search'])->name('admin.member_search');

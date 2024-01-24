@@ -62,6 +62,11 @@ class FrontendController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function memberLink($id)
+    {
+        $member=OurMember::where('id',$id)->first();
+        return view('frontend.memberLink',compact('member'));
+    }
     public function benefit()
     {
         $benefit=BenefitsOfMember::all();

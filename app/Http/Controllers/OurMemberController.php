@@ -14,6 +14,7 @@ use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Hash;
 use Exception;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Response;
 use Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Builder;
@@ -114,6 +115,22 @@ class OurMemberController extends Controller
 
         $ourmember=$ourmember->paginate(10);
         return view('ourmember.archiveMember',compact('ourmember'));
+    }
+    public function downloadPhonebook()
+    {
+        $phonebookData = OurMember::all(); 
+        $csv = "";
+        $csv .= implode(',', array('Name','Contact Number',)) . "\n"; // Headers
+        foreach ($phonebookData as $row) {
+            $csv .= implode(',', array(
+                $row->name_bn,
+                $row->personal_phone,
+            )) . "\n";
+        }
+        $response = Response::make($csv, 200);
+        $response->header('Content-Type', 'text/csv');
+        $response->header('Content-Disposition', 'attachment; filename="contacts.csv"');
+        return $response;
     }
     
     /**

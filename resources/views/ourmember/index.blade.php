@@ -157,7 +157,7 @@
                                     </table>
                                 </div>
                                 <div class="modal-footer">
-                                    <a class="btn btn-info" id="moreDetailsLink" href="{{route(currentUser().'.trans_history_all')}}" >More Details</a>
+                                    <a class="btn btn-info" id="moreDetailsLink" href="#" >More Details</a>
                                 </div>
                             </div>
                         </div>
@@ -188,9 +188,9 @@
             modal.find('#lastPaid').text(lastPaidAmount);
             modal.find('#lastPayYear').text(lastPaidYear);
 
-            //var moreDetailsLink = modal.find('#moreDetailsLink');
-            //var newHref = button.data('trans_history');
-            //moreDetailsLink.attr('href', newHref);
+            var moreDetailsLink = modal.find('#moreDetailsLink');
+            var newHref = button.data('trans_history');
+            moreDetailsLink.attr('href', newHref);
         });
     });
 </script>

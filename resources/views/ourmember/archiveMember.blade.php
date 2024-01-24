@@ -14,6 +14,8 @@
                 @endif
                 <div class="row pb-1">
                         <div class="col-12">
+                            {{-- <a href="{{route(currentUser().'.member_contact')}}">download</a> --}}
+                            <button class="btn btn-sm btn-primary float-end" onclick="get_print()"><i class="bi bi-filetype-xlsx"></i>Export Excel</button>
                             <form action="" method="get">
                                 <div class="row">
                                     <div class="col-sm-2">
@@ -159,7 +161,7 @@
                                     </table>
                                 </div>
                                 <div class="modal-footer">
-                                    <a class="btn btn-info" id="moreDetailsLink" href="{{route(currentUser().'.trans_history_all')}}" >More Details</a>
+                                    <a class="btn btn-info" id="moreDetailsLink" href="#" >More Details</a>
                                 </div>
                             </div>
                         </div>
@@ -169,8 +171,53 @@
         </div>
     </div>
 </section>
+<div class="full_page"></div>
+<div id="my-content-div" class="d-none"></div>
 @endsection
 @push('scripts')
+<script src="{{ asset('/assets/js/tableToExcel.js') }}"></script>
+
+<script>
+    function exportReportToExcel(idname, filename, columnsToExport) {
+        let table = document.getElementsByTagName(idname);
+        let tableToExport = table[2].cloneNode(true);
+
+        // Remove columns that are not in the columnsToExport array
+        for (let i = 0; i < tableToExport.rows.length; i++) {
+            for (let j = tableToExport.rows[i].cells.length - 1; j >= 0; j--) {
+                if (columnsToExport.indexOf(j) === -1) {
+                    tableToExport.rows[i].deleteCell(j);
+                }
+            }
+        }
+
+        TableToExcel.convert(tableToExport, {
+            name: `${filename}.xlsx`,
+            sheet: {
+                name: 'Member'
+            }
+        });
+
+        $("#my-content-div").html("");
+        $('.full_page').html("");
+    }
+
+    function get_print() {
+        $('.full_page').html('<div style="background:rgba(0,0,0,0.5);width:100vw; height:100vh;position:fixed; top:0; left;0"><div class="loader my-5"></div></div>');
+        
+        $.get(
+            "{{route(currentUser().'.archive_member')}}{{ ltrim(Request()->fullUrl(),Request()->url()) }}",
+            function (data) {
+                $("#my-content-div").html(data);
+            }
+        ).then(function () {
+            // Specify the columns you want to export (0-indexed)
+            let columnsToExport = [1, 4]; // Adjust this array based on your requirements
+            exportReportToExcel('table', 'Archive Member', columnsToExport);
+        });
+    }
+
+</script>
 <script>
     $(document).ready(function () {
         $('#balance').on('show.bs.modal', function (event) {
@@ -190,9 +237,9 @@
             modal.find('#lastPaid').text(lastPaidAmount);
             modal.find('#lastPayYear').text(lastPaidYear);
 
-            //var moreDetailsLink = modal.find('#moreDetailsLink');
-            //var newHref = button.data('trans_history');
-            //moreDetailsLink.attr('href', newHref);
+            var moreDetailsLink = modal.find('#moreDetailsLink');
+            var newHref = button.data('trans_history');
+            moreDetailsLink.attr('href', newHref);
         });
     });
 </script>

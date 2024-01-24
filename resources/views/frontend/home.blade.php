@@ -280,7 +280,8 @@
                     <small>
                       <strong>Designation:</strong>
                       {{$fm->designation }}
-                  </small>
+                    </small><br>
+                    <a class="btn btn-sm btn-primary" href="{{route('member_link',encryptor('encrypt',$fm->id))}}">View Profile</a>
                 </div>
                 {{-- <div class="card-footer">
                     <div class="social">
@@ -297,11 +298,12 @@
           @empty
             <div class="col-12 item pe-3 ps-3">
               <div class="shadow p-2 mb-3"style="background: #FFF">
-                <div class="border-member">
+                <div class="border-member text-center">
                   <img src="{{ asset('img/Chairman or1.png')}}" alt="" />
                   <p>Md. Rafique Uddin Babul</p>
                   <p>Sizzing Group, Managing Director</p>
                   <p>Liffe Member - LM-002</p>
+                  <a href="{{route('member_link',encryptor('encrypt',816))}}">member profile</a>
                 </div>
               </div>
             </div>

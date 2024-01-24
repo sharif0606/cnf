@@ -56,6 +56,7 @@
                                 <th scope="col">{{__('রক্তের গ্রুপ')}}</th>
                                 <th scope="col">{{__('এনআইডি')}}</th>
                                 <th scope="col">{{__('চাকুরীর পদবি')}}</th>
+                                <th scope="col">{{__('জেলা')}}</th>
                                 <th class="white-space-nowrap">{{__('') }}</th>
                             </tr>
                         </thead>
@@ -77,6 +78,7 @@
                                 <td>{{$p->blood_group}}</td>
                                 <td>{{$p->nid}}</td>
                                 <td>{{$p->designation_of_present_job}}</td>
+                                <td>{{$p->district}}</td>
                                 <td class="white-space-nowrap">
                                     <a href="{{route(currentUser().'.ourMember.show',encryptor('encrypt',$p->id))}}">
                                         <i class="bi bi-eye-fill"></i>
