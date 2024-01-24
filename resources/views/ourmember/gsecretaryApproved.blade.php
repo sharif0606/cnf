@@ -84,9 +84,9 @@
                                     <a href="{{route(currentUser().'.ourMember.edit',encryptor('encrypt',$p->id))}}">
                                         <i class="bi bi-pencil-square"></i>
                                     </a> &nbsp;
-                                    <a class="text-danger" href="{{route(currentUser().'.trans_history',$p->id)}}">
+                                    {{-- <a class="text-danger" href="{{route(currentUser().'.trans_history',$p->id)}}">
                                         <i class="bi bi-currency-dollar"></i>
-                                    </a>&nbsp;
+                                    </a>&nbsp; --}}
                                     @if(currentUser() == 'chairman')
                                         @if($p->fee_collection_last?->year < date('Y'))
                                             <button type="button" class="btn btn-danger"> {{date('Y')}} not paid </button>
@@ -121,3 +121,4 @@
     </div>
 </section>
 @endsection
+

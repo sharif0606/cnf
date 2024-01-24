@@ -23,10 +23,12 @@
                         <thead>
                             <tr>
                                 <th scope="col">{{__('#SL')}}</th>
+                                <th scope="col">{{__('Year')}}</th>
                                 <th scope="col">{{__('Voucher No')}}</th>
                                 <th scope="col">{{__('Member')}}</th>
                                 <th scope="col">{{__('Date')}}</th>
                                 <th scope="col">{{__('Receipt No')}}</th>
+                                <th scope="col">{{__('Amount')}}</th>
                                 <th class="white-space-nowrap">{{__('Action') }}</th>
                             </tr>
                         </thead>
@@ -34,10 +36,12 @@
                             @forelse($data as $p)
                             <tr>
                                 <th scope="row">{{ ++$loop->index }}</th>
+                                <td>{{$p->year}}</td>
                                 <td>{{$p->vhoucher_no}}</td>
                                 <td>{{$p->member?->name_bn}}</td>
                                 <td>{{$p->date}}</td>
                                 <td>{{$p->receipt_no}}</td>
+                                <td>{{$p->total_amount}}</td>
                                 <td class="white-space-nowrap">
                                     <a href="{{route(currentUser().'.feeCollection.edit',encryptor('encrypt',$p->id))}}">
                                         <i class="bi bi-pencil-square"></i>

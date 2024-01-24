@@ -8,28 +8,43 @@
         <div class="col-12">
             <div class="card">
                 <div class="table-responsive">
-                    <table class="table table-bordered mb-0">
-
+                    <table class="table table-striped table-bordered mb-0">
                         <thead>
-                            <tr>
+                            <tr class="text-center">
                                 <th scope="col">{{__('#SL')}}</th>
-                                <th scope="col">{{__('Member')}}</th>
+                                <th scope="col">{{__('Fee Year')}}</th>
+                                <th scope="col">{{__('Voucher')}}</th>
                                 <th scope="col">{{__('Date')}}</th>
-                                <th scope="col">{{__('Year')}}</th>
                                 <th scope="col">{{__('Receipt No')}}</th>
-                                <th scope="col">{{__('Total Amount')}}</th>
+                                <th scope="col">{{__('Code')}}</th>
+                                <th scope="col">{{__('Name')}}</th>
+                                <th scope="col">{{__('Amount')}}</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($data as $p)
-                            <tr>
-                                <th scope="row">{{ ++$loop->index }}</th>
-                                <td>{{$p->member?->name_bn}}</td>
-                                <td>{{ (\Carbon\Carbon::parse($p->date)->format('d-m-Y') ) }}</td>
-                                <td>{{$p->year}}</td>
-                                <td>{{$p->receipt_no}}</td>
-                                <td>{{$p->total_amount}}</td>
+                            @forelse($data as $fee)
+                            <tr class="text-center">
+                                <th class="bg-info text-white" scope="row">{{ ++$loop->index }}</th>
+                                <td class="bg-info text-white">{{$fee->year}}</td>
+                                <td class="bg-info text-white">{{$fee->vhoucher_no}}</td>
+                                <td class="bg-info text-white">{{ (\Carbon\Carbon::parse($fee->date)->format('d-m-Y') ) }}</td>
+                                <td class="bg-info text-white">{{$fee->receipt_no}}</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                             </tr>
+                            @foreach ($fee->details as $fd)
+                                <tr class="text-center">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>{{$fd->code}}</td>
+                                    <td>{{$fd->name}}</td>
+                                    <td class="text-end">{{money_format($fd->amount)}}</td>
+                                </tr>
+                            @endforeach
                             @empty
                             <tr>
                                 <th colspan="6" class="text-center">No Data Found</th>

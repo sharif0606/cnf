@@ -169,6 +169,7 @@ Route::group(['middleware'=>isAdmin::class],function(){
         Route::get('front_menu/mss', [frontMenu::class, 'mss'])->name('admin.front_menu.mss');
         Route::get('front_menu/delete/{id}', [frontMenu::class, 'destroy'])->name('admin.front_menu.detroy');
         Route::get('trans-history/{id}', [member::class, 'transHistory'])->name('admin.trans_history');
+        Route::get('trans-history-all', [member::class, 'transHistoryAll'])->name('admin.trans_history_all');
 
         //member search
         Route::get('/member-search', [foundCommittee::class,'search'])->name('admin.member_search');

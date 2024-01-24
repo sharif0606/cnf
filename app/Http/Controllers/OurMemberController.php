@@ -9,11 +9,14 @@ use App\Http\Requests\OurMember\AddNewRequest;
 use App\Http\Requests\OurMember\UpdateRequest;
 use App\Http\Traits\ImageHandleTraits;
 use App\Models\fee_collection;
+use App\Models\fee_collection_detail;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Hash;
 use Exception;
 use Carbon\Carbon;
 use Storage;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Builder;
 class OurMemberController extends Controller
 {
     use ImageHandleTraits;
@@ -258,9 +261,33 @@ class OurMemberController extends Controller
     }
     public function transHistory($id)
     {
-        $data=fee_collection::where('member_id',$id)->get();
-        return view('ourmember.transhistory',compact('data'));
+        $data = fee_collection::with('details')->where('member_id', $id)->get();
+        return view('ourmember.transhistory', compact('data'));
     }
+
+    public function transHistoryAll(Request $request)
+    {
+        $feeDetailQuery = fee_collection_detail::query();
+
+        if ($request->fdate) {
+            $tdate = $request->tdate ? $request->tdate : $request->fdate;
+
+            // Filter based on the related fee_collection's date
+            $feeDetailQuery->whereHas('feeCollection', function (Builder $query) use ($request, $tdate) {
+                $query->whereBetween('date', [$request->fdate, $tdate]);
+            });
+        }
+        $feeDetail = $feeDetailQuery->get();
+
+        $totalVouchers = $feeDetail->pluck('feeCollection.vhoucher_no')->unique()->count();
+        $totalMembers = $feeDetail->pluck('feeCollection.member_id')->unique()->count();
+        $totalAmount = $feeDetail->sum('amount');
+
+
+        return view('ourmember.transhistorytwo', compact('feeDetail','totalVouchers','totalAmount','totalMembers'));
+    }
+
+
 
     public function approval($id)
     {

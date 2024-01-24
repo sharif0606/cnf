@@ -83,9 +83,21 @@
                                     <a href="{{route(currentUser().'.ourMember.edit',encryptor('encrypt',$p->id))}}">
                                         <i class="bi bi-pencil-square"></i>
                                     </a> &nbsp;
-                                    <a class="text-danger" href="{{route(currentUser().'.trans_history',$p->id)}}">
+                                    {{-- <a class="text-danger" href="{{route(currentUser().'.trans_history',$p->id)}}">
                                         <i class="bi bi-currency-dollar"></i>
-                                    </a>&nbsp;
+                                    </a>&nbsp; --}}
+                                    <button class="btn p-0 m-0" type="button" style="background-color: none; border:none;"
+                                        data-bs-toggle="modal" data-bs-target="#balance"
+                                        data-member-id="{{$p->id}}"
+                                        data-member-old="{{$p->member_serial_no}}"
+                                        data-member-new="{{$p->member_serial_no_new}}"
+                                        data-trans_history="{{route(currentUser().'.trans_history',$p->id)}}"
+                                        data-name="{{$p->name_bn}}"
+                                        data-fee="{{ money_format($p->fee_amount?->sum('total_amount'))}}"
+                                        data-fee-latest="{{money_format($p->fee_collection_last?->total_amount)}}"
+                                        data-fee-latest-year="{{$p->fee_collection_last?->year}}"
+                                        <span class="text-danger"><i class="bi bi-currency-dollar" style="font-size:1rem; color:rgb(246, 50, 35);"></i></span>
+                                    </button>
                                     @if(currentUser() == 'chairman')
                                     <a class="btn btn-sm btn-danger" href="{{route(currentUser().'.to_approve_cancel_member',encryptor('encrypt',$p->id))}}">
                                         Cancel
@@ -110,9 +122,78 @@
                     <div class="my-3">
                         {!! $ourmember->withQueryString()->links()!!}
                     </div>
+                    <div class="modal fade" id="balance" tabindex="-1" role="dialog"
+                        aria-labelledby="balanceTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header py-1">
+                                    <h5 class="modal-title" id="batchTitle">Payment History</h5>
+                                    <button type="button" class="close text-danger" data-bs-dismiss="modal"  aria-label="Close">
+                                        <i class="bi bi-x-lg" style="font-size: 1.5rem;"></i>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <table class="table table-bordered">
+                                        <tbody>
+                                            <tr class="bg-light">
+                                                <th>নাম</th>
+                                                <td id="memberName"></td>
+                                            </tr>
+                                            <tr class="bg-light">
+                                                <th>সিরিয়াল পুরাতন/নতুন</th>
+                                                <td id="memberSerial"></td>
+                                            </tr>
+                                            <tr class="bg-light">
+                                                <th>মোট পেমেন্ট</th>
+                                                <td id="totalAmount"></td>
+                                            </tr>
+                                            <tr class="bg-light">
+                                                <th>সর্বশেষ পেমেন্ট</th>
+                                                <td id="lastPaid"></td>
+                                            </tr>
+                                            <tr class="bg-light">
+                                                <th>সর্বশেষ পেমেন্ট সাল</th>
+                                                <td id="lastPayYear"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="modal-footer">
+                                    <a class="btn btn-info" id="moreDetailsLink" href="{{route(currentUser().'.trans_history_all')}}" >More Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 @endsection
+@push('scripts')
+<script>
+    $(document).ready(function () {
+        $('#balance').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var memberId = button.data('member-id');
+            var memberSlOld = button.data('member-old');
+            var memberSlNew = button.data('member-new');
+            var name = button.data('name');
+            var totalPaidAmount = button.data('fee');
+            var lastPaidAmount = button.data('fee-latest');
+            var lastPaidYear = button.data('fee-latest-year');
+            // Set the values in the modal
+            var modal = $(this);
+            modal.find('#memberSerial').text(memberSlOld + '/' + memberSlNew);
+            modal.find('#memberName').text(name);
+            modal.find('#totalAmount').text(totalPaidAmount);
+            modal.find('#lastPaid').text(lastPaidAmount);
+            modal.find('#lastPayYear').text(lastPaidYear);
+
+            //var moreDetailsLink = modal.find('#moreDetailsLink');
+            //var newHref = button.data('trans_history');
+            //moreDetailsLink.attr('href', newHref);
+        });
+    });
+</script>
+@endpush

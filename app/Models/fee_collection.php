@@ -11,4 +11,9 @@ class fee_collection extends Model
     public function member(){
         return $this->belongsTo(OurMember::class,'member_id','id');
     }
+
+    public function details()
+    {
+        return $this->hasMany(fee_collection_detail::class, 'fee_collections_id');
+    }
 }

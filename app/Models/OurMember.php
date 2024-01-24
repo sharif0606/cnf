@@ -55,4 +55,8 @@ class OurMember extends Model
     public function fee_collection_last(){
         return $this->hasOne(fee_collection::class,'member_id','id')->latest();
     }
+
+    public function fee_amount(){
+        return $this->hasMany(fee_collection::class,'member_id','id');
+    }
 }
