@@ -258,7 +258,7 @@
           <div class="col-12 item pe-3 ps-3">
             <div class="card member-box shadow">
                 <span class="shape"></span>
-                <img class="card-img-top" src="{{asset('uploads/member_image/thumb/'.$fm->image)}}" alt="No Photos">
+                <img class="card-img-top" src="{{asset('uploads/memberImage/'.$fm->image)}}" alt="No Photos">
                 <div class="card-body">
                     <span class="member-degignation">
                         @if ($fm->membership_applied == 1){{'Donor Member'}}
@@ -271,7 +271,7 @@
                         @elseif($fm->membership_applied == 8){{'Diplomate Member'}}
                         @endif
                     </span>
-                    <h3 class="member-title">{{$fm->given_name }} {{$fm->surname }}</h3>
+                    <h3 class="member-title">{{$fm->name_bn }}</h3>
                     <small>
                         <strong>Company:</strong>
                         {{$fm->company}}
