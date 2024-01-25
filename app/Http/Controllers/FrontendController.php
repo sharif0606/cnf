@@ -18,6 +18,7 @@ use App\Models\Slider;
 use App\Models\total_due;
 use Illuminate\Http\Request;
 use App\Http\Traits\ImageHandleTraits;
+use App\Models\heirship;
 use Brian2694\Toastr\Facades\Toastr;
 use Exception;
 use DB;
@@ -64,8 +65,9 @@ class FrontendController extends Controller
      */
     public function memberLink($id)
     {
-        $member=OurMember::where('id',$id)->first();
-        return view('frontend.memberLink',compact('member'));
+        $member= OurMember::where('id',(encryptor('decrypt',$id)))->first();
+        $nomini = heirship::where('member_id',$member->id)->get();
+        return view('frontend.memberLink',compact('member','nomini'));
     }
     public function benefit()
     {

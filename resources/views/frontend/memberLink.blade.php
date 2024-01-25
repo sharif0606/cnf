@@ -85,7 +85,7 @@
                                 <tr>
                                     <th style="text-align: left; width:10%;">তারিখ</th>
                                     <td style="text-align: left;"><input type="text" class="tinput"></td>
-                                    <td rowspan="5" style="text-align: right;"><img src='{{asset('uploads/memberImage/'.$member?->image)}}' height="150px" width="auto"></td>
+                                    <td rowspan="5" style="text-align: right;"><img src="{{asset('uploads/memberImage/'.$member?->image)}}" height="150px" width="auto"></td>
                                 </tr>
                                 <tr>
                                     <th colspan="2" style="text-align: left;">বরাবর,</th>
@@ -158,9 +158,11 @@
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <td class="tbl_1">
-                                        {{-- @foreach ($nomini as $n)
-                                            <span>{{$n->name_of_heirs}} ({{$n->relation}}),</span>
-                                        @endforeach --}}
+                                        @if($nomini != '')
+                                            @foreach ($nomini as $n)
+                                                <span>{{$n->name_of_heirs}} ({{$n->relation}}),</span>
+                                            @endforeach
+                                        @endif
                                     </td>
                                 </tr>
                                 <tr class="tbl_1">
@@ -205,9 +207,9 @@
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <td class="tbl_1">
-                                        {{-- @if($member->exp_date)
+                                        @if($member->exp_date)
                                             {{\Carbon\Carbon::parse($member?->exp_date)->format('d/m/Y')}}
-                                        @endif --}}
+                                        @endif
                                     </td>
                                 </tr>
                                 <tr class="tbl_1">
@@ -219,13 +221,13 @@
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <td class="tbl_1">
-                                        {{-- @if($member->prottoyon==0)
+                                        @if($member->prottoyon==0)
                                             প্রযোজ্য নয়
                                         @elseif($member->prottoyon==1)
                                             "আছে"
                                         @else
                                             "নাই"
-                                        @endif --}}
+                                        @endif
                                     </td>
                                 </tr>
                                 <tr class="tbl_1">
@@ -258,10 +260,10 @@
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <td class="tbl_1">
-                                        {{-- @php $mt=array("স্থায়ী","বদলি","সাময়িক","অস্থায়ী শিক্ষানবীশ","শিক্ষাধীন");
+                                        @php $mt=array("স্থায়ী","বদলি","সাময়িক","অস্থায়ী শিক্ষানবীশ","শিক্ষাধীন");
                                             $jobType = isset($mt[$member->type_of_job])?$mt[$member->type_of_job]:'';
                                         @endphp
-                                        {{$jobType}} --}}
+                                        {{$jobType}}
                                     </td>
                                 </tr>
                             </tbody>

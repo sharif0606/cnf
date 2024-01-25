@@ -80,6 +80,8 @@ class OurMemberController extends Controller
         $ourmember=OurMember::where('approvedstatus',2)->orderBy('member_serial_no');
         if($request->member_serial_no)
             $ourmember=$ourmember->where('member_serial_no',$request->member_serial_no);
+        if($request->approve_date)
+            $ourmember=$ourmember->where('member_approval_date',$request->approve_date);
         if($request->member_serial_no_new)
             $ourmember=$ourmember->where('member_serial_no_new',$request->member_serial_no_new);
         if($request->name_bn)
