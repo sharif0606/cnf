@@ -64,7 +64,7 @@
                             <h1>Member Search</h1>
                             <form action="" method="get">
                                 <div class="searchBox">
-                                    <input type="text" value="{{ request()->input('name', '') }}"  name="name" id="search" placeholder="Company Name">
+                                    <input type="text" value="{{ request()->input('name', '') }}"  name="name" id="search" placeholder="নাম, মোবাইল, এনআইডি">
                                     <button type="submit">
                                         <span class="bi bi-search"></span>
                                     </button>
@@ -87,12 +87,12 @@
                         <div id="advance-search" class="py-2 px-5 collapse">
                             <form action="" method="get" class="row">
                                 <div class="form-group col-lg-5 p-1">
-                                    <label for="" class="mb-0">Membership ID</label>
-                                    <input type="text" name="member_id" id="" class="form-control form-control-sm shadow-none">
+                                    <label for="" class="mb-0">সদস্য নং</label>
+                                    <input type="text" name="member_id" placeholder="সদস্য নং" class="form-control form-control-sm shadow-none">
                                 </div>
                                 <div class="form-group col-lg-5 p-1">
-                                    <label for="" class="mb-0">Rep. Name</label>
-                                    <input type="text" name="member_name" id="" class="form-control form-control-sm shadow-none">
+                                    <label for="" class="mb-0">আর এস এল</label>
+                                    <input type="text" name="rsl_no" placeholder="আর এস এল" class="form-control form-control-sm shadow-none">
                                 </div>
                                 <div class="form-group col-lg-2 align-self-end p-1">
                                     <button type="submit" class="btn btn-sm btn-danger">
@@ -112,31 +112,33 @@
                             <div class="col-lg-2 align-self-center text-center">
                                 <img src="{{asset('uploads/memberImage/'.$m->image)}}" alt="No Image" width="100px">
                             </div>
-                            <div class="col-lg-2 text-center border-end ps-0 pe-0">
+                            <div class="col-lg-4 text-center border-end ps-0 pe-0">
                                 <h1> {{$m->name_bn}}</h1>
-                                <h5>{{$m->member_serial_no}}</h5>
-                                @if($m->attach_pdf)
-                                {{-- <a href="{{asset('uploads/company_pdf/'.$m->attach_pdf)}}" target="_blank" class="btn-custom text-danger">[PDF Profile]</a> --}}
-                                @else
-                                {{-- <a href="#" onclick="alert('Sorry!! profile has not uploaded yet')" class="btn-custom text-danger">[PDF Profile]</a> --}}
-                                @endif
+                                <h5>
+                                    সদস্য নং/নতুন : {{$m->member_serial_no}}/
+                                    @if ($m->member_serial_no_new != '')
+                                        {{$m->member_serial_no_new}}
+                                    @else
+                                        N/A
+                                    @endif
+                                </h5>
+                                <h5>আর এস এল : {{$m->renew_serial_no}}</h5>
                             </div>
                             <div class="col-lg-6 align-self-center">
-                                <h4><a href="#">{{$m->company}}</a></h4>
-                                <p>{{$m->designation}}</p>
+                                <h5>মোবাইল : {{$m->personal_phone}}</h5>
+                                <h5>জেলা : {{$m->district}}</h5>
+                                <h5>উপজেলা : {{$m->upazila}}</h5>
+                                <h5>গ্রাম : {{$m->village}}</h5>
                             </div>
-                            {{-- <div class="col-lg-2 align-self-center text-center">
-                                <a href="#" class="btn btn-sm btn-outline-explore">More Details</a>
-                            </div> --}}
                         </div>
                         @empty
                         <div class="search-list-item row ">
                             <div class="text-center">No Data Found</div>
                         </div>
                         @endforelse
-                        {{-- <div class="d-flex justify-content-end mt-2">
+                        <div class="my-3">
                             {!! $member->links()!!}
-                        </div> --}}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -145,8 +147,3 @@
     </div>
 </div>
 @endsection
-@push('scripts')
-<script>
-    
-</script>
-@endpush

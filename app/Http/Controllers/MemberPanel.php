@@ -90,11 +90,32 @@ class MemberPanel extends Controller
     {
         $search = $request['name']?? "";
         $member_id = $request->input('member_id', '');
-        $member_name = $request->input('member_name', '');
-        $member = OurMember::where('approvedstatus',2)->get();
+        $rsl = $request->input('rsl_no', '');
+        $members = OurMember::query();
 
-        // $member = $members->paginate(10);
-        return view('frontend.membership.memberList', compact('member','search', 'member_id', 'member_name'));
+        if ($search) {
+            $members->where(function ($query) use ($search) {
+                $query->where('name_bn', 'LIKE', '%' . $search . '%')
+                      ->orWhere('personal_phone', 'LIKE', '%' . $search . '%')
+                      ->orWhere('nid', 'LIKE', '%' . $search . '%');
+            });
+        }
+        if (!empty($member_id) && !empty($rsl)) {
+            $members->where(function ($query) use ($member_id, $rsl) {
+                $query->where('member_serial_no', $member_id)
+                      ->where('renew_serial_no', 'LIKE', '%'.$rsl.'%');
+            });
+        } elseif (!empty($member_id)) {
+            $members->where('member_serial_no', $member_id);
+        } elseif (!empty($rsl)) {
+            $members->where('renew_serial_no'.'', 'LIKE', '%'.$rsl.'%');
+        }
+
+        $members->where('approvedstatus', 2);
+        $members->orderBy('renew_serial_no');
+
+        $member = $members->paginate(15);
+        return view('frontend.membership.memberList', compact('member','search'));
     }
     /**
      * Show the form for editing the specified resource.

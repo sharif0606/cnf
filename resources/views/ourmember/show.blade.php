@@ -280,6 +280,21 @@
                                         {{$jobType}}
                                     </td>
                                 </tr>
+                                <tr class="tbl_1">
+                                    <th class="tbl_1" style="text-align: left;">১৪ </th>
+                                    <th class="tbl_1" style="text-align: left;">সর্বশেষ রিনিউ</th>
+                                    
+                                    <th class="tbl_1" style="text-align: left;">..</th>
+                                    <th class="tbl_1" style="text-align: left;">..</th>
+                                    <td class="tbl_1">
+                                        @if(!$feeCollection->isEmpty())
+                                            @foreach ($feeCollection as $fee)
+                                                {{ money_format($fee->total_amount) }} টাকা
+                                                ({{ $fee->year }})
+                                            @endforeach
+                                        @endif
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                         <div>

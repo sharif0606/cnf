@@ -18,10 +18,21 @@ class FeeCollectionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = fee_collection::all();
-        return view('feesCollection.index',compact('data'));
+        $query = fee_collection::query();
+
+        if ($request->filled('fdate')) {
+            $tdate = $request->filled('tdate') ? $request->input('tdate') : $request->input('fdate');
+            $query->whereBetween('date', [$request->input('fdate'), $tdate]);
+        }
+
+        $data = $query->orderBy('id', 'DESC')->paginate(15);
+        $totalVouchers = $data->unique('vhoucher_no')->count();
+        $totalMembers = $data->unique('member_id')->count();
+        $totalAmount = $data->sum('total_amount');
+        
+        return view('feesCollection.index', compact('data', 'totalVouchers', 'totalMembers', 'totalAmount'));
     }
 
     /**

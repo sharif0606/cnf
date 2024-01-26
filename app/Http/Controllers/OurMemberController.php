@@ -119,22 +119,6 @@ class OurMemberController extends Controller
         $ourmember=$ourmember->paginate(10);
         return view('ourmember.archiveMember',compact('ourmember'));
     }
-    public function downloadPhonebook()
-    {
-        $phonebookData = OurMember::all(); 
-        $csv = "";
-        $csv .= implode(',', array('Name','Contact Number',)) . "\n"; // Headers
-        foreach ($phonebookData as $row) {
-            $csv .= implode(',', array(
-                $row->name_bn,
-                $row->personal_phone,
-            )) . "\n";
-        }
-        $response = Response::make($csv, 200);
-        $response->header('Content-Type', 'text/csv');
-        $response->header('Content-Disposition', 'attachment; filename="contacts.csv"');
-        return $response;
-    }
     
     /**
      * Show the form for creating a new resource.
@@ -277,12 +261,13 @@ class OurMemberController extends Controller
     {
         $show_data=OurMember::findOrFail(encryptor('decrypt',$id));
         $nomini = heirship::where('member_id',$show_data->id)->get();
-        return view('ourmember.show',compact('show_data','nomini'));
+        $feeCollection = fee_collection::where('member_id',(encryptor('decrypt',$id)))->latest()->take(1)->get();
+        return view('ourmember.show',compact('show_data','nomini','feeCollection'));
     }
     public function transHistory($id)
     {
         $data = fee_collection::with('details')->where('member_id', $id)->get();
-        return view('ourmember.transhistory', compact('data'));
+        return view('ourmember.transhistory', compact('data','feeCollection'));
     }
 
     public function transHistoryAll(Request $request)

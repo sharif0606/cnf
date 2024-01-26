@@ -19,7 +19,7 @@ class DashboardController extends Controller
         $gsApporoveMember = OurMember::where('approvedstatus',1)->count();
         $approveMember = OurMember::where('approvedstatus',2)->count();
         $archiveMember = OurMember::whereIn('status',[0,1,2,3,4])->count();
-        $todayPay = fee_collection::whereDate('created_at', $ldate->format('Y-m-d'))->sum('total_amount');
+        $todayPay = fee_collection::whereDate('date', $ldate->format('Y-m-d'))->sum('total_amount');
         $todayApproveMember = OurMember::whereDate('member_approval_date', $ldate->format('Y-m-d'))->count();
         $lastRslNo = OurMember::max('renew_serial_no');
         return view('dasbhoard.admin',compact('todadyApplied','appliedMember','gsApporoveMember','approveMember','archiveMember','todayPay','lastRslNo','todayApproveMember'));
@@ -35,7 +35,7 @@ class DashboardController extends Controller
         $gsApporoveMember = OurMember::where('approvedstatus',1)->count();
         $approveMember = OurMember::where('approvedstatus',2)->count();
         $archiveMember = OurMember::whereIn('status',[0,1,2,3,4])->count();
-        $todayPay = fee_collection::whereDate('created_at', $ldate->format('Y-m-d'))->sum('total_amount');
+        $todayPay = fee_collection::whereDate('date', $ldate->format('Y-m-d'))->sum('total_amount');
         $todayApproveMember = OurMember::whereDate('member_approval_date', $ldate->format('Y-m-d'))->count();
         $lastRslNo = OurMember::max('renew_serial_no');
         return view('dasbhoard.chairman',compact('todadyApplied','appliedMember','gsApporoveMember','approveMember','archiveMember','todayPay','lastRslNo','todayApproveMember'));
@@ -58,7 +58,7 @@ class DashboardController extends Controller
         $gsApporoveMember = OurMember::where('approvedstatus',1)->count();
         $approveMember = OurMember::where('approvedstatus',2)->count();
         $archiveMember = OurMember::whereIn('status',[0,1,2,3,4])->count();
-        $todayPay = fee_collection::whereDate('created_at', $ldate->format('Y-m-d'))->sum('total_amount');
+        $todayPay = fee_collection::whereDate('date', $ldate->format('Y-m-d'))->sum('total_amount');
         $todayApproveMember = OurMember::whereDate('member_approval_date', $ldate->format('Y-m-d'))->count();
         $lastRslNo = OurMember::max('renew_serial_no');
         return view('dasbhoard.generalsecretary',compact('todadyApplied','appliedMember','gsApporoveMember','approveMember','archiveMember','todayPay','lastRslNo','todayApproveMember'));
