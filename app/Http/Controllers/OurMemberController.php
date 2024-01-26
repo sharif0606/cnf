@@ -478,10 +478,7 @@ class OurMemberController extends Controller
                     if($member->personal_phone){
                         $phone=$member->personal_phone;
                         $rand=rand(100000,999999);
-                        $msg_text="ডিজিটাল পদ্ধতিতে নবায়ন করায় সিবিএ - ২৩৪ এর কার্যনির্বাহী পরিষদ এর পক্ষথেকে আপনাকে ধন্যবাদ।\n
-                        Member No: ".$member->member_serial_no."/".$member->member_serial_no_new."\n
-                        RSL: ".$member->renew_serial_no."\n
-                        সাধারণ সম্পাদক / সভাপতি";
+                        $msg_text="ডিজিটাল পদ্ধতিতে নবায়ন করায় সিবিএ - ২৩৪ এর কার্যনির্বাহী পরিষদ এর পক্ষথেকে আপনাকে ধন্যবাদ।\nMember No: ".$member->member_serial_no."/".$member->member_serial_no_new."\nRSL: ".$member->renew_serial_no."\nসাধারণ সম্পাদক / সভাপতি";
                         $smsClass->singleSms($phone, $msg_text, $rand);
             		}
                     Toastr::success('Approved Successfully!');
