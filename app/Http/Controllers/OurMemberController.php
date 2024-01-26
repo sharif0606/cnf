@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Response;
 use Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Builder;
+use App\Classes\sslSms;
 class OurMemberController extends Controller
 {
     use ImageHandleTraits;
@@ -473,6 +474,16 @@ class OurMemberController extends Controller
                     Toastr::success('Approved Successfully!');
                     return redirect()->route(currentUser().'.gs_approve_member');
                 }elseif(currentUser() == 'chairman'){
+                    $smsClass= new sslSms();
+                    if($member->personal_phone){
+                        $phone=$member->personal_phone;
+                        $rand=rand(100000,999999);
+                        $msg_text="ডিজিটাল পদ্ধতিতে নবায়ন করায় সিবিএ - ২৩৪ এর কার্যনির্বাহী পরিষদ এর পক্ষথেকে আপনাকে ধন্যবাদ।\n
+                        Member No: ".$member->member_serial_no."/".$member->member_serial_no_new."\n
+                        RSL: ".$member->renew_serial_no."\n
+                        সাধারণ সম্পাদক / সভাপতি";
+                        $smsClass->singleSms($phone, $msg_text, $rand);
+            		}
                     Toastr::success('Approved Successfully!');
                     return redirect()->route(currentUser().'.approve_member');
                 }else{
