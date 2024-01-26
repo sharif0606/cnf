@@ -311,8 +311,9 @@ class OurMemberController extends Controller
     public function approval($id)
     {
         $show_data=OurMember::findOrFail(encryptor('decrypt',$id));
+        $feeCollection = fee_collection::where('member_id',(encryptor('decrypt',$id)))->latest()->take(1)->get();
         $nomini = heirship::where('member_id',$show_data->id)->get();
-        return view('ourmember.approvalShow',compact('show_data','nomini'));
+        return view('ourmember.approvalShow',compact('show_data','nomini','feeCollection'));
     }
     public function general_show($id)
     {

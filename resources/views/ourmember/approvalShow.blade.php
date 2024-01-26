@@ -166,10 +166,10 @@
                                 </tr>
                                 <tr class="tbl_1">
                                     <th class="tbl_1" style="text-align: left;">৫</th>
-                                    <th class="tbl_1" style="text-align: left;">জাতীয় পরিচয়পত্র নং<br>রক্তের গ্রুপ</th>
+                                    <th class="tbl_1" style="text-align: left;">জাতীয় পরিচয়পত্র নং<br>মোবাইল<br>রক্তের গ্রুপ</th>
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <th class="tbl_1" style="text-align: left;">..</th>
-                                    <td class="tbl_1">{{ $show_data->nid }} <br> {{ $show_data->blood_group }}</td>
+                                    <td class="tbl_1">{{ $show_data?->nid }} <br>{{ $show_data?->personal_phone }}<br> {{ $show_data?->blood_group }}</td>
                                 </tr>
                                 <tr class="tbl_1">
                                     <th class="tbl_1" style="text-align: left;">৬</th>
@@ -263,6 +263,21 @@
                                             $jobType = isset($mt[$show_data->type_of_job])?$mt[$show_data->type_of_job]:'';
                                         @endphp
                                         {{$jobType}}
+                                    </td>
+                                </tr>
+                                <tr class="tbl_1">
+                                    <th class="tbl_1" style="text-align: left;">১৪ </th>
+                                    <th class="tbl_1" style="text-align: left;">সর্বশেষ রিনিউ</th>
+                                    
+                                    <th class="tbl_1" style="text-align: left;">..</th>
+                                    <th class="tbl_1" style="text-align: left;">..</th>
+                                    <td class="tbl_1">
+                                        @if(!$feeCollection->isEmpty())
+                                            @foreach ($feeCollection as $fee)
+                                                {{ money_format($fee->total_amount) }} টাকা
+                                                ({{ $fee->year }})
+                                            @endforeach
+                                        @endif
                                     </td>
                                 </tr>
                             </tbody>
