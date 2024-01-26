@@ -86,39 +86,15 @@ class MemberPanel extends Controller
      * @param  \App\Models\Frontend  $frontend
      * @return \Illuminate\Http\Response
      */
-    public function memberlist(Request $request, $letter = null)
+    public function memberlist(Request $request)
     {
         $search = $request['name']?? "";
-        $memberType = $request['member_type'] ?? "";
         $member_id = $request->input('member_id', '');
         $member_name = $request->input('member_name', '');
-        $members = OurMember::query();
+        $member = OurMember::where('approvedstatus',2)->get();
 
-        if ($search != "") {
-            $members->where('company', 'LIKE', '%'.$search.'%');
-        }
-
-        if ($letter) {
-            $members->where('company', 'LIKE', $letter.'%');
-        }
-
-        if ($memberType != "") {
-            $members->where('membership_applied', $memberType);
-        }
-
-        if (!empty($member_id) && !empty($member_name)) {
-            $members->where(function ($query) use ($member_id, $member_name) {
-                $query->where('member_id', $member_id)
-                      ->where('given_name', 'LIKE', '%'.$member_name.'%');
-            });
-        } elseif (!empty($member_id)) {
-            $members->where('member_id', $member_id);
-        } elseif (!empty($member_name)) {
-            $members->where('given_name'.'', 'LIKE', '%'.$member_name.'%');
-        }
-
-        $member = $members->paginate(10);
-        return view('frontend.membership.memberList', compact('member','search','memberType', 'member_id', 'member_name'));
+        // $member = $members->paginate(10);
+        return view('frontend.membership.memberList', compact('member','search', 'member_id', 'member_name'));
     }
     /**
      * Show the form for editing the specified resource.

@@ -98,11 +98,11 @@ Route::get('/contact_us', [front::class,'contactUs'])->name('contact-Us');
 Route::get('/become_a_member', [front::class,'mem_regi'])->name('member.registration');
 Route::post('/become_a_member/save', [front::class,'mem_regi_store'])->name('member.registration.store');
 Route::get('/page/{slug}', [front::class,'page'])->name('front.page');
-Route::get('memberlist', [MemberPanel::class,'memberlist'])->name('member.list');
+Route::get('updated_memberlist', [MemberPanel::class,'memberlist'])->name('member.list');
 Route::get('founding-member', [MemberPanel::class,'foundingMember'])->name('foundmember.list');
 Route::get('executive-session-member', [MemberPanel::class,'executiveSession'])->name('exe-session-list');
 Route::get('/executive-member{slug}', [MemberPanel::class,'executiveMember'])->name('exe-member-list');
-Route::get('memberlist/{letter}', [MemberPanel::class,'memberlist'])->name('searchByLetter');
+Route::get('updated_memberlist/{letter}', [MemberPanel::class,'memberlist'])->name('searchByLetter');
 Route::get('terms-condition', [MemberPanel::class,'termsConditon'])->name('terms');
 
 Route::get('/club-dues', [front::class,'club_dues'])->name('club_dues');
