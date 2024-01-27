@@ -62,7 +62,7 @@ class FrontendController extends Controller
     public function memberLink($id)
     {
         $member= OurMember::where('id',(encryptor('decrypt',$id)))->first();
-        $feeCollection = fee_collection::where('member_id',(encryptor('decrypt',$id)))->latest()->take(1)->get();
+        $feeCollection = fee_collection::where('member_id',(encryptor('decrypt',$id)))->get();
         $nomini = heirship::where('member_id',$member->id)->get();
         return view('frontend.memberLink',compact('member','nomini','feeCollection'));
     }

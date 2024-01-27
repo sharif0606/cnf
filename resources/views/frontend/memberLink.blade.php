@@ -274,10 +274,33 @@
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <td class="tbl_1">
                                         @if(!$feeCollection->isEmpty())
-                                            @foreach ($feeCollection as $fee)
-                                                {{ money_format($fee->total_amount) }} টাকা
-                                                ({{ $fee->year }})
-                                            @endforeach
+                                            <table style="width: 80%;">
+                                                    <tr>
+                                                        <th>SL</th>
+                                                        <th>Receipt</th>
+                                                        <th>Amount</th>
+                                                        <th>Year</th>
+                                                    </tr>
+                                                    @php
+                                                    $totalAm = 0;
+                                                    @endphp
+                                                @foreach ($feeCollection as $fee)
+                                                    <tr style="border-bottom: solid 1px;">
+                                                        <td>{{ ++$loop->index }}</td>
+                                                        <td>{{ $fee->receipt_no }}</td>
+                                                        <td>{{ money_format($fee->total_amount) }}</td>
+                                                        <td>{{ $fee->year }}</td>
+                                                    </tr>
+                                                    @php
+                                                        $totalAm += $fee->total_amount;
+                                                    @endphp
+                                                @endforeach
+                                                    <tr style="border-top: double 2px;">
+                                                        <th colspan="2">Total</th>
+                                                        <th>{{money_format($totalAm)}}</th>
+                                                        <th></th>
+                                                    </tr>
+                                            </table>
                                         @endif
                                     </td>
                                 </tr>
