@@ -111,7 +111,7 @@
                         <div class="search-list-item row ">
                             <div class="col-lg-2 align-self-center text-center">
                                 <a href="{{route('member_link',encryptor('encrypt',$m->id))}}">
-                                    <img src="{{asset('uploads/memberImage/'.$m->image)}}" alt="No Image" width="100px">
+                                    <img src="{{asset('uploads/memberImage/'.$m->image)}}" alt="No Image" width="150px">
                                 </a>
                             </div>
                             <div class="col-lg-4 text-center border-end ps-0 pe-0">
