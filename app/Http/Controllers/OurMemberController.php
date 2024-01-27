@@ -267,7 +267,7 @@ class OurMemberController extends Controller
     public function transHistory($id)
     {
         $data = fee_collection::with('details')->where('member_id', $id)->get();
-        return view('ourmember.transhistory', compact('data','feeCollection'));
+        return view('ourmember.transhistory', compact('data'));
     }
 
     public function transHistoryAll(Request $request)
