@@ -53,10 +53,10 @@
                                 <th scope="col">{{__('আর এস')}}</th>
                                 <th scope="col">{{__('পিতার নাম')}}</th>
                                 <th scope="col">{{__('মোবাইল (নিজস্ব)')}}</th>
-                                <th scope="col">{{__('রক্তের গ্রুপ')}}</th>
+                                <th scope="col">{{__('সর্বশেষ রিনিউ')}}</th>
                                 <th scope="col">{{__('এনআইডি')}}</th>
                                 <th scope="col">{{__('চাকুরীর পদবি')}}</th>
-                                <th class="white-space-nowrap">{{__('') }}</th>
+                                <th class="white-space-nowrap">{{__('Action') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -74,7 +74,7 @@
                                 </td>
                                 <td>{{$p->father_name}}</td>
                                 <td>{{$p->personal_phone}}</td>
-                                <td>{{$p->blood_group}}</td>
+                                <td>{{$p->fee_collection_last?->year}}</td>
                                 <td>{{$p->nid}}</td>
                                 <td>{{$p->designation_of_present_job}}</td>
                                 <td class="white-space-nowrap">

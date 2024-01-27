@@ -186,7 +186,7 @@
                               Members
                             </a>
                               <ul class="ps-4 dropdown-menu shadow small-menu">
-                                <li class="subMenu"><a href="{{route('member.list')}}"><span><i class="bi bi-chevron-double-right"></i></span> Member List</a></li>
+                                <li class="subMenu"><a href="{{route('member.list')}}"><span><i class="bi bi-chevron-double-right"></i></span>Updated Member List</a></li>
                                 <li class="subMenu"><a href=""><span><i class="bi bi-chevron-double-right"></i></span> Mission</a></li>
                                 <li class="subMenu"><a href=""><span><i class="bi bi-chevron-double-right"></i></span> Vission</a></li>
                               </ul>

@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
-                <h3 class="mb-0">Member List</h3>
+                <h3 class="mb-0">Updated Member List</h3>
             </div>
             <div class="col-lg-6">
                 <nav aria-label="breadcrumb">
@@ -16,7 +16,7 @@
                             <a href="{{route('front')}}" class="breadcrumb-item router-link-active">Home</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="">member list</a>
+                            <a href="">updated member list</a>
                         </li>
                         <li class="breadcrumb-item">data</li>
                     </ol>
