@@ -61,10 +61,10 @@
                 <div class="col-lg-7">
                     <div class="member-search">
                         <div class="search-body">
-                            <h1>Member Search</h1>
+                            <h1>সদস্য সার্চ</h1>
                             <form action="" method="get">
                                 <div class="searchBox">
-                                    <input type="text" value="{{ request()->input('name', '') }}"  name="name" id="search" placeholder="নাম, মোবাইল, এনআইডি">
+                                    <input type="text" value="{{ request()->input('name', '') }}"  name="name" id="search" placeholder="নাম, সদস্য নং, এনআইডি">
                                     <button type="submit">
                                         <span class="bi bi-search"></span>
                                     </button>
@@ -87,8 +87,8 @@
                         <div id="advance-search" class="py-2 px-5 collapse">
                             <form action="" method="get" class="row">
                                 <div class="form-group col-lg-5 p-1">
-                                    <label for="" class="mb-0">সদস্য নং</label>
-                                    <input type="text" name="member_id" placeholder="সদস্য নং" class="form-control form-control-sm shadow-none">
+                                    <label for="" class="mb-0">মোবাইল</label>
+                                    <input type="text" name="mobile" placeholder="মোবাইল" class="form-control form-control-sm shadow-none">
                                 </div>
                                 <div class="form-group col-lg-5 p-1">
                                     <label for="" class="mb-0">আর এস এল</label>
@@ -110,10 +110,14 @@
                         @forelse ($member as $m)
                         <div class="search-list-item row ">
                             <div class="col-lg-2 align-self-center text-center">
-                                <img src="{{asset('uploads/memberImage/'.$m->image)}}" alt="No Image" width="100px">
+                                <a href="{{route('member_link',encryptor('encrypt',$m->id))}}">
+                                    <img src="{{asset('uploads/memberImage/'.$m->image)}}" alt="No Image" width="100px">
+                                </a>
                             </div>
-                            <div class="col-lg-4 text-center border-end ps-0 pe-0">
-                                <h1> {{$m->name_bn}}</h1>
+                            <div class="col-lg-3 text-center border-end ps-0 pe-0">
+                                <a href="{{route('member_link',encryptor('encrypt',$m->id))}}">
+                                    <h1> {{$m->name_bn}}</h1>
+                                </a>
                                 <h5>
                                     সদস্য নং/নতুন : {{$m->member_serial_no}}/
                                     @if ($m->member_serial_no_new != '')
@@ -124,11 +128,16 @@
                                 </h5>
                                 <h5>আর এস এল : {{$m->renew_serial_no}}</h5>
                             </div>
-                            <div class="col-lg-6 align-self-center">
+                            <div class="col-lg-5 align-self-center">
                                 <h5>মোবাইল : {{$m->personal_phone}}</h5>
                                 <h5>জেলা : {{$m->district}}</h5>
                                 <h5>উপজেলা : {{$m->upazila}}</h5>
                                 <h5>গ্রাম : {{$m->village}}</h5>
+                                <h5>রিনিউ ইস্যু : {{ $m->fee_collection_last ? \Carbon\Carbon::parse($m->fee_collection_last->date)->format('d-F-Y') : '' }}</h5>
+                                <h5>রিনিউ মেয়াদ  : {{$m->fee_collection_last?->year}}</h5>
+                            </div>
+                            <div class="col-lg-2 align-self-center text-center">
+                                <a href="{{route('member_link',encryptor('encrypt',$m->id))}}" class="btn btn-sm btn-outline-explore">View Profile</a>
                             </div>
                         </div>
                         @empty

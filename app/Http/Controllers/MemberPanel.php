@@ -89,26 +89,26 @@ class MemberPanel extends Controller
     public function memberlist(Request $request)
     {
         $search = $request['name']?? "";
-        $member_id = $request->input('member_id', '');
+        $mobile = $request->input('mobile', '');
         $rsl = $request->input('rsl_no', '');
         $members = OurMember::query();
 
         if ($search) {
             $members->where(function ($query) use ($search) {
                 $query->where('name_bn', 'LIKE', '%' . $search . '%')
-                      ->orWhere('personal_phone', 'LIKE', '%' . $search . '%')
+                      ->orWhere('member_serial_no', 'LIKE', '%' . $search . '%')
                       ->orWhere('nid', 'LIKE', '%' . $search . '%');
             });
         }
-        if (!empty($member_id) && !empty($rsl)) {
-            $members->where(function ($query) use ($member_id, $rsl) {
-                $query->where('member_serial_no', $member_id)
-                      ->where('renew_serial_no', 'LIKE', '%'.$rsl.'%');
+        if (!empty($mobile) && !empty($rsl)) {
+            $members->where(function ($query) use ($mobile, $rsl) {
+                $query->where('personal_phone', $mobile)
+                      ->where('renew_serial_no',$rsl);
             });
-        } elseif (!empty($member_id)) {
-            $members->where('member_serial_no', $member_id);
+        } elseif (!empty($mobile)) {
+            $members->where('personal_phone', $mobile);
         } elseif (!empty($rsl)) {
-            $members->where('renew_serial_no'.'', 'LIKE', '%'.$rsl.'%');
+            $members->where('renew_serial_no',$rsl);
         }
 
         $members->where('approvedstatus', 2);

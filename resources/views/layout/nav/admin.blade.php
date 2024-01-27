@@ -5,9 +5,9 @@
             <span>{{__('dashboard') }}</span>
         </a>
     </li>
-    {{-- <li class="sidebar-item has-sub">
+    <li class="sidebar-item has-sub">
         <a href="#" class='sidebar-link'>
-            <i class="bi bi-files"></i>
+            <i class="bi bi-gear-fill"></i>
             <span>{{__('Manage Website')}}</span>
         </a>
         <ul class="submenu">
@@ -17,11 +17,11 @@
                 <ul class="submenu">
                     <li class="py-1"><a href="{{route(currentUser().'.scrollN.index')}}">{{__('Scroll Notice')}}</a></li>
                     <li class="py-1"><a href="{{route(currentUser().'.slider.index')}}">{{__('Slider')}}</a></li>
-                    <li class="py-1"><a href="{{route(currentUser().'.benefit.index')}}">{{__('Benefits')}}</a></li>
-                    <li class="py-1"><a href="{{route(currentUser().'.tdue.index')}}">{{__('Total Dues')}}</a></li>
+                    {{-- <li class="py-1"><a href="{{route(currentUser().'.benefit.index')}}">{{__('Benefits')}}</a></li>
+                    <li class="py-1"><a href="{{route(currentUser().'.tdue.index')}}">{{__('Total Dues')}}</a></li> --}}
                 </ul>
             </li>
-            <li class="submenu-item sidebar-item has-sub">
+            {{-- <li class="submenu-item sidebar-item has-sub">
                 <a href="#" class='sidebar-link'> {{__('Gallery')}}</a>
                 <ul class="submenu">
                     <li class="py-1"><a href="{{route(currentUser().'.year.index')}}">{{__('Album Year')}}</a></li>
@@ -30,7 +30,7 @@
                     <li class="py-1"><a href="{{route(currentUser().'.vgalleryCat.index')}}">{{__('Video Album')}}</a></li>
                     <li class="py-1"><a href="{{route(currentUser().'.vgallery.index')}}">{{__('Video')}}</a></li>
                 </ul>
-            </li>
+            </li> --}}
             <li class="submenu-item sidebar-item has-sub">
                 <a href="#" class='sidebar-link'> {{__('Notice & Facilities')}}</a>
                 <ul class="submenu">
@@ -49,19 +49,19 @@
             <li class="submenu-item sidebar-item has-sub">
                 <a href="#" class='sidebar-link'> {{__('Setting')}}</a>
                 <ul class="submenu">
-                    <li class="py-1"><a href="{{route(currentUser().'.country.index')}}">{{__('Country')}}</a></li>
+                    {{-- <li class="py-1"><a href="{{route(currentUser().'.country.index')}}">{{__('Country')}}</a></li>
                     <li class="py-1"><a href="{{route(currentUser().'.division.index')}}">{{__('Division')}}</a></li>
                     <li class="py-1"><a href="{{route(currentUser().'.district.index')}}">{{__('District')}}</a></li>
                     <li class="py-1"><a href="{{route(currentUser().'.district.index')}}">{{__('District')}}</a></li>
                     <li class="py-1"><a href="{{route(currentUser().'.thana.index')}}">{{__('Thana')}}</a></li>
                     <li class="py-1"><a href="{{route(currentUser().'.admin.index')}}">{{__('Users')}}</a></li>
                     <li class="py-1"><a href="{{route(currentUser().'.bank.index')}}">{{__('Bank List')}}</a></li>
-                    <li class="py-1"><a href="{{route(currentUser().'.terms.index')}}">{{__('Terms & Condition')}}</a></li>
+                    <li class="py-1"><a href="{{route(currentUser().'.terms.index')}}">{{__('Terms & Condition')}}</a></li> --}}
                     <li class="py-1"><a href="{{route(currentUser().'.settings.index')}}">{{__('Website Settings')}}</a></li>
                 </ul>
             </li>
         </ul>
-    </li> --}}
+    </li>
     
     <li class="sidebar-item">
         <a href="{{route(currentUser().'.ourMember.index')}}" class='sidebar-link'><i class="bi bi-people-fill"></i> <span>{{__('Applied Member')}}</span></a>

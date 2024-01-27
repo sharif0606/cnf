@@ -51,60 +51,44 @@
     <!-- Member Counter -->
     <section class="member-counter container my-5">
       <div class="row text-center member-animate">
+        <div class="col-lg-6 offset-lg-3 col-sm-12">
+          <div class="member-search">
+              <div class="search-body">
+                  <h1>সদস্য সার্চ</h1>
+                  <form action="{{route('member.list')}}" method="get">
+                      <div class="searchBox">
+                          <input type="text" value="{{ request()->input('name', '') }}"  name="name" id="search" placeholder="নাম, সদস্য নং, এনআইডি">
+                          <button type="submit">
+                              <span class="bi bi-search"></span>
+                          </button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="member-counter container my-5">
+      <div class="row text-center member-animate">
         <div class="col member-1">
           <div class="card p-1 shadow my-2">
             <span class="material-icons"> groups </span>
-            <p>{{$donor}}</p>
-            <p class="my-auto">Donor Member</p>
+            <p>{{$allMember}}</p>
+            <p class="my-auto">মোট সদস্য</p>
           </div>
         </div>
         <div class="col member-2">
           <div class="card p-1 shadow my-2">
             <span class="material-icons"> groups </span>
-            <p>{{$Service}}</p>
-            <p class="my-auto">Service Member</p>
+            <p>{{$activeMember}}</p>
+            <p class="my-auto">সক্রিয় সদস্য</p>
           </div>
         </div>
         <div class="col member-3">
           <div class="card p-1 shadow my-2">
             <span class="material-icons"> groups </span>
-            <p>{{$Life}}</p>
-            <p class="my-auto">Life Member</p>
-          </div>
-        </div>
-        <div class="col member-4">
-          <div class="card p-1 shadow my-2">
-            <span class="material-icons"> groups </span>
-            <p>{{$Temporary}}</p>
-            <p class="my-auto">Temporary Member</p>
-          </div>
-        </div>
-        <div class="col member-5">
-          <div class="card p-1 shadow my-2">
-            <span class="material-icons"> groups </span>
-            <p class="counter">{{$Permanent}}</p>
-            <p class="my-auto">Permanent Member</p>
-          </div>
-        </div>
-        <div class="col member-6">
-          <div class="card p-1 shadow my-2">
-            <span class="material-icons"> groups </span>
-            <p>{{$Honorary}}</p>
-            <p class="my-auto">Honorary Member</p>
-          </div>
-        </div>
-        <div class="col member-7">
-          <div class="card p-1 shadow my-2">
-            <span class="material-icons"> groups </span>
-            <p>{{$Corporate}}</p>
-            <p class="my-auto">Corporate Member</p>
-          </div>
-        </div>
-        <div class="col member-8">
-          <div class="card p-1 shadow my-2">
-            <span class="material-icons"> groups </span>
-            <p>{{$Diplomate}}</p>
-            <p class="my-auto">Diplomate Member</p>
+            <p>{{$approveMember}}</p>
+            <p class="my-auto">পুনর্ণবীকরণ সদস্য</p>
           </div>
         </div>
       </div>
@@ -212,7 +196,7 @@
     <section class="facilities-main">
       <div class="facilities text-center py-5">
         <div class="container my-4">
-          <h4 class="section-title animate-title">FACILITIES</h4>
+          <h4 class="section-title animate-title">কার্যক্রম সমূহ</h4>
           <div class="row justify-content-center owl-facilities owl-theme animate-facilities">
             @forelse ($facilities as $fac)
               <div class="col-12 item  d-flex justify-content-center">
@@ -252,7 +236,7 @@
         <section class="container pb-5 ">
           {{-- <div class="our-members">
           </div> --}}
-          <h4 class="animate-title">OUR MEMBERS</h4>
+          <h4 class="animate-title">সদস্য সমূহ</h4>
           <div class="row owl-member owl-theme">
           @forelse ($ourMember as $fm)
           <div class="col-12 item pe-3 ps-3">
@@ -260,26 +244,69 @@
                 <span class="shape"></span>
                 <img class="card-img-top" src="{{asset('uploads/memberImage/'.$fm->image)}}" alt="No Photos">
                 <div class="card-body">
-                    <span class="member-degignation">
-                        @if ($fm->membership_applied == 1){{'Donor Member'}}
-                        @elseif($fm->membership_applied == 2){{'Service Member'}}
-                        @elseif($fm->membership_applied == 3){{'Life Member'}}
-                        @elseif($fm->membership_applied == 4){{'Temporary Member'}}
-                        @elseif($fm->membership_applied == 5){{'Permanent Member'}}
-                        @elseif($fm->membership_applied == 6){{'Honorary Member'}}
-                        @elseif($fm->membership_applied == 7){{'Corporate Member'}}
-                        @elseif($fm->membership_applied == 8){{'Diplomate Member'}}
-                        @endif
-                    </span>
-                    <h3 class="member-title">{{$fm->name_bn }}</h3>
+                    <h3 class="m-0 member-title">{{$fm->name_bn }}</h3>
                     <small>
-                        <strong>Company:</strong>
-                        {{$fm->company}}
+                        <strong>প্রতিষ্ঠান:</strong>
+                        {{$fm->nameAddress_of_present_institute}}
                     </small>
                     <br>
                     <small>
-                      <strong>Designation:</strong>
-                      {{$fm->designation }}
+                      <strong>পদবী:</strong>
+                      {{$fm->designation_of_present_job }}
+                    </small><br>
+                    <a class="btn btn-sm btn-primary" href="{{route('member_link',encryptor('encrypt',$fm->id))}}">View Profile</a>
+                </div>
+                {{-- <div class="card-footer">
+                    <div class="social">
+                        <big>Follow:</big>
+                        <span class="social-icon"><a href="{{$fm->linkdin_link }}" target="_blank"><i class="bi bi-linkedin"></i></a></span>
+                        <span class="social-icon"><a href="{{$fm->twter_link }}" target="_blank"><i class="bi bi-twitter ms-0 ps-0"></i></a></span>
+                        <span class="social-icon"><a href="{{$fm->fb_link }}" target="_blank"><i class="bi bi-facebook ms-0 ps-0"></i></a></span>
+                        <span class="social-icon"><a href="{{$fm->youtube_link }}" target="_blank"><i class="bi bi-youtube ms-0 ps-0"></i></a></span>
+                    </div>
+                </div> --}}
+            </div>
+        </div>
+            
+          @empty
+            <div class="col-12 item pe-3 ps-3">
+              <div class="shadow p-2 mb-3"style="background: #FFF">
+                <div class="border-member text-center">
+                  <img src="{{ asset('img/Chairman or1.png')}}" alt="" />
+                  <p>Md. Rafique Uddin Babul</p>
+                  <p>Sizzing Group, Managing Director</p>
+                  <p>Liffe Member - LM-002</p>
+                  <a href="{{route('member_link',encryptor('encrypt',816))}}">member profile</a>
+                </div>
+              </div>
+            </div>
+          @endforelse
+          </div>
+        </section>
+      </div>
+    </div>
+    <div class="memberdiv">
+      <div class="our-members member-background">
+        <section class="container pb-5 ">
+          {{-- <div class="our-members">
+          </div> --}}
+          <h4 class="animate-title">কার্যনির্বাহী সদস্য</h4>
+          <div class="row owl-member owl-theme">
+          @forelse ($ourMember as $fm)
+          <div class="col-12 item pe-3 ps-3">
+            <div class="card member-box shadow">
+                <span class="shape"></span>
+                <img class="card-img-top" src="{{asset('uploads/memberImage/'.$fm->image)}}" alt="No Photos">
+                <div class="card-body">
+                    <h3 class="m-0 member-title">{{$fm->name_bn }}</h3>
+                    <small>
+                        <strong>প্রতিষ্ঠান:</strong>
+                        {{$fm->nameAddress_of_present_institute}}
+                    </small>
+                    <br>
+                    <small>
+                      <strong>পদবী:</strong>
+                      {{$fm->designation_of_present_job }}
                     </small><br>
                     <a class="btn btn-sm btn-primary" href="{{route('member_link',encryptor('encrypt',$fm->id))}}">View Profile</a>
                 </div>
@@ -358,50 +385,6 @@
     </section>
     <!-- Gallery end -->
     <!-- Facilities -->
-    <section class="facilities-main px-5">
-      <div class="facilities text-center5">
-        <!-- Gallery end -->
-        <!-- member reg. start -->
-        <div class="justify-content-center bg-light member-section shadow">
-          <span class="shape"></span>
-        <span class="bubble1"></span>
-        <span class="bubble2"></span>
-        <span class="bubble3"></span>
-        <span class="bubble4"></span>
-        <span class="bubble5"></span>
-          <div class="p-5 rounded shadow">
-            <div class="row member-inner">
-              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                <p class="animate-title">Benefits of Members</p>
-                <ul class="navbar-nav benefit">
-                  @forelse ($benefit as $b)
-                    <li class="nav-item">
-                      <i class="bi bi-caret-right-fill"></i> <span>{{$b->benefit}}</span>
-                    </li>
-                  @empty
-                    <li class="nav-item">
-                        <i class="bi bi-caret-right-fill"></i> <span>Advocacy for Software & ITES</span>
-                    </li>
-                  @endforelse
-                </ul>
-                  @if($showViewMoreButton)
-                      <div class="ps-1 viewbutton">
-                          <a class="btn btn-sm btn-danger" href="{{ route('member.benefit') }}">View more</a>
-                      </div>
-                  @endif
-              </div>
-              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 become-member-text my-auto">
-                <p><span>Become a <span class="theme-color">Member</span></span></p>
-              </div>
-              <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 apply-text">
-                <a class="shadow" href="{{route('member_registration')}}">Apply Now</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- member reg. end -->
-      </div>
-    </section>
     <!-- Facilities ends -->
     @endsection
     @push('scripts')

@@ -46,18 +46,13 @@ class FrontendController extends Controller
         $vNotice= video_notice::all();
         $facilities=Facilities::get();
         $pgallery_cat=photoGallaryCategory::where('status',1)->get();
-        $donor = OurMember::where('membership_applied',1)->count();
-        $Service = OurMember::where('membership_applied',2)->count();
-        $Life = OurMember::where('membership_applied',3)->count();
-        $Temporary = OurMember::where('membership_applied',4)->count();
-        $Permanent = OurMember::where('membership_applied',5)->count();
-        $Honorary = OurMember::where('membership_applied',6)->count();
-        $Corporate = OurMember::where('membership_applied',7)->count();
-        $Diplomate = OurMember::where('membership_applied',7)->count();
-        $ourMember = OurMember::where('show_font',1)->get();
+        $allMember = OurMember::whereIn('approvedstatus',[0,1,2,3,4])->count();
+        $activeMember = OurMember::where('status',2)->count();
+        $approveMember = OurMember::where('approvedstatus',2)->count();
+        $ourMember = OurMember::where('approvedstatus',2)->get();
         $benefit = BenefitsOfMember::latest()->take(6)->get();
         $showViewMoreButton = BenefitsOfMember::count() > 6;
-        return view('frontend.home',compact('slider','notice','facilities','pgallery_cat','donor','Service','Life','Temporary','Permanent','Honorary','Corporate','Diplomate','ourMember','benefit','showViewMoreButton','scroll_notice','vNotice'));
+        return view('frontend.home',compact('slider','notice','facilities','pgallery_cat','allMember','activeMember','approveMember','ourMember','benefit','showViewMoreButton','scroll_notice','vNotice'));
     }
     /**
      * Show the form for creating a new resource.

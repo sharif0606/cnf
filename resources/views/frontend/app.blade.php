@@ -244,7 +244,7 @@
     </div>
     
     <!--  support -->
-    <section class="support justify-content-center">
+    {{-- <section class="support justify-content-center">
       <div class="container">
         <div class="row">
           <div class="col-md-4 d-flex justify-content-center text-1">
@@ -259,7 +259,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> --}}
     <!--  support ends -->
     <!-- footer -->
     <footer class="position-relative">

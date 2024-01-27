@@ -34,7 +34,7 @@
                                 'Executive Committee' 	=>'executive-session-member',
                                 'Notice' 		        =>'all-notice',
                                 'News & Events' 		=>'news-events',
-                                'Member List' 		    =>'memberlist',
+                                'Updated Member List' 	=>'updated_memberlist',
                                 'Photo Gallery' 		=>'photo_gallery',
                                 'Video Gallery' 		=>'video_gallery',
                                 'Club Dues' 		    =>'club-dues',
