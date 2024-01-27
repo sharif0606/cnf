@@ -114,7 +114,7 @@
                                     <img src="{{asset('uploads/memberImage/'.$m->image)}}" alt="No Image" width="100px">
                                 </a>
                             </div>
-                            <div class="col-lg-3 text-center border-end ps-0 pe-0">
+                            <div class="col-lg-4 text-center border-end ps-0 pe-0">
                                 <a href="{{route('member_link',encryptor('encrypt',$m->id))}}">
                                     <h1> {{$m->name_bn}}</h1>
                                 </a>
@@ -128,7 +128,7 @@
                                 </h5>
                                 <h5>আর এস এল : {{$m->renew_serial_no}}</h5>
                             </div>
-                            <div class="col-lg-5 align-self-center">
+                            <div class="col-lg-4 align-self-center">
                                 <h5>মোবাইল : {{$m->personal_phone}}</h5>
                                 <h5>জেলা : {{$m->district}}</h5>
                                 <h5>উপজেলা : {{$m->upazila}}</h5>

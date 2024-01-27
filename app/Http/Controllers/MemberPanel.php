@@ -114,7 +114,7 @@ class MemberPanel extends Controller
         $members->where('approvedstatus', 2);
         $members->orderBy('renew_serial_no');
 
-        $member = $members->paginate(15);
+        $member = $members->paginate(10);
         return view('frontend.membership.memberList', compact('member','search'));
     }
     /**
