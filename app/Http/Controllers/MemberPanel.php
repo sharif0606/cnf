@@ -89,32 +89,16 @@ class MemberPanel extends Controller
     public function memberlist(Request $request)
     {
         $search = $request['name']?? "";
-        $mobile = $request->input('mobile', '');
         $rsl = $request->input('rsl_no', '');
-        $members = OurMember::query();
+        $members = OurMember::where('approvedstatus', 0);
+        
+        if (!empty($search))
+            $members= $members->where('member_serial_no',$search);
+        
+        if (!empty($rsl))
+            $members= $members->where('renew_serial_no',$rsl);
 
-        if ($search) {
-            $members->where(function ($query) use ($search) {
-                $query->where('name_bn', 'LIKE', '%' . $search . '%')
-                      ->orWhere('member_serial_no', 'LIKE', '%' . $search . '%')
-                      ->orWhere('nid', 'LIKE', '%' . $search . '%');
-            });
-        }
-        if (!empty($mobile) && !empty($rsl)) {
-            $members->where(function ($query) use ($mobile, $rsl) {
-                $query->where('personal_phone', $mobile)
-                      ->where('renew_serial_no',$rsl);
-            });
-        } elseif (!empty($mobile)) {
-            $members->where('personal_phone', $mobile);
-        } elseif (!empty($rsl)) {
-            $members->where('renew_serial_no',$rsl);
-        }
-
-        $members->where('approvedstatus', 2);
-        $members->orderBy('renew_serial_no');
-
-        $member = $members->paginate(10);
+        $member = $members->orderBy('renew_serial_no')->paginate();
         return view('frontend.membership.memberList', compact('member','search'));
     }
     /**

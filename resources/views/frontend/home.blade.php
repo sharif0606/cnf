@@ -55,7 +55,7 @@
                   <h1>সদস্য সার্চ</h1>
                   <form action="{{route('member.list')}}" method="get">
                       <div class="searchBox">
-                          <input type="text" value="{{ request()->input('name', '') }}"  name="name" id="search" placeholder="নাম, সদস্য নং, এনআইডি">
+                          <input type="text" value="{{ request()->input('name', '') }}"  name="name" id="search" placeholder="সদস্য নং, আর এস এল নং">
                           <button type="submit">
                               <span class="bi bi-search"></span>
                           </button>
