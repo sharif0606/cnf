@@ -462,11 +462,12 @@ class OurMemberController extends Controller
                             $phone=$member->personal_phone;
                             $rand=uniqid().rand(1000,9999);
                             $msg_text="ডিজিটাল পদ্ধতিতে নবায়ন করায় সিবিএ - ২৩৪ এর কার্যনির্বাহী পরিষদ এর পক্ষথেকে আপনাকে ধন্যবাদ।\nMember No: ".$member->member_serial_no."/".$member->member_serial_no_new."\nRSL: ".$member->renew_serial_no."\nকৃতজ্ঞতায় সাধারণ সম্পাদক / সভাপতি\nওয়েবসাইট: https://www.cnfemployeesunion.com";
-                            $smsClass->singleSms($phone, $msg_text, $rand);
+                            if($smsClass->singleSms($phone, $msg_text, $rand)->status_code=="200"){
+                                /* update member sms send status */
+                                $member->sms_send=1;
+                                $member->save();
+                            }
                         }
-                        /* update member sms send status */
-                        $member->sms_send=1;
-                        $member->save();
                     }
                     Toastr::success('Approved Successfully!');
                     return redirect()->route(currentUser().'.approve_member');
