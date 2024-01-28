@@ -459,13 +459,18 @@ class OurMemberController extends Controller
                     Toastr::success('Approved Successfully!');
                     return redirect()->route(currentUser().'.gs_approve_member');
                 }elseif(currentUser() == 'chairman'){
-                    $smsClass= new sslSms();
-                    if($member->personal_phone){
-                        $phone=$member->personal_phone;
-                        $rand=rand(100000,999999);
-                        $msg_text="ডিজিটাল পদ্ধতিতে নবায়ন করায় সিবিএ - ২৩৪ এর কার্যনির্বাহী পরিষদ এর পক্ষথেকে আপনাকে ধন্যবাদ।\nMember No: ".$member->member_serial_no."/".$member->member_serial_no_new."\nRSL: ".$member->renew_serial_no."\nকৃতজ্ঞতায় সাধারণ সম্পাদক / সভাপতি";
-                        $smsClass->singleSms($phone, $msg_text, $rand);
-            		}
+                    if($member->sms_send !=1 ){ /** check member sms send before or not */
+                        $smsClass= new sslSms();
+                        if($member->personal_phone){
+                            $phone=$member->personal_phone;
+                            $rand=uniqid().rand(1000,9999);
+                            $msg_text="ডিজিটাল পদ্ধতিতে নবায়ন করায় সিবিএ - ২৩৪ এর কার্যনির্বাহী পরিষদ এর পক্ষথেকে আপনাকে ধন্যবাদ।\nMember No: ".$member->member_serial_no."/".$member->member_serial_no_new."\nRSL: ".$member->renew_serial_no."\nকৃতজ্ঞতায় সাধারণ সম্পাদক / সভাপতি";
+                            $smsClass->singleSms($phone, $msg_text, $rand);
+                        }
+                        /* update member sms send status */
+                        $member->sms_send=1;
+                        $member->save();
+                    }
                     Toastr::success('Approved Successfully!');
                     return redirect()->route(currentUser().'.approve_member');
                 }else{

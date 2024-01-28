@@ -58,6 +58,7 @@ return new class extends Migration
             $table->integer('approvedstatus')->default(0)->comment('0 pending, 1 gs approved, 2 chairman approved');
             $table->date('member_approval_date')->nullable();
             $table->longText('finger_print')->nullable();
+            $table->integer('sms_send')->nullable()->default(0)->comment('0 not send, 1 send');
             $table->softDeletes();
             $table->timestamps();
         });
