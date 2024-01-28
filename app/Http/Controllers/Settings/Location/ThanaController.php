@@ -24,25 +24,6 @@ class ThanaController extends Controller
      */
     public function index()
     {
-        $ourmember=OurMember::where('approvedstatus',2)->where('sms_send',0)->get();
-        foreach($ourmember as $i=>$member){
-            if($member->sms_send !=1 ){ /** check member sms send before or not */
-                $smsClass= new sslSms();
-                if($member->personal_phone){
-                    $phone=$member->personal_phone;
-                    $rand=uniqid().rand(1000,9999);
-                    $msg_text="ডিজিটাল পদ্ধতিতে নবায়ন করায় সিবিএ - ২৩৪ এর কার্যনির্বাহী পরিষদ এর পক্ষথেকে আপনাকে ধন্যবাদ।\nMember No: ".$member->member_serial_no."/".$member->member_serial_no_new."\nRSL: ".$member->renew_serial_no."\nকৃতজ্ঞতায় সাধারণ সম্পাদক / সভাপতি\nওয়েবসাইট: https://www.cnfemployeesunion.com";
-                    $smsClass->singleSms($phone, $msg_text, $rand);
-                }
-                /* update member sms send status */
-                $member->sms_send=1;
-                $member->save();
-                echo "send".$member->sms_send; echo $msg_text;echo "<br>";
-            }
-        }
-        //print_r($ourmember);
-
-        die();
         $thanas=Thana::all();
         return view('settings.location.thana.index',compact('thanas'));
     }
