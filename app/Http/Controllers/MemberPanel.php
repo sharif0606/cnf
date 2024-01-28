@@ -90,17 +90,25 @@ class MemberPanel extends Controller
     {
         $search = $request['name']?? "";
         $rsl = $request->input('rsl_no', '');
-        $members = OurMember::where('approvedstatus', 0);
-        
-        if (!empty($search))
-            $members= $members->where('member_serial_no',$search);
-        
-        if (!empty($rsl))
-            $members= $members->where('renew_serial_no',$rsl);
+        $members = OurMember::query();
 
-        $member = $members->orderBy('renew_serial_no')->paginate();
+        if ($search) {
+            $members->where(function ($query) use ($search) {
+                $query->Where('member_serial_no', $search)
+                      ->orWhere('renew_serial_no', $search);
+            });
+        }
+        if (!empty($rsl)) {
+            $members->where('renew_serial_no',$rsl);
+        }
+
+        $members->where('approvedstatus', 2);
+        $members->orderBy('renew_serial_no');
+
+        $member = $members->paginate(10);
         return view('frontend.membership.memberList', compact('member','search'));
     }
+
     /**
      * Show the form for editing the specified resource.
      *
