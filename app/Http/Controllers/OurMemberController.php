@@ -77,7 +77,6 @@ class OurMemberController extends Controller
      */
     public function approvedMember(Request $request)
     {
-
         $ourmember=OurMember::where('approvedstatus',2)->orderBy('member_serial_no');
         if($request->member_serial_no)
             $ourmember=$ourmember->where('member_serial_no',$request->member_serial_no);
@@ -292,8 +291,6 @@ class OurMemberController extends Controller
         return view('ourmember.transhistorytwo', compact('feeDetail','totalVouchers','totalAmount','totalMembers'));
     }
 
-
-
     public function approval($id)
     {
         $show_data=OurMember::findOrFail(encryptor('decrypt',$id));
@@ -464,7 +461,7 @@ class OurMemberController extends Controller
                         if($member->personal_phone){
                             $phone=$member->personal_phone;
                             $rand=uniqid().rand(1000,9999);
-                            $msg_text="ডিজিটাল পদ্ধতিতে নবায়ন করায় সিবিএ - ২৩৪ এর কার্যনির্বাহী পরিষদ এর পক্ষথেকে আপনাকে ধন্যবাদ।\nMember No: ".$member->member_serial_no."/".$member->member_serial_no_new."\nRSL: ".$member->renew_serial_no."\nকৃতজ্ঞতায় সাধারণ সম্পাদক / সভাপতি";
+                            $msg_text="ডিজিটাল পদ্ধতিতে নবায়ন করায় সিবিএ - ২৩৪ এর কার্যনির্বাহী পরিষদ এর পক্ষথেকে আপনাকে ধন্যবাদ।\nMember No: ".$member->member_serial_no."/".$member->member_serial_no_new."\nRSL: ".$member->renew_serial_no."\nকৃতজ্ঞতায় সাধারণ সম্পাদক / সভাপতি\nওয়েবসাইট: https://www.cnfemployeesunion.com";
                             $smsClass->singleSms($phone, $msg_text, $rand);
                         }
                         /* update member sms send status */

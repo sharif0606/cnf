@@ -25,9 +25,7 @@
         <div class="carousel-inner">
             @forelse ($slider as $slide)
               <div class="carousel-item {{$loop->index==0?'active':''}}">
-                    <img
-                    src="{{asset('uploads/Slide_image/thumb/'.$slide->image)}}"
-                    class="d-block w-100 slider-img" alt="..." />
+                <img src="{{asset('uploads/Slide_image/thumb/'.$slide->image)}}" class="d-block w-100 slider-img" alt="..." />
               </div>
             @empty
             <div class="carousel-item active">
@@ -116,7 +114,7 @@
                 </div>
                 @empty
                 <div class="carousel-item active">
-                 <iframe class="notice-img" width="100%" height="315" src="https://www.youtube.com/embed/uA0ag5gEZt8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                 <iframe class="notice-img" width="100%" height="315" src="https://www.youtube.com/embed/tGPUQ76HIOE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
                 @endforelse
                 @forelse ($vNotice as $notic)
@@ -128,7 +126,7 @@
                 </div>
                 @empty
                 <div class="carousel-item active">
-                  <iframe class="notice-img" width="100%" height="315" src="https://www.youtube.com/embed/uA0ag5gEZt8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                  <iframe class="notice-img" width="100%" height="315" src="https://www.youtube.com/embed/tGPUQ76HIOE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
                 @endforelse
               </div>
@@ -193,7 +191,7 @@
     </section>
     <!-- Blog & Notice end -->
     <!-- Facilities -->
-    <section class="facilities-main">
+    <!--<section class="facilities-main">
       <div class="facilities text-center py-5">
         <div class="container my-4">
           <h4 class="section-title animate-title">কার্যক্রম সমূহ</h4>
@@ -222,13 +220,13 @@
 
           </div>
         </div>
-      </div>
+      </div>-->
       <!-- backgourd overlay animate clircle 
       <div class="facilites-bg-shadow"></div>-->
-      <div class="facilitics-circle1"></div>
+      <!--<div class="facilitics-circle1"></div>
       <div class="facilitics-circle2"></div>
       <div class="facilitics-circle3"></div>
-    </section>
+    </section>-->
     <!-- Facilities ends -->
     <!-- OUr Member -->
     <div class="memberdiv">
@@ -291,50 +289,10 @@
           {{-- <div class="our-members">
           </div> --}}
           <h4 class="animate-title">কার্যনির্বাহী সদস্য</h4>
-          <div class="row owl-member owl-theme">
-          @forelse ($ourMember as $fm)
-          <div class="col-12 item pe-3 ps-3">
-            <div class="card member-box shadow">
-                <span class="shape"></span>
-                <img class="card-img-top" src="{{asset('uploads/memberImage/'.$fm->image)}}" alt="No Photos">
-                <div class="card-body">
-                    <h3 class="m-0 member-title">{{$fm->name_bn }}</h3>
-                    <small>
-                        <strong>প্রতিষ্ঠান:</strong>
-                        {{$fm->nameAddress_of_present_institute}}
-                    </small>
-                    <br>
-                    <small>
-                      <strong>পদবী:</strong>
-                      {{$fm->designation_of_present_job }}
-                    </small><br>
-                    <a class="btn btn-sm btn-primary" href="{{route('member_link',encryptor('encrypt',$fm->id))}}">View Profile</a>
-                </div>
-                {{-- <div class="card-footer">
-                    <div class="social">
-                        <big>Follow:</big>
-                        <span class="social-icon"><a href="{{$fm->linkdin_link }}" target="_blank"><i class="bi bi-linkedin"></i></a></span>
-                        <span class="social-icon"><a href="{{$fm->twter_link }}" target="_blank"><i class="bi bi-twitter ms-0 ps-0"></i></a></span>
-                        <span class="social-icon"><a href="{{$fm->fb_link }}" target="_blank"><i class="bi bi-facebook ms-0 ps-0"></i></a></span>
-                        <span class="social-icon"><a href="{{$fm->youtube_link }}" target="_blank"><i class="bi bi-youtube ms-0 ps-0"></i></a></span>
-                    </div>
-                </div> --}}
+          <div class="row">
+            <div class="col-12">
+              <img class="w-100" src="https://cnfemployeesunion.com/public/uploads/Slide_image/thumb/1689222373.jpg" alt="" />
             </div>
-        </div>
-            
-          @empty
-            <div class="col-12 item pe-3 ps-3">
-              <div class="shadow p-2 mb-3"style="background: #FFF">
-                <div class="border-member text-center">
-                  <img src="{{ asset('img/Chairman or1.png')}}" alt="" />
-                  <p>Md. Rafique Uddin Babul</p>
-                  <p>Sizzing Group, Managing Director</p>
-                  <p>Liffe Member - LM-002</p>
-                  <a href="{{route('member_link',encryptor('encrypt',816))}}">member profile</a>
-                </div>
-              </div>
-            </div>
-          @endforelse
           </div>
         </section>
       </div>
@@ -361,9 +319,9 @@
 
               <div class="col-12 item bg-transparent pe-3 ps-3">
                 <div class="card mb-3 shadow bg-transparent ">
-                  <img class="gallery-zoom"  src="{{ asset('img/slider-3-1.png')}}" alt="" />
+                  <img class="gallery-zoom"  src="https://cnfemployeesunion.com/public/uploads/Slide_image/thumb/1689222373.jpg" alt="" />
                   <div class="heading">
-                    <h4>AGE -2021</h4>
+                    <h4>AGE -2023</h4>
                   </div>
                 </div>
               </div>

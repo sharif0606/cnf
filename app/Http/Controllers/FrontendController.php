@@ -47,9 +47,9 @@ class FrontendController extends Controller
         $facilities=Facilities::get();
         $pgallery_cat=photoGallaryCategory::where('status',1)->get();
         $allMember = OurMember::whereIn('approvedstatus',[0,1,2,3,4])->count();
-        $activeMember = OurMember::where('status',2)->count();
+        $activeMember = OurMember::where('status',1)->count();
         $approveMember = OurMember::where('approvedstatus',2)->count();
-        $ourMember = OurMember::where('approvedstatus',2)->get();
+        $ourMember = OurMember::where('approvedstatus',2)->inRandomOrder()->limit(12)->get();
         $benefit = BenefitsOfMember::latest()->take(6)->get();
         $showViewMoreButton = BenefitsOfMember::count() > 6;
         return view('frontend.home',compact('slider','notice','facilities','pgallery_cat','allMember','activeMember','approveMember','ourMember','benefit','showViewMoreButton','scroll_notice','vNotice'));

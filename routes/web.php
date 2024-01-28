@@ -38,7 +38,6 @@ use App\Http\Controllers\FoundingCommitteeController as foundCommittee;
 use App\Http\Controllers\CommitteeSessionController as committeeSession;
 use App\Http\Controllers\ExecutiveCommitteeController as exeCommittee;
 
-use App\Http\Controllers\Products\UnitController as unit;
 
 use App\Http\Controllers\FrontendController as front;
 use App\Http\Controllers\PageController as page;
@@ -132,7 +131,7 @@ Route::group(['middleware'=>isAdmin::class],function(){
         Route::resource('district',district::class,['as'=>'admin']);
         Route::resource('upazila',upazila::class,['as'=>'admin']);
         Route::resource('thana',thana::class,['as'=>'admin']);
-        Route::resource('unit',unit::class,['as'=>'admin']);
+        
         Route::resource('slider',SliderController::class,['as'=>'admin']);
         Route::resource('ourMember',member::class,['as'=>'admin']);
         Route::resource('notice',notice::class,['as'=>'admin']);
