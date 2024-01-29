@@ -40,6 +40,8 @@ class CommitteeSessionController extends Controller
     {
         try{
             $b= new committee_session;
+            $b->start_year=$request->start_year;
+            $b->end_year=$request->end_year;
             $b->session_name=$request->session;
             if($b->save()){
                 Toastr::success('Created Successfully!');
@@ -90,6 +92,8 @@ class CommitteeSessionController extends Controller
     {
         try{
             $b= committee_session::findOrFail(encryptor('decrypt',$id));
+            $b->start_year=$request->start_year;
+            $b->end_year=$request->end_year;
             $b->session_name=$request->session;
             if($b->save()){
                 Toastr::success('Updated Successfully!');

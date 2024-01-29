@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('committee_sessions', function (Blueprint $table) {
             $table->id();
+            $table->year('start_year')->nullable();
+            $table->year('end_year')->nullable();
             $table->string('session_name')->nullable();
             $table->timestamps();
             $table->softDeletes();

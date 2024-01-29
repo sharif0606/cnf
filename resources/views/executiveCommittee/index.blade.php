@@ -15,10 +15,9 @@
                             <tr class="text-center">
                                 <th scope="col">{{__('#SL')}}</th>
                                 <th scope="col">{{__('Member')}}</th>
-                                <th scope="col">{{__('Member ID')}}</th>
-                                <th scope="col">{{__('Designation')}}</th>
-                                <th scope="col">{{__('Contact No')}}</th>
                                 <th scope="col">{{__('Session')}}</th>
+                                <th scope="col">{{__('Designation')}}</th>
+                                <th scope="col">{{__('Order By')}}</th>
                                 <th class="white-space-nowrap">{{__('ACTION')}}</th>
                             </tr>
                         </thead>
@@ -26,22 +25,20 @@
                             @forelse($data as $b)
                             <tr class="text-center">
                             <th scope="row">{{ ++$loop->index }}</th>
-                                <td>{{$b->member?->full_name}}</td>
-                                <td>{{$b->member?->membership_no}}</td>
-                                <td>{{$b->member?->designation}}</td>
-                                <td>{{$b->member?->cell_number}}</td>
-                                <td>{{$b->session?->session_name}}</td>
+                                <td>{{$b->member?->name_bn}}</td>
+                                <td>{{$b->session?->start_year}}-{{$b->session?->end_year}}</td>
+                                <td>{{$b->designation}}</td>
+                                <td>{{$b->order_by}}</td>
                                 <td class="white-space-nowrap">
                                     <a href="{{route(currentUser().'.exeCommittee.edit',encryptor('encrypt',$b->id))}}">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
-                                    <a href="javascript:void()" onclick="$('#form{{$b->id}}').submit()">
+                                    <a class="text-danger" href="javascript:void()" onclick="$('#form{{$b->id}}').submit()">
                                         <i class="bi bi-trash"></i>
                                     </a>
-                                    <form id="form{{$b->id}}" action="{{route(currentUser().'.exeCommittee.destroy',encryptor('encrypt',$b->id))}}" method="post">
+                                    <form id="form{{$b->id}}" onsubmit="return confirm('Are you sure?')" action="{{route(currentUser().'.exeCommittee.destroy',encryptor('encrypt',$b->id))}}" method="post">
                                         @csrf
                                         @method('delete')
-                                        
                                     </form>
                                 </td>
                             </tr>
