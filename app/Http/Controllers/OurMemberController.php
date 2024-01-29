@@ -77,8 +77,7 @@ class OurMemberController extends Controller
      */
     public function approvedMember(Request $request)
     {
-        // $ourmember=OurMember::select('id','name_bn','member_serial_no','member_serial_no_new','renew_serial_no','father_name','personal_phone','nid','designation_of_present_job','district','blood_group')->with('fee_collection_last')->where('approvedstatus',2)->orderBy('member_serial_no');
-        $ourmember=OurMember::where('approvedstatus',2)->orderBy('member_serial_no');
+        $ourmember=OurMember::select('id','name_bn','member_serial_no','member_serial_no_new','renew_serial_no','father_name','personal_phone','nid','designation_of_present_job','district','blood_group')->with('fee_collection_last')->where('approvedstatus',2)->orderBy('member_serial_no');
         // dd($ourmember);
         if($request->member_serial_no)
             $ourmember=$ourmember->where('member_serial_no',$request->member_serial_no);
