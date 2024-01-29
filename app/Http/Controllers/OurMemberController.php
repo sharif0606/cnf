@@ -261,7 +261,8 @@ class OurMemberController extends Controller
         $show_data=OurMember::findOrFail(encryptor('decrypt',$id));
         $nomini = heirship::where('member_id',$show_data->id)->get();
         $feeCollection = fee_collection::where('member_id',(encryptor('decrypt',$id)))->latest()->take(1)->get();
-        return view('ourmember.show',compact('show_data','nomini','feeCollection'));
+        $data = fee_collection::with('details')->where('member_id', (encryptor('decrypt',$id)))->get();
+        return view('ourmember.show',compact('show_data','nomini','feeCollection','data'));
     }
     public function transHistory($id)
     {

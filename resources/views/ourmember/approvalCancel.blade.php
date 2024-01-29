@@ -233,7 +233,7 @@
                                 </tr>
                                 <tr class="tbl_1">
                                     <th class="tbl_1" style="text-align: left;"></th>
-                                    <th class="tbl_1" style="text-align: left;">(খ) স্বায়ী</th>
+                                    <th class="tbl_1" style="text-align: left;">(খ) স্থায়ী</th>
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <td class="tbl_1">
