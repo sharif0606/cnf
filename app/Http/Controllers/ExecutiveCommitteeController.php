@@ -20,7 +20,7 @@ class ExecutiveCommitteeController extends Controller
      */
     public function index()
     {
-        $data = executive_committee::paginate(12);
+        $data = executive_committee::paginate(100);
         return view('executiveCommittee.index',compact('data'));
     }
 
@@ -31,11 +31,7 @@ class ExecutiveCommitteeController extends Controller
      */
     public function create()
     {
-        $ourMember = DB::table('our_members')
-                ->join('founding_committees', 'our_members.membership_no', '=', 'founding_committees.member_id')
-                ->select('our_members.*')
-                ->get();
-        //$ourMember= OurMember::where('status', 2)->get();
+        $ourMember = OurMember::select('id','name_bn','member_serial_no','renew_serial_no')->where('approvedstatus',2)->get();
         $comSession = committee_session::all();
         return view('executiveCommittee.create',compact('comSession','ourMember'));
     }
@@ -53,6 +49,7 @@ class ExecutiveCommitteeController extends Controller
             $b->member_id=$request->member_id;
             $b->committee_sessions_id=$request->session_id;
             $b->designation=$request->designation;
+            $b->order_by=$request->order_by;
             if($b->save()){
                 Toastr::success('Created Successfully!');
                 return redirect()->route(currentUser().'.exeCommittee.index');
@@ -87,11 +84,7 @@ class ExecutiveCommitteeController extends Controller
      */
     public function edit($id)
     {
-        $ourMember = DB::table('our_members')
-                ->join('founding_committees', 'our_members.membership_no', '=', 'founding_committees.member_id')
-                ->select('our_members.*')
-                ->get();
-        //$ourMember= OurMember::where('status', 2)->get();
+        $ourMember = OurMember::select('id','name_bn','member_serial_no','renew_serial_no')->where('approvedstatus',2)->get();
         $comSession = committee_session::all();
         $exeCommittee = executive_committee::findOrFail(encryptor('decrypt',$id));
         return view('executiveCommittee.edit',compact('comSession','ourMember','exeCommittee'));
@@ -111,6 +104,7 @@ class ExecutiveCommitteeController extends Controller
             $b->member_id=$request->member_id;
             $b->committee_sessions_id=$request->session_id;
             $b->designation=$request->designation;
+            $b->order_by=$request->order_by;
             if($b->save()){
                 Toastr::success('Updated Successfully!');
                 return redirect()->route(currentUser().'.exeCommittee.index');

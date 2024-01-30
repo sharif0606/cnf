@@ -18,6 +18,7 @@ return new class extends Migration
             $table->bigInteger('member_id');
             $table->bigInteger('committee_sessions_id');
             $table->string('designation')->nullable();
+            $table->integer('order_by')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

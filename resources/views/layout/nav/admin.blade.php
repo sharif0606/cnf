@@ -82,14 +82,13 @@
         <a href="{{route(currentUser().'.feeCollection.create')}}" class='sidebar-link'><i class="bi bi-currency-dollar"></i> <span>{{__('Pay Now')}}</span></a>
     </li>
     
-    {{-- <li class="submenu-item sidebar-item has-sub">
-        <a href="#" class='sidebar-link'><i class="bi bi-people-fill"></i> <span>{{__('Committees & Forums')}}</span></a>
+    <li class="submenu-item sidebar-item has-sub">
+        <a href="#" class='sidebar-link'><i class="bi bi-people-fill"></i> <span>{{__('Committees')}}</span></a>
         <ul class="submenu">
             <li class="py-1"><a href="{{route(currentUser().'.committeeSession.index')}}">{{__('Committee Session')}}</a></li>
-            <li class="py-1"><a href="{{route(currentUser().'.foundCommittee.index')}}">{{__('Foundind Committees')}}</a></li>
-            <li class="py-1"><a href="{{route(currentUser().'.exeCommittee.index')}}">{{__('Executive Committee')}}</a></li>
+            <li class="py-1"><a href="{{route(currentUser().'.exeCommittee.index')}}">{{__('Committee')}}</a></li>
         </ul>
-    </li> --}}
+    </li>
     {{-- <li class="submenu-item sidebar-item has-sub">
         <a href="#" class='sidebar-link'><i class="bi bi-telephone-fill"></i> <span>{{__('Contact Us')}}</span></a>
         <ul class="submenu">

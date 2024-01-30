@@ -64,7 +64,7 @@
                             <h1>সদস্য সার্চ</h1>
                             <form action="" method="get">
                                 <div class="searchBox">
-                                    <input type="text" value="{{ request()->input('name', '') }}"  name="name" id="search" placeholder="নাম, সদস্য নং, এনআইডি">
+                                    <input type="text" value="{{ request()->input('name', '') }}"  name="name" id="search" placeholder="সদস্য নং, আর এস এল নং">
                                     <button type="submit">
                                         <span class="bi bi-search"></span>
                                     </button>
@@ -87,10 +87,6 @@
                         <div id="advance-search" class="py-2 px-5 collapse">
                             <form action="" method="get" class="row">
                                 <div class="form-group col-lg-5 p-1">
-                                    <label for="" class="mb-0">মোবাইল</label>
-                                    <input type="text" name="mobile" placeholder="মোবাইল" class="form-control form-control-sm shadow-none">
-                                </div>
-                                <div class="form-group col-lg-5 p-1">
                                     <label for="" class="mb-0">আর এস এল</label>
                                     <input type="text" name="rsl_no" placeholder="আর এস এল" class="form-control form-control-sm shadow-none">
                                 </div>
@@ -109,7 +105,7 @@
                     <div class="card card-body shadow-sm">
                         @forelse ($member as $m)
                         <div class="search-list-item row ">
-                            <div class="col-lg-2 align-self-center text-center">
+                            <div class="col-lg-4 align-self-center text-center">
                                 <a href="{{route('member_link',encryptor('encrypt',$m->id))}}">
                                     <img src="{{asset('uploads/memberImage/'.$m->image)}}" alt="No Image" width="150px">
                                 </a>
@@ -136,9 +132,9 @@
                                 <h5>রিনিউ ইস্যু : {{ $m->fee_collection_last ? \Carbon\Carbon::parse($m->fee_collection_last->date)->format('d-F-Y') : '' }}</h5>
                                 <h5>রিনিউ মেয়াদ  : {{$m->fee_collection_last?->year}}</h5>
                             </div>
-                            <div class="col-lg-2 align-self-center text-center">
+                            {{-- <div class="col-lg-2 align-self-center text-center">
                                 <a href="{{route('member_link',encryptor('encrypt',$m->id))}}" class="btn btn-sm btn-outline-explore">View Profile</a>
-                            </div>
+                            </div> --}}
                         </div>
                         @empty
                         <div class="search-list-item row ">

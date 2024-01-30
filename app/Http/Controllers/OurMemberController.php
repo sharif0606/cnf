@@ -77,7 +77,7 @@ class OurMemberController extends Controller
      */
     public function approvedMember(Request $request)
     {
-        $ourmember=OurMember::where('approvedstatus',2)->orderBy('member_serial_no');
+        $ourmember=OurMember::select('id','name_bn','member_serial_no','member_serial_no_new','renew_serial_no','father_name','personal_phone','nid','designation_of_present_job','district','blood_group')->with('fee_collection_last')->where('approvedstatus',2)->orderBy('member_serial_no');
         if($request->member_serial_no)
             $ourmember=$ourmember->where('member_serial_no',$request->member_serial_no);
         if($request->approve_date)
@@ -91,7 +91,7 @@ class OurMemberController extends Controller
         if($request->license)
             $ourmember=$ourmember->where('license','like','%'.$request->license.'%');
 
-        $ourmember=$ourmember->where('status',1)->paginate(10);
+        $ourmember=$ourmember->where('status',1)->paginate(100);
         return view('ourmember.approveMember',compact('ourmember'));
     }
 
@@ -261,7 +261,8 @@ class OurMemberController extends Controller
         $show_data=OurMember::findOrFail(encryptor('decrypt',$id));
         $nomini = heirship::where('member_id',$show_data->id)->get();
         $feeCollection = fee_collection::where('member_id',(encryptor('decrypt',$id)))->latest()->take(1)->get();
-        return view('ourmember.show',compact('show_data','nomini','feeCollection'));
+        $data = fee_collection::with('details')->where('member_id', (encryptor('decrypt',$id)))->get();
+        return view('ourmember.show',compact('show_data','nomini','feeCollection','data'));
     }
     public function transHistory($id)
     {

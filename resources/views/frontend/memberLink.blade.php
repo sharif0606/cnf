@@ -71,7 +71,7 @@
                         background-color: transparent;
                     }
                 </style>
-                <div class="font"  style="width:800px; margin:0 auto;">
+                {{-- <div class="font"  style="width:800px; margin:0 auto;">
                     <form action="">
                         <table class = "gfg" style=" width:100%">
                             <tbody >
@@ -112,18 +112,20 @@
                                         </p>
                                     </td>
                                 </tr>
-                                {{-- <tr>
-                                    <th colspan="3" style="text-align: left;">আমার বিবরণ নীচে প্রদত্ত হইলঃ</th>
-                                </tr> --}}
                             </tbody>
                         </table>
                     </form>
-                </div>
+                </div> --}}
                 <div  class="font" style="width:800px; margin:0 auto;">
                     <form class="table_one" action="">
-                        <div><b>আমার বিবরণ নীচে প্রদত্ত হইলঃ</b></div>
+                        {{-- <div><b>আমার বিবরণ নীচে প্রদত্ত হইলঃ</b></div> --}}
                         <table  class="tbl_1" style=" width:100%; border: 1px solid; border-collapse: collapse; border-spacing: 0;">
                             <tbody>
+                                <tr class="tbl_1" >
+                                    <th colspan="5" class="tbl_1" style="text-align: center;">
+                                        <img src="{{asset('uploads/memberImage/'.$member?->image)}}" height="150px" width="auto">
+                                    </th>
+                                </tr>
                                 <tr class="tbl_1" >
                                     <th class="tbl_1" style="text-align: left; width:2%;">১</th>
                                     <th class="tbl_1" style="text-align: left; width:54%;">নাম</th>
@@ -246,7 +248,7 @@
                                 </tr>
                                 <tr class="tbl_1">
                                     <th class="tbl_1" style="text-align: left;"></th>
-                                    <th class="tbl_1" style="text-align: left;">(খ) স্বায়ী</th>
+                                    <th class="tbl_1" style="text-align: left;">(খ) স্থায়ী</th>
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <td class="tbl_1">
@@ -278,8 +280,8 @@
                                                     <tr>
                                                         <th>SL</th>
                                                         <th>Receipt</th>
-                                                        <th>Amount</th>
                                                         <th>Year</th>
+                                                        <th>Amount</th>
                                                     </tr>
                                                     @php
                                                     $totalAm = 0;
@@ -288,17 +290,16 @@
                                                     <tr style="border-bottom: solid 1px;">
                                                         <td>{{ ++$loop->index }}</td>
                                                         <td>{{ $fee->receipt_no }}</td>
-                                                        <td>{{ money_format($fee->total_amount) }}</td>
                                                         <td>{{ $fee->year }}</td>
+                                                        <td>{{ money_format($fee->total_amount) }}</td>
                                                     </tr>
                                                     @php
                                                         $totalAm += $fee->total_amount;
                                                     @endphp
                                                 @endforeach
                                                     <tr style="border-top: double 2px;">
-                                                        <th colspan="2">Total</th>
+                                                        <th colspan="3">Total</th>
                                                         <th>{{money_format($totalAm)}}</th>
-                                                        <th></th>
                                                     </tr>
                                             </table>
                                         @endif
@@ -306,7 +307,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <div>
+                        {{-- <div>
                             <p style="margin: 0px;">আমি ঘোষণা করিতেছি যে,ধারা ১৯৩ অনুযায়ী আমি প্রতিষ্ঠান/প্রতিষ্ঠানপুঞ্জের অন্য কোন শ্রমিক/মালিকদের ট্রেড ইউনিয়নের সদস্য নই।</p>
                         </div>
                         <div style="text-align: end;">
@@ -315,7 +316,7 @@
                                 <div style="padding-right:107px;">স্বাক্ষর </div>
                                 <div style="padding-right:23px;">তারিখ:<input type="text" class="tinput" style="width:20%;"></div>
                             </div>
-                        </div>
+                        </div> --}}
                     </form>
                 </div>
             </div>

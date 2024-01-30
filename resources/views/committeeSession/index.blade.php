@@ -18,6 +18,7 @@
                                 <tr class="text-center">
                                     <th scope="col">{{__('#SL')}}</th>
                                     <th scope="col">{{__('Session(yyyy-yyyy)')}}</th>
+                                    <th scope="col">{{__('Name')}}</th>
                                     <th class="white-space-nowrap">{{__('ACTION')}}</th>
                                 </tr>
                             </thead>
@@ -25,24 +26,25 @@
                                 @forelse($data as $b)
                                 <tr class="text-center">
                                 <th scope="row">{{ ++$loop->index }}</th>
+                                    <td>{{$b->start_year}}--{{$b->end_year}}</td>
                                     <td>{{$b->session_name}}</td>
                                     <td class="white-space-nowrap">
                                         <a href="{{route(currentUser().'.committeeSession.edit',encryptor('encrypt',$b->id))}}">
                                             <i class="bi bi-pencil-square"></i>
                                         </a>
-                                        <a href="javascript:void()" onclick="$('#form{{$b->id}}').submit()">
+                                        {{-- <a href="javascript:void()" onclick="$('#form{{$b->id}}').submit()">
                                             <i class="bi bi-trash"></i>
                                         </a>
                                         <form id="form{{$b->id}}" action="{{route(currentUser().'.committeeSession.destroy',encryptor('encrypt',$b->id))}}" method="post">
                                             @csrf
                                             @method('delete')
                                             
-                                        </form>
+                                        </form> --}}
                                     </td>
                                 </tr>
                                 @empty
                                 <tr class="text-center">
-                                    <th colspan="3" class="text-center">No Data Found</th>
+                                    <th colspan="4" class="text-center">No Data Found</th>
                                 </tr>
                                 @endforelse
                             </tbody>
