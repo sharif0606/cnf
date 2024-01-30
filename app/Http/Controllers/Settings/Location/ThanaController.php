@@ -24,6 +24,27 @@ class ThanaController extends Controller
      */
     public function index()
     {
+        // $members=OurMember::where('approvedstatus',2)->where('sms_send',0)->limit(100)->get();
+        // foreach($members as $member){
+        //     if($member->sms_send !=1 ){ /** check member sms send before or not */
+        //         $smsClass= new sslSms();
+        //         if($member->personal_phone){
+        //             $phone=$member->personal_phone;
+        //             $rand=uniqid().rand(1000,9999);
+        //             $msg_text="ডিজিটাল পদ্ধতিতে নবায়ন করায় সিবিএ - ২৩৪ এর কার্যনির্বাহী পরিষদ এর পক্ষথেকে আপনাকে ধন্যবাদ।\nMember No: ".$member->member_serial_no."/".$member->member_serial_no_new."\nRSL: ".$member->renew_serial_no."\nকৃতজ্ঞতায় সাধারণ সম্পাদক / সভাপতি\nওয়েবসাইট: https://www.cnfemployeesunion.com";
+        //             $smssend=$smsClass->singleSms($phone, $msg_text, $rand);
+        //             if($smssend->status_code=="200"){
+        //                 /* update member sms send status */
+        //                 $member->sms_send=1;
+        //                 $member->save();
+        //                 echo $member->id.$msg_text."<br>";
+        //             }else{
+        //                 print_r($smssend);
+        //             }
+        //         }
+        //     }
+        // }
+
         $thanas=Thana::all();
         return view('settings.location.thana.index',compact('thanas'));
     }
