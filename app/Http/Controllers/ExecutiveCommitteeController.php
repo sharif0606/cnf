@@ -20,7 +20,7 @@ class ExecutiveCommitteeController extends Controller
      */
     public function index()
     {
-        $data = executive_committee::paginate(100);
+        $data = executive_committee::orderby('order_by')->paginate(100);
         return view('executiveCommittee.index',compact('data'));
     }
 

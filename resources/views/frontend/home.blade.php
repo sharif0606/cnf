@@ -288,11 +288,44 @@
         <section class="container pb-5 ">
           {{-- <div class="our-members">
           </div> --}}
-          <h4 class="animate-title">কার্যনির্বাহী সদস্য</h4>
+          <h4 class="animate-title m-0">কার্যনির্বাহী সদস্য</h4>
+          <h5 class="animate-title text-center">{{$committeeSession->session_name}}</h5>
+          <span></span>
           <div class="row">
-            <div class="col-12">
-              <img class="w-100" src="https://cnfemployeesunion.com/public/uploads/Slide_image/thumb/1689222373.jpg" alt="" />
+            <div class="col-12 d-flex justify-content-between mb-4 p-0">
+              @foreach ($executiveMember as $exe)
+                @if(($exe->order_by == 1) || ($exe->order_by == 2))
+                  <div class="d-flex justify-content-between" style="border: solid 1px green; border-collapse: collapse;">
+                    <div>
+                      <img class="m-1" src="{{asset('uploads/memberImage/'.$exe->member?->image)}}" width="200px" alt="" style="border: solid 1px rgb(246, 99, 74); border-collapse: collapse;">
+                      <p class="m-0" style="font-size: 14px;">{{$exe->member?->name_bn}}</p>
+                    </div>
+                    <div class="text-center" style="align-self: center;">
+                      <span style="font-size: 14px;">{{$exe->designation}}</span><br>
+                      <span style="font-size: 14px;">{{$exe->member?->personal_phone}}</span>
+                    </div>
+                  </div>
+                @endif
+              @endforeach
             </div>
+                @forelse ($executiveMember as $exec)
+                  @if(($exec->order_by != 1) && ($exec->order_by != 2))
+                      <div class="col-lg-2 col-md-3 col-sm-4 d-flex justify-content-between ps-1" style="border: solid 1px green; border-collapse: collapse;">
+                        <div class="image">
+                          <img class="my-1" src="{{asset('uploads/memberImage/'.$exec->member?->image)}}" width="130px" alt="" style="border: solid 1px rgb(246, 99, 74); border-collapse: collapse;">
+                          <p class="m-0" style="font-size: 12px;">{{$exec->member?->name_bn}}</p>
+                        </div>
+                        <div class="text-center" style="align-self: center;">
+                          <span style="font-size: 12px;">{{$exec->designation}}</span><br>
+                          <span style="font-size: 12px;">{{$exec->member?->personal_phone}}</span>
+                        </div>
+                      </div>
+                  @endif
+                  @empty
+                  <div class="col-12">
+                    <img class="w-100" src="https://cnfemployeesunion.com/public/uploads/Slide_image/thumb/1689222373.jpg" alt="" />
+                  </div>
+                @endforelse
           </div>
         </section>
       </div>

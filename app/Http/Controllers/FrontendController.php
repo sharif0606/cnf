@@ -18,6 +18,8 @@ use App\Models\Slider;
 use App\Models\total_due;
 use Illuminate\Http\Request;
 use App\Http\Traits\ImageHandleTraits;
+use App\Models\committee_session;
+use App\Models\executive_committee;
 use App\Models\fee_collection;
 use App\Models\heirship;
 use Brian2694\Toastr\Facades\Toastr;
@@ -50,9 +52,15 @@ class FrontendController extends Controller
         $activeMember = OurMember::where('status',1)->count();
         $approveMember = OurMember::where('approvedstatus',2)->count();
         $ourMember = OurMember::where('approvedstatus',2)->inRandomOrder()->limit(12)->get();
+        $currentYear = date('Y');
+        $committeeSession = committee_session::where('start_year', '<=',  $currentYear)->where(function ($query) use ($currentYear) {
+                                    $query->where('end_year', '>',$currentYear);
+                                })->first();
+
+        $executiveMember = executive_committee::where('committee_sessions_id',$committeeSession->id)->orderby('order_by')->get();
         $benefit = BenefitsOfMember::latest()->take(6)->get();
         $showViewMoreButton = BenefitsOfMember::count() > 6;
-        return view('frontend.home',compact('slider','notice','facilities','pgallery_cat','allMember','activeMember','approveMember','ourMember','benefit','showViewMoreButton','scroll_notice','vNotice'));
+        return view('frontend.home',compact('slider','notice','facilities','pgallery_cat','allMember','activeMember','approveMember','ourMember','benefit','showViewMoreButton','scroll_notice','vNotice','committeeSession','executiveMember'));
     }
     /**
      * Show the form for creating a new resource.
