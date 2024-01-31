@@ -62,7 +62,7 @@ class FrontendController extends Controller
                                         ->orderBy('order_by')
                                         ->get();
                                 } else {
-                                    $executiveMember = 'No Data Found';
+                                    $executiveMember = array();
                                 }
         $benefit = BenefitsOfMember::latest()->take(6)->get();
         $showViewMoreButton = BenefitsOfMember::count() > 6;
