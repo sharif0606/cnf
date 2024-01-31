@@ -1155,6 +1155,12 @@ footer img {
   .sticky-top .logo-sec img {
     padding-top: 5px;
   }
+  .executive-member-box-head .member-title {
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    /* height: 20px; */
+    letter-spacing: -.025em !important;
+  }
 }
 
   /* .owl-controls{
@@ -1876,4 +1882,91 @@ img.events-image {
 }
 .ck .ck-icon, .ck-reset_all-excluded, .ck-icon_inherit-color *{
   display: none;
+}
+
+/* executive committee */
+.executive-member-box {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 30px;
+  padding-bottom:15px;
+}
+.executive-member-box .shape {
+  width: 200px;
+  height: 200px;
+  background: #fababa;
+  opacity: .2;
+  position: absolute;
+  top: 0;
+  right: -100px;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.executive-member-box .card-img-top {
+  position: relative;
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+  border-bottom-left-radius: 10%;
+  border-bottom: 5px solid #fababa;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: top;
+  object-position: top;
+  margin-top: 4px;
+}
+.executive-member-box .card-body {
+  position: relative;
+  /* height: 180px; */
+  padding: 5px 4px 3px 4px;
+}
+.executive-member-box .member-title {
+  font-size: 13px;
+  font-weight: 600;
+  /* height: 40px; */
+  letter-spacing: -.025em;
+}
+
+.executive-member-box-head {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 30px;
+  padding-bottom:15px;
+}
+.executive-member-box-head .shape {
+  width: 200px;
+  height: 200px;
+  background: #fababa;
+  opacity: .2;
+  position: absolute;
+  top: 0;
+  right: -100px;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.executive-member-box-head .card-img-top {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border-bottom-left-radius: 10%;
+  border-bottom: 5px solid #fababa;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: top;
+  object-position: top;
+  margin-top: 4px;
+}
+.executive-member-box-head .card-body {
+  position: relative;
+  height: 80px;
+  padding: 10px 8px 8px 8px;
+}
+.executive-member-box-head .member-title {
+  font-size: 18px;
+  font-weight: 600;
+  height: 20px;
+  letter-spacing: -.025em;
 }

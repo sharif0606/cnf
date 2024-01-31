@@ -292,17 +292,18 @@
           <h5 class="animate-title text-center">{{$committeeSession->session_name}}</h5>
           <span></span>
           <div class="row">
-            <div class="col-12 d-flex justify-content-between mb-4 p-0">
+            <div class="col-lg-12 d-flex justify-content-between mb-4">
               @foreach ($executiveMember as $exe)
                 @if(($exe->order_by == 1) || ($exe->order_by == 2))
-                  <div class="d-flex justify-content-between" style="border: solid 1px green; border-collapse: collapse;">
-                    <div>
-                      <img class="m-1" src="{{asset('uploads/memberImage/'.$exe->member?->image)}}" width="200px" alt="" style="border: solid 1px rgb(246, 99, 74); border-collapse: collapse;">
-                      <p class="m-0" style="font-size: 14px;">{{$exe->member?->name_bn}}</p>
+                  <div class="card executive-member-box-head shadow p-2">
+                    <span class="shape"></span>
+                    <div class="text-center">
+                      <img class="card-img-top" src="{{asset('uploads/memberImage/'.$exe->member?->image)}}" alt="No Photos">
                     </div>
-                    <div class="text-center" style="align-self: center;">
-                      <span style="font-size: 14px;">{{$exe->designation}}</span><br>
-                      <span style="font-size: 14px;">{{$exe->member?->personal_phone}}</span>
+                    <div class="card-body text-center">
+                      <h3 class="m-0 member-title">{{$exe->member?->name_bn}}</h3>
+                      <small>{{$exe->designation}}</small><br>
+                      <small>{{$exe->member?->personal_phone}}</small>
                     </div>
                   </div>
                 @endif
@@ -310,16 +311,19 @@
             </div>
                 @forelse ($executiveMember as $exec)
                   @if(($exec->order_by != 1) && ($exec->order_by != 2))
-                      <div class="col-lg-2 col-md-3 col-sm-4 d-flex justify-content-between ps-1" style="border: solid 1px green; border-collapse: collapse;">
-                        <div class="image">
-                          <img class="my-1" src="{{asset('uploads/memberImage/'.$exec->member?->image)}}" width="130px" alt="" style="border: solid 1px rgb(246, 99, 74); border-collapse: collapse;">
-                          <p class="m-0" style="font-size: 12px;">{{$exec->member?->name_bn}}</p>
+                      <div class="col-lg-2 col-md-4 col-6 item">
+                          <div class="card executive-member-box shadow">
+                            <span class="shape"></span>
+                            <div class="text-center">
+                              <img class="card-img-top" src="{{asset('uploads/memberImage/'.$exec->member?->image)}}" alt="No Photos">
+                            </div>
+                            <div class="card-body text-center">
+                              <h3 class="m-0 member-title">{{$exec->member?->name_bn}}</h3>
+                              <small>{{$exec->designation}}</small><br>
+                              <small>{{$exec->member?->personal_phone}}</small>
+                            </div>
                         </div>
-                        <div class="text-center" style="align-self: center;">
-                          <span style="font-size: 12px;">{{$exec->designation}}</span><br>
-                          <span style="font-size: 12px;">{{$exec->member?->personal_phone}}</span>
-                        </div>
-                      </div>
+                    </div>
                   @endif
                   @empty
                   <div class="col-12">
