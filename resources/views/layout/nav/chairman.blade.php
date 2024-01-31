@@ -33,6 +33,9 @@
     <li class="sidebar-item">
         <a href="{{route(currentUser().'.archive_member')}}" class='sidebar-link'><i class="bi bi-people-fill"></i> <span>{{__('Archive Member')}}</span></a>
     </li>
+    <li class="sidebar-item">
+        <a href="{{route(currentUser().'.deleted_member')}}" class='sidebar-link'><i class="bi bi-people-fill"></i> <span>{{__('Deleted Member')}}</span></a>
+    </li>
     <li class="submenu-item sidebar-item has-sub">
         <a href="#" class='sidebar-link'><i class="bi bi-receipt"></i><span>{{__('Report')}}</span></a>
         <ul class="submenu">

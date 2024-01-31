@@ -210,7 +210,12 @@
                                 <div class="col-lg-3 col-md-3 col-sm-6">
                                     <div class="form-group">
                                         <label for="designation">বর্তমান চাকুরী স্থলের পদবী</label>
-                                        <input type="text" class="form-control" name="designation_of_present_job" value="{{old('designation_of_present_job')}}">
+                                        <select name="designation_of_present_job" class="form-control">
+                                            <option value="">Select</option>
+                                            <option value="কাস্টম সরকার" {{ old('designation_of_present_job')=='কাস্টম সরকার' ? 'selected':''}}>কাস্টম সরকার</option>
+                                            <option value="জেটি সরকার" {{ old('designation_of_present_job')=='জেটি সরকার' ? 'selected':''}}>জেটি সরকার</option>
+                                            <option value="জেটি/কাস্টম সরকার" {{ old('designation_of_present_job')=='জেটি/কাস্টম সরকার' ? 'selected':''}}>জেটি/কাস্টম সরকার</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-6">

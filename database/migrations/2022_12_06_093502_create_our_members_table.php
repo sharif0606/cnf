@@ -59,6 +59,7 @@ return new class extends Migration
             $table->date('member_approval_date')->nullable();
             $table->longText('finger_print')->nullable();
             $table->integer('sms_send')->nullable()->default(0)->comment('0 not send, 1 send');
+            $table->string('deleted_by')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

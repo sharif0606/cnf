@@ -49,6 +49,10 @@ class OurMember extends Model
         return $this->belongsTo(Role::class);
     }
 
+    public function deletedBy(){
+        return $this->belongsTo(User::class,'deleted_by','id');
+    }
+
     public function heirs(){
         return $this->hasMany(heirship::class,'member_id','id');
     }

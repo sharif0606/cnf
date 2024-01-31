@@ -234,60 +234,6 @@
         <section class="container pb-5 ">
           {{-- <div class="our-members">
           </div> --}}
-          <h4 class="animate-title">সদস্য সমূহ</h4>
-          <div class="row owl-member owl-theme">
-          @forelse ($ourMember as $fm)
-          <div class="col-12 item pe-3 ps-3">
-            <div class="card member-box shadow">
-                <span class="shape"></span>
-                <img class="card-img-top" src="{{asset('uploads/memberImage/'.$fm->image)}}" alt="No Photos">
-                <div class="card-body">
-                    <h3 class="m-0 member-title">{{$fm->name_bn }}</h3>
-                    <small>
-                        <strong>প্রতিষ্ঠান:</strong>
-                        {{$fm->nameAddress_of_present_institute}}
-                    </small>
-                    <br>
-                    <small>
-                      <strong>পদবী:</strong>
-                      {{$fm->designation_of_present_job }}
-                    </small><br>
-                    <a class="btn btn-sm btn-primary" href="{{route('member_link',encryptor('encrypt',$fm->id))}}">View Profile</a>
-                </div>
-                {{-- <div class="card-footer">
-                    <div class="social">
-                        <big>Follow:</big>
-                        <span class="social-icon"><a href="{{$fm->linkdin_link }}" target="_blank"><i class="bi bi-linkedin"></i></a></span>
-                        <span class="social-icon"><a href="{{$fm->twter_link }}" target="_blank"><i class="bi bi-twitter ms-0 ps-0"></i></a></span>
-                        <span class="social-icon"><a href="{{$fm->fb_link }}" target="_blank"><i class="bi bi-facebook ms-0 ps-0"></i></a></span>
-                        <span class="social-icon"><a href="{{$fm->youtube_link }}" target="_blank"><i class="bi bi-youtube ms-0 ps-0"></i></a></span>
-                    </div>
-                </div> --}}
-            </div>
-        </div>
-            
-          @empty
-            <div class="col-12 item pe-3 ps-3">
-              <div class="shadow p-2 mb-3"style="background: #FFF">
-                <div class="border-member text-center">
-                  <img src="{{ asset('img/Chairman or1.png')}}" alt="" />
-                  <p>Md. Rafique Uddin Babul</p>
-                  <p>Sizzing Group, Managing Director</p>
-                  <p>Liffe Member - LM-002</p>
-                  <a href="{{route('member_link',encryptor('encrypt',816))}}">member profile</a>
-                </div>
-              </div>
-            </div>
-          @endforelse
-          </div>
-        </section>
-      </div>
-    </div>
-    <div class="memberdiv">
-      <div class="our-members member-background">
-        <section class="container pb-5 ">
-          {{-- <div class="our-members">
-          </div> --}}
           <h4 class="animate-title m-0">কার্যনির্বাহী সদস্য</h4>
           <h5 class="animate-title text-center">
             @if($committeeSession)
@@ -342,6 +288,61 @@
         </section>
       </div>
     </div>
+    <div class="memberdiv">
+      <div class="our-members member-background">
+        <section class="container pb-5 ">
+          {{-- <div class="our-members">
+          </div> --}}
+          <h4 class="animate-title">সদস্য সমূহ</h4>
+          <div class="row owl-member owl-theme">
+          @forelse ($ourMember as $fm)
+          <div class="col-12 item pe-3 ps-3">
+            <div class="card member-box shadow">
+                <span class="shape"></span>
+                <img class="card-img-top" src="{{asset('uploads/memberImage/'.$fm->image)}}" alt="No Photos">
+                <div class="card-body">
+                    <h3 class="m-0 member-title">{{$fm->name_bn }}</h3>
+                    <small>
+                        <strong>প্রতিষ্ঠান:</strong>
+                        {{$fm->nameAddress_of_present_institute}}
+                    </small>
+                    <br>
+                    <small>
+                      <strong>পদবী:</strong>
+                      {{$fm->designation_of_present_job }}
+                    </small><br>
+                    <a class="btn btn-sm btn-primary" href="{{route('member_link',encryptor('encrypt',$fm->id))}}">View Profile</a>
+                </div>
+                {{-- <div class="card-footer">
+                    <div class="social">
+                        <big>Follow:</big>
+                        <span class="social-icon"><a href="{{$fm->linkdin_link }}" target="_blank"><i class="bi bi-linkedin"></i></a></span>
+                        <span class="social-icon"><a href="{{$fm->twter_link }}" target="_blank"><i class="bi bi-twitter ms-0 ps-0"></i></a></span>
+                        <span class="social-icon"><a href="{{$fm->fb_link }}" target="_blank"><i class="bi bi-facebook ms-0 ps-0"></i></a></span>
+                        <span class="social-icon"><a href="{{$fm->youtube_link }}" target="_blank"><i class="bi bi-youtube ms-0 ps-0"></i></a></span>
+                    </div>
+                </div> --}}
+            </div>
+        </div>
+            
+          @empty
+            <div class="col-12 item pe-3 ps-3">
+              <div class="shadow p-2 mb-3"style="background: #FFF">
+                <div class="border-member text-center">
+                  <img src="{{ asset('img/Chairman or1.png')}}" alt="" />
+                  <p>Md. Rafique Uddin Babul</p>
+                  <p>Sizzing Group, Managing Director</p>
+                  <p>Liffe Member - LM-002</p>
+                  <a href="{{route('member_link',encryptor('encrypt',816))}}">member profile</a>
+                </div>
+              </div>
+            </div>
+          @endforelse
+          </div>
+        </section>
+      </div>
+    </div>
+    
     <!-- Our Members end -->
     <!-- Gallery -->
     <section class="gallery">

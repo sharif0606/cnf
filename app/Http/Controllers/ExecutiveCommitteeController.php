@@ -31,7 +31,7 @@ class ExecutiveCommitteeController extends Controller
      */
     public function create()
     {
-        $ourMember = OurMember::select('id','name_bn','member_serial_no','renew_serial_no')->where('approvedstatus',2)->get();
+        $ourMember = OurMember::select('id','name_bn','member_serial_no','renew_serial_no')->get();
         $comSession = committee_session::all();
         return view('executiveCommittee.create',compact('comSession','ourMember'));
     }

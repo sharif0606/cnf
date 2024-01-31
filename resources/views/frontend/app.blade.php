@@ -299,7 +299,7 @@
               <h6>Google Map</h6>
               <iframe
                 class="container-fluid footer-ifram"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d230.68138702037433!2d91.8126637581736!3d22.319538499502016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30acdf5c9104a8b5%3A0xf0818e1b001ecac2!2zQ0JBLTIzNCBPRkZJQ0Ug4Ka44Ka_4Kas4Ka_4KaPLeCnqOCnqeCnqiDgpoXgpqvgpr_gprg!5e0!3m2!1sen!2sbd!4v1706418463970!5m2!1sen!2sbd"
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1845.451248218432!2d91.81258900000002!3d22.319527!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30acdf5c9104a8b5%3A0xf0818e1b001ecac2!2zQ0JBLTIzNCBPRkZJQ0Ug4Ka44Ka_4Kas4Ka_4KaPLeCnqOCnqeCnqiDgpoXgpqvgpr_gprg!5e0!3m2!1sen!2sbd!4v1706706796891!5m2!1sen!2sbd"
                 width="700"
                 height="293"
                 style="border: 0; padding:0px"

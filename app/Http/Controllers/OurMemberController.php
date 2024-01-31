@@ -118,6 +118,26 @@ class OurMemberController extends Controller
         $ourmember=$ourmember->paginate(10);
         return view('ourmember.archiveMember',compact('ourmember'));
     }
+
+    public function deletedMember(Request $request)
+    {
+        $ourmember = OurMember::onlyTrashed()->orderBy('member_serial_no');
+
+        if ($request->member_serial_no)
+            $ourmember = $ourmember->where('member_serial_no', $request->member_serial_no);
+        if ($request->member_serial_no_new)
+            $ourmember = $ourmember->where('member_serial_no_new', $request->member_serial_no_new);
+        if ($request->name_bn)
+            $ourmember = $ourmember->where('name_bn', 'like', '%' . $request->name_bn . '%');
+        if ($request->renew_serial_no)
+            $ourmember = $ourmember->where('renew_serial_no', $request->renew_serial_no);
+        if ($request->status)
+            $ourmember = $ourmember->where('status', $request->status);
+
+        $ourmember = $ourmember->paginate(15);
+
+        return view('ourmember.deletedMember', compact('ourmember'));
+    }
     
     /**
      * Show the form for creating a new resource.
@@ -518,6 +538,8 @@ class OurMemberController extends Controller
     public function destroy($id)
     {
         $cat= OurMember::findOrFail(encryptor('decrypt',$id));
+        $cat->deleted_by = currentUserId();
+        $cat->save(); 
         $cat->delete();
         Toastr::warning('Member Deleted Permanently!');
         return redirect()->back();
