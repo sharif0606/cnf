@@ -249,7 +249,11 @@
                     <div class="card executive-member-box-head shadow p-2">
                       <span class="shape"></span>
                       <div class="text-center">
-                        <img class="card-img-top" src="{{asset('uploads/memberImage/'.$exe->member?->image)}}" alt="No Photos">
+                        @if ($exe->member?->image != '')
+                          <img class="card-img-top" src="{{asset('uploads/memberImage/'.$exe->member?->image)}}" alt="No Photos">
+                        @else
+                          <img class="card-img-top" src="{{asset('img/demo.png')}}" alt="No Photos">
+                        @endif
                       </div>
                       <div class="card-body text-center">
                         <h3 class="m-0 member-title">{{$exe->member?->name_bn}}</h3>
@@ -268,7 +272,11 @@
                           <div class="card executive-member-box shadow">
                             <span class="shape"></span>
                             <div class="text-center">
-                              <img class="card-img-top" src="{{asset('uploads/memberImage/'.$exec->member?->image)}}" alt="No Photos">
+                              @if ($exec->member?->image != '')
+                                <img class="card-img-top" src="{{asset('uploads/memberImage/'.$exec->member?->image)}}" alt="No Photos">
+                              @else
+                                <img class="card-img-top" src="{{asset('img/demo.png')}}" alt="No Photos">
+                              @endif
                             </div>
                             <div class="card-body text-center">
                               <h3 class="m-0 member-title">{{$exec->member?->name_bn}}</h3>
