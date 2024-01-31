@@ -289,26 +289,33 @@
           {{-- <div class="our-members">
           </div> --}}
           <h4 class="animate-title m-0">কার্যনির্বাহী সদস্য</h4>
-          <h5 class="animate-title text-center">{{$committeeSession->session_name}}</h5>
+          <h5 class="animate-title text-center">
+            @if($committeeSession)
+              {{$committeeSession->session_name}}
+            @endif
+          </h5>
           <span></span>
           <div class="row">
             <div class="col-lg-12 d-flex justify-content-between mb-4">
-              @foreach ($executiveMember as $exe)
-                @if(($exe->order_by == 1) || ($exe->order_by == 2))
-                  <div class="card executive-member-box-head shadow p-2">
-                    <span class="shape"></span>
-                    <div class="text-center">
-                      <img class="card-img-top" src="{{asset('uploads/memberImage/'.$exe->member?->image)}}" alt="No Photos">
+              @if($executiveMember)
+                @foreach ($executiveMember as $exe)
+                  @if(($exe->order_by == 1) || ($exe->order_by == 2))
+                    <div class="card executive-member-box-head shadow p-2">
+                      <span class="shape"></span>
+                      <div class="text-center">
+                        <img class="card-img-top" src="{{asset('uploads/memberImage/'.$exe->member?->image)}}" alt="No Photos">
+                      </div>
+                      <div class="card-body text-center">
+                        <h3 class="m-0 member-title">{{$exe->member?->name_bn}}</h3>
+                        <small>{{$exe->designation}}</small><br>
+                        <small>{{$exe->member?->personal_phone}}</small>
+                      </div>
                     </div>
-                    <div class="card-body text-center">
-                      <h3 class="m-0 member-title">{{$exe->member?->name_bn}}</h3>
-                      <small>{{$exe->designation}}</small><br>
-                      <small>{{$exe->member?->personal_phone}}</small>
-                    </div>
-                  </div>
-                @endif
-              @endforeach
+                  @endif
+                @endforeach
+              @endif
             </div>
+              @if($executiveMember)
                 @forelse ($executiveMember as $exec)
                   @if(($exec->order_by != 1) && ($exec->order_by != 2))
                       <div class="col-lg-2 col-md-4 col-6 item">
@@ -330,6 +337,7 @@
                     <img class="w-100" src="https://cnfemployeesunion.com/public/uploads/Slide_image/thumb/1689222373.jpg" alt="" />
                   </div>
                 @endforelse
+              @endif
           </div>
         </section>
       </div>
