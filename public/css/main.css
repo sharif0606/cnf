@@ -87,6 +87,7 @@ body {
   padding-top: 21px;
   animation: bscale;
   animation-duration: 0.9s;
+  height: 95px;
 }
 @keyframes bscale {
   from {height: 75px;}
@@ -1014,7 +1015,7 @@ footer .footer-logo {
   padding-top: 50px;
 }
 footer img {
-  max-width: 300px;
+  max-width: 100px;
   margin-bottom: 20px;
 }
 .footer-nav {
@@ -1765,7 +1766,7 @@ figure{
 
 @media screen and (min-width: 1400px) {
   .logo-sec img {
-    padding-top: 13px;
+    padding-top: 5px;
   }
 }
 .merber-reg-card .contact-border{
@@ -1893,8 +1894,8 @@ img.events-image {
   padding-bottom:15px;
 }
 .executive-member-box .shape {
-  width: 200px;
-  height: 200px;
+  width: 160px;
+  height: 160px;
   background: #fababa;
   opacity: .2;
   position: absolute;

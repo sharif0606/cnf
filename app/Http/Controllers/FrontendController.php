@@ -57,13 +57,13 @@ class FrontendController extends Controller
                                     $query->where('end_year', '>',$currentYear);
                                 })->first();
 
-                                if ($committeeSession) {
-                                    $executiveMember = executive_committee::where('committee_sessions_id', $committeeSession->id)
-                                        ->orderBy('order_by')
-                                        ->get();
-                                } else {
-                                    $executiveMember = array();
-                                }
+            if ($committeeSession) {
+                $executiveMember = executive_committee::where('committee_sessions_id', $committeeSession->id)
+                    ->orderBy('order_by')
+                    ->get();
+            } else {
+                $executiveMember = array();
+            }
         $benefit = BenefitsOfMember::latest()->take(6)->get();
         $showViewMoreButton = BenefitsOfMember::count() > 6;
         return view('frontend.home',compact('slider','notice','facilities','pgallery_cat','allMember','activeMember','approveMember','ourMember','benefit','showViewMoreButton','scroll_notice','vNotice','committeeSession','executiveMember'));
