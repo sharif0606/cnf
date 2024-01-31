@@ -62,7 +62,7 @@ class FrontendController extends Controller
                                         ->orderBy('order_by')
                                         ->get();
                                 } else {
-                                    // Handle the case when no committee session is found for the current year
+                                    $executiveMember = 'No Data Found';
                                 }
         $benefit = BenefitsOfMember::latest()->take(6)->get();
         $showViewMoreButton = BenefitsOfMember::count() > 6;
