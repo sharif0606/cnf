@@ -19,10 +19,27 @@ class PhotoGallaryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $pGallery=photoGallary::paginate(10);
-        return view('pGallery.index',compact('pGallery'));
+        $images = photoGallary::where('photo_gallary_category_id',$request->gid)->get()->toArray();
+        foreach($images as $image){
+            $tableImages[] = $image['feature_image'];
+        }
+        $data=array();
+        $storeFolder = public_path('uploads/pGgallery');
+        $file_path = public_path('uploads/pGgallery/');
+        $files = scandir($storeFolder);
+        foreach ( $files as $file ) {
+            if ($file !='.' && $file !='..' && in_array($file,$tableImages)) {       
+                $obj['name'] = $file;
+                $file_path = public_path('uploads/pGgallery/').$file;
+                $obj['size'] = filesize($file_path);          
+                $obj['path'] = url('public/uploads/pGgallery/'.$file);
+                $data[] = $obj;
+            }
+        }
+        //dd($data);
+        return response()->json($data);
     }
 
     /**
@@ -32,8 +49,7 @@ class PhotoGallaryController extends Controller
      */
     public function create()
     {
-        $pGalleryCat= photoGallaryCategory::all();
-        return view('pGallery.create',compact('pGalleryCat'));
+        
     }
 
     /**
@@ -44,46 +60,33 @@ class PhotoGallaryController extends Controller
      */
     public function store(Request $request)
     {
-        try{
-            $pgc=new photoGallary;
-
-            $pgc->Caption=$request->Caption;
-            $pgc->photo_gallary_category_id=$request->album;
-            $pgc->status=$request->status;
-            // if($request->has('feature_image'))
-            //     $pgc->feature_image=$this->resizeImage($request->feature_image,'uploads/pGgallery',true,200,200,false);
-
-            if($request->hasFile('feature_image')){
-                $data = rand(111,999).time().'.'.$request->feature_image->extension();
-                $request->feature_image->move(public_path('uploads/pGgallery'), $data);
-                $pgc->feature_image=$data;
-            }
-            if($pgc->save()){
-            Toastr::success('Photo Gallery Create Successfully!');
-            return redirect()->route(currentUser().'.pGallery.index');
-            }else{
-            Toastr::warning('Please try Again!');
-            return redirect()->back();
-            }
-
-        }
-        catch (Exception $e){
-            Toastr::warning('Please try Again!');
-            // dd($e);
-            return back()->withInput();
-
-        }
+        $image = $request->file('file');
+        $fileInfo = $image->getClientOriginalName();
+        $filename = pathinfo($fileInfo, PATHINFO_FILENAME);
+        $extension = pathinfo($fileInfo, PATHINFO_EXTENSION);
+        $file_name= $filename.'-'.time().'.'.$extension;
+        $image->move(public_path('uploads/pGgallery'),$file_name);
+            
+        $imageUpload = new photoGallary;
+        $imageUpload->Caption = " ";
+        $imageUpload->photo_gallary_category_id=$request->album;
+        $imageUpload->status = 1;
+        $imageUpload->feature_image = $file_name;
+        $imageUpload->save();
+        return response()->json(['success'=>$file_name]);
     }
 
+    
     /**
      * Display the specified resource.
      *
      * @param  \App\Models\photoGallary  $photoGallary
      * @return \Illuminate\Http\Response
      */
-    public function show(photoGallary $photoGallary)
+    public function show($id)
     {
-        //
+        $pGalleryCat= encryptor('decrypt',$id);
+        return view('pGallery.photo',compact('pGalleryCat'));
     }
 
     /**
@@ -94,9 +97,7 @@ class PhotoGallaryController extends Controller
      */
     public function edit($id)
     {
-        $pGalleryCat= photoGallaryCategory::all();
-        $pGallery=photoGallary::findOrFail(encryptor('decrypt',$id));
-        return view('pGallery.edit',compact('pGallery','pGalleryCat'));
+       
     }
 
     /**
@@ -108,55 +109,17 @@ class PhotoGallaryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        try{
-            $pgc= photoGallary::findOrFail(encryptor('decrypt',$id));
-
-            $pgc->Caption=$request->Caption;
-            $pgc->photo_gallary_category_id=$request->album;
-            $pgc->status=$request->status;
-            
-            // $path='uploads/pGgallery';
-            // if($request->has('feature_image') && $request->feature_image)
-            // if($this->deleteImage($pgc->feature_image,$path))
-            //     $pgc->feature_image=$this->resizeImage($request->feature_image,$path,true,200,200,false);
-
-            // if($request->hasFile('feature_image')){
-            //     $data = rand(111,999).time().'.'.$request->feature_image->extension();
-            //     $request->feature_image->move(public_path('uploads/pGgallery'), $data);
-            //     $pgc->feature_image=$data;
-            // }
-            
-            $previousImage = $pgc->feature_image;
-            if ($request->hasFile('feature_image')) {
-                // Delete the previous image if it exists
-                if ($previousImage && Storage::exists('uploads/pGgallery/' . $previousImage)) {
-                    Storage::delete('uploads/pGgallery/' . $previousImage);
-                }
-                // Generate a unique filename for the new image
-                $data = rand(111, 999) . time() . '.' . $request->feature_image->extension();
-                // Move the new image to the desired location
-                $request->feature_image->move(public_path('uploads/pGgallery'), $data);
-                // Update the feature_image field with the new image name
-                $pgc->feature_image = $data;
-            }
-
-            if($pgc->save()){
-            Toastr::success('Photo Gallery Updated Successfully!');
-            return redirect()->route(currentUser().'.pGallery.index');
-            }else{
-            Toastr::warning('Please try Again!');
-            return redirect()->back();
-            }
-
-        }
-        catch (Exception $e){
-            Toastr::warning('Please try Again!');
-            // dd($e);
-            return back()->withInput();
-
-        }
+        
     }
-
+    public function delete(Request $request){
+        $filename =  $request->get('filename');
+        photoGallary::where('feature_image',$filename)->delete();
+        $path = public_path('uploads/pGgallery/').$filename;
+        if (file_exists($path)) {
+            unlink($path);
+        }
+        return response()->json(['success'=>$filename]);
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -165,9 +128,6 @@ class PhotoGallaryController extends Controller
      */
     public function destroy($id)
     {
-        $cat= photoGallary::findOrFail(encryptor('decrypt',$id));
-        $cat->delete();
-        Toastr::warning('Deleted Permanently!');
-        return redirect()->back();
+        
     }
 }

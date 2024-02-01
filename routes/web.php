@@ -139,6 +139,7 @@ Route::group(['middleware'=>isAdmin::class],function(){
         Route::resource('year',year::class,['as'=>'admin']);
         Route::resource('pGalleryCat',pGalleryCat::class,['as'=>'admin']);
         Route::resource('pGallery',pGallery::class,['as'=>'admin']);
+        Route::get('pGallerydelete', [pGallery::class, 'delete'])->name('admin.image.delete');
         Route::resource('settings',settings::class,['as'=>'admin']);
         Route::resource('bank',bank::class,['as'=>'admin']);
         Route::resource('tag',tag::class,['as'=>'admin']);

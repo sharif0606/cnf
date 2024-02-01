@@ -51,7 +51,7 @@
                                     </tr>
                                     @empty
                                     <tr>
-                                        <th colspan="4" class="text-center">No Data Found</th>
+                                        <th colspan="6" class="text-center">No Data Found</th>
                                     </tr>
                                     @endforelse
                                 </tbody>

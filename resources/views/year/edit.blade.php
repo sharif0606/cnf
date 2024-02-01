@@ -30,7 +30,7 @@
                                     <input type="file" id="feature_photo" class="form-control" name="feature_photo">
                                 </div>
 
-                                <div class="col-sm-8 offset-2 my-2">
+                                <div class="col-sm-8 offset-2 my-2 d-none">
                                     <label for="image" class=""><b>{{__('Feature img for video')}}:</b></label>
                                     <input type="file" id="feature_video" class="form-control" name="feature_video">
                                 </div>

@@ -109,21 +109,33 @@
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
               <div class="carousel-inner n-item-center notice-carousel shadow text-center">
                 @forelse ($vNotice as $v)
-                <div class="carousel-item active">
-                 <iframe class="notice-img" width="100%" height="315" src="https://www.youtube.com/embed/{{$v->link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                </div>
+                  @if ($v->link != '')
+                    <div class="carousel-item active">
+                    <iframe class="notice-img" width="100%" height="315" src="https://www.youtube.com/embed/{{$v->link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                  @else
+                    <div class="carousel-item active">
+                      <iframe class="notice-img" width="100%" height="315" src="https://www.youtube.com/embed/tGPUQ76HIOE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                  @endif
                 @empty
                 <div class="carousel-item active">
                  <iframe class="notice-img" width="100%" height="315" src="https://www.youtube.com/embed/tGPUQ76HIOE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
                 @endforelse
                 @forelse ($vNotice as $notic)
-                <div class="carousel-item ">
-                  <img
-                    src="{{asset('uploads/video_notice/'.$notic->image)}}"
-                    class="d-block w-100 notice-img"
-                    alt="..."/>
-                </div>
+                  @if ($notic->image != '')
+                    <div class="carousel-item ">
+                      <img
+                        src="{{asset('uploads/video_notice/'.$notic->image)}}"
+                        class="d-block w-100 notice-img"
+                        alt="..."/>
+                    </div>
+                  @else
+                    <div class="carousel-item active">
+                      <iframe class="notice-img" width="100%" height="315" src="https://www.youtube.com/embed/tGPUQ76HIOE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                  @endif
                 @empty
                 <div class="carousel-item active">
                   <iframe class="notice-img" width="100%" height="315" src="https://www.youtube.com/embed/tGPUQ76HIOE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>

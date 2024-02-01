@@ -36,7 +36,7 @@
     <li class="submenu-item sidebar-item has-sub">
         <a href="#" class='sidebar-link'><i class="bi bi-receipt"></i><span>{{__('Report')}}</span></a>
         <ul class="submenu">
-            <li class="py-1"><a href="{{route(currentUser().'.trans_history_all')}}">{{__('Fee Report')}}</a></li>
+            <li class="py-1 submenu-item"><a href="{{route(currentUser().'.trans_history_all')}}">{{__('Fee Report')}}</a></li>
         </ul>
     </li>
 

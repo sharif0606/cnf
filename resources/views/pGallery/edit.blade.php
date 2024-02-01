@@ -1,4 +1,4 @@
-@extends('layout.app')
+{{-- @extends('layout.app')
 
 @section('pageTitle',trans('Update Photo Gallery'))
 @section('pageSubTitle',trans('Update'))
@@ -63,4 +63,4 @@
           </div>
       </div>
   </section>
-@endsection
+@endsection --}}

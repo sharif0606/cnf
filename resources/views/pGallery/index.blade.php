@@ -1,4 +1,4 @@
-@extends('layout.app')
+{{-- @extends('layout.app')
 
 @section('pageTitle',trans('Photo Gallery List'))
 @section('pageSubTitle',trans('List'))
@@ -35,13 +35,13 @@
                                             <i class="bi bi-pencil-square"></i>
                                         </a>
 
-                                        {{-- <a href="javascript:void()" onclick="$('#form{{$cat->id}}').submit()">
+                                        <!-- <a href="javascript:void()" onclick="$('#form{{$cat->id}}').submit()">
                                             <i class="bi bi-trash"></i>
                                         </a>
                                         <form id="form{{$cat->id}}" action="{{route(currentUser().'.pGallery.destroy',encryptor('encrypt',$cat->id))}}" method="post">
                                             @csrf
                                             @method('delete')
-                                        </form> --}}
+                                        </form> -->
                                     </td>
                                 </tr>
                                 @empty
@@ -60,4 +60,4 @@
         
     </div>
 </section>
-@endsection
+@endsection --}}

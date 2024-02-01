@@ -46,8 +46,7 @@
                             <div class="row mb-3">
                                 <label for="image" class="col-sm-2 offset-1 col-form-label"><b>{{__('Gallery Photo')}}:</b></label>
                                 <div class="col-sm-6 offset-1">
-                                    <input type="file" id="feature_image" class="form-control"
-                                         name="feature_image">
+                                    <input type="file" id="feature_image" class="form-control" name="feature_image">
                                 </div>
                             </div>
                             
