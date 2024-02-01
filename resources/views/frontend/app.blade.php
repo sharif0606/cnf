@@ -36,6 +36,7 @@
     <link rel="stylesheet" href="{{ asset('owl-carousel/owl.theme.css')}}">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('css/main.css')}}" />
+    <link href="https://fonts.maateen.me/adorsho-lipi/font.css" rel="stylesheet">
   </head>
   <body>
     <!-- header section -->

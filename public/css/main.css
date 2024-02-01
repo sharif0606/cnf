@@ -1,17 +1,20 @@
 /*  */
 :root {
-  --red: #e12a31;
+  --red: #037203;
+  /* --red: #e12a31; */
   --gray: #515152;
   --blue: #0a66c2;
 }
+/* @import url('https://fonts.maateen.me/adorsho-lipi/font.css'); */
+
 @font-face {
-  font-family: SourceSansPro-Regular;
-  src: url(../assets/fonts/SourceSansPro-Regular.ttf);
+  font-family: 'AdorshoLipi', sans-serif;
+  src: url('https://fonts.maateen.me/adorsho-lipi/font.css');
 }
-@font-face {
+/* @font-face {
   font-family: BRUSHSCI;
   src: url(../assets/fonts/BRUSHSCI.ttf);
-}
+} */
 .sticky-top .col-sm-4{
     padding-top:10px;
 }
@@ -42,7 +45,7 @@ header.sticky-top {
     padding-top: 30px;
 }
 body {
-  font-family: "SourceSansPro-Regular";
+  font-family: 'AdorshoLipi', Arial, sans-serif !important;
   color: var(--gray);
   background-color: rgb(248, 248, 248);
   margin: 0;
@@ -280,12 +283,12 @@ body {
 }
 
 .member-section .shape {
-  background: #e12a31;
+  background: #037203;
   opacity: .15;
   position: absolute;
 }
 .become-member-text p span{
-  font-family: 'BRUSHSCI';
+  font-family: 'AdorshoLipi', sans-serif;
 }
 .become-member{
   margin-top: 10px;
@@ -843,9 +846,9 @@ marquee p{
   text-align: justify !important;
 }
 .about-support {
-  background-color: rgb(235, 4, 4);
+  background-color: #037203;
   overflow: hidden;
-  border-bottom: 13px solid #fababa;
+  border-bottom: 13px solid #7aeb7a;
   position: relative;
   height: auto;
   color: #fff;
@@ -862,7 +865,7 @@ marquee p{
 .about-support .shape,.about-support .shape2 {
     width: 200px;
     height: 200px;
-    background: #eb8f74;
+    background: #7aeb7a;
     opacity: .6;
     position: absolute;
     top: 0;
@@ -882,7 +885,7 @@ marquee p{
 .about-support .shape3 {
   width: 300px;
   height: 300px;
-  background: #eb8f74;
+  background: #7aeb7a;
   opacity: .6;
   position: absolute;
   top: -150px;
@@ -893,7 +896,7 @@ marquee p{
 .leftside-menu .card .shape, .leftside-menu .card .shape2{
   width: 200px;
     height: 200px;
-    background: #eb8f74;
+    background: #7aeb7a;
     opacity: .2;
     position: absolute;
     border-radius: 40px;
@@ -1006,7 +1009,7 @@ footer {
   width: 100%;
   height: 100px;
   top: 0;
-  background-color: #e12a3060;
+  background-color: #7aeb7a;
   z-index: 2;
 }
 
@@ -1215,7 +1218,7 @@ footer img {
 }
 .facilities-main .bubble1,
 .facilities-main .bubble2 {
-  background: #e12a31;
+  background: #037203;
   opacity: .15;
   position: absolute;
   border-radius: 50%
@@ -1238,7 +1241,7 @@ footer img {
 }
 .facilities-main .bubble3,
 .facilities-main .bubble4 {
-  background: #e12a31;
+  background: #037203;
   opacity: .15;
   position: absolute;
   border-radius: 50%
@@ -1261,7 +1264,7 @@ footer img {
   animation: circle 16s linear infinite
 }
 .facilities-main .bubble5{
-  background: #e12a31;
+  background: #037203;
   opacity: .15;
   position: absolute
 }
@@ -1582,9 +1585,10 @@ figure{
 .member-search h1 {
   font-weight: 700;
   font-size: 1.9rem;
-  letter-spacing: .2125rem;
+  /* letter-spacing: .2125rem; */
   text-transform: uppercase;
   text-align: center;
+  color: #037203;
 }
 .searchBox {
   background: transparent;
@@ -1631,7 +1635,7 @@ figure{
   background-color: transparent;
   /* padding: 4px; */
   padding-top: 0.3rem;
-  padding-bottom: 0.2rem;
+  padding-bottom: 0.3rem;
   padding-right: 0;
   margin: 0;
 }
@@ -1642,7 +1646,7 @@ figure{
   padding: 0.325rem 1.5rem;
   border-radius: 50px;
   cursor: pointer;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   margin: 0.1225rem;
   -webkit-transition: all .3s ease;
   transition: all .3s ease;
@@ -1794,7 +1798,7 @@ span.events-date {
 .description.events {
   font-size: 12px;
   font-weight: 500;
-  font-family: 'Raleway';
+  font-family: 'AdorshoLipi', sans-serif;
   text-align: justify;
   opacity: .9;
 }
@@ -1802,13 +1806,13 @@ img.events-image {
   width: 100%;
   height: 9em;
   object-fit: cover;
-  box-shadow: -3px -3px 0px 3px #fababa;
+  box-shadow: -3px -3px 0px 3px #7aeb7a;
   border-radius: 30px 0px;
 }
 .events.shape1 {
   width: 150px;
   height: 150px;
-  background: #fababa;
+  background: #7aeb7a;
   opacity: 0.6;
   position: absolute;
   top: -80px;
@@ -1838,7 +1842,7 @@ img.events-image {
 .member-box .shape {
   width: 200px;
   height: 200px;
-  background: #fababa;
+  background: #7aeb7a;
   opacity: .2;
   position: absolute;
   top: 0;
@@ -1852,7 +1856,7 @@ img.events-image {
   height: 150px;
   border-radius: 50%;
   border-top-left-radius: 0;
-  border-bottom: 5px solid #fababa;
+  border-bottom: 5px solid #7aeb7a;
   -o-object-fit: cover;
   object-fit: cover;
   -o-object-position: top;
@@ -1896,7 +1900,7 @@ img.events-image {
 .executive-member-box .shape {
   width: 160px;
   height: 160px;
-  background: #fababa;
+  background: #7aeb7a;
   opacity: .2;
   position: absolute;
   top: 0;
@@ -1910,7 +1914,7 @@ img.events-image {
   height: 125px;
   border-radius: 50%;
   border-bottom-left-radius: 10%;
-  border-bottom: 5px solid #fababa;
+  border-bottom: 5px solid #7aeb7a;
   -o-object-fit: cover;
   object-fit: cover;
   -o-object-position: top;
@@ -1939,7 +1943,7 @@ img.events-image {
 .executive-member-box-head .shape {
   width: 200px;
   height: 200px;
-  background: #fababa;
+  background: #7aeb7a;
   opacity: .2;
   position: absolute;
   top: 0;
@@ -1953,7 +1957,7 @@ img.events-image {
   height: 150px;
   border-radius: 50%;
   border-bottom-left-radius: 10%;
-  border-bottom: 5px solid #fababa;
+  border-bottom: 5px solid #7aeb7a;
   -o-object-fit: cover;
   object-fit: cover;
   -o-object-position: top;
