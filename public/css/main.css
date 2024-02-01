@@ -1919,11 +1919,11 @@ img.events-image {
 }
 .executive-member-box .card-body {
   position: relative;
-  /* height: 180px; */
+  height: 80px;
   padding: 5px 4px 3px 4px;
 }
 .executive-member-box .member-title {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   /* height: 40px; */
   letter-spacing: -.025em;
@@ -1962,7 +1962,7 @@ img.events-image {
 }
 .executive-member-box-head .card-body {
   position: relative;
-  height: 80px;
+  height: 100px;
   padding: 10px 8px 8px 8px;
 }
 .executive-member-box-head .member-title {

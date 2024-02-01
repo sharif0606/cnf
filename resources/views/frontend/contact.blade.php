@@ -8,15 +8,15 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
-                <h3 class="mb-0">Contact Us</h3>
+                <h3 class="mb-0">যোগাযোগ করুন</h3>
             </div>
             <div class="col-lg-6">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb justify-content-end bg-transparent mb-0">
                         <li class="breadcrumb-item">
-                            <a href="#" class="breadcrumb-item router-link-active">Contact US</a>
+                            <a href="#" class="breadcrumb-item router-link-active">যোগাযোগ করুন</a>
                         </li>
-                        <li class="breadcrumb-item">data</li>
+                        <li class="breadcrumb-item">ডাটা</li>
                     </ol>
                 </nav>
             </div>
@@ -42,7 +42,7 @@
                     </div>
                 @endif
               <div class=" px-4 pt-3 pb-0">
-                <h4 style="font-weight: bold;">Contact Us</h4>
+                <h4 style="font-weight: bold;">যোগাযোগ করুন</h4>
                 <p>“Got a Question? We'd love to hear from you. Send us a message and we'll respond as soon as possible”</p>
               </div>
               <div class=" px-4 pt-0 pb-2 mem-form">
@@ -51,7 +51,7 @@
                     <div class="row">
                     <div class="col-lg-6 col-sm-12 col-md-12 py-2">
                         <div class="form-group">
-                        <label for="name">Name<span class="text-danger">*</span></label>
+                        <label for="name">নাম<span class="text-danger">*</span></label>
                             <input type="text" class="form-control input-bg" placeholder="Your Name" onfocus="this.placeholder = ''" value="{{ old('name')}}" onblur="this.placeholder = 'Your Name'" name="name">
                         </div>
                         @if($errors->has('name'))
@@ -62,7 +62,7 @@
                     </div>
                     <div class="col-lg-6 col-sm-12 col-md-12 py-2">
                         <div class="form-group">
-                            <label for="email">Email</label>
+                            <label for="email">ইমেইল</label>
                             <input type="email" class="form-control input-bg" placeholder="ie: member@mail.com" onfocus="this.placeholder = ''" value="{{ old('email')}}" onblur="this.placeholder = 'ie: member@mail.com'" name="email">
                         </div>
                         @if($errors->has('email'))
@@ -73,7 +73,7 @@
                     </div>
                     <div class="col-lg-6 col-sm-12 col-md-12 py-2">
                         <div class="form-group">
-                            <label for="Mobile">Phone Number<span class="text-danger">*</span></label>
+                            <label for="Mobile">মোবাইল<span class="text-danger">*</span></label>
                             <input type="text" class="form-control input-bg" placeholder="ie: 01****" onfocus="this.placeholder = ''" value="{{ old('PhoneNumber')}}" onblur="this.placeholder = 'ie: 01****'" name="PhoneNumber">
                         </div>
                         @if($errors->has('PhoneNumber'))
@@ -102,7 +102,7 @@
                     </div>
                     <div class="col-lg-12 col-sm-12 col-md-12 py-2">
                         <div class="form-group">
-                            <label for="message">Message</label>
+                            <label for="message">মেসেজ</label>
                             <textarea class="form-control input-bg" name="message" rows="2">{{ old('message')}}</textarea>
                             
                         </div>
@@ -119,14 +119,14 @@
         </div>
         <div class="col-sm-12 col-md-12 col-lg-4">
             <div class="contact ps-3 mt-4">
-                <h3>Visit our office at</h3>
+                <h3>আমাদের অফিস</h3>
                 <span class="contact-border">
                     <i class="bi bi-geo-alt-fill"></i>
                   <p>
                     {{ $setting?->address }}
                   </p>
                 </span>
-                <h4>Contact Us</h4>
+                <h4>যোগাযোগ করুন</h4>
                 <div class="contact-border">
                     <span>
                         <i class="bi bi-telephone-fill"></i>

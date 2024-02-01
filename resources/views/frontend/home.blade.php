@@ -103,7 +103,7 @@
               <div class="mt-3 d-flex notice-div-one ">
                 <span class="material-icons me-2"> today </span>
                 <a href="{{route('event-notice')}}">
-                  <p class="fs-4 mb-1 pt-1">News & Events</p>
+                  <p class="fs-4 mb-1 pt-1">নিউজ এবং ইভেন্ট</p>
                 </a>
               </div>
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -144,7 +144,7 @@
             <div class="mt-3 d-flex notice-div-one">
               <span class="material-icons me-2"> today </span>
               <a href="{{route('all-notice')}}">
-                <p class="fs-4 mb-1 pt-1">Notice</p>
+                <p class="fs-4 mb-1 pt-1">নোটিশ</p>
               </a>
             </div>
             <div class="height-300">
@@ -278,7 +278,7 @@
                                 <img class="card-img-top" src="{{asset('img/demo.png')}}" alt="No Photos">
                               @endif
                             </div>
-                            <div class="card-body text-center">
+                            <div class="card-body text-center mt-2">
                               <h3 class="m-0 member-title">{{$exec->member?->name_bn}}</h3>
                               <small>{{$exec->designation}}</small><br>
                               <small>{{$exec->member?->personal_phone}}</small>
@@ -356,7 +356,7 @@
     <section class="gallery">
       <div class="galler-background py-3">
         <div class="container">
-          <h4 class="pt-5 animate-title">GALLERY</h4>
+          <h4 class="pt-5 animate-title">ছবি গ্যালারি</h4>
           <div class="row justify-content-center pb-5 owl-gallery owl-theme">
             @forelse ($pgallery_cat as $p)
               <div class="col-12 item bg-transparent pe-3 ps-3">
