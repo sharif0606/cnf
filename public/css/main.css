@@ -836,7 +836,7 @@ marquee p{
   border-radius: 4px;
 }
 #grad {
-  background-image: linear-gradient(to right,red, rgb(173, 3, 3));
+  background-image: linear-gradient(to right,#07bf07, #025502);
 }
 .page-title h6 {
   font-weight: bolder;

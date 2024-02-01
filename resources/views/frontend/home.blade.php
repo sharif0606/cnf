@@ -247,14 +247,68 @@
           {{-- <div class="our-members">
           </div> --}}
           <h4 class="animate-title m-0">কার্যনির্বাহী সদস্য</h4>
-          <h5 class="animate-title text-center">
+          {{-- <h5 class="animate-title text-center">
             @if($committeeSession)
               {{$committeeSession->session_name}}
             @endif
-          </h5>
+          </h5> --}}
           <span></span>
           <div class="row">
-            <div class="col-lg-12 d-flex justify-content-between mb-4">
+              @if($executiveMember)
+                @foreach ($executiveMember as $exe)
+                  @if($exe->order_by == 1)
+                    <div class="col-lg-3 col-md-3 col-sm-12">
+                      <div class="card executive-member-box-head shadow p-2">
+                        <span class="shape"></span>
+                        <div class="text-center">
+                          @if ($exe->member?->image != '')
+                            <img class="card-img-top" src="{{asset('uploads/memberImage/'.$exe->member?->image)}}" alt="No Photos">
+                          @else
+                            <img class="card-img-top" src="{{asset('img/demo.png')}}" alt="No Photos">
+                          @endif
+                        </div>
+                        <div class="card-body text-center">
+                          <h3 class="m-0 member-title">{{$exe->member?->name_bn}}</h3>
+                          <small>{{$exe->designation}}</small><br>
+                          <small>{{$exe->member?->personal_phone}}</small>
+                        </div>
+                      </div>
+                    </div>
+                  @endif
+                @endforeach
+              @endif
+                    <div class="col-lg-6 col-md-6 col-sm-12 text-center">
+                      <h4 style="font-size: 22px; margin-bottom: .5rem; margin-top: 3rem; color:rgb(23, 23, 246)">চট্টগ্রাম ক্লিয়ারিং এন্ড ফরওয়ার্ডিং এজেন্টস্ কর্মচারী ইউনিয়ন (সি,বি,এ)</h4>
+                      <span style="background-color: green; border: solid transparent 1px; border-radius: 50px; font-size: 22px; color: #fff; padding: 2px 12px 1px 12px;">রেজি নং- ২৩৪</span>
+                      <h5 style="font-size: 32px; margin-bottom: .5rem; margin-top:.9rem; color: red;">কার্যনির্বাহী পরিষদের নির্বাচিত কর্মকর্তাবৃন্দ</h5>
+                      @if($committeeSession)
+                      <p style="font-size: 22px; color: rgb(23, 23, 246);">{{$committeeSession->session_name}}</p>
+                      @endif
+                    </div>
+              @if($executiveMember)
+                @foreach ($executiveMember as $exe)
+                  @if($exe->order_by == 2)
+                    <div class="col-lg-3 col-md-3 col-sm-12">
+                      <div class="card executive-member-box-head shadow p-2">
+                        <span class="shape"></span>
+                        <div class="text-center">
+                          @if ($exe->member?->image != '')
+                            <img class="card-img-top" src="{{asset('uploads/memberImage/'.$exe->member?->image)}}" alt="No Photos">
+                          @else
+                            <img class="card-img-top" src="{{asset('img/demo.png')}}" alt="No Photos">
+                          @endif
+                        </div>
+                        <div class="card-body text-center">
+                          <h3 class="m-0 member-title">{{$exe->member?->name_bn}}</h3>
+                          <small>{{$exe->designation}}</small><br>
+                          <small>{{$exe->member?->personal_phone}}</small>
+                        </div>
+                      </div>
+                    </div>
+                  @endif
+                @endforeach
+              @endif
+            {{-- <div class="col-lg-12 d-flex justify-content-between mb-4">
               @if($executiveMember)
                 @foreach ($executiveMember as $exe)
                   @if(($exe->order_by == 1) || ($exe->order_by == 2))
@@ -276,7 +330,7 @@
                   @endif
                 @endforeach
               @endif
-            </div>
+            </div> --}}
               @if($executiveMember)
                 @forelse ($executiveMember as $exec)
                   @if(($exec->order_by != 1) && ($exec->order_by != 2))
