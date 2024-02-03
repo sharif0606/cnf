@@ -1972,6 +1972,6 @@ img.events-image {
 .executive-member-box-head .member-title {
   font-size: 18px;
   font-weight: 600;
-  height: 20px;
+  /* height: 40px; */
   letter-spacing: -.025em;
 }
