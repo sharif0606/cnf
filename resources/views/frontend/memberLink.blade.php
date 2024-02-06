@@ -262,7 +262,7 @@
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <td class="tbl_1">
-                                        {{$member->designation_of_present_job}}
+                                        {{$member?->designation_of_present_job}}
                                     </td>
                                 </tr>
                                 <tr class="tbl_1">
