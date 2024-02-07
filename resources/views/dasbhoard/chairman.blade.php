@@ -5,7 +5,7 @@
 
 <div class="page-content py-3">
     <section class="row">
-        <div class="col-12">
+        <div class="col-12 d-none">
             <div class="row float-end">
                 <div class="col-12 mb-2 d-flex">
                     <button class="btn btn-sm btn-info">SMS Balance</button>
