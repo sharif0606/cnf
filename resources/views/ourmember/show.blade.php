@@ -238,13 +238,13 @@
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <td class="tbl_1">
-                                        {{-- @if($show_data->prottoyon==0)
+                                        @if($show_data->prottoyon==0)
                                             প্রযোজ্য নয়
                                         @elseif($show_data->prottoyon==1)
-                                            "আছে"
+                                            আছে
                                         @else
-                                            "নাই"
-                                        @endif --}}
+                                            নাই
+                                        @endif
                                     </td>
                                 </tr>
                                 <tr class="tbl_1">
