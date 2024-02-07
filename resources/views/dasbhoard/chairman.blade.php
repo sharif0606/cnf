@@ -5,6 +5,14 @@
 
 <div class="page-content py-3">
     <section class="row">
+        <div class="col-12">
+            <div class="row float-end">
+                <div class="col-12 mb-2 d-flex">
+                    <button class="btn btn-sm btn-info">SMS Balance</button>
+                    <input class="form-control" type="text" name="" value="" readonly style="width: 150px;">
+                </div>
+            </div>
+        </div>
        <div class="col-md-3 col-sm-6 col-lg-3">
             <div class="info-box">
                 <span class="info-box-icon bg-aqua">

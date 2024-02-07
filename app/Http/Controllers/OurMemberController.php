@@ -19,6 +19,8 @@ use Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Builder;
 use App\Classes\sslSms;
+use App\Models\setting;
+
 class OurMemberController extends Controller
 {
     use ImageHandleTraits;
@@ -487,6 +489,9 @@ class OurMemberController extends Controller
                                 /* update member sms send status */
                                 $member->sms_send=1;
                                 $member->save();
+                                $settingTable = setting::where($id,1)->first();
+                                $settingTable->number_of_send_sms = $settingTable->number_of_send_sms + 1;
+                                $settingTable->save();
                             }
                         }
                     }
