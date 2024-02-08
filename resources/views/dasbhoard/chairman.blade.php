@@ -9,7 +9,7 @@
             <div class="row float-end">
                 <div class="col-12 mb-2 d-flex">
                     <button class="btn btn-sm btn-info">SMS Balance</button>
-                    <input class="form-control" type="text" name="" value="" readonly style="width: 150px;">
+                    <input class="form-control" type="text" name="" value="{{money_format($smsCount)}}" readonly style="width: 150px;">
                 </div>
             </div>
         </div>

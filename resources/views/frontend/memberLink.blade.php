@@ -262,7 +262,11 @@
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <td class="tbl_1">
-                                        {{$member?->designation_of_present_job}}
+                                        @if ($member->designation_of_present_job != '4')
+                                            {{$member->designation_of_present_job}}
+                                        @else
+                                            {{$member->others_designation}}
+                                        @endif
                                     </td>
                                 </tr>
                                 <tr class="tbl_1">

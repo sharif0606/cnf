@@ -263,7 +263,11 @@
                                             $jobType = isset($mt[$show_data->type_of_job])?$mt[$show_data->type_of_job]:'';
                                         @endphp
                                         {{$jobType}} --}}
-                                        {{$show_data->designation_of_present_job}}
+                                        @if ($show_data->designation_of_present_job != '4')
+                                            {{$show_data->designation_of_present_job}}
+                                        @else
+                                            {{$show_data->others_designation}}
+                                        @endif
                                     </td>
                                 </tr>
                                 <tr class="tbl_1">

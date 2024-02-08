@@ -190,6 +190,9 @@ class OurMemberController extends Controller
             $member->issue_date=$request->issueDate;
             $member->exp_date=$request->expDate;
             $member->designation_of_present_job=$request->designation_of_present_job;
+            if($request->designation_of_present_job == '4'){
+                $member->others_designation=$request->others_designation;
+            }
             $member->joining_date=$request->joiningDate;
             $member->nameOf_instituteOf_previousJob=$request->nameOf_instituteOf_previousJob;
             $member->designation_of_previous_job=$request->designation_of_previous_job;
@@ -386,6 +389,9 @@ class OurMemberController extends Controller
             $member->issue_date=$request->issueDate;
             $member->exp_date=$request->expDate;
             $member->designation_of_present_job=$request->designation_of_present_job;
+            if($request->designation_of_present_job == '4'){
+                $member->others_designation=$request->others_designation;
+            }
             $member->joining_date=$request->joiningDate;
             $member->nameOf_instituteOf_previousJob=$request->nameOf_instituteOf_previousJob;
             $member->designation_of_previous_job=$request->designation_of_previous_job;

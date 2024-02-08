@@ -38,6 +38,7 @@ return new class extends Migration
             $table->string('license')->nullable();
             $table->date('issue_date')->nullable();
             $table->string('designation_of_present_job')->nullable();
+            $table->string('others_designation')->nullable();
             $table->date('joining_date')->nullable();
             $table->string('nameOf_instituteOf_previousJob')->nullable();
             $table->string('designation_of_previous_job')->nullable();
