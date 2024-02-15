@@ -242,15 +242,16 @@
                                 </tr>
                                 <tr class="tbl_1">
                                     <th class="tbl_1" style="text-align: left;">১৩ </th>
-                                    <th class="tbl_1" style="text-align: left;">চাকরির ধরন</th>
+                                    <th class="tbl_1" style="text-align: left;">বর্তমান চাকুরী স্থলের পদবি</th>
                                     
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <th class="tbl_1" style="text-align: left;">..</th>
                                     <td class="tbl_1">
-                                        @php $mt=array("স্থায়ী","বদলি","সাময়িক","অস্থায়ী শিক্ষানবীশ","শিক্ষাধীন");
-                                            $jobType = isset($mt[$show_data->type_of_job])?$mt[$show_data->type_of_job]:'';
-                                        @endphp
-                                        {{$jobType}}
+                                        @if ($show_data->designation_of_present_job != '4')
+                                            {{$show_data->designation_of_present_job}}
+                                        @else
+                                            {{$show_data->others_designation}}
+                                        @endif
                                     </td>
                                 </tr>
                             </tbody>

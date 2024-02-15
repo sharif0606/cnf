@@ -210,12 +210,19 @@
                                 <div class="col-lg-3 col-md-3 col-sm-6">
                                     <div class="form-group">
                                         <label for="designation">বর্তমান চাকুরী স্থলের পদবী</label>
-                                        <select name="designation_of_present_job" class="form-control">
+                                        <select onchange="pre_designation(this)" name="designation_of_present_job" class="form-control">
                                             <option value="">Select</option>
                                             <option value="কাস্টম সরকার" {{ old('designation_of_present_job')=='কাস্টম সরকার' ? 'selected':''}}>কাস্টম সরকার</option>
                                             <option value="জেটি সরকার" {{ old('designation_of_present_job')=='জেটি সরকার' ? 'selected':''}}>জেটি সরকার</option>
                                             <option value="জেটি/কাস্টম সরকার" {{ old('designation_of_present_job')=='জেটি/কাস্টম সরকার' ? 'selected':''}}>জেটি/কাস্টম সরকার</option>
+                                            <option value="4" {{ old('designation_of_present_job')=='4' ? 'selected':''}}>অন্যান্য</option>
                                         </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-6 others_designation d-none">
+                                    <div class="form-group">
+                                        <label for="designation">অন্যান্য পদবী</label>
+                                        <input type="text" class="form-control" name="others_designation" value="{{old('others_designation')}}">
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-6">
@@ -373,6 +380,16 @@
         } else {
             $('#dueMessage').text("Invalid mobile number");
             $('#submitBtn').prop('disabled', true);
+        }
+    }
+
+    function pre_designation(e){
+        var designation = e.value;
+        console.log(designation);
+        if(designation == '4'){
+            $('.others_designation').removeClass('d-none');
+        }else{
+            $('.others_designation').addClass('d-none');
         }
     }
 

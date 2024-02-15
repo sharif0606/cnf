@@ -19,6 +19,8 @@ use Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Builder;
 use App\Classes\sslSms;
+use App\Models\setting;
+
 class OurMemberController extends Controller
 {
     use ImageHandleTraits;
@@ -188,6 +190,9 @@ class OurMemberController extends Controller
             $member->issue_date=$request->issueDate;
             $member->exp_date=$request->expDate;
             $member->designation_of_present_job=$request->designation_of_present_job;
+            if($request->designation_of_present_job == '4'){
+                $member->others_designation=$request->others_designation;
+            }
             $member->joining_date=$request->joiningDate;
             $member->nameOf_instituteOf_previousJob=$request->nameOf_instituteOf_previousJob;
             $member->designation_of_previous_job=$request->designation_of_previous_job;
@@ -384,6 +389,9 @@ class OurMemberController extends Controller
             $member->issue_date=$request->issueDate;
             $member->exp_date=$request->expDate;
             $member->designation_of_present_job=$request->designation_of_present_job;
+            if($request->designation_of_present_job == '4'){
+                $member->others_designation=$request->others_designation;
+            }
             $member->joining_date=$request->joiningDate;
             $member->nameOf_instituteOf_previousJob=$request->nameOf_instituteOf_previousJob;
             $member->designation_of_previous_job=$request->designation_of_previous_job;
@@ -487,6 +495,9 @@ class OurMemberController extends Controller
                                 /* update member sms send status */
                                 $member->sms_send=1;
                                 $member->save();
+                                $settingTable = setting::where('id',1)->first();
+                                $settingTable->number_of_send_sms = $settingTable->number_of_send_sms + 1;
+                                $settingTable->save();
                             }
                         }
                     }
@@ -502,7 +513,7 @@ class OurMemberController extends Controller
             }
         }
         catch (Exception $e){
-            //dd($e);
+            dd($e);
             return back()->withInput();
             Toastr::warning('Please try Again!');
 
