@@ -25,7 +25,7 @@
                             @forelse (App\Models\scroll_notice::where('published_date', '<=',$today)->where(function ($query) use ($today) {
                                 $query->where('unpublished_date', '>',$today);
                                 $query->orWhereNull('unpublished_date');
-                            })->latest()->limit(12)->get();  as $scroll)
+                            })->latest()->limit(12)->get() as $scroll)
                         
                             <li style="border-right: 2px solid rgb(254, 253, 253)"><p class="px-2 text-white">{{$scroll->text}}</p></li>
 
