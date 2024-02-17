@@ -384,8 +384,7 @@
                     <small>
                       <strong>পদবী:</strong>
                       {{$fm->designation_of_present_job }}
-                    </small><br>
-                    <a class="btn btn-sm btn-primary" href="{{route('member_link',encryptor('encrypt',$fm->id))}}">View Profile</a>
+                    </small>
                 </div>
                 {{-- <div class="card-footer">
                     <div class="social">

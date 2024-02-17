@@ -490,10 +490,12 @@ class OurMemberController extends Controller
                         if($member->personal_phone){
                             $phone=$member->personal_phone;
                             $rand=uniqid().rand(1000,9999);
-                            $msg_text="ডিজিটাল পদ্ধতিতে নবায়ন করায় সিবিএ - ২৩৪ এর কার্যনির্বাহী পরিষদ এর পক্ষথেকে আপনাকে ধন্যবাদ।\nMember No: ".$member->member_serial_no."/".$member->member_serial_no_new."\nRSL: ".$member->renew_serial_no."\nকৃতজ্ঞতায় সাধারণ সম্পাদক / সভাপতি\nওয়েবসাইট: https://www.cnfemployeesunion.com";
-                            if($smsClass->singleSms($phone, $msg_text, $rand)->status_code=="200"){
+                            $password = str_pad(mt_rand(0, 999999), 6, '0', STR_PAD_LEFT);
+                            $msg_text="ডিজিটাল পদ্ধতিতে নবায়ন করায় সিবিএ - ২৩৪ এর কার্যনির্বাহী পরিষদ এর পক্ষথেকে আপনাকে ধন্যবাদ।\nMember No: ".$member->member_serial_no."/".$member->member_serial_no_new."\nRSL: ".$member->renew_serial_no."\nPassword:".$password."\nকৃতজ্ঞতায় সাধারণ সম্পাদক / সভাপতি\nওয়েবসাইট: https://www.cnfemployeesunion.com";
+                            if($smsClass->singleSms($phone, $msg_text, $rand, $password)->status_code=="200"){
                                 /* update member sms send status */
                                 $member->sms_send=1;
+                                $member->profile_view_password= $password;
                                 $member->save();
                                 $settingTable = setting::where('id',1)->first();
                                 $settingTable->number_of_send_sms = $settingTable->number_of_send_sms + 1;

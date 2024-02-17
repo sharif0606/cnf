@@ -67,6 +67,7 @@
                                 <th scope="col">{{__('ক্রমিক নং')}}</th>
                                 <th scope="col">{{__('নাম')}}</th>
                                 <th scope="col">{{__('সিরিয়াল পুরাতন/নতুন')}}</th>
+                                <th scope="col">{{__('পাসওয়ার্ড')}}</th>
                                 <th scope="col">{{__('আর এস')}}</th>
                                 <th scope="col">{{__('পিতার নাম')}}</th>
                                 <th scope="col">{{__('মোবাইল (নিজস্ব)')}}</th>
@@ -84,6 +85,7 @@
                                 <th scope="row">{{ $ourmember->firstItem() + $key }}</th>
                                 <td>{{$p->name_bn}}</td>
                                 <td>{{$p->member_serial_no}}/{{$p->member_serial_no_new}}</td>
+                                <td>{{$p->profile_view_password}}</td>
                                 <td>
                                     @if ($p->renew_serial_no != '')
                                         {{$p->renew_serial_no}}
