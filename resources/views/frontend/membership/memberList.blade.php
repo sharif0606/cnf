@@ -125,10 +125,10 @@
                                 <h5>আর এস এল : {{$m->renew_serial_no}}</h5>
                             </div>
                             <div class="col-lg-4 align-self-center">
-                                <h5>মোবাইল : {{$m->personal_phone}}</h5>
+                                {{-- <h5>মোবাইল : {{$m->personal_phone}}</h5>
                                 <h5>জেলা : {{$m->district}}</h5>
                                 <h5>উপজেলা : {{$m->upazila}}</h5>
-                                <h5>গ্রাম : {{$m->village}}</h5>
+                                <h5>গ্রাম : {{$m->village}}</h5> --}}
                                 <h5>রিনিউ ইস্যু : {{ $m->fee_collection_last ? \Carbon\Carbon::parse($m->fee_collection_last->date)->format('d-F-Y') : '' }}</h5>
                                 <h5>রিনিউ মেয়াদ  : {{$m->fee_collection_last?->year}}</h5>
                             </div>

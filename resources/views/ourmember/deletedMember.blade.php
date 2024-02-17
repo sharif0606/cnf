@@ -57,7 +57,7 @@
                                 <th scope="col">{{__('রক্তের গ্রুপ')}}</th>
                                 <th scope="col">{{__('এনআইডি')}}</th>
                                 <th scope="col">{{__('চাকুরীর পদবি')}}</th>
-                                <th scope="col">{{__('Deleted By')}}</th>
+                                {{-- <th scope="col">{{__('Deleted By')}}</th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -71,7 +71,7 @@
                                 <td>{{$p->blood_group}}</td>
                                 <td>{{$p->nid}}</td>
                                 <td>{{$p->designation_of_present_job}}</td>
-                                <td>{{$p->deletedBy?->name}}</td>
+                                {{-- <td>{{$p->deletedBy?->name}}</td> --}}
                             </tr>
                             @empty
                             <tr>
