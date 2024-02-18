@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Builder;
 use App\Classes\sslSms;
 use App\Models\setting;
+use Illuminate\Support\Facades\Log;
 
 class OurMemberController extends Controller
 {
@@ -104,7 +105,6 @@ class OurMemberController extends Controller
      */
     public function archiveMember(Request $request)
     {
-
         $ourmember=OurMember::orderBy('member_serial_no');
         if($request->member_serial_no)
             $ourmember=$ourmember->where('member_serial_no',$request->member_serial_no);
@@ -361,7 +361,6 @@ class OurMemberController extends Controller
     {
         try{
             $member=OurMember::findOrFail(encryptor('decrypt',$id));
-
             $member->form_serial=$request->form_serial_no;
             $member->name_bn=$request->nameBn;
             $member->name_en=$request->nameEn;
@@ -437,7 +436,7 @@ class OurMemberController extends Controller
             
             $member->status= $request->status;
 
-            if($member->save()){   
+            if($member->save()){
                 if($request->name_of_heirs){
                     foreach($request->name_of_heirs as $i=>$heirs){
                         if($heirs){
@@ -460,7 +459,7 @@ class OurMemberController extends Controller
             }
         }
         catch (Exception $e){
-            dd($e);
+            //dd($e);
             return back()->withInput();
             Toastr::warning('Please try Again!');
 
@@ -490,9 +489,11 @@ class OurMemberController extends Controller
                         if($member->personal_phone){
                             $phone=$member->personal_phone;
                             $rand=uniqid().rand(1000,9999);
-                            $password = str_pad(mt_rand(0, 999999), 6, '0', STR_PAD_LEFT);
-                            $msg_text="ডিজিটাল পদ্ধতিতে নবায়ন করায় সিবিএ - ২৩৪ এর কার্যনির্বাহী পরিষদ এর পক্ষথেকে আপনাকে ধন্যবাদ।\nMember No: ".$member->member_serial_no."/".$member->member_serial_no_new."\nRSL: ".$member->renew_serial_no."\nPassword:".$password."\nকৃতজ্ঞতায় সাধারণ সম্পাদক / সভাপতি\nওয়েবসাইট: https://www.cnfemployeesunion.com";
-                            if($smsClass->singleSms($phone, $msg_text, $rand, $password)->status_code=="200"){
+                            $password = rand(111111, 999999);
+                            $msg_text="ডিজিটাল পদ্ধতিতে নবায়ন করায় সিবিএ - ২৩৪ এর কার্যনির্বাহী পরিষদ এর পক্ষথেকে আপনাকে ধন্যবাদ।\nMember No: ".$member->member_serial_no."/".$member->member_serial_no_new."\nRSL: ".$member->renew_serial_no."\nPassword:".$password."\nওয়েবসাইট: https://cnfemployeesunion.com\n\nকৃতজ্ঞতায়\nসভাপতি: মো: খায়রুল বাশার মিল্টন\nসাধারণ সম্পাদক: মো: মোশাররফ হোসেন ভূঁইয়া";
+                            $checksendsms=$smsClass->singleSms($phone, $msg_text, $rand);
+                            Log::info($checksendsms->status_code.'-'.$phone);
+                            if($checksendsms->status_code=="200"){
                                 /* update member sms send status */
                                 $member->sms_send=1;
                                 $member->profile_view_password= $password;
@@ -515,7 +516,7 @@ class OurMemberController extends Controller
             }
         }
         catch (Exception $e){
-            dd($e);
+            //dd($e);
             return back()->withInput();
             Toastr::warning('Please try Again!');
 
