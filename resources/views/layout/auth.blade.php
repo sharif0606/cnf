@@ -23,7 +23,7 @@
 <body>
 <div id="auth">
     <div class="row h-100">
-        <div class="col-lg-6 offset-3 col-12">
+        <div class="col-lg-6 offset-lg-3 col-12">
             <div id="auth-left">
                 <div class="auth-logo text-center">
                     <img src="{{asset('img/cnf.png')}}" width="25%" height="auto" alt="">

@@ -16,26 +16,36 @@
                         <form action="" method="get">
                             <div class="row">
                                 <div class="col-sm-2">
-                                    <input type="text" name="member_serial_no" value="{{isset($_GET['member_serial_no'])?$_GET['member_serial_no']:''}}" placeholder="Member ID Old" class="form-control">
+                                    <div class="form-group">
+                                        <input type="text" name="member_serial_no" value="{{isset($_GET['member_serial_no'])?$_GET['member_serial_no']:''}}" placeholder="Member ID Old" class="form-control">
+                                    </div>
                                 </div>
                                 <div class="col-sm-2">
-                                    <input type="text" name="member_serial_no_new" value="{{isset($_GET['member_serial_no_new'])?$_GET['member_serial_no_new']:''}}" placeholder="Member ID New" class="form-control">
+                                    <div class="form-group">
+                                        <input type="text" name="member_serial_no_new" value="{{isset($_GET['member_serial_no_new'])?$_GET['member_serial_no_new']:''}}" placeholder="Member ID New" class="form-control">
+                                    </div>
                                 </div>
                                 <div class="col-sm-2">
-                                    <input type="text" name="name_bn" value="{{isset($_GET['name_bn'])?$_GET['name_bn']:''}}" placeholder="Member Name" class="form-control">
+                                    <div class="form-group">
+                                        <input type="text" name="name_bn" value="{{isset($_GET['name_bn'])?$_GET['name_bn']:''}}" placeholder="Member Name" class="form-control">
+                                    </div>
                                 </div>
                                 <div class="col-sm-2">
-                                    <input type="text" name="renew_serial_no" value="{{isset($_GET['renew_serial_no'])?$_GET['renew_serial_no']:''}}" placeholder="RS NO" class="form-control">
+                                    <div class="form-group">
+                                        <input type="text" name="renew_serial_no" value="{{isset($_GET['renew_serial_no'])?$_GET['renew_serial_no']:''}}" placeholder="RS NO" class="form-control">
+                                    </div>
                                 </div>
                                 <div class="col-sm-2">
-                                    <select name="status" id="" class="form-control">
-                                        <option value="">All</option>
-                                        <option value="1" @if(isset($_GET['status']) && $_GET['status']==1) selected @endif>Active</option>
-                                        <option value="2" @if(isset($_GET['status']) && $_GET['status']==2) selected @endif>Owner</option>
-                                        <option value="3" @if(isset($_GET['status']) && $_GET['status']==3) selected @endif>Retired</option>
-                                        <option value="4" @if(isset($_GET['status']) && $_GET['status']==4) selected @endif>Late</option>
-                                        <option value="5" @if(isset($_GET['status']) && $_GET['status']==5) selected @endif>Cancelled</option>
-                                    </select>
+                                    <div class="form-group">
+                                        <select name="status" id="" class="form-control">
+                                            <option value="">All</option>
+                                            <option value="1" @if(isset($_GET['status']) && $_GET['status']==1) selected @endif>Active</option>
+                                            <option value="2" @if(isset($_GET['status']) && $_GET['status']==2) selected @endif>Owner</option>
+                                            <option value="3" @if(isset($_GET['status']) && $_GET['status']==3) selected @endif>Retired</option>
+                                            <option value="4" @if(isset($_GET['status']) && $_GET['status']==4) selected @endif>Late</option>
+                                            <option value="5" @if(isset($_GET['status']) && $_GET['status']==5) selected @endif>Cancelled</option>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="col-sm-2">
                                     <button class="btn btn-sm btn-info" type="submit">Search</button>

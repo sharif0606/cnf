@@ -17,19 +17,29 @@
                             <form action="" method="get">
                                 <div class="row">
                                     <div class="col-sm-2">
-                                        <input type="text" name="member_serial_no" value="{{isset($_GET['member_serial_no'])?$_GET['member_serial_no']:''}}" placeholder="Member ID Old" class="form-control">
+                                        <div class="form-group">
+                                            <input type="text" name="member_serial_no" value="{{isset($_GET['member_serial_no'])?$_GET['member_serial_no']:''}}" placeholder="Member ID Old" class="form-control">
+                                        </div>
                                     </div>
                                     <div class="col-sm-2">
-                                        <input type="text" name="member_serial_no_new" value="{{isset($_GET['member_serial_no_new'])?$_GET['member_serial_no_new']:''}}" placeholder="Member ID New" class="form-control">
+                                        <div class="form-group">
+                                            <input type="text" name="member_serial_no_new" value="{{isset($_GET['member_serial_no_new'])?$_GET['member_serial_no_new']:''}}" placeholder="Member ID New" class="form-control">
+                                        </div>
                                     </div>
                                     <div class="col-sm-2">
-                                        <input type="text" name="name_bn" value="{{isset($_GET['name_bn'])?$_GET['name_bn']:''}}" placeholder="Member Name" class="form-control">
+                                        <div class="form-group">
+                                            <input type="text" name="name_bn" value="{{isset($_GET['name_bn'])?$_GET['name_bn']:''}}" placeholder="Member Name" class="form-control">
+                                        </div>
                                     </div>
                                     <div class="col-sm-2">
-                                        <input type="text" name="nid" value="{{isset($_GET['nid'])?$_GET['nid']:''}}" placeholder="NID" class="form-control">
+                                        <div class="form-group">
+                                            <input type="text" name="nid" value="{{isset($_GET['nid'])?$_GET['nid']:''}}" placeholder="NID" class="form-control">
+                                        </div>
                                     </div>
                                     <div class="col-sm-2">
-                                        <input type="text" name="license" value="{{isset($_GET['license'])?$_GET['license']:''}}" placeholder="license" class="form-control">
+                                        <div class="form-group">
+                                            <input type="text" name="license" value="{{isset($_GET['license'])?$_GET['license']:''}}" placeholder="license" class="form-control">
+                                        </div>
                                     </div>
                                     <div class="col-sm-2">
                                         <button class="btn btn-sm btn-info" type="submit">Search</button>
