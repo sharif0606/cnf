@@ -64,9 +64,12 @@ class DashboardController extends Controller
         $approveMember = OurMember::where('approvedstatus',2)->count();
         $archiveMember = OurMember::whereIn('status',[0,1,2,3,4])->count();
         $todayPay = fee_collection::whereDate('date', $ldate->format('Y-m-d'))->sum('total_amount');
+        $smsCount = SmsBalance::sum('number_of_sms');
+        $sendSms = setting::where('id',1)->first();
+        $smsLeft = ($smsCount - $sendSms->number_of_send_sms);
         $todayApproveMember = OurMember::whereDate('member_approval_date', $ldate->format('Y-m-d'))->count();
         $lastRslNo = OurMember::max('renew_serial_no');
-        return view('dasbhoard.generalsecretary',compact('todadyApplied','appliedMember','gsApporoveMember','approveMember','archiveMember','todayPay','lastRslNo','todayApproveMember'));
+        return view('dasbhoard.generalsecretary',compact('todadyApplied','appliedMember','gsApporoveMember','approveMember','archiveMember','todayPay','lastRslNo','todayApproveMember','smsLeft'));
     }
     /*
     * member dashboard
