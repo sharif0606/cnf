@@ -38,7 +38,7 @@ class OurMemberController extends Controller
         if($request->member_serial_no_new)
             $ourmember=$ourmember->where('member_serial_no_new',$request->member_serial_no_new);
         if($request->name_bn)
-            $ourmember=$ourmember->where('name_bn','like','%'.$request->name_bn.'%');
+            $ourmember=$ourmember->where('name_bn','like','%'.$request->name_bn.'%')->orWhere('name_en','like','%'.$request->name_bn.'%');
         if($request->nid)
             $ourmember=$ourmember->where('nid','like','%'.$request->nid.'%');
         if($request->license)

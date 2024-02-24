@@ -73,13 +73,29 @@ class FrontendController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function memberLink($id)
+    public function memberLink(Request $request, $id)
     {
-        $member= OurMember::where('id',(encryptor('decrypt',$id)))->first();
-        $feeCollection = fee_collection::where('member_id',(encryptor('decrypt',$id)))->get();
-        $nomini = heirship::where('member_id',$member->id)->get();
-        return view('frontend.memberLink',compact('member','nomini','feeCollection'));
+        if ($request->password) {
+            $member = OurMember::where('id', encryptor('decrypt', $id))
+                            ->where('profile_view_password', $request->password)
+                            ->first();
+
+            if ($member) {
+                $feeCollection = fee_collection::where('member_id', encryptor('decrypt', $id))->get();
+                $nomini = heirship::where('member_id', $member->id)->get();
+                return view('frontend.memberLink', compact('member', 'nomini', 'feeCollection'));
+            } else {
+                /* Password is incorrect. If you don't have any password, please contact the authority. */
+                Toastr::error('পাসওয়ার্ড ভুল! আপনার কোনো পাসওয়ার্ড না থাকলে, কর্তৃপক্ষের সাথে যোগাযোগ করুন।');
+                return redirect()->back();
+            }
+        } else {
+            /* You have to provide a password. If you don't have any password, please contact the authority */
+            Toastr::warning('আপনাকে একটি পাসওয়ার্ড প্রদান করতে হবে। আপনার কোনো পাসওয়ার্ড না থাকলে, কর্তৃপক্ষের সাথে যোগাযোগ করুন');
+            return redirect()->back();
+        }
     }
+
     public function benefit()
     {
         $benefit=BenefitsOfMember::all();

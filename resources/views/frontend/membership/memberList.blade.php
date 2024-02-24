@@ -91,7 +91,7 @@
                                     <input type="text" name="rsl_no" placeholder="আর এস এল" class="form-control form-control-sm shadow-none">
                                 </div>
                                 <div class="form-group col-lg-2 align-self-end p-1">
-                                    <button type="submit" class="btn btn-sm btn-danger">
+                                    <button type="submit" class="btn btn-sm btn-success">
                                     <i class="bi bi-search"></i>
                                     </button>
                                 </div>
@@ -106,14 +106,18 @@
                         @forelse ($member as $m)
                         <div class="search-list-item row ">
                             <div class="col-lg-4 align-self-center text-center">
-                                <a href="{{route('member_link',encryptor('encrypt',$m->id))}}">
+                                <button class="p-0 m-0" type="button" style="background-color: transparent; border:none;"
+                                    data-bs-toggle="modal" data-bs-target="#profile"
+                                    data-view_password="{{route('member_link',encryptor('encrypt',$m->id))}}">
                                     <img src="{{asset('uploads/memberImage/'.$m->image)}}" alt="No Image" width="150px">
-                                </a>
+                                </button>
                             </div>
                             <div class="col-lg-4 text-center border-end ps-0 pe-0">
-                                <a href="{{route('member_link',encryptor('encrypt',$m->id))}}">
+                                <button class="p-0 m-0" type="button" style="background-color: transparent; border:none;"
+                                    data-bs-toggle="modal" data-bs-target="#profile"
+                                    data-view_password="{{route('member_link',encryptor('encrypt',$m->id))}}">
                                     <h1> {{$m->name_bn}}</h1>
-                                </a>
+                                </button>
                                 <h5>
                                     সদস্য নং/নতুন : {{$m->member_serial_no}}/
                                     @if ($m->member_serial_no_new != '')
@@ -144,11 +148,47 @@
                         <div class="my-3">
                             {!! $member->links()!!}
                         </div>
+                        <div class="modal fade" id="profile" tabindex="-1" role="dialog"
+                            aria-labelledby="balanceTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable" role="document">
+                                <form id="moreDetailsLink" action="#">
+                                    <div class="modal-content">
+                                        <div class="modal-header py-1">
+                                            <h5 class="modal-title" id="batchTitle">প্রোফাইল</h5>
+                                            <button type="button" class="close text-danger" data-bs-dismiss="modal"  aria-label="Close" style="border:none;">
+                                                <i class="bi bi-x-lg" style="font-size: 1.5rem;"></i>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <label for="">পাসওয়ার্ড</label>
+                                            <input type="password" name="password" class="form-control" required>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-info text-white">View Profile</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            
         </div>
     </div>
 </div>
 @endsection
+@push('scripts')
+<script>
+    $(document).ready(function () {
+        $('#profile').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            // Set the values in the modal
+            var modal = $(this);
+
+            var moreDetailsLink = modal.find('#moreDetailsLink');
+            var newHref = button.data('view_password');
+            moreDetailsLink.attr('action', newHref);
+        });
+    });
+</script>
+@endpush

@@ -37,6 +37,8 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('css/main.css')}}" />
     <link href="https://fonts.maateen.me/adorsho-lipi/font.css" rel="stylesheet">
+    {{-- tostr css --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
   </head>
   <body>
     <!-- header section -->
@@ -359,5 +361,8 @@
     <!-- My JS -->
     <script src="{{ asset('js/app.js')}}"></script>
     @stack('scripts')
+    {{-- tostr --}}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  {!! Toastr::message() !!}
   </body>
 </html>
