@@ -114,6 +114,14 @@ class OurMemberController extends Controller
             $ourmember=$ourmember->where('name_bn','like','%'.$request->name_bn.'%')->orWhere('name_en','like','%'.$request->name_bn.'%');
         if($request->renew_serial_no)
             $ourmember=$ourmember->where('renew_serial_no',$request->renew_serial_no);
+        if($request->district)
+            $ourmember=$ourmember->where('district',$request->district);
+        if($request->nameAddress_of_present_institute)
+            $ourmember=$ourmember->where('nameAddress_of_present_institute',$request->nameAddress_of_present_institute);
+        if($request->nameOf_instituteOf_previousJob)
+            $ourmember=$ourmember->where('nameOf_instituteOf_previousJob',$request->nameOf_instituteOf_previousJob);
+        if($request->blood)
+            $ourmember=$ourmember->where('blood_group',$request->blood);
         if($request->status)
             $ourmember=$ourmember->where('status',$request->status);
 
@@ -169,7 +177,7 @@ class OurMemberController extends Controller
             $member->father_name=$request->fatherName;
             $member->mother_name=$request->motherName;
             $member->spouse_name=$request->spouseName;
-            $member->birth_date=date('Y-m-d', strtotime($request->birthDate));
+            $member->birth_date=$request->birthDate;
             $member->blood_group=$request->bloodGroup;
             $member->nid=$request->nid;
             $member->word_no=$request->wordNo;
@@ -367,7 +375,7 @@ class OurMemberController extends Controller
             $member->father_name=$request->fatherName;
             $member->mother_name=$request->motherName;
             $member->spouse_name=$request->spouseName;
-            $member->birth_date=date('Y-m-d', strtotime($request->birthDate));
+            $member->birth_date=$request->birthDate;
             $member->blood_group=$request->bloodGroup;
             $member->nid=$request->nid;
             $member->word_no=$request->wordNo;

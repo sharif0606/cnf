@@ -40,6 +40,36 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
+                                            <input type="text" name="district" value="{{isset($_GET['district'])?$_GET['district']:''}}" placeholder="জেলা" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <input type="text" name="nameAddress_of_present_institute" value="{{isset($_GET['nameAddress_of_present_institute'])?$_GET['nameAddress_of_present_institute']:''}}" placeholder="বর্তমান চাকুরী" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <input type="text" name="nameOf_instituteOf_previousJob" value="{{isset($_GET['nameOf_instituteOf_previousJob'])?$_GET['nameOf_instituteOf_previousJob']:''}}" placeholder="পূর্ববর্তী চাকুরী" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <select name="blood" id="" class="form-control">
+                                                <option value="">Blood Group All</option>
+                                                <option value="A+" @if(isset($_GET['blood']) && $_GET['blood']=='A+') selected @endif>A+</option>
+                                                <option value="A-" @if(isset($_GET['blood']) && $_GET['blood']=='A-') selected @endif>A-</option>
+                                                <option value="B+" @if(isset($_GET['blood']) && $_GET['blood']=='B+') selected @endif>B+</option>
+                                                <option value="B-" @if(isset($_GET['blood']) && $_GET['blood']=='B-') selected @endif>B-</option>
+                                                <option value="O+" @if(isset($_GET['blood']) && $_GET['blood']=='O+') selected @endif>O+</option>
+                                                <option value="O-" @if(isset($_GET['blood']) && $_GET['blood']=='O-') selected @endif>O-</option>
+                                                <option value="AB+" @if(isset($_GET['blood']) && $_GET['blood']=='AB+') selected @endif>AB+</option>
+                                                <option value="AB-" @if(isset($_GET['blood']) && $_GET['blood']=='AB-') selected @endif>AB-</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
                                             <select name="status" id="" class="form-control">
                                                 <option value="">All</option>
                                                 <option value="1" @if(isset($_GET['status']) && $_GET['status']==1) selected @endif>Active</option>
