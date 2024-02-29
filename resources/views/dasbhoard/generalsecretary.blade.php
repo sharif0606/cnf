@@ -7,9 +7,11 @@
     <section class="row">
         <div class="col-12">
             <div class="row float-end">
-                <div class="col-12 mb-2 d-flex">
-                    <button class="btn btn-sm btn-info">SMS Balance</button>
-                    <input class="form-control" type="text" name="" value="{{money_format($smsLeft)}}" readonly style="width: 150px;">
+                <div class="col-12 d-flex">
+                    <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text bg-info text-white" id="inputGroup-sizing-sm">SMS Balance</span>
+                        <input type="text" value="{{money_format($smsLeft)}}" readonly class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                    </div>
                 </div>
             </div>
         </div>
