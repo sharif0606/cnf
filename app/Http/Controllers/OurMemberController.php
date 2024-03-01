@@ -80,9 +80,15 @@ class OurMemberController extends Controller
      */
     public function approvedMember(Request $request)
     {
-        $ourmember=OurMember::select('id','name_bn','member_serial_no','member_serial_no_new','profile_view_password','renew_serial_no','father_name','personal_phone','nid','designation_of_present_job','district','blood_group')->with('fee_collection_last')->where('approvedstatus',2)->orderBy('member_serial_no');
+        $ourmember=OurMember::select('id','name_bn','member_serial_no','member_serial_no_new','profile_view_password','renew_serial_no','father_name','personal_phone','nid','designation_of_present_job','district','blood_group')->with('fee_collection_last','fee_amount')->where('approvedstatus',2)->orderBy('renew_serial_no');
         if($request->member_serial_no)
             $ourmember=$ourmember->where('member_serial_no',$request->member_serial_no);
+        if($request->year){
+            $expYear=$request->year;
+            $ourmember=$ourmember->whereHas('fee_amount', function($q) use ($expYear){
+                $q->where('year', '>=', $expYear);
+            });
+        }
         if($request->approve_date)
             $ourmember=$ourmember->where('member_approval_date',$request->approve_date);
         if($request->member_serial_no_new)
@@ -105,9 +111,33 @@ class OurMemberController extends Controller
      */
     public function archiveMember(Request $request)
     {
-        $ourmember=OurMember::orderBy('member_serial_no');
+        $ourmember=OurMember::with('fee_amount')->orderBy('member_serial_no');
         if($request->member_serial_no)
             $ourmember=$ourmember->where('member_serial_no',$request->member_serial_no);
+        if($request->year){
+            $expYear=$request->year;
+            if($request->payStatus == 1 || $request->payStatus == ''){
+                $ourmember=$ourmember->whereHas('fee_amount', function($q) use ($expYear){
+                    $q->where('year', '>=', $expYear);
+                });
+            }elseif($request->payStatus == 2){
+                $ourmember=$ourmember->whereHas('fee_amount', function($q) use ($expYear){
+                    $q->where('year', '<', $expYear);
+                });
+            }
+        }else{
+            $expYear= now()->format('Y');
+            if($request->payStatus == 1){
+                $ourmember=$ourmember->whereHas('fee_amount', function($q) use ($expYear){
+                    $q->where('year', '>=', $expYear);
+                });
+            }elseif($request->payStatus == 2){
+                $ourmember=$ourmember->whereHas('fee_amount', function($q) use ($expYear){
+                    $q->where('year', '<', $expYear);
+                });
+            }
+        }
+        
         if($request->member_serial_no_new)
             $ourmember=$ourmember->where('member_serial_no_new',$request->member_serial_no_new);
         if($request->name_bn)

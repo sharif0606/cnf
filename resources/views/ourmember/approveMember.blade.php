@@ -48,6 +48,11 @@
                                     </div>
                                     <div class="col-lg-3 col-sm-12">
                                         <div class="form-group">
+                                            <input type="text" name="year" value="{{isset($_GET['year'])?$_GET['year']:''}}" placeholder="payment year" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-sm-12">
+                                        <div class="form-group">
                                             <button class="btn btn-sm btn-info" type="submit">Search</button>
                                             <a class="btn btn-sm btn-warning" href="{{route(currentUser().'.approve_member')}}">Clear</a>
                                         </div>

@@ -55,6 +55,20 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
+                                            <input type="text" name="year" value="{{isset($_GET['year'])?$_GET['year']:''}}" placeholder="payment year" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <select name="payStatus" class="form-control">
+                                                <option value="">Select</option>
+                                                <option value="1" @if(isset($_GET['payStatus']) && $_GET['payStatus']==1) selected @endif>Paid</option>
+                                                <option value="2" @if(isset($_GET['payStatus']) && $_GET['payStatus']==2) selected @endif>Unpaid</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
                                             <select name="blood" id="" class="form-control">
                                                 <option value="">Blood Group All</option>
                                                 <option value="A+" @if(isset($_GET['blood']) && $_GET['blood']=='A+') selected @endif>A+</option>
