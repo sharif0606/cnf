@@ -67,6 +67,7 @@
                                             </select>
                                         </div>
                                     </div>
+                                    
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <select name="blood" id="" class="form-control">
