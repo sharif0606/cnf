@@ -122,7 +122,8 @@ class OurMemberController extends Controller
                 });
             }elseif($request->payStatus == 2){
                 $ourmember=$ourmember->whereHas('fee_amount', function($q) use ($expYear){
-                    $q->where('year', '<', $expYear);
+                    $q->where('year', '<', $expYear)
+                        ->orWhere('fee_collections.member_id','!=','our_members.id');
                 });
             }
         }else{
@@ -133,7 +134,8 @@ class OurMemberController extends Controller
                 });
             }elseif($request->payStatus == 2){
                 $ourmember=$ourmember->whereHas('fee_amount', function($q) use ($expYear){
-                    $q->where('year', '<', $expYear);
+                    $q->where('year', '<', $expYear)
+                    ->orWhere('fee_collections.member_id','!=','our_members.id');
                 });
             }
         }
