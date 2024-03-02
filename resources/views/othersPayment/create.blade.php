@@ -24,7 +24,7 @@
                                             </tr>
                                             <tr>
                                                 <th>Name</th>
-                                                <td><input type="text" class="form-control" name="member_name" value=""></td>
+                                                <td><input type="text" class="form-control" name="member_name" value="" required></td>
                                             </tr>
                                             <tr>
                                                 <th>Receipt No</th>
@@ -55,7 +55,7 @@
                                                 <tr>
                                                     <td><input type="text" class="form-control" name="code[]" value=""></td>
                                                     <td><input type="text" class="form-control" name="fee_name[]" value=""></td>
-                                                    <td><input type="number" step="any" class="form-control fee_amount" onkeyup="payment(this)" name="amount[]"></td>
+                                                    <td><input type="number" step="any" class="form-control fee_amount" onkeyup="payment(this)" name="amount[]" required></td>
                                                     <td class="text-primary text-center" onClick='addPaymentRow();' style="width: 3%;"><i style="font-size: 1.5rem;" class="bi bi-plus-square-fill"></i></td>
                                                 </tr>
                                             </tbody>
@@ -108,7 +108,7 @@
         var row=`<tr>
             <td><input type="text" class="form-control" name="code[]" value=""></td>
             <td><input type="text" class="form-control" name="fee_name[]" value=""></td>
-            <td><input type="number" step="any" class="form-control fee_amount" onkeyup="payment(this)" name="amount[]"></td>
+            <td><input type="number" step="any" class="form-control fee_amount" onkeyup="payment(this)" name="amount[]" required></td>
             <td class="text-danger text-center" onClick='RemoveRow(this);' style="width: 3%;">
                 <i style="font-size: 1.5rem;" class="bi bi-trash"></i>
             </td>
