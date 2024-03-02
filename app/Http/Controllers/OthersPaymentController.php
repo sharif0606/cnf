@@ -83,7 +83,6 @@ class OthersPaymentController extends Controller
             Toastr::warning('Please try Again!');
             // dd($e);
             return back()->withInput();
-
         }
     }
 
