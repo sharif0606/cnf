@@ -19,7 +19,6 @@ class OthersPaymentController extends Controller
     public function index(Request $request)
     {
         $query = OthersPayment::query();
-
         if ($request->filled('fdate')) {
             $tdate = $request->filled('tdate') ? $request->input('tdate') : $request->input('fdate');
             $query->whereBetween('date', [$request->input('fdate'), $tdate]);
