@@ -81,6 +81,9 @@
     <li class="sidebar-item">
         <a href="{{route(currentUser().'.feeCollection.create')}}" class='sidebar-link'><i class="bi bi-currency-dollar"></i> <span>{{__('Pay Now')}}</span></a>
     </li>
+    <li class="sidebar-item">
+        <a href="{{route(currentUser().'.othersPay.index')}}" class='sidebar-link'><i class="bi bi-currency-dollar"></i><span>{{__('Others Collection List')}}</span></a>
+    </li>
     
     <li class="submenu-item sidebar-item has-sub">
         <a href="#" class='sidebar-link'><i class="bi bi-people-fill"></i> <span>{{__('Committees')}}</span></a>

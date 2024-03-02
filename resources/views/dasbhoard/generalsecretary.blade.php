@@ -44,7 +44,7 @@
                 </span>
                 <div class="info-box-content">
                     <span class="text-bold text-uppercase">Today Pay Amount</span><br>
-                    <span class="info-box-number" style="font-size: 1.5rem;">৳  {{money_format($todayPay)}}</span>
+                    <span class="info-box-number" style="font-size: 1.5rem;">৳  {{money_format($todayPay + $othersPay)}}</span>
                 </div>
             </div>
        </div>

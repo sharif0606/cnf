@@ -111,6 +111,8 @@ class OurMemberController extends Controller
      */
     public function archiveMember(Request $request)
     {
+        DB::enableQueryLog();
+        
         $ourmember=OurMember::with('fee_amount')->orderBy('member_serial_no');
         if($request->member_serial_no)
             $ourmember=$ourmember->where('member_serial_no',$request->member_serial_no);
@@ -121,9 +123,8 @@ class OurMemberController extends Controller
                     $q->where('year', '>=', $expYear);
                 });
             }elseif($request->payStatus == 2){
-                $ourmember=$ourmember->whereHas('fee_amount', function($q) use ($expYear){
-                    $q->where('year', '<', $expYear)
-                        ->orWhere('fee_collections.member_id','!=','our_members.id');
+                $ourmember=$ourmember->WhereDoesntHave('fee_amount')->orWhereHas('fee_amount', function($q) use ($expYear){
+                    $q->where('year', '<', $expYear);
                 });
             }
         }else{
@@ -133,9 +134,8 @@ class OurMemberController extends Controller
                     $q->where('year', '>=', $expYear);
                 });
             }elseif($request->payStatus == 2){
-                $ourmember=$ourmember->whereHas('fee_amount', function($q) use ($expYear){
-                    $q->where('year', '<', $expYear)
-                    ->orWhere('fee_collections.member_id','!=','our_members.id');
+                $ourmember=$ourmember->WhereDoesntHave('fee_amount')->orWhereHas('fee_amount', function($q) use ($expYear){
+                    $q->where('year', '<', $expYear);
                 });
             }
         }
@@ -158,6 +158,9 @@ class OurMemberController extends Controller
             $ourmember=$ourmember->where('status',$request->status);
 
         $ourmember=$ourmember->paginate(10);
+        $query = DB::getQueryLog();
+
+//dd($query);
         return view('ourmember.archiveMember',compact('ourmember'));
     }
 

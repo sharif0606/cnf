@@ -1,6 +1,6 @@
 @extends('layout.app')
 @section('pageTitle',trans('Update Fees Collection'))
-@section('pageSubTitle',trans('Create'))
+@section('pageSubTitle',trans('Update'))
 
 @section('content')
 <section id="multiple-column-form">
