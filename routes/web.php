@@ -13,6 +13,7 @@ use App\Http\Controllers\Settings\Location\UpazilaController as upazila;
 use App\Http\Controllers\Settings\Location\ThanaController as thana;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\OurMemberController as member;
+use App\Http\Controllers\SmsBalanceController as smsPanel;
 use App\Http\Controllers\MemberPanel;
 use App\Http\Controllers\NoticeController as notice;
 use App\Http\Controllers\FacilitiesController as facilities;
@@ -118,12 +119,12 @@ Route::get('/video/{slug}', [media::class,'video'])->name('video');
 Route::group(['middleware'=>isAdmin::class],function(){
     Route::prefix('admin')->group(function(){
         Route::get('/dashboard', [dash::class,'adminDashboard'])->name('admin.dashboard');
-
+        
         //Adnin profile
         Route::get('/profile', [profile::class,'adminProfile'])->name('admin.profile');
         Route::post('/profile', [profile::class,'adminProfile'])->name('admin.profile.update');
         Route::post('/profile-update', [profile::class,'aProfileUpdate'])->name('admin.profile.up');
-
+        
         /* settings */
         Route::resource('users',user::class,['as'=>'admin']);
         Route::resource('admin',admin::class,['as'=>'admin']);
@@ -132,6 +133,7 @@ Route::group(['middleware'=>isAdmin::class],function(){
         Route::resource('district',district::class,['as'=>'admin']);
         Route::resource('upazila',upazila::class,['as'=>'admin']);
         Route::resource('thana',thana::class,['as'=>'admin']);
+        
         
         Route::resource('slider',SliderController::class,['as'=>'admin']);
         Route::resource('ourMember',member::class,['as'=>'admin']);
@@ -202,6 +204,10 @@ Route::group(['middleware'=>isChairman::class],function(){
         //chairman profile
         Route::get('/profile', [profile::class,'ownerProfile'])->name('chairman.profile');
         Route::post('/profile', [profile::class,'ownerProfile'])->name('chairman.profile.update');
+
+        // sms panel
+        Route::get('/get-sms-page', [smsPanel::class,'get_sms_panel'])->name('chairman.get_sms_page');
+        Route::post('/sms-send', [smsPanel::class,'sendSms'])->name('chairman.sms_send');
     });
 });
 

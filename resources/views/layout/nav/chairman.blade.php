@@ -21,6 +21,15 @@
             </li>
 		</ul>
     </li>
+    <li class="sidebar-item has-sub">
+        <a href="#" class='sidebar-link'>
+            <i class="bi bi-gear-fill"></i>
+            <span>{{__('Sms Panel')}}</span>
+        </a>
+        <ul class="submenu">
+            <li class="py-1 submenu-item"><a href="{{route(currentUser().'.get_sms_page')}}">{{__('Send Sms')}}</a></li>
+		</ul>
+    </li>
     <li class="sidebar-item">
         <a href="{{route(currentUser().'.ourMember.index')}}" class='sidebar-link'><i class="bi bi-people-fill"></i> <span>{{__('Applied Member')}}</span></a>
     </li>
