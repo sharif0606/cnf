@@ -17,7 +17,7 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="">সদস্য সিরিয়াল পুরাতন</label>
-                                            <input type="text" class="form-control" name="member_id" value="{{old('member_id')}}" required>
+                                            <input type="number" class="form-control" name="member_id" value="{{old('member_id')}}" required>
                                             <span class="text-danger">value must be comma separated</span>
                                         </div>
                                     </div>
