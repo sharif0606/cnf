@@ -228,6 +228,10 @@ Route::group(['middleware'=>isGeneralSecretary::class],function(){
         Route::get('/profile', [profile::class,'ownerProfile'])->name('generalsecretary.profile');
         Route::post('/profile', [profile::class,'ownerProfile'])->name('generalsecretary.profile.update');
 
+        // sms panel
+        Route::get('/get-sms-page', [smsPanel::class,'get_sms_panel'])->name('generalsecretary.get_sms_page');
+        Route::post('/sms-send', [smsPanel::class,'sendSms'])->name('generalsecretary.sms_send');
+
     });
 });
 

@@ -22,9 +22,8 @@
 		</ul>
     </li>
     <li class="sidebar-item has-sub">
-        <a href="#" class='sidebar-link'>
-            <i class="bi bi-gear-fill"></i>
-            <span>{{__('Sms Panel')}}</span>
+        <a href="#" class='sidebar-link'> 
+            <i class="bi bi-chat-text-fill"></i><span>{{__('Sms Panel')}}</span>
         </a>
         <ul class="submenu">
             <li class="py-1 submenu-item"><a href="{{route(currentUser().'.get_sms_page')}}">{{__('Send Sms')}}</a></li>

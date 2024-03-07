@@ -33,7 +33,6 @@ class SmsBalanceController extends Controller
     {
         try {
             $memberIds = explode(',', $request->input('member_id'));
-            
             foreach ($memberIds as $memberId) {
                 $member = OurMember::where('member_serial_no', $memberId)->whereNull('profile_view_password')->first();
                 if ($member && ($currentUser = currentUser()) && ($currentUser == 'chairman' || $currentUser == 'generalsecretary')) {

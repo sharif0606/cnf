@@ -16,7 +16,7 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label for="">সিরিয়াল পুরাতন</label>
+                                            <label for="">সদস্য সিরিয়াল পুরাতন</label>
                                             <input type="text" class="form-control" name="member_id" value="{{old('member_id')}}" required>
                                             <span class="text-danger">value must be comma separated</span>
                                         </div>
@@ -24,7 +24,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12 d-flex justify-content-end">
-                                        <button type="submit" class="btn btn-primary me-1 mb-1">Save</button>
+                                        <button type="submit" class="btn btn-sm btn-info me-1 mb-1 py-0 my-0 px-4"><i class="bi bi-send" style="font-size: 2rem;"></i></button>
                                     </div>
                                 </div>
                             </form>
