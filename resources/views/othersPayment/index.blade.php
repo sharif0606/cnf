@@ -79,9 +79,14 @@
                                 </thead>
                                 <tbody>
                                     @forelse($data as $p)
+                                    @php
+                                        $months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+                                        $monthIndex = intval($p->month) - 1;
+                                        $monthName = $p->month !== null && isset($months[$monthIndex]) ? $months[$monthIndex] : '';
+                                    @endphp
                                     <tr>
                                         <th scope="row">{{ ++$loop->index }}</th>
-                                        <td>{{$p->year}}</td>
+                                        <td>{{$monthName !== '' ? $monthName . '-' : ''}}{{$p->year}}</td>
                                         <td>{{$p->vhoucher_no}}</td>
                                         <td>{{$p->name}}</td>
                                         <td>{{$p->date}}</td>

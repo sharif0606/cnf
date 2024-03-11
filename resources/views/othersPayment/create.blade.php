@@ -32,7 +32,38 @@
                                             </tr>
                                             <tr>
                                                 <th>Year</th>
-                                                <td><input type="text" required class="form-control" name="year" value="{{old('year')}}"></td>
+                                                <td>
+                                                    <table width= 100%>
+                                                        <tr>
+                                                            <td>
+                                                                <select id="month" name="month" class="form-control">
+                                                                    <option value="">Select Month</option>
+                                                                    <option value="01">January</option>
+                                                                    <option value="02">February</option>
+                                                                    <option value="03">March</option>
+                                                                    <option value="04">April</option>
+                                                                    <option value="05">May</option>
+                                                                    <option value="06">June</option>
+                                                                    <option value="07">July</option>
+                                                                    <option value="08">August</option>
+                                                                    <option value="09">September</option>
+                                                                    <option value="10">October</option>
+                                                                    <option value="11">November</option>
+                                                                    <option value="12">December</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select id="year" name="year" class="form-control" required>
+                                                                    <option value="">Select Year</option>
+                                                                    @for($i=2021; $i<= date('Y')+10; $i++)
+                                                                        <option value="{{$i}}">{{$i}}</option>
+                                                                    @endfor
+                                                                </select>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    {{-- <input type="text" required class="form-control" name="year" value="{{old('year')}}"> --}}
+                                                </td>
                                             </tr>
                                         </table>
                                     </div>
@@ -123,6 +154,17 @@
             payment();
         }
     }
+</script>
+<script>
+    $(document).ready(function () {
+        var currentDate = new Date();
+        var currentMonth = ('0' + (currentDate.getMonth() + 1)).slice(-2);
+        var currentYear = currentDate.getFullYear();
+
+        // Set default selected values for month and year
+        $('#month').val(currentMonth);
+        $('#year').val(currentYear);
+    });
 </script>
 
 @endpush

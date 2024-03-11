@@ -46,7 +46,15 @@
                                             </tr>
                                             <tr>
                                                 <th>Year</th>
-                                                <td><input type="text" class="form-control" required name="year" value="{{old('year',$feeDetails->year)}}"></td>
+                                                {{-- <td><input type="text" class="form-control" required name="year" value="{{old('year',$feeDetails->year)}}"></td> --}}
+                                                <td>
+                                                    <select id="year" name="year" class="form-control">
+                                                        <option value="">Select Year</option>
+                                                        @for($i=2021; $i<= date('Y')+10; $i++)
+                                                            <option value="{{$i}}" {{ old('year',$feeDetails->year)== $i ? 'selected':''}}>{{$i}}</option>
+                                                        @endfor
+                                                    </select>
+                                                </td>
                                             </tr>
                                         </table>
                                     </div>

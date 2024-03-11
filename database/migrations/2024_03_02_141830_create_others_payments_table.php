@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('date')->nullable();
             $table->string('name')->nullable();
             $table->string('receipt_no')->nullable();
+            $table->string('month')->nullable();
             $table->string('year')->nullable();
             $table->decimal('total_amount',10,2)->default(0)->nullable();
             $table->timestamps();

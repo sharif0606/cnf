@@ -41,7 +41,15 @@
                                             </tr>
                                             <tr>
                                                 <th>Year</th>
-                                                <td><input type="text" required class="form-control" name="year" value="{{old('year')}}"></td>
+                                                {{-- <td><input type="text" required class="form-control" name="year" value="{{old('year')}}"></td> --}}
+                                                <td>
+                                                    <select id="year" name="year" class="form-control" required>
+                                                        <option value="">Select Year</option>
+                                                        @for($i=2021; $i<= date('Y')+10; $i++)
+                                                            <option value="{{$i}}">{{$i}}</option>
+                                                        @endfor
+                                                    </select>
+                                                </td>
                                             </tr>
                                         </table>
                                     </div>
@@ -168,6 +176,17 @@ $(document).ready(function() {
             // Recalculate the total fees
             calculateTotalFees();
         });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        var currentDate = new Date();
+        var currentMonth = ('0' + (currentDate.getMonth() + 1)).slice(-2);
+        var currentYear = currentDate.getFullYear();
+
+        // Set default selected values for month and year
+        $('#month').val(currentMonth);
+        $('#year').val(currentYear);
     });
 </script>
 

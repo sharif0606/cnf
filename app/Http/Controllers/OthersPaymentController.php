@@ -55,6 +55,7 @@ class OthersPaymentController extends Controller
             $fee->date=date('Y-m-d', strtotime($request->voucher_date));
             $fee->name=$request->member_name;
             $fee->receipt_no=$request->receipt_no;
+            $fee->month=$request->month;
             $fee->year=$request->year;
             $fee->total_amount=$request->total_fees;
             if($fee->save()){
@@ -123,6 +124,7 @@ class OthersPaymentController extends Controller
             $fee->date=date('Y-m-d', strtotime($request->voucher_date));
             $fee->name=$request->member_name;
             $fee->receipt_no=$request->receipt_no;
+            $fee->month=$request->month;
             $fee->year=$request->year;
             $fee->total_amount=$request->total_fees;
             if($fee->save()){

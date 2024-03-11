@@ -37,7 +37,38 @@
                                             </tr>
                                             <tr>
                                                 <th>Year</th>
-                                                <td><input type="text" class="form-control" required name="year" value="{{old('year',$otherCollection->year)}}"></td>
+                                                {{-- <td><input type="text" class="form-control" required name="year" value="{{old('year',$otherCollection->year)}}"></td> --}}
+                                                <td>
+                                                    <table width= 100%>
+                                                        <tr>
+                                                            <td>
+                                                                <select id="month" name="month" class="form-control">
+                                                                    <option value="">Select Month</option>
+                                                                    <option value="01" {{ old('month',$otherCollection->month)== '01' ? 'selected':''}}>January</option>
+                                                                    <option value="02" {{ old('month',$otherCollection->month)== '02' ? 'selected':''}}>February</option>
+                                                                    <option value="03" {{ old('month',$otherCollection->month)== '03' ? 'selected':''}}>March</option>
+                                                                    <option value="04" {{ old('month',$otherCollection->month)== '04' ? 'selected':''}}>April</option>
+                                                                    <option value="05" {{ old('month',$otherCollection->month)== '05' ? 'selected':''}}>May</option>
+                                                                    <option value="06" {{ old('month',$otherCollection->month)== '06' ? 'selected':''}}>June</option>
+                                                                    <option value="07" {{ old('month',$otherCollection->month)== '07' ? 'selected':''}}>July</option>
+                                                                    <option value="08" {{ old('month',$otherCollection->month)== '08' ? 'selected':''}}>August</option>
+                                                                    <option value="09" {{ old('month',$otherCollection->month)== '09' ? 'selected':''}}>September</option>
+                                                                    <option value="10" {{ old('month',$otherCollection->month)== '10' ? 'selected':''}}>October</option>
+                                                                    <option value="11" {{ old('month',$otherCollection->month)== '11' ? 'selected':''}}>November</option>
+                                                                    <option value="12" {{ old('month',$otherCollection->month)== '12' ? 'selected':''}}>December</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <select id="year" name="year" class="form-control">
+                                                                    <option value="">Select Year</option>
+                                                                    @for($i=2021; $i<= date('Y')+10; $i++)
+                                                                        <option value="{{$i}}" {{ old('year',$otherCollection->year)== $i ? 'selected':''}}>{{$i}}</option>
+                                                                    @endfor
+                                                                </select>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
                                             </tr>
                                         </table>
                                     </div>
