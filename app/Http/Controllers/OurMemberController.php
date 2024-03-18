@@ -111,7 +111,7 @@ class OurMemberController extends Controller
      */
     public function archiveMember(Request $request)
     {
-        DB::enableQueryLog();
+       // DB::enableQueryLog();
         
         $ourmember=OurMember::with('fee_amount')->orderBy('member_serial_no');
         if($request->member_serial_no)
@@ -158,7 +158,7 @@ class OurMemberController extends Controller
             $ourmember=$ourmember->where('status',$request->status);
 
         $ourmember=$ourmember->paginate(10);
-        $query = DB::getQueryLog();
+        //$query = DB::getQueryLog();
 
 //dd($query);
         return view('ourmember.archiveMember',compact('ourmember'));

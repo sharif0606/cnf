@@ -33,8 +33,8 @@ class SmsBalanceController extends Controller
     {
         // try {
         //     $memberIds = explode(',', $request->input('member_id'));
-        //     foreach ($memberIds as $memberId) {
-        //         $member = OurMember::where('member_serial_no', $memberId)->first();
+        //     $members = OurMember::whereIn('member_serial_no', $memberIds)->ge();
+        //     foreach ($members as $member) {
         //         if($member){
         //             if((currentUser() == 'chairman') || (currentUser() == 'generalsecretary')) {
         //                 $smsClass = new sslSms();
