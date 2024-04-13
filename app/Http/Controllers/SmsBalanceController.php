@@ -31,45 +31,45 @@ class SmsBalanceController extends Controller
 
     public function sendSms(Request $request)
     {
-        // try {
-        //     $memberIds = explode(',', $request->input('member_id'));
-        //     $members = OurMember::whereIn('member_serial_no', $memberIds)->ge();
-        //     foreach ($members as $member) {
-        //         if($member){
-        //             if((currentUser() == 'chairman') || (currentUser() == 'generalsecretary')) {
-        //                 $smsClass = new sslSms();
-        //                 $phone = $member->personal_phone;
-        //                 $rand = uniqid() . rand(1000, 9999);
-        //                 $password = rand(111111, 999999);
-        //                 $msg_text="ডিজিটাল পদ্ধতিতে নবায়ন করায় সিবিএ - ২৩৪ এর কার্যনির্বাহী পরিষদ এর পক্ষথেকে আপনাকে ধন্যবাদ।\nMember No: ".$member->member_serial_no."/".$member->member_serial_no_new."\nRSL: ".$member->renew_serial_no."\nPassword:".$password."\nওয়েবসাইট: https://cnfemployeesunion.com\n\nকৃতজ্ঞতায়\nসভাপতি: মো: খায়রুল বাশার মিল্টন\nসাধারণ সম্পাদক: মো: মোশাররফ হোসেন ভূঁইয়া";
+        try {
+            $memberIds = explode(',', $request->input('member_id'));
+            $success=$error="";
+            $members = OurMember::whereIn('member_serial_no', $memberIds)->ge();
+            foreach ($members as $member) {
+                if($member){
+                    if((currentUser() == 'chairman') || (currentUser() == 'generalsecretary')) {
+                        $smsClass = new sslSms();
+                        $phone = $member->personal_phone;
+                        $rand = uniqid() . rand(1000, 9999);
+                        $password = rand(111111, 999999);
+                        $msg_text="ডিজিটাল পদ্ধতিতে নবায়ন করায় সিবিএ - ২৩৪ এর কার্যনির্বাহী পরিষদ এর পক্ষথেকে আপনাকে ধন্যবাদ।\nMember No: ".$member->member_serial_no."/".$member->member_serial_no_new."\nRSL: ".$member->renew_serial_no."\nPassword:".$password."\nওয়েবসাইট: https://cnfemployeesunion.com\n\nকৃতজ্ঞতায়\nসভাপতি: মো: খায়রুল বাশার মিল্টন\nসাধারণ সম্পাদক: মো: মোশাররফ হোসেন ভূঁইয়া";
     
-        //                 $checksendsms=$smsClass->singleSms($phone, $msg_text, $rand);
-        //                 Log::info($checksendsms->status_code.'-'.$phone);
-        //                 if ($checksendsms->status_code == "200") {
-        //                     $member->sms_send = 1;
-        //                     $member->profile_view_password = $password;
-        //                     $member->save();
+                        $checksendsms=$smsClass->singleSms($phone, $msg_text, $rand);
+                        //Log::info($checksendsms->status_code.'-'.$phone);
+                        if ($checksendsms->status_code == "200") {
+                            $member->sms_send = 1;
+                            $member->profile_view_password = $password;
+                            $member->save(); 
     
-        //                     $settingTable = setting::find(1);
-        //                     $settingTable->number_of_send_sms++;
-        //                     $settingTable->save();
-    
-        //                     Toastr::success('Sms Send Successfully!');
-        //                     return redirect()->route(currentUser().'.get_sms_page');
-        //                 } else {
-        //                     Toastr::error('Failed to send SMS!');
-        //                     return back()->withInput();
-        //                 }
-        //             }
-        //         }else {
-        //             Toastr::error('সদস্য পাওয়া যায়নি');
-        //             return back()->withInput();
-        //         }
-        //     }
-        // } catch (\Exception $e) {
-        //     Toastr::warning('Please try Again!');
-        //     return back()->withInput();
-        // }
+                            $settingTable = setting::find(1);
+                            $settingTable->number_of_send_sms++;
+                            $settingTable->save();
+                            $success+=$member->member_serial_no;
+                        } else {
+                            $error+=$member->member_serial_no;
+                        }
+                    }
+                }else {
+                    $error+=$member->member_serial_no;
+                }
+            }
+            
+            Toastr::success("Sms Send Successfully to $success and fail to $error");
+            return redirect()->route(currentUser().'.get_sms_page');
+        } catch (\Exception $e) {
+            Toastr::warning('Please try Again!');
+            return back()->withInput();
+        }
     }
 
 
