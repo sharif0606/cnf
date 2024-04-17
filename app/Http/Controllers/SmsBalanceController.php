@@ -34,7 +34,7 @@ class SmsBalanceController extends Controller
         try {
             $memberIds = explode(',', $request->input('member_id'));
             $success=$error="";
-            $members = OurMember::whereIn('member_serial_no', $memberIds)->ge();
+            $members = OurMember::whereIn('member_serial_no', $memberIds)->get();
             foreach ($members as $member) {
                 if($member){
                     if((currentUser() == 'chairman') || (currentUser() == 'generalsecretary')) {
@@ -54,19 +54,20 @@ class SmsBalanceController extends Controller
                             $settingTable = setting::find(1);
                             $settingTable->number_of_send_sms++;
                             $settingTable->save();
-                            $success+=$member->member_serial_no;
+                            $success.=$member->member_serial_no;
                         } else {
-                            $error+=$member->member_serial_no;
+                            $error.=$member->member_serial_no;
                         }
                     }
                 }else {
-                    $error+=$member->member_serial_no;
+                    $error.=$member->member_serial_no;
                 }
             }
             
             Toastr::success("Sms Send Successfully to $success and fail to $error");
             return redirect()->route(currentUser().'.get_sms_page');
         } catch (\Exception $e) {
+            //dd($e);
             Toastr::warning('Please try Again!');
             return back()->withInput();
         }
