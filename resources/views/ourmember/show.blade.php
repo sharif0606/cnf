@@ -100,7 +100,15 @@
                                 </tr>
                                 <tr>
                                     <th style="text-align: left; width:10%;">তারিখ</th>
-                                    <td style="text-align: left;"><input type="text" class="tinput"></td>
+                                    <td style="text-align: left;">
+                                        @if(!$feeCollection->isEmpty())
+                                            @foreach ($feeCollection as $fee)
+                                                <input type="text" class="tinput" value="{{\Carbon\Carbon::parse($fee->date)->format('d/m/Y')}}">
+                                            @endforeach
+                                        @else
+                                            <input type="text" class="tinput" value="">
+                                        @endif
+                                    </td>
                                     <td rowspan="7" style="text-align: right;">
                                         <figure style="margin-bottom:0">
                                             <img src='{{asset('uploads/memberImage/'.$show_data->image)}}' height="150px" width="auto">
@@ -695,11 +703,11 @@
                         <table class="gfg2" style=" width:100%;">
                             <tr>
                                 <th style="text-align: left;">ইউনিয়নের নাম ও ঠিকানা:</th>
-                                <td colspan="3"><input type="text" class="binput"></td>
+                                <td colspan="3"><input type="text" class="binput" value="সি. এন. এফ."></td>
                             </tr>
                             <tr>
                                 <th style="text-align: left;">রেজি নং:</th>
-                                <td colspan="3"><input type="text" class="binput"></td>
+                                <td colspan="3"><input type="text" class="binput" value="234"></td>
                             </tr>
                             <tr>
                                 <th style="text-align: left;">নাম:</th>
@@ -714,7 +722,7 @@
                             <tr>
                                 <td colspan="4" style="text-align: left;">
                                     <p>
-                                        জনাব, <br><br> আপনার <input type="text" class="tinput"> তারিখের আবেদনের প্রেক্ষিতে আপনাকে অত্র ইউনিয়ের সদস্য হিসাবে অন্তর্ভুক্ত করা হইল।
+                                        জনাব, <br><br> আপনার <input type="text" class="tinput" value="{{ !is_null($show_data->member_approval_date) ? date('d/m/Y', strtotime($show_data->member_approval_date)) : '' }}"> তারিখের আবেদনের প্রেক্ষিতে আপনাকে অত্র ইউনিয়ের সদস্য হিসাবে অন্তর্ভুক্ত করা হইল।
                                     </p>
                                 </td>
                             </tr>
@@ -746,11 +754,11 @@
                         <table class="gfg2" style=" width:100%;">
                             <tr>
                                 <th style="text-align: left;">ইউনিয়নের নাম ও ঠিকানা:</th>
-                                <td colspan="3"><input type="text" class="binput"></td>
+                                <td colspan="3"><input type="text" class="binput" value="সি. এন. এফ."></td>
                             </tr>
                             <tr>
                                 <th style="text-align: left;">রেজি নং:</th>
-                                <td colspan="3"><input type="text" class="binput"></td>
+                                <td colspan="3"><input type="text" class="binput" value="234"></td>
                             </tr>
                             <tr>
                                 <th style="text-align: left;">নাম:</th>
@@ -765,7 +773,7 @@
                             <tr>
                                 <td colspan="4" style="text-align: left;">
                                     <p>
-                                        জনাব, <br><br> আপনার <input type="text" class="tinput"> তারিখের আবেদনের প্রেক্ষিতে আপনাকে অত্র ইউনিয়ের সদস্য হিসাবে অন্তর্ভুক্ত করা হইল।
+                                        জনাব, <br><br> আপনার <input type="text" class="tinput" value="{{ !is_null($show_data->member_approval_date) ? date('d/m/Y', strtotime($show_data->member_approval_date)) : '' }}"> তারিখের আবেদনের প্রেক্ষিতে আপনাকে অত্র ইউনিয়ের সদস্য হিসাবে অন্তর্ভুক্ত করা হইল।
                                     </p>
                                 </td>
                             </tr>
