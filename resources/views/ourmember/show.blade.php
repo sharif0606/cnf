@@ -703,7 +703,7 @@
                         <table class="gfg2" style=" width:100%;">
                             <tr>
                                 <th style="text-align: left;">ইউনিয়নের নাম ও ঠিকানা:</th>
-                                <td colspan="3"><input type="text" class="binput" value="সি. এন. এফ."></td>
+                                <td colspan="3"><input type="text" class="binput" value="চট্টগ্রাম ক্লিয়ারিং এন্ড ফরওয়ার্ডিং এজেন্টস কর্মচারী ইউনিয়ন (সি বি এ)"></td>
                             </tr>
                             <tr>
                                 <th style="text-align: left;">রেজি নং:</th>
@@ -722,7 +722,7 @@
                             <tr>
                                 <td colspan="4" style="text-align: left;">
                                     <p>
-                                        জনাব, <br><br> আপনার <input type="text" class="tinput" value="{{ !is_null($show_data->member_approval_date) ? date('d/m/Y', strtotime($show_data->member_approval_date)) : '' }}"> তারিখের আবেদনের প্রেক্ষিতে আপনাকে অত্র ইউনিয়ের সদস্য হিসাবে অন্তর্ভুক্ত করা হইল।
+                                        জনাব, <br><br> আপনার <input type="text" class="tinput" value="{{ !is_null($show_data->approval_date) ? date('d/m/Y', strtotime($show_data->approval_date)) : '' }}"> তারিখের আবেদনের প্রেক্ষিতে আপনাকে অত্র ইউনিয়ের সদস্য হিসাবে অন্তর্ভুক্ত করা হইল।
                                     </p>
                                 </td>
                             </tr>
@@ -754,7 +754,7 @@
                         <table class="gfg2" style=" width:100%;">
                             <tr>
                                 <th style="text-align: left;">ইউনিয়নের নাম ও ঠিকানা:</th>
-                                <td colspan="3"><input type="text" class="binput" value="সি. এন. এফ."></td>
+                                <td colspan="3"><input type="text" class="binput" value="চট্টগ্রাম ক্লিয়ারিং এন্ড ফরওয়ার্ডিং এজেন্টস কর্মচারী ইউনিয়ন (সি বি এ)"></td>
                             </tr>
                             <tr>
                                 <th style="text-align: left;">রেজি নং:</th>
@@ -773,7 +773,7 @@
                             <tr>
                                 <td colspan="4" style="text-align: left;">
                                     <p>
-                                        জনাব, <br><br> আপনার <input type="text" class="tinput" value="{{ !is_null($show_data->member_approval_date) ? date('d/m/Y', strtotime($show_data->member_approval_date)) : '' }}"> তারিখের আবেদনের প্রেক্ষিতে আপনাকে অত্র ইউনিয়ের সদস্য হিসাবে অন্তর্ভুক্ত করা হইল।
+                                        জনাব, <br><br> আপনার <input type="text" class="tinput" value="{{ !is_null($show_data->approval_date) ? date('d/m/Y', strtotime($show_data->approval_date)) : '' }}"> তারিখের আবেদনের প্রেক্ষিতে আপনাকে অত্র ইউনিয়ের সদস্য হিসাবে অন্তর্ভুক্ত করা হইল।
                                     </p>
                                 </td>
                             </tr>
