@@ -436,7 +436,7 @@
                             <h4>[ ধারা ১৭৮ বিধি এবং ১৬৮(৬) ]</h4>
                             <h4>ইউনিয়নের সদস্যদের বিবরন</h4>
                         </div>
-                        <div style="padding-top: 10px; padding-bottom:10px;">ট্রেড ইউনিয়ন সংগঠনের নাম ও ঠিকানা: <input type="text" class="tinput" style="width:65%;"></div>
+                        <div style="padding-top: 10px; padding-bottom:10px;">ট্রেড ইউনিয়ন সংগঠনের নাম ও ঠিকানা: <input type="text" class="tinput" style="width:65%;" value="চট্টগ্রাম ক্লিয়ারিং এন্ড ফরওয়ার্ডিং এজেন্টস্ কর্মচারী ইউনিয়ন (সি,বি,এ)"></div>
                         <div style="padding-top: 10px; padding-bottom:10px; margin-bottom:4rem;">শিল্প/প্রতিষ্ঠানের নাম ও ও ঠিকানা: <input type="text" class="tinput" style="width:70%;"></div>
                         <table class="tbl_1" style=" width:100%; ">
                             <thead>
@@ -707,7 +707,7 @@
                             </tr>
                             <tr>
                                 <th style="text-align: left;">রেজি নং:</th>
-                                <td colspan="3"><input type="text" class="binput" value="234"></td>
+                                <td colspan="3"><input type="text" class="binput" value="চট্ট-234"></td>
                             </tr>
                             <tr>
                                 <th style="text-align: left;">নাম:</th>
@@ -758,7 +758,7 @@
                             </tr>
                             <tr>
                                 <th style="text-align: left;">রেজি নং:</th>
-                                <td colspan="3"><input type="text" class="binput" value="234"></td>
+                                <td colspan="3"><input type="text" class="binput" value="চট্ট-234"></td>
                             </tr>
                             <tr>
                                 <th style="text-align: left;">নাম:</th>
