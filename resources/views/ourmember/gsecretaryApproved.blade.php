@@ -86,7 +86,7 @@
                                 <td>{{$p->personal_phone}}</td>
                                 <td>{{$p->fee_collection_last?->year}}</td>
                                 <td>{{$p->nid}}</td>
-                                <td>{{$p->designation_of_present_job}}</td>
+                                <td>{{$p->designation_of_present_job==4?$p->others_designation:$p->designation_of_present_job}}</td>
                                 <td class="white-space-nowrap">
                                     <a href="{{route(currentUser().'.ourMember.show',encryptor('encrypt',$p->id))}}">
                                         <i class="bi bi-eye-fill"></i>

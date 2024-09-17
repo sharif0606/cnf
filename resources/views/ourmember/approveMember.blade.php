@@ -110,7 +110,7 @@
                                 <td>{{$p->personal_phone}}</td>
                                 <td>{{ $p->fee_collection_last?->year }}</td>
                                 <td>{{$p->nid}}</td>
-                                <td>{{$p->designation_of_present_job}}</td>
+                                <td>{{$p->designation_of_present_job==4?$p->others_designation:$p->designation_of_present_job}}</td>
                                 <td>{{$p->district}}</td>
                                 <td>{{$p->blood_group}}</td>
                                 <td class="white-space-nowrap">
