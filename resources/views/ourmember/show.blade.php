@@ -474,7 +474,13 @@
                                     <td class="tbl_1">{{ $show_data->present_address }}</td>
                                     <td class="tbl_1">{{ $show_data->nameAddress_of_present_institute }}</td>
                                     <td class="tbl_1">{{ $show_data->district }}</td>
-                                    <td class="tbl_1">{{ $show_data->designation_of_present_job }}</td>
+                                    <td class="tbl_1">
+                                        @if ($show_data->designation_of_present_job != '4')
+                                            {{$show_data->designation_of_present_job}}
+                                        @else
+                                            {{$show_data->others_designation}}
+                                        @endif
+                                    </td>
                                     <td class="tbl_1"></td>
                                 </tr>
                                 <tr class="tbl_1">
@@ -717,7 +723,7 @@
                             </tr>
                             <tr>
                                 <th style="text-align: left;">পদবি:</th>
-                                <td colspan="2"><input type="text" class="binput" value="{{ $show_data->designation_of_present_job }}"></td>
+                                <td colspan="2"><input type="text" class="binput" value="{{ $show_data->designation_of_present_job != '4' ? $show_data->designation_of_present_job : $show_data->others_designation}}"></td>
                             </tr>
                             <tr>
                                 <td colspan="4" style="text-align: left;">
@@ -768,7 +774,7 @@
                             </tr>
                             <tr>
                                 <th style="text-align: left;">পদবি:</th>
-                                <td colspan="2"><input type="text" class="binput" value="{{ $show_data->designation_of_present_job }}"></td>
+                                <td colspan="2"><input type="text" class="binput" value="{{ $show_data->designation_of_present_job != '4' ? $show_data->designation_of_present_job : $show_data->others_designation}}"></td>
                             </tr>
                             <tr>
                                 <td colspan="4" style="text-align: left;">
