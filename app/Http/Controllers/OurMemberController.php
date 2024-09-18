@@ -154,7 +154,7 @@ class OurMemberController extends Controller
             $ourmember=$ourmember->where('nameOf_instituteOf_previousJob',$request->nameOf_instituteOf_previousJob);
         if($request->blood)
             $ourmember=$ourmember->where('blood_group',$request->blood);
-        if($request->status)
+        if($request->status!='')
             $ourmember=$ourmember->where('status',$request->status);
 
         $ourmember=$ourmember->paginate(10);

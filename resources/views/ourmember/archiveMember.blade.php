@@ -92,6 +92,7 @@
                                                 <option value="3" @if(isset($_GET['status']) && $_GET['status']==3) selected @endif>Retired</option>
                                                 <option value="4" @if(isset($_GET['status']) && $_GET['status']==4) selected @endif>Late</option>
                                                 <option value="5" @if(isset($_GET['status']) && $_GET['status']==5) selected @endif>Cancelled</option>
+                                                <option value="0" @if(isset($_GET['status']) && $_GET['status']==0) selected @endif>Not Contacted</option>
                                             </select>
                                         </div>
                                     </div>
