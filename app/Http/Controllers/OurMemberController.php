@@ -21,6 +21,7 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Classes\sslSms;
 use App\Models\setting;
 use Illuminate\Support\Facades\Log;
+use View;
 
 class OurMemberController extends Controller
 {
@@ -80,29 +81,93 @@ class OurMemberController extends Controller
      */
     public function approvedMember(Request $request)
     {
-        $ourmember=OurMember::select('id','name_bn','member_serial_no','member_serial_no_new','profile_view_password','renew_serial_no','father_name','personal_phone','nid','designation_of_present_job','others_designation','district','blood_group','sms_send')->with('fee_collection_last','fee_amount')->where('approvedstatus',2)->orderBy('renew_serial_no');
-        if($request->member_serial_no)
-            $ourmember=$ourmember->where('member_serial_no',$request->member_serial_no);
-        if($request->year){
-            $expYear=$request->year;
-            $ourmember=$ourmember->whereHas('fee_amount', function($q) use ($expYear){
+        $ourmember = OurMember::select('id', 'name_bn', 'member_serial_no', 'member_serial_no_new', 'profile_view_password', 'renew_serial_no', 'father_name', 'personal_phone', 'nid', 'designation_of_present_job', 'others_designation', 'district', 'blood_group', 'sms_send')
+            ->with('fee_collection_last', 'fee_amount')
+            ->where('approvedstatus', 2)
+            ->orderBy('renew_serial_no');
+        
+        // Apply filters based on the search request
+        $isFiltered = false; // Track if any filter is applied
+
+        if ($request->member_serial_no) {
+            $ourmember = $ourmember->where('member_serial_no', $request->member_serial_no);
+            $isFiltered = true;
+        }
+        if ($request->year) {
+            $expYear = $request->year;
+            $ourmember = $ourmember->whereHas('fee_amount', function ($q) use ($expYear) {
+                $q->where('year', '>=', $expYear);
+            });
+            $isFiltered = true;
+        }
+        if ($request->approve_date) {
+            $ourmember = $ourmember->where('member_approval_date', $request->approve_date);
+            $isFiltered = true;
+        }
+        if ($request->member_serial_no_new) {
+            $ourmember = $ourmember->where('member_serial_no_new', $request->member_serial_no_new);
+            $isFiltered = true;
+        }
+        if ($request->name_bn) {
+            $ourmember = $ourmember->where('name_bn', 'like', '%' . $request->name_bn . '%')
+                                ->orWhere('name_en', 'like', '%' . $request->name_bn . '%');
+            $isFiltered = true;
+        }
+        if ($request->nid) {
+            $ourmember = $ourmember->where('nid', 'like', '%' . $request->nid . '%');
+            $isFiltered = true;
+        }
+        if ($request->license) {
+            $ourmember = $ourmember->where('license', 'like', '%' . $request->license . '%');
+            $isFiltered = true;
+        }
+
+        $ourmember = $ourmember->where('status', 1);
+        if (!$isFiltered) {
+            $ourmember = $ourmember->paginate(100);
+        } else {
+            $ourmember = $ourmember->get();
+        }
+        return view('ourmember.approveMember', compact('ourmember'));
+    }
+    public function approvedMemberPrint(Request $request)
+    {
+        $ourmember = OurMember::select('id', 'name_bn', 'member_serial_no', 'member_serial_no_new', 'profile_view_password', 'renew_serial_no', 'father_name', 'personal_phone', 'nid', 'designation_of_present_job', 'others_designation', 'district', 'blood_group', 'sms_send')
+            ->with('fee_collection_last', 'fee_amount')
+            ->where('approvedstatus', 2)
+            ->orderBy('renew_serial_no');
+
+        if ($request->member_serial_no) {
+            $ourmember = $ourmember->where('member_serial_no', $request->member_serial_no);
+        }
+        if ($request->year) {
+            $expYear = $request->year;
+            $ourmember = $ourmember->whereHas('fee_amount', function ($q) use ($expYear) {
                 $q->where('year', '>=', $expYear);
             });
         }
-        if($request->approve_date)
-            $ourmember=$ourmember->where('member_approval_date',$request->approve_date);
-        if($request->member_serial_no_new)
-            $ourmember=$ourmember->where('member_serial_no_new',$request->member_serial_no_new);
-        if($request->name_bn)
-            $ourmember=$ourmember->where('name_bn','like','%'.$request->name_bn.'%')->orWhere('name_en','like','%'.$request->name_bn.'%');
-        if($request->nid)
-            $ourmember=$ourmember->where('nid','like','%'.$request->nid.'%');
-        if($request->license)
-            $ourmember=$ourmember->where('license','like','%'.$request->license.'%');
+        if ($request->approve_date) {
+            $ourmember = $ourmember->where('member_approval_date', $request->approve_date);
+        }
+        if ($request->member_serial_no_new) {
+            $ourmember = $ourmember->where('member_serial_no_new', $request->member_serial_no_new);
+        }
+        if ($request->name_bn) {
+            $ourmember = $ourmember->where('name_bn', 'like', '%' . $request->name_bn . '%')
+                                ->orWhere('name_en', 'like', '%' . $request->name_bn . '%');
+        }
+        if ($request->nid) {
+            $ourmember = $ourmember->where('nid', 'like', '%' . $request->nid . '%');
+        }
+        if ($request->license) {
+            $ourmember = $ourmember->where('license', 'like', '%' . $request->license . '%');
+        }
 
-        $ourmember=$ourmember->where('status',1)->paginate(100);
-        return view('ourmember.approveMember',compact('ourmember'));
+        $ourmember = $ourmember->where('status', 1);
+        $ourmember = $ourmember->get();
+        return View::make("ourmember.approveMemberPrint",compact('ourmember'))->render();
     }
+
 
     /**
      * Display a listing of the resource.
@@ -114,6 +179,10 @@ class OurMemberController extends Controller
        // DB::enableQueryLog();
         
         $ourmember=OurMember::with('fee_amount')->orderBy('member_serial_no');
+
+        // Apply filters based on the search request
+        $isFiltered = false; // Track if any filter is applied
+
         if($request->member_serial_no)
             $ourmember=$ourmember->where('member_serial_no',$request->member_serial_no);
         if($request->year){
@@ -127,6 +196,7 @@ class OurMemberController extends Controller
                     $q->where('year', '<', $expYear);
                 });
             }
+            $isFiltered = true;
         }else{
             $expYear= now()->format('Y');
             if($request->payStatus == 1){
@@ -140,28 +210,116 @@ class OurMemberController extends Controller
             }
         }
         
-        if($request->member_serial_no_new)
+        if($request->member_serial_no_new){
             $ourmember=$ourmember->where('member_serial_no_new',$request->member_serial_no_new);
-        if($request->name_bn)
+            $isFiltered = true;
+        }
+        if($request->name_bn){
             $ourmember=$ourmember->where('name_bn','like','%'.$request->name_bn.'%')->orWhere('name_en','like','%'.$request->name_bn.'%');
-        if($request->renew_serial_no)
+            $isFiltered = true;
+        }
+        if($request->renew_serial_no){
             $ourmember=$ourmember->where('renew_serial_no',$request->renew_serial_no);
-        if($request->district)
+            $isFiltered = true;
+        }
+        if($request->district){
             $ourmember=$ourmember->where('district',$request->district);
-        if($request->nameAddress_of_present_institute)
+            $isFiltered = true;
+        }
+        if($request->nameAddress_of_present_institute){
             $ourmember=$ourmember->where('nameAddress_of_present_institute',$request->nameAddress_of_present_institute);
-        if($request->nameOf_instituteOf_previousJob)
+            $isFiltered = true;
+        }
+        if($request->nameOf_instituteOf_previousJob){
             $ourmember=$ourmember->where('nameOf_instituteOf_previousJob',$request->nameOf_instituteOf_previousJob);
-        if($request->blood)
+            $isFiltered = true;
+        }
+        if($request->blood){
             $ourmember=$ourmember->where('blood_group',$request->blood);
-        if($request->status!='')
+            $isFiltered = true;
+        }
+        if($request->status!=''){
             $ourmember=$ourmember->where('status',$request->status);
+            $isFiltered = true;
+        }
 
-        $ourmember=$ourmember->paginate(10);
+        if (!$isFiltered) {
+            $ourmember = $ourmember->paginate(10);
+        } else {
+            $ourmember = $ourmember->get();
+        }
         //$query = DB::getQueryLog();
-
-//dd($query);
         return view('ourmember.archiveMember',compact('ourmember'));
+    }
+    public function archiveMemberPrint(Request $request)
+    {
+       // DB::enableQueryLog();
+        
+        $ourmember=OurMember::with('fee_amount')->orderBy('member_serial_no');
+
+        if($request->member_serial_no)
+            $ourmember=$ourmember->where('member_serial_no',$request->member_serial_no);
+        if($request->year){
+            $expYear=$request->year;
+            if($request->payStatus == 1 || $request->payStatus == ''){
+                $ourmember=$ourmember->whereHas('fee_amount', function($q) use ($expYear){
+                    $q->where('year', '>=', $expYear);
+                });
+            }elseif($request->payStatus == 2){
+                $ourmember=$ourmember->WhereDoesntHave('fee_amount')->orWhereHas('fee_amount', function($q) use ($expYear){
+                    $q->where('year', '<', $expYear);
+                });
+            }
+            
+        }else{
+            $expYear= now()->format('Y');
+            if($request->payStatus == 1){
+                $ourmember=$ourmember->whereHas('fee_amount', function($q) use ($expYear){
+                    $q->where('year', '>=', $expYear);
+                });
+            }elseif($request->payStatus == 2){
+                $ourmember=$ourmember->WhereDoesntHave('fee_amount')->orWhereHas('fee_amount', function($q) use ($expYear){
+                    $q->where('year', '<', $expYear);
+                });
+            }
+        }
+        
+        if($request->member_serial_no_new){
+            $ourmember=$ourmember->where('member_serial_no_new',$request->member_serial_no_new);
+            
+        }
+        if($request->name_bn){
+            $ourmember=$ourmember->where('name_bn','like','%'.$request->name_bn.'%')->orWhere('name_en','like','%'.$request->name_bn.'%');
+            
+        }
+        if($request->renew_serial_no){
+            $ourmember=$ourmember->where('renew_serial_no',$request->renew_serial_no);
+            
+        }
+        if($request->district){
+            $ourmember=$ourmember->where('district',$request->district);
+            
+        }
+        if($request->nameAddress_of_present_institute){
+            $ourmember=$ourmember->where('nameAddress_of_present_institute',$request->nameAddress_of_present_institute);
+            
+        }
+        if($request->nameOf_instituteOf_previousJob){
+            $ourmember=$ourmember->where('nameOf_instituteOf_previousJob',$request->nameOf_instituteOf_previousJob);
+            
+        }
+        if($request->blood){
+            $ourmember=$ourmember->where('blood_group',$request->blood);
+            
+        }
+        if($request->status!=''){
+            $ourmember=$ourmember->where('status',$request->status);
+            
+        }
+        $ourmember = $ourmember->get();
+        //$query = DB::getQueryLog();
+        // return view('ourmember.archiveMember',compact('ourmember'));
+        return View::make("ourmember.archiveMemberPrint",compact('ourmember'))->render();
     }
 
     public function deletedMember(Request $request)

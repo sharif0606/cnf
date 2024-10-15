@@ -126,7 +126,14 @@
                         <tbody>
                             @forelse($ourmember as $key=>$p)
                             <tr>
-                                <th scope="row">{{ $ourmember->firstItem() + $key }}</th>
+                                <th scope="row">
+                                    {{-- {{ $ourmember->firstItem() + $key }} --}}
+                                    @if ($ourmember instanceof \Illuminate\Pagination\LengthAwarePaginator)
+                                        {{ $ourmember->firstItem() + $key }}
+                                    @else
+                                        {{ $key + 1 }}
+                                    @endif
+                                </th>
                                 <td>{{$p->name_bn}}</td>
                                 <td>{{$p->member_serial_no}}/{{$p->member_serial_no_new}}</td>
                                 <td>{{$p->father_name}}</td>
@@ -153,7 +160,7 @@
                                         data-name="{{$p->name_bn}}"
                                         data-fee="{{ money_format($p->fee_amount?->sum('total_amount'))}}"
                                         data-fee-latest="{{money_format($p->fee_collection_last?->total_amount)}}"
-                                        data-fee-latest-year="{{$p->fee_collection_last?->year}}"
+                                        data-fee-latest-year="{{$p->fee_collection_last?->year}}">
                                         <span class="text-danger"><i class="bi bi-currency-dollar" style="font-size:1rem; color:rgb(246, 50, 35);"></i></span>
                                     </button>
                                     @if(currentUser() == 'chairman' && $p->approvedstatus == '2')
@@ -178,7 +185,10 @@
                         </tbody>
                     </table>
                     <div class="my-3">
-                        {!! $ourmember->withQueryString()->links()!!}
+                        @if ($ourmember instanceof \Illuminate\Pagination\LengthAwarePaginator)
+                            {!! $ourmember->withQueryString()->links()!!}
+                        @else
+                        @endif
                     </div>
                     <div class="modal fade" id="balance" tabindex="-1" role="dialog"
                         aria-labelledby="balanceTitle" aria-hidden="true">
@@ -262,7 +272,7 @@
         $('.full_page').html('<div style="background:rgba(0,0,0,0.5);width:100vw; height:100vh;position:fixed; top:0; left;0"><div class="loader my-5"></div></div>');
         
         $.get(
-            "{{route(currentUser().'.archive_member')}}{{ ltrim(Request()->fullUrl(),Request()->url()) }}",
+            "{{route(currentUser().'.archive_member_print')}}{!! ltrim(Request()->fullUrl(),Request()->url()) !!}",
             function (data) {
                 $("#my-content-div").html(data);
             }

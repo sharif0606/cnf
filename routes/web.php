@@ -168,7 +168,9 @@ Route::group(['middleware'=>isAdmin::class],function(){
         Route::post('image-upload', [page::class, 'storeImage'])->name('image.upload');
         Route::get('gs-approved-member', [member::class, 'gsecretaryApproved'])->name('admin.gs_approve_member');
         Route::get('approved-member', [member::class, 'approvedMember'])->name('admin.approve_member');
+        Route::get('approved-member-print', [member::class, 'approvedMemberPrint'])->name('admin.approve_member_print');
         Route::get('archive-member', [member::class, 'archiveMember'])->name('admin.archive_member');
+        Route::get('archive-member-print', [member::class, 'archiveMemberPrint'])->name('admin.archive_member_print');
         Route::get('front_menu', [frontMenu::class, 'index'])->name('admin.front_menu.index');
         Route::post('menu_save_update/{id?}', [frontMenu::class, 'save_update'])->name('admin.front_menu.save');
         Route::get('front_menu/mss', [frontMenu::class, 'mss'])->name('admin.front_menu.mss');
