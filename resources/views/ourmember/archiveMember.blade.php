@@ -278,8 +278,9 @@
             }
         ).then(function () {
             // Specify the columns you want to export (0-indexed)
-            let columnsToExport = [1, 4]; // Adjust this array based on your requirements
-            exportReportToExcel('table', 'Archive Member', columnsToExport);
+            //let columnsToExport = [1, 4]; // Adjust this array based on your requirements
+            //exportReportToExcel('table', 'Archive Member', columnsToExport);
+            exportReportToExcel('table', 'Archive Member');
         });
     }
 

@@ -203,8 +203,9 @@
             }
         ).then(function () {
             // Specify the columns you want to export (0-indexed)
-            let columnsToExport = [1,7]; // Adjust this array based on your requirements
-            exportReportToExcel('table', 'Approve Member', columnsToExport);
+            //let columnsToExport = [1,7]; // Adjust this array based on your requirements
+            //exportReportToExcel('table', 'Approve Member', columnsToExport);
+            exportReportToExcel('table', 'Approve Member');
         });
     }
 
