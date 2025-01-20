@@ -227,11 +227,11 @@ class OurMemberController extends Controller
             $isFiltered = true;
         }
         if($request->nameAddress_of_present_institute){
-            $ourmember=$ourmember->where('nameAddress_of_present_institute',$request->nameAddress_of_present_institute);
+            $ourmember=$ourmember->where('nameAddress_of_present_institute','like','%'.$request->nameAddress_of_present_institute.'%');
             $isFiltered = true;
         }
         if($request->nameOf_instituteOf_previousJob){
-            $ourmember=$ourmember->where('nameOf_instituteOf_previousJob',$request->nameOf_instituteOf_previousJob);
+            $ourmember=$ourmember->where('nameOf_instituteOf_previousJob','like','%'.$request->nameOf_instituteOf_previousJob.'%');
             $isFiltered = true;
         }
         if($request->blood){
