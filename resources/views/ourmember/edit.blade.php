@@ -39,7 +39,7 @@
                                 <div class="col-lg-3 col-md-3 col-sm-6">
                                     <div class="form-group">
                                         <label for="phone">মোবাইল (নিজস্ব)</label>
-                                        <input type="text" onkeyup="mobile_varify(this)" required class="form-control" name="personalPhone" value="{{old('personalPhone',$member->personal_phone)}}">
+                                        <input type="text" onkeyup="mobile_varify(this)" class="form-control" name="personalPhone" value="{{old('personalPhone',$member->personal_phone)}}">
                                         <span id="dueMessage" class="text-danger text-end"></span>
                                         @if($errors->has('personalPhone'))
                                             <span class="text-danger"> {{ $errors->first('personalPhone') }}</span>
