@@ -25,7 +25,7 @@ class UpdateRequest extends FormRequest
     public function rules(Request $r)
     {
         $id=encryptor('decrypt',$r->uptoken);
-        if($r->status !=1)
+        if($r->status ==1)
             return ['personalPhone'=>'required|unique:our_members,personal_phone,'.$id,];
         else 
             return [];
