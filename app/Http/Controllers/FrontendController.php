@@ -95,6 +95,19 @@ class FrontendController extends Controller
             return redirect()->back();
         }
     }
+    public function memberLinkQr(Request $request, $id)
+    {
+        
+            $show_data = OurMember::where('id', encryptor('decrypt', $id))->first();
+            $feeCollection = fee_collection::where('member_id',(encryptor('decrypt',$id)))->latest()->take(1)->get();
+            $nomini = heirship::where('member_id',$show_data->id)->get();
+            if ($show_data) {
+                return view('frontend.memberLinkqr', compact('show_data','feeCollection','nomini'));
+            } else {
+                return redirect()->back();
+            }
+        
+    }
 
     public function benefit()
     {
@@ -196,4 +209,5 @@ class FrontendController extends Controller
         }
         return view('frontend.club_dues',compact('members'));
     }
+
 }

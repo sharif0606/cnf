@@ -84,6 +84,7 @@ Route::get('/contact-us', [contact::class,'store'])->name('contact.us');
 
 Route::get('/', [front::class,'index'])->name('front');
 Route::get('12kzjzjkhf32/user/{id}', [front::class,'memberLink'])->name('member_link');
+Route::get('qrxxy55968ccnf/member/{id}', [front::class,'memberLinkQr'])->name('member_link_qr');
 //Route::get('/register', [auth::class,'signUpForm'])->name('register');
 //Route::post('/register', [auth::class,'signUpStore'])->name('register.store');
 Route::get('/admin', [auth::class,'signInForm'])->name('signIn');
