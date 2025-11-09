@@ -308,6 +308,18 @@
                         <div class="row align-items-start mb-4">
                             <div class="col-md-8 col-sm-12">
                                 <img src="{{asset('uploads/settings/header_logo/'.$setting?->header_logo)}}" alt="" class="mw-100" />
+                                <div class="contact">
+                                    <span
+                                      ><i class="bi bi-geo-alt-fill"></i>
+                                      <p class="mb-0">
+                                        {{ $setting?->address }}
+                                      </p>
+                                    </span>
+                                    <span>
+                                      <i class="bi bi-telephone-fill"></i>
+                                      <p class="mb-0">{{ $setting?->contact_no }}</p>
+                                    </span>
+                                  </div>
                             </div>
                             <div class="col-md-4 col-sm-12">
                                 <div class="member-photo-section">
