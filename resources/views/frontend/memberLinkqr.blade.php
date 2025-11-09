@@ -4,6 +4,7 @@
     <link href="//db.onlinewebfonts.com/c/1d48b2cf83cd3bb825583f7eefd80149?family=AdmiralScriptW01-Regular" rel="stylesheet" type="text/css"/>
 @endpush
 @section('content')
+@php $setting=\App\Models\setting::first(); @endphp
 <div class="container-fluid px-2 px-md-4 py-3">
     <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="step-1" role="tabpanel" aria-labelledby="step-1-tab">
@@ -306,7 +307,7 @@
                         <!-- Date and Photo Section -->
                         <div class="row align-items-start mb-4">
                             <div class="col-md-8 col-sm-12">
-                                
+                                <img src="{{asset('uploads/settings/header_logo/'.$setting?->header_logo)}}" alt="" class="mw-100" />
                             </div>
                             <div class="col-md-4 col-sm-12">
                                 <div class="member-photo-section">
@@ -448,26 +449,6 @@
                             </table>
                         </div>
 
-                       
-
-                        <!-- Signature Section -->
-                        <div class="signature-section">
-                            <div class="signature-box">
-                                <input type="text" placeholder="">
-                                <div class="signature-label">সভাপতির স্বাক্ষর ও সীল</div>
-                                <div class="date-field">তারিখ: <input type="text" class="tinput" style="width:60%;"></div>
-                            </div>
-                            <div class="signature-box">
-                                <input type="text" placeholder="">
-                                <div class="signature-label">সাধারণ সম্পাদকের স্বাক্ষর ও সীল</div>
-                                <div class="date-field">তারিখ: <input type="text" class="tinput" style="width:60%;"></div>
-                            </div>
-                            <div class="signature-box">
-                                <input type="text" placeholder="">
-                                <div class="signature-label">স্বাক্ষর</div>
-                                <div class="date-field">তারিখ: <input type="text" class="tinput" style="width:60%;"></div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

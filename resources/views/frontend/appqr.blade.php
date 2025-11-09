@@ -1,4 +1,4 @@
-@php $setting=\App\Models\setting::first(); @endphp
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
