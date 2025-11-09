@@ -131,6 +131,7 @@
                         display: flex;
                         flex-direction: column;
                         gap: 15px;
+                        align-items: flex-start;  /* Add this line */
                     }
 
                     .header-info img {
@@ -138,6 +139,8 @@
                         height: auto;
                         max-height: 120px;
                         object-fit: contain;
+                        align-self: flex-start;  /* Add this line */
+                        display: block;          /* Add this line */
                     }
 
                     .contact-info {
@@ -480,7 +483,7 @@
                     <div class="modern-header">
                         <div class="header-content">
                             <div class="header-info">
-                                <img src="{{asset('uploads/settings/header_logo/'.$setting?->header_logo)}}" alt="Organization Logo" class="float-start" />
+                                <img src="{{asset('uploads/settings/header_logo/'.$setting?->header_logo)}}" alt="Organization Logo" />
                                 <div class="contact-info">
                                     <span>
                                         <i class="bi bi-geo-alt-fill"></i>
@@ -496,7 +499,8 @@
                                 <div class="photo-frame">
                                     <img src='{{asset('uploads/memberImage/'.$show_data->image)}}' class="member-photo" alt="Member Photo">
                                 </div>
-                                {{-- <div class="member-badge">সদস্য নং: {{ str_pad($show_data->member_serial_no,5,"0",STR_PAD_LEFT)}}</div> --}}
+                                
+                                <div class="member-badge">সদস্য নং: {{ str_pad($show_data->member_serial_no,5,"0",STR_PAD_LEFT)}}</div>
                             </div>
                         </div>
                     </div>
