@@ -499,7 +499,7 @@
                                 <div class="photo-frame">
                                     <img src='{{asset('uploads/memberImage/'.$show_data->image)}}' class="member-photo" alt="Member Photo">
                                 </div>
-                                
+                                <br/>
                                 <div class="member-badge">সদস্য নং: {{ str_pad($show_data->member_serial_no,5,"0",STR_PAD_LEFT)}}</div>
                             </div>
                         </div>
