@@ -480,7 +480,7 @@
                     <div class="modern-header">
                         <div class="header-content">
                             <div class="header-info">
-                                <img src="{{asset('uploads/settings/header_logo/'.$setting?->header_logo)}}" alt="Organization Logo" />
+                                <img src="{{asset('uploads/settings/header_logo/'.$setting?->header_logo)}}" alt="Organization Logo" class="float-start" />
                                 <div class="contact-info">
                                     <span>
                                         <i class="bi bi-geo-alt-fill"></i>
