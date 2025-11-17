@@ -135,7 +135,13 @@
                                     @endif
                                 </th>
                                 <td>{{$p->name_bn}}</td>
-                                <td>{{$p->member_serial_no}}/{{$p->member_serial_no_new}}</td>
+                                <td>
+                                    @if($p->status == 1)
+                                    {{$p->member_serial_no}}/{{$p->member_serial_no_new}}
+                                    @else
+                                    
+                                    @endif
+                                </td>
                                 <td>{{$p->father_name}}</td>
                                 <td>{{$p->personal_phone}}</td>
                                 <td>{{$p->blood_group}}</td>
