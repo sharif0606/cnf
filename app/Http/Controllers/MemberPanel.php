@@ -94,16 +94,18 @@ class MemberPanel extends Controller
 
         if ($search) {
             $members->where(function ($query) use ($search) {
-                $query->Where('member_serial_no', $search)
-                      ->orWhere('renew_serial_no', $search);
+                $query->Where('member_serial_no', $search);
+                      //->orWhere('renew_serial_no', $search);
             });
         }
         if (!empty($rsl)) {
-            $members->where('renew_serial_no',$rsl);
+            $members->where('member_serial_no',$rsl);
+           // $members->where('renew_serial_no',$rsl);
         }
 
         $members->where('approvedstatus', 2);
-        $members->orderBy('renew_serial_no');
+       // $members->orderBy('renew_serial_no');
+        $members->orderBy('member_serial_no');
 
         $member = $members->paginate(10);
         return view('frontend.membership.memberList', compact('member','search'));
