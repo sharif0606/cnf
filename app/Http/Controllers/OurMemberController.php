@@ -168,16 +168,42 @@ class OurMemberController extends Controller
         return View::make("ourmember.approveMemberPrint",compact('ourmember'))->render();
     }
 
+    public function idcard(Request $request)
+    {
+        $ourmember=OurMember::select('id', 'name_bn', 'member_serial_no', 'member_serial_no_new', 'profile_view_password', 'renew_serial_no', 'father_name', 'personal_phone', 'nid', 'designation_of_present_job', 'others_designation', 'district', 'blood_group', 'sms_send')
+        ->with('fee_collection_last', 'fee_amount')
+        ->where('approvedstatus', 2)
+        ->orderBy('renew_serial_no');
+        if($request->member_serial_no)
+            $ourmember=$ourmember->where('member_serial_no',$request->member_serial_no);
+        if($request->member_serial_no_new)
+            $ourmember=$ourmember->where('member_serial_no_new',$request->member_serial_no_new);
+        if($request->name_bn)
+            $ourmember=$ourmember->where('name_bn','like','%'.$request->name_bn.'%')->orWhere('name_en','like','%'.$request->name_bn.'%');
+        if($request->renew_serial_no)
+            $ourmember=$ourmember->where('renew_serial_no',$request->renew_serial_no);
+        if($request->district)
+            $ourmember=$ourmember->where('district',$request->district);
+        if($request->nameAddress_of_present_institute)
+            $ourmember=$ourmember->where('nameAddress_of_present_institute','like','%'.$request->nameAddress_of_present_institute.'%');
+        if($request->nameOf_instituteOf_previousJob)
+            $ourmember=$ourmember->where('nameOf_instituteOf_previousJob','like','%'.$request->nameOf_instituteOf_previousJob.'%');
+        if($request->blood)
+            $ourmember=$ourmember->where('blood_group',$request->blood);
+        if($request->status!='')
+            $ourmember=$ourmember->where('status',$request->status);
+        $ourmember = $ourmember->get();
+        return view('ourmember.idcard',compact('ourmember'));
+    }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function idcardPrint(Request $request)
+    {
+        $ourmember=OurMember::whereIn('id',explode(',',$request->member_id))->get();
+       
+        return view("ourmember.memberCard",compact('ourmember'));
+    }
     public function archiveMember(Request $request)
     {
-       // DB::enableQueryLog();
-        
         $ourmember=OurMember::with('fee_amount')->orderBy('member_serial_no');
 
         // Apply filters based on the search request

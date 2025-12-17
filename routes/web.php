@@ -184,6 +184,8 @@ Route::group(['middleware'=>isAdmin::class],function(){
         Route::get('/member_search_data', [foundCommittee::class,'member_search_data'])->name('admin.member_search_data');
 
         Route::get('/get-member', [feeCollection::class, 'getMember'])->name('admin.getMember');
+        Route::get('/idcard', [member::class, 'idcard'])->name('admin.idcard');
+        Route::get('/idcard-print', [member::class, 'idcardPrint'])->name('admin.idcard_print');
 
     });
 });
