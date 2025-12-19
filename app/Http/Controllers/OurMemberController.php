@@ -173,7 +173,13 @@ class OurMemberController extends Controller
         $ourmember=OurMember::select('id', 'name_bn', 'member_serial_no', 'member_serial_no_new', 'profile_view_password', 'renew_serial_no', 'father_name', 'personal_phone', 'nid', 'designation_of_present_job', 'others_designation', 'district', 'blood_group', 'sms_send')
         ->with('fee_collection_last', 'fee_amount')
         ->where('approvedstatus', 2)
-        ->orderBy('renew_serial_no');
+        ->orderBy('member_serial_no_new');
+        if ($request->year) {
+            $expYear = $request->year;
+            $ourmember = $ourmember->whereHas('fee_amount', function ($q) use ($expYear) {
+                $q->where('year', '>=', $expYear);
+            });
+        }
         if($request->member_serial_no)
             $ourmember=$ourmember->where('member_serial_no',$request->member_serial_no);
         if($request->member_serial_no_new)
@@ -192,9 +198,12 @@ class OurMemberController extends Controller
             $ourmember=$ourmember->where('blood_group',$request->blood);
         if($request->status!='')
             $ourmember=$ourmember->where('status',$request->status);
+            
+        //$ourmember=$ourmember->whereNotIn('id',[631,1203,1181,1186,1682,1186,3784,4011,4469,3834,3826,701,2848,1205,3623,629,2044,4629,4065,4514,3522,4963,4222,2816,5597,1284,4054,3478,4704,3478,4431,5380,6924,6280,6349,3826,7064,5066]);
         $ourmember = $ourmember->get();
         return view('ourmember.idcard',compact('ourmember'));
     }
+
 
     public function idcardPrint(Request $request)
     {

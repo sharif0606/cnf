@@ -100,7 +100,6 @@
             background-position: center;
             position: relative;
             page-break-inside: avoid;
-            border-radius: 8px;
             overflow: hidden;
         }
         
@@ -135,7 +134,7 @@
             position: relative;
             top: -27px;
             text-align: right;
-            width:130px;
+            width:132px;
         }
         
         .qr-code {
@@ -157,7 +156,7 @@
         }
         
         .member-id-row {
-            font-size: 12px;
+            font-size: 11.5px;
             font-weight: 700;
             color: #000;
             margin-bottom: 3px;
@@ -169,20 +168,20 @@
         
         .nid-number {
             display: inline-block;
-            max-width: 85px;
+            max-width: 84px;
             word-wrap: break-word;
             word-break: break-all;
             vertical-align: top;
         }
 
         .font-x{
-            font-size: 16px;
+            font-size: 13px;
         }
         
         /* Member name section */
         .member-name-section {
             position: absolute;
-            top: 215px;
+            top: 220px;
             left: 0;
             right: 0;
             text-align: center;
@@ -190,7 +189,7 @@
         }
         
         .member-name {
-            font-size: 17px;
+            font-size: 13px;
             font-weight: 700;
             color: #2e3192;
         }
@@ -203,11 +202,11 @@
         /* Member details section */
         .member-details {
             position: absolute;
-            top: 240px;
+            top: 243px;
             left: 0;
             right: 0;
             padding: 0 15px;
-            font-size: 12px;
+            font-size: 10px;
             line-height: 1.2;
         }
         
@@ -279,7 +278,7 @@
                 // Convert English numbers to Bangla
                 
                 
-                $memberSerialNo = $m->member_serial_no_new ?? $m->member_serial_no ?? '-';
+                $memberSerialNo = $m->member_serial_no ?? '-';
                 $memberSerialNoBangla = englishToBangla($memberSerialNo);
                 
                 $nidNumber = $m->nid ?? '-';
@@ -305,7 +304,7 @@
                         </div>
                         <div class="member-ids">
                             <div class="member-id-row margin-bottom-0 font-x">সদস্য নং- {{ $memberSerialNoBangla }}</div>
-                            <div class="member-id-row">NID নং : <span class="nid-number">{{ $nidNumberBangla }}</span></div>
+                            <div class="member-id-row" style="padding-top: 6px;">NID নং : <span class="nid-number">{{ $nidNumberBangla }}</span></div>
                         </div>
                     </div>
                 </div>
@@ -313,9 +312,9 @@
                 <!-- Member Name -->
                 <div class="member-name-section">
                     <div class="member-name">
-                        {{ $m->name_bn ?? $m->name_en ?? 'N/A' }}
+                        {{ $m->name_bn ?? $m->name_en ?? '-' }}
                         @if($m->others_designation)
-                            <span class="member-nickname">({{ $m->others_designation }})</span>
+                            <!--<span class="member-nickname">({{ $m->others_designation }})</span>-->
                         @endif
                     </div>
                 </div>
@@ -323,20 +322,20 @@
                 <!-- Member Details -->
                 <div class="member-details">
                     <div class="detail-row">
-                        <span class="detail-label">পিতা : {{ $m->father_name ?? 'N/A' }}</span>
+                        <span class="detail-label">পিতা : {{ $m->father_name ?? '-' }}</span>
                     </div>
                     <div class="detail-row">
-                        <span class="detail-label">মাতা : {{ $m->mother_name ?? 'N/A' }}</span>
+                        <span class="detail-label">মাতা : {{ $m->mother_name ?? '-' }}</span>
                     </div>
                     <div class="detail-row">
-                        <span class="detail-label  bold-text">প্রতিষ্ঠানের নাম : {{ Str::limit($m->designation_of_present_job ?? 'N/A', 22) }}</span>
+                        <span class="detail-label  bold-text">প্রতিষ্ঠানের নাম : {{$m->nameAddress_of_present_institute ?? '-' }} </span>
                     </div>
                     <div class="detail-row">
-                        <span class="detail-label bold-text"> সি এন্ড এফ এমপ্লয়ী</span>
+                        <span class="detail-label  bold-text"> সি এন্ড এফ এমপ্লয়ী</span>
                     </div>
                     
                     <div class="detail-row">
-                        <span class="detail-label">ব্লাড গ্রুপ : {{ $bloodGroupBangla[$m->blood_group] ?? 'N/A' }}</span>
+                        <span class="detail-label">ব্লাড গ্রুপ : {{ $bloodGroupBangla[$m->blood_group] ?? '-' }}</span>
                     </div>
                 </div>
             </div>

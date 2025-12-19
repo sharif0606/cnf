@@ -134,6 +134,7 @@
                                 <th scope="row">
                                     
                                     <input onclick="add_member_id({{$p->id}})" type="checkbox" name="member_id[]" value="{{$p->id}}">
+                                    {{$key}}
                                 </th>
                                 <td>{{$p->name_bn}}</td>
                                 <td>{{$p->member_serial_no}}/{{$p->member_serial_no_new}}</td>
