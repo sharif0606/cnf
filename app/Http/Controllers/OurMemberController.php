@@ -204,7 +204,6 @@ class OurMemberController extends Controller
         return view('ourmember.idcard',compact('ourmember'));
     }
 
-
     public function idcardPrint(Request $request)
     {
         $ourmember=OurMember::whereIn('id',explode(',',$request->member_id))->get();
