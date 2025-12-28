@@ -73,6 +73,9 @@
         <a href="{{route(currentUser().'.approve_member')}}" class='sidebar-link'><i class="bi bi-people-fill"></i> <span>{{__('Approved Member')}}</span></a>
     </li>
     <li class="sidebar-item">
+        <a href="{{route(currentUser().'.memberIdCard.index')}}" class='sidebar-link'><i class="bi bi-card-fill"></i> <span>{{__('Member ID Card')}}</span></a>
+    </li>
+    <li class="sidebar-item">
         <a href="{{route(currentUser().'.archive_member')}}" class='sidebar-link'><i class="bi bi-people-fill"></i> <span>{{__('Archive Member')}}</span></a>
     </li>
     <li class="sidebar-item">

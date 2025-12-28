@@ -39,7 +39,7 @@ use App\Http\Controllers\TotalDueController as tdue;
 use App\Http\Controllers\FoundingCommitteeController as foundCommittee;
 use App\Http\Controllers\CommitteeSessionController as committeeSession;
 use App\Http\Controllers\ExecutiveCommitteeController as exeCommittee;
-
+use App\Http\Controllers\MemberIdCardController;
 
 use App\Http\Controllers\FrontendController as front;
 use App\Http\Controllers\PageController as page;
@@ -187,6 +187,10 @@ Route::group(['middleware'=>isAdmin::class],function(){
         Route::get('/idcard', [member::class, 'idcard'])->name('admin.idcard');
         Route::get('/idcard-print', [member::class, 'idcardPrint'])->name('admin.idcard_print');
 
+        // Member ID Card Management
+        Route::resource('memberIdCard', MemberIdCardController::class, ['as'=>'admin']);
+        Route::get('/memberIdCard-search-member', [MemberIdCardController::class, 'searchMember'])->name('admin.memberIdCard.searchMember');
+
     });
 });
 
@@ -215,6 +219,10 @@ Route::group(['middleware'=>isChairman::class],function(){
         // sms panel
         Route::get('/get-sms-page', [smsPanel::class,'get_sms_panel'])->name('chairman.get_sms_page');
         Route::post('/sms-send', [smsPanel::class,'sendSms'])->name('chairman.sms_send');
+
+        // Member ID Card Management
+        Route::resource('memberIdCard', MemberIdCardController::class, ['as'=>'chairman']);
+        Route::get('/memberIdCard-search-member', [MemberIdCardController::class, 'searchMember'])->name('chairman.memberIdCard.searchMember');
     });
 });
 
@@ -240,6 +248,10 @@ Route::group(['middleware'=>isGeneralSecretary::class],function(){
         // sms panel
         Route::get('/get-sms-page', [smsPanel::class,'get_sms_panel'])->name('generalsecretary.get_sms_page');
         Route::post('/sms-send', [smsPanel::class,'sendSms'])->name('generalsecretary.sms_send');
+
+        // Member ID Card Management
+        Route::resource('memberIdCard', MemberIdCardController::class, ['as'=>'generalsecretary']);
+        Route::get('/memberIdCard-search-member', [MemberIdCardController::class, 'searchMember'])->name('generalsecretary.memberIdCard.searchMember');
 
     });
 });
