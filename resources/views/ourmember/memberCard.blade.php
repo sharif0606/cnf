@@ -244,25 +244,24 @@
 </head>
 <body>
     <div class="print-button no-print">
-        <button onclick="window.print()">ЁЯЦия╕П ржкрзНрж░рж┐ржирзНржЯ ржЖржЗржбрж┐ ржХрж╛рж░рзНржб</button>
-        <button class="pdf-button" onclick="downloadPDF()">ЁЯУД ржбрж╛ржЙржирж▓рзЛржб PDF</button>
+        <button onclick="window.print()">Print Id Card</button>
+        <button class="pdf-button" onclick="downloadPDF()">Download PDF</button>
     </div>
     @php
         function englishToBangla($number) {
                         $englishDigits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-                        $banglaDigits = ['рзж', 'рзз', 'рзи', 'рзй', 'рзк', 'рзл', 'рзм', 'рзн', 'рзо', 'рзп'];
+                        $banglaDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
                         return str_replace($englishDigits, $banglaDigits, $number);
                     }
                     
-        $bloodGroupBangla=['A+'=>'ржП+ (ржкржЬрзЗржЯрж┐ржн)',
-                            'A-'=>'ржП- (ржирзЗржЧрзЗржЯрж┐ржн)', 
-                            'B+'=>'ржмрж┐+ (ржкржЬрзЗржЯрж┐ржн)', 
-                            'B-'=>'ржмрж┐- (ржирзЗржЧрзЗржЯрж┐ржн)', 
-                            'O+'=>'ржУ+ (ржкржЬрзЗржЯрж┐ржн)', 
-                            'O-'=>'ржУ- (ржирзЗржЧрзЗржЯрж┐ржн)', 
-                            'AB+'=>'ржПржмрж┐+ (ржкржЬрзЗржЯрж┐ржн)', 
-                            'AB-'=>'ржПржмрж┐- (ржирзЗржЧрзЗржЯрж┐ржн)'];
-
+        $bloodGroupBangla=['A+'=>'এ+ (পজেটিভ)',
+                            'A-'=>'এ- (নেগেটিভ)', 
+                            'B+'=>'বি+ (পজেটিভ)', 
+                            'B-'=>'বি- (নেগেটিভ)', 
+                            'O+'=>'ও+ (পজেটিভ)', 
+                            'O-'=>'ও- (নেগেটিভ)', 
+                            'AB+'=>'এবি+ (পজেটিভ)', 
+                            'AB-'=>'এবি- (নেগেটিভ)'];
     @endphp
     <div class="cards-wrapper">
         @php
@@ -303,8 +302,8 @@
                             <img src="{{ $qrCodeUrl }}" alt="QR Code">
                         </div>
                         <div class="member-ids">
-                            <div class="member-id-row margin-bottom-0 font-x">рж╕ржжрж╕рзНржп ржиржВ- {{ $memberSerialNoBangla }}</div>
-                            <div class="member-id-row" style="padding-top: 6px;">NID ржиржВ : <span class="nid-number">{{ $nidNumberBangla }}</span></div>
+                            <div class="member-id-row margin-bottom-0 font-x">সদস্য নং- {{ $memberSerialNoBangla }}</div>
+                            <div class="member-id-row" style="padding-top: 6px;">NID নং : <span class="nid-number">{{ $nidNumberBangla }}</span></div>
                         </div>
                     </div>
                 </div>
@@ -322,20 +321,20 @@
                 <!-- Member Details -->
                 <div class="member-details">
                     <div class="detail-row">
-                        <span class="detail-label">ржкрж┐рждрж╛ : {{ $m->father_name ?? '-' }}</span>
+                        <span class="detail-label">পিতা : {{ $m->father_name ?? '-' }}</span>
                     </div>
                     <div class="detail-row">
-                        <span class="detail-label">ржорж╛рждрж╛ : {{ $m->mother_name ?? '-' }}</span>
+                        <span class="detail-label">মাতা : {{ $m->mother_name ?? '-' }}</span>
                     </div>
                     <div class="detail-row">
-                        <span class="detail-label  bold-text">ржкрзНрж░рждрж┐рж╖рзНржарж╛ржирзЗрж░ ржирж╛ржо : {{$m->nameAddress_of_present_institute ?? '-' }} </span>
+                        <span class="detail-label  bold-text">প্রতিষ্ঠানের নাম : {{$m->nameAddress_of_present_institute ?? '-' }} </span>
                     </div>
                     <div class="detail-row">
-                        <span class="detail-label  bold-text"> рж╕рж┐ ржПржирзНржб ржПржл ржПржоржкрзНрж▓рзЯрзА</span>
+                        <span class="detail-label  bold-text">  সি এন্ড এফ এমপ্লয়ী</span>
                     </div>
                     
                     <div class="detail-row">
-                        <span class="detail-label">ржмрзНрж▓рж╛ржб ржЧрзНрж░рзБржк : {{ $bloodGroupBangla[$m->blood_group] ?? '-' }}</span>
+                        <span class="detail-label">ব্লাড গ্রুপ : {{ $bloodGroupBangla[$m->blood_group] ?? '-' }}</span>
                     </div>
                 </div>
             </div>
