@@ -278,7 +278,7 @@
                 @endforeach
               @endif
                     <div class="col-lg-6 col-md-6 col-sm-12 text-center">
-                      <h4 style="font-size: 22px; margin-bottom: .5rem; margin-top: 3rem; color:rgb(23, 23, 246)">চট্টগ্রাম ক্লিয়ারিং এন্ড ফরওয়ার্ডিং এজেন্টস্ কর্মচারী ইউনিয়ন (সি,বি,এ)</h4>
+                      <h4 style="font-size: 22px; margin-bottom: .5rem; margin-top: 3rem; color:rgb(23, 23, 246)">চট্টগ্রাম কাস্টমস্ এজেন্টস্ এমপ্লয়িজ ইউনিয়ন (সি,বি,এ)</h4>
                       <span style="background-color: green; border: solid transparent 1px; border-radius: 50px; font-size: 22px; color: #fff; padding: 2px 12px 1px 12px;">রেজি নং- ২৩৪</span>
                       <h5 style="font-size: 32px; margin-bottom: .5rem; margin-top:.9rem; color: red;">কার্যনির্বাহী পরিষদের নির্বাচিত কর্মকর্তাবৃন্দ</h5>
                       @if($committeeSession)
