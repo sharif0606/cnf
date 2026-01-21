@@ -36,7 +36,7 @@ class MemberIdCardController extends Controller
             });
         }
 
-        $cards = $cards->paginate(15);
+        $cards = $cards->paginate(100);
 
         return view('memberIdCard.index', compact('cards'));
     }
