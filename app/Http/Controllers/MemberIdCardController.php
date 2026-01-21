@@ -37,8 +37,7 @@ class MemberIdCardController extends Controller
         }
         if ($request->member_serial_no) {
             $cards = $cards->whereHas('member', function ($q) use ($request) {
-                $q->where('member_serial_no', 'like', '%' . $request->member_serial_no . '%')
-                    ->orWhere('member_serial_no_new', 'like', '%' . $request->member_serial_no . '%');
+                $q->where('member_serial_no', 'like', '%' . $request->member_serial_no . '%');
             });
         }
 
