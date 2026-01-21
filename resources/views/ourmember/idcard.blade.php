@@ -138,6 +138,13 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <input type="number" name="limit"
+                                                value="{{isset($_GET['limit']) ? $_GET['limit'] : ''}}"
+                                                placeholder="Limit (e.g., 100)" class="form-control" min="1">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
                                         <button class="btn btn-sm btn-info" type="submit">Search</button>
                                         <a class="btn btn-sm btn-warning"
                                             href="{{route(currentUser() . '.archive_member')}}">Clear</a>
@@ -161,7 +168,10 @@
                         <table class="table table-bordered mb-0">
                             <thead>
                                 <tr>
-                                    <th scope="col">{{__('ক্রমিক নং')}}</th>
+                                    <th scope="col">
+                                        <input type="checkbox" id="select_all" onclick="toggleSelectAll()">
+                                        {{__('ক্রমিক নং')}}
+                                    </th>
                                     <th scope="col">{{__('নাম')}}</th>
                                     <th scope="col">{{__('সিরিয়াল পুরাতন/নতুন')}}</th>
                                     <th scope="col">{{__('পিতার নাম')}}</th>
@@ -178,7 +188,7 @@
                                         <th scope="row">
 
                                             <input onclick="add_member_id({{$p->id}})" type="checkbox" name="member_id[]"
-                                                value="{{$p->id}}">
+                                                class="member_checkbox" value="{{$p->id}}">
                                             {{$key}}
                                         </th>
                                         <td>{{$p->name_bn}}</td>
@@ -227,6 +237,17 @@
                 $("#member_id").val(member_id.replace(',' + id, ''));
             } else {
                 $("#member_id").val(member_id + ',' + id);
+            }
+        }
+
+        function toggleSelectAll() {
+            var selectAll = document.getElementById('select_all');
+            var checkboxes = document.getElementsByClassName('member_checkbox');
+
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked !== selectAll.checked) {
+                    checkboxes[i].click();
+                }
             }
         }
 

@@ -209,6 +209,14 @@ class OurMemberController extends Controller
         }
 
         //$ourmember=$ourmember->whereNotIn('id',[631,1203,1181,1186,1682,1186,3784,4011,4469,3834,3826,701,2848,1205,3623,629,2044,4629,4065,4514,3522,4963,4222,2816,5597,1284,4054,3478,4704,3478,4431,5380,6924,6280,6349,3826,7064,5066]);
+
+        // Apply limit if provided
+        if ($request->limit && $request->limit > 0) {
+            $ourmember = $ourmember->limit($request->limit);
+        } else {
+            $ourmember = $ourmember->limit(100);
+        }
+
         $ourmember = $ourmember->get();
         return view('ourmember.idcard', compact('ourmember'));
     }
