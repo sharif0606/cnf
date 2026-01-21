@@ -131,8 +131,9 @@
                                         <div class="form-group">
                                             <select name="remove_printed_card" id="" class="form-control">
                                                 <option value="">All</option>
-                                                <option value="1">Already Printed</option>
-                                                <option value="2">Not Printed</option>
+                                                <option value="1" @if(isset($_GET['remove_printed_card']) && $_GET['remove_printed_card'] == 1) selected @endif>Already Printed
+                                                </option>
+                                                <option value="2" @if(isset($_GET['remove_printed_card']) && $_GET['remove_printed_card'] == 2) selected @endif>Not Printed</option>
                                             </select>
                                         </div>
                                     </div>
