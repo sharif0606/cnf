@@ -123,7 +123,7 @@
                                     <th colspan="2" style="text-align: left;">সভাপতি / সাধারণ সম্পাদক</th>
                                 </tr>
                                 <tr>
-                                    <td colspan="2"> চট্টগ্রাম ক্লিয়ারিং এন্ড ফরওয়ার্ডিং এজেন্টস কর্মচারী ইউনিয়ন (সি বি এ) </td>
+                                    <td colspan="2"> চট্টগ্রাম কাস্টমস্ এজেন্টস্ এমপ্লয়িজ ইউনিয়ন (সি বি এ) </td>
                                 </tr>
                                 <tr>
                                     <td colspan="2" style="text-align:center">( রেজি : নং - চট্ট - ২৩৪) </td>
@@ -709,7 +709,7 @@
                         <table class="gfg2" style=" width:100%;">
                             <tr>
                                 <th style="text-align: left;">ইউনিয়নের নাম ও ঠিকানা:</th>
-                                <td colspan="3"><input type="text" class="binput" value="চট্টগ্রাম ক্লিয়ারিং এন্ড ফরওয়ার্ডিং এজেন্টস কর্মচারী ইউনিয়ন (সি বি এ)"></td>
+                                <td colspan="3"><input type="text" class="binput" value="চট্টগ্রাম কাস্টমস্ এজেন্টস্ এমপ্লয়িজ ইউনিয়ন (সি বি এ)"></td>
                             </tr>
                             <tr>
                                 <th style="text-align: left;">রেজি নং:</th>
@@ -760,7 +760,7 @@
                         <table class="gfg2" style=" width:100%;">
                             <tr>
                                 <th style="text-align: left;">ইউনিয়নের নাম ও ঠিকানা:</th>
-                                <td colspan="3"><input type="text" class="binput" value="চট্টগ্রাম ক্লিয়ারিং এন্ড ফরওয়ার্ডিং এজেন্টস কর্মচারী ইউনিয়ন (সি বি এ)"></td>
+                                <td colspan="3"><input type="text" class="binput" value="চট্টগ্রাম কাস্টমস্ এজেন্টস্ এমপ্লয়িজ ইউনিয়ন (সি বি এ)"></td>
                             </tr>
                             <tr>
                                 <th style="text-align: left;">রেজি নং:</th>

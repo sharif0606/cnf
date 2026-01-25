@@ -133,8 +133,9 @@ class MemberIdCardController extends Controller
      * @param  \App\Models\MemberIdCard  $memberIdCard
      * @return \Illuminate\Http\Response
      */
-    public function show(MemberIdCard $memberIdCard)
+    public function show( $id)
     {
+        $memberIdCard = MemberIdCard::findOrFail(encryptor('decrypt', $id));
         $memberIdCard->load('member');
         return view('memberIdCard.show', compact('memberIdCard'));
     }
@@ -145,8 +146,9 @@ class MemberIdCardController extends Controller
      * @param  \App\Models\MemberIdCard  $memberIdCard
      * @return \Illuminate\Http\Response
      */
-    public function edit(MemberIdCard $memberIdCard)
+    public function edit($id)
     {
+        $memberIdCard = MemberIdCard::findOrFail(encryptor('decrypt', $id));
         $memberIdCard->load('member');
         return view('memberIdCard.edit', compact('memberIdCard'));
     }
@@ -158,8 +160,9 @@ class MemberIdCardController extends Controller
      * @param  \App\Models\MemberIdCard  $memberIdCard
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, MemberIdCard $memberIdCard)
+    public function update(Request $request, $id)
     {
+        $memberIdCard = MemberIdCard::findOrFail(encryptor('decrypt', $id));
         $request->validate([
             'card_number' => 'required|unique:member_id_cards,card_number,' . $memberIdCard->id,
             'card_type' => 'required|integer|in:1,2,3,4',
