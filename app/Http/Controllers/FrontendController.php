@@ -54,7 +54,7 @@ class FrontendController extends Controller
         $ourMember = OurMember::where('approvedstatus',2)->inRandomOrder()->limit(12)->get();
         $currentYear = date('Y');
         $committeeSession = committee_session::where('start_year', '<=',  $currentYear)->where(function ($query) use ($currentYear) {
-                                    $query->where('end_year', '>',$currentYear);
+                                    $query->where('end_year', '>=',$currentYear);
                                 })->first();
 
             if ($committeeSession) {
